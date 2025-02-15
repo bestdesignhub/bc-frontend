@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 :root {
   --bsp-font-poppins: 'Poppins', serif;
-  --bsp-font-libre: 'Libre Caslon Text', serif;
+  --bsp-font-libre: 'Poppins', serif;
   --background: #ffffff;
   --foreground: #171717;
   --bsp-primary: #333333;
@@ -23,7 +23,7 @@
 
   --bsp-heading1: 70px;
   --bsp-heading2: 60px;
-  --bsp-heading3: 50px;
+  --bsp-heading3: 36px;
   --bsp-heading4: 30px;
   --bsp-heading5: 20px;
   --bsp-heading6: 18px;

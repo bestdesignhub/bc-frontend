@@ -12,7 +12,7 @@ export default function AccessoriesItem({ href = '', image, title, price }: Acce
     <div className="accessoriesbox">
       <Link href={href}>
         <div className="image">
-          <Image src={getAWSImageUrl(image)} alt={title} width={575} height={476} priority />
+          <Image src={getAWSImageUrl(image)} alt={title} width={201} height={191} priority />
         </div>
         <div className="info">
           <h6>{title}</h6>
@@ -89,7 +89,7 @@ export default function AccessoriesItem({ href = '', image, title, price }: Acce
           </li>
         </ul> */}
           <div className="pr-price">
-            <ins>${price}</ins>
+            start from <ins>${price}</ins>
             {/* <del>$60.00</del> */}
           </div>
           <div className="pr-color d-none">

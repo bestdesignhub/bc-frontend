@@ -4,8 +4,8 @@ import '@/app/styles/header.css';
 import Link from 'next/link';
 import Logo from './logo';
 import MenuList from './menu-list';
-
-import TopDetails from './top-details';
+import SearchBar from './top-details';
+import TopDetails from './search-bar';
 import { COOKIES, USER_ROUTES } from '@/constants';
 import CartWishlist from './cart-wishlist';
 import Cookies from 'js-cookie';
@@ -49,6 +49,7 @@ export default function Header() {
         <div className="container">
           <div className="flexrow">
             <Logo />
+            <SearchBar />
             <TopDetails />
           </div>
         </div>

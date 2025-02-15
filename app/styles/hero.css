@@ -48,7 +48,8 @@
 }
 .banner_caption button {
   border: 0;
-  margin-right: 5px;
+  margin-right: 14px;
+  border-radius: 10px;
 }
 .banner_caption button a {
   padding: 15px 30px;
@@ -63,6 +64,7 @@
   font-weight: 600;
   text-transform: uppercase;
   line-height: 1;
+  border-radius: 10px;
 }
 .banner_caption button span {
   height: 30px;

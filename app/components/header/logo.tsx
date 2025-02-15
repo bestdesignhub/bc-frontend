@@ -5,9 +5,9 @@ import '@/app/styles/header.css';
 export default function Logo() {
   return (
     <>
-      <div className="logo">
+      <div className="logo order-0">
         <Link href="/">
-          <Image src="/images/logo.png" alt="Bespoke" width={92} height={100} priority />
+          <Image src="/images/b-logo.png" alt="Bespoke" width={173} height={54} priority />
         </Link>
       </div>
     </>

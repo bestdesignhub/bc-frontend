@@ -24,9 +24,9 @@ export default function HeroItem({ title, image }: Readonly<HeroItemProps>) {
           <div className="banner_content">
             <h1>{title}</h1>
             <button className="mr-2">
-              <Link href={`${USER_ROUTES.men}`}>
-                {t('COMMON.MEN')}
-                <span>
+              <Link href={`${USER_ROUTES.sweater}`}>
+                CREATE MY SWEATER
+                {/* <span>
                   <svg
                     width="20"
                     height="16"
@@ -43,13 +43,13 @@ export default function HeroItem({ title, image }: Readonly<HeroItemProps>) {
                       fill="white"
                     />
                   </svg>
-                </span>
+                </span> */}
               </Link>
             </button>
             <button>
-              <Link href={`${USER_ROUTES.women}`}>
-                {t('COMMON.WOMEN')}
-                <span>
+              <Link href={`${USER_ROUTES.shop}`}>
+                CUSTOMISE A SWEATER
+                {/* <span>
                   <svg
                     width="20"
                     height="16"
@@ -66,7 +66,7 @@ export default function HeroItem({ title, image }: Readonly<HeroItemProps>) {
                       fill="white"
                     />
                   </svg>
-                </span>
+                </span> */}
               </Link>
             </button>
           </div>

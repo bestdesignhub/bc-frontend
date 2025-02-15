@@ -36,6 +36,18 @@ const AccessoriesData: Accessories[] = [
     buttonText: 'SHOP SWEATERS',
     href: '/women',
   },
+  {
+    id: 7,
+    image: '/images/hero-img1.png',
+    buttonText: 'SHOP SWEATERS',
+    href: '/women',
+  },
+  {
+    id: 8,
+    image: '/images/hero-img1.png',
+    buttonText: 'SHOP SWEATERS',
+    href: '/women',
+  },
 ];
 
 export default AccessoriesData;
