@@ -3,7 +3,7 @@ import '@/app/styles/header.css';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-
+import TopMenu from '../../components/header/top-menu';
 interface ISaleProps {
   _id: string;
   slug: string;
@@ -70,12 +70,13 @@ export default function TopBar({ flashSale }: Readonly<{ flashSale: ISaleProps }
               <div className="topbar_item">
                 <ul>
                   <li>{flashSale?.title}</li>
-                  <li>
+                  {/* <li>
                     <Link href={flashSale?.button_url}>{t('FLASH_SALE.SHOP_NOW')}</Link>
-                  </li>
+                  </li> */}
                 </ul>
               </div>
-              <div className="topbar_item">
+              <TopMenu />
+              {/* <div className="topbar_item">
                 <div className="flexrow count-row">
                   <div className="count-item">
                     <div className="countbox">
@@ -102,7 +103,7 @@ export default function TopBar({ flashSale }: Readonly<{ flashSale: ISaleProps }
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
