@@ -50,7 +50,6 @@ export default function Header() {
           <div className="flexrow">
             <Logo />
             <TopDetails />
-            <button className="bsp-btn">Become a wholesaler</button>
           </div>
         </div>
       </div>

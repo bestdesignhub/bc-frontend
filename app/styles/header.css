@@ -1,6 +1,6 @@
 .topbar {
   background: var(--bsp-primary);
-  padding: 7px 0;
+  padding: 14px 0;
 }
 .topbar .flexrow {
   align-items: center;
@@ -67,6 +67,7 @@
 }
 .header_middle {
   padding: 15px 0;
+  color: var(--bsp-grayd);
 }
 .header_middle .flexrow {
   align-items: center;
@@ -81,17 +82,22 @@
   justify-content: center;
 }
 .top_menu ul li {
-  list-style: none;
-  padding: 0 20px;
+  list-style: none; 
 }
-.top_menu ul li a {
-  font-size: 20px;
-  line-height: 1.5;
-  font-weight: bold;
-  color: var(--bsp-black);
+.top_menu ul li:first-child { 
+  content: "OR";
+  color: var(--bsp-white);
+  padding: 0 30px;
+} 
+.top_menu ul li a {  
+  color: var(--bsp-white);
+  padding: 6px 26px;
+  background: #000;
+  border: solid 1px var(--bsp-gray);
+  border-radius: 10px;
 }
 .logo {
-  display: block;
+  display: block; 
 }
 .bsp-btn {
   background: var(--bsp-black);
@@ -109,8 +115,8 @@
   cursor: pointer;
 }
 .header_bottom {
-  background: var(--bsp-black);
   padding: 13px 0;
+  border-bottom: solid 2px var(----bsp-gray2);
 }
 .header_bottom .flexrow {
   justify-content: space-between;
@@ -130,7 +136,7 @@
 .navigation ul li a {
   font-size: 16px;
   font-weight: 500;
-  color: var(--bsp-white);
+  color: var(--bsp-black);
   text-transform: uppercase;
 }
 .header_bottom .header_right {

@@ -66,7 +66,7 @@ export default function TopBar({ flashSale }: Readonly<{ flashSale: ISaleProps }
       {isSaleActive && (
         <div className="topbar">
           <div className="container">
-            <div className="flexrow">
+            <div className="flexrow justify-content-between">
               <div className="topbar_item">
                 <ul>
                   <li>{flashSale?.title}</li>
