@@ -118,6 +118,7 @@
 .cart-button ul.login-dropdown {
   display: none;
   position: absolute;
+  background: var(--bsp-white);
 }
 
 .login-button .sign-icon,
