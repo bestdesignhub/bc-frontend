@@ -1,0 +1,32 @@
+.service-wrapper {
+  padding: 60px 50px;
+  overflow: hidden;
+  background: var(--bsp-primary);
+}
+.service-wrapper .row {
+  justify-content: center;
+}
+.servicebox {
+  text-align: center;
+}
+.servicebox img {
+  max-width: 70px;
+}
+.servicebox p {
+  font-size: var(--bsp-body-text);
+  color: var(--bsp-white);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  padding: 20px 0 0;
+}
+@media (max-width: 767px) {
+  .service-wrapper {
+    padding: 60px 16px;
+  }
+  .service-wrapper .row {
+    --bs-gutter-y: 1.5rem;
+  }
+  .servicebox p {
+    padding: 10px 0 0;
+  }
+}

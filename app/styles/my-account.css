@@ -1,0 +1,333 @@
+.my-account-page {
+  padding: 100px 0;
+}
+.my-account-page .nav-pills .nav-link {
+  color: var();
+  border: var(--bsp-black) solid 1px;
+  border-radius: 6px;
+  color: var(--bsp-black);
+  font-weight: 600;
+}
+.my-account-page .nav-pills {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.my-account-page .nav-pills .nav-link.active,
+.my-account-page .nav-pills .show > .nav-link {
+  background: var(--bsp-black);
+  color: var(--bsp-white);
+}
+.my-account-block-main {
+  padding: 0 0 0 40px;
+}
+.my-account-block-main h2 {
+  font-family: var(--bsp-font-poppins);
+  padding: 0 0 30px;
+}
+.border-box-account {
+  border: var(--bsp-gray2) solid 1px;
+  border-radius: 6px;
+}
+.border-box-account h3 {
+  width: 100%;
+  padding: 10px 24px;
+  font-family: var(--bsp-font-poppins);
+  font-weight: 500;
+  background: var(--bsp-black);
+  font-size: var(--bsp-body-20);
+  color: var(--bsp-white);
+}
+.form-main {
+  padding: 24px;
+}
+.border-box-account + .border-box-account {
+  margin-top: 30px;
+}
+.form-main .row {
+  row-gap: 20px;
+}
+.input-box {
+  width: 100%;
+  display: block;
+  position: relative;
+}
+.input-box select,
+.input-box .input-text {
+  width: 100%;
+  display: block;
+  border: var(--bsp-gray7) solid 1px;
+  height: 48px;
+  padding: 0 16px;
+  box-shadow: none;
+  outline: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.checkout-box-main {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+.checkout-box {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.submit-row {
+  display: flex;
+  align-items: center;
+}
+
+.submit-row input[type='submit'] {
+  font-family: var(--bsp-font-poppins);
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  height: 48px;
+  min-width: 160px;
+  padding: 0 30px;
+  text-transform: uppercase;
+  color: var(--bsp-white);
+  background: var(--bsp-black);
+  transition: all 0.3s ease-in-out;
+  border: 0;
+}
+.submit-row input[type='submit']:hover {
+  background: var(--bsp-gray2);
+}
+.form-main h4 {
+  width: 100%;
+  padding: 10px 0;
+  font-family: var(--bsp-font-poppins);
+  font-weight: 500;
+  font-size: var(--bsp-body-20);
+  color: var(--bsp-black);
+}
+.black-btn {
+  display: flex;
+}
+.black-btn a {
+  font-family: var(--bsp-font-poppins);
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  height: 48px;
+  min-width: 160px;
+  padding: 0 30px;
+  text-transform: uppercase;
+  color: var(--bsp-white);
+  background: var(--bsp-black);
+  transition: all 0.3s ease-in-out;
+  border: 0;
+  justify-content: center;
+}
+.black-btn a:hover {
+  background: var(--bsp-gray2);
+}
+.address-box {
+  padding: 20px 0 0 0;
+}
+.address-box span {
+  font-family: var(--bsp-font-poppins);
+  font-weight: 500;
+  font-size: var(--bsp-body-18);
+  color: var(--bsp-black);
+}
+.order-table-main {
+  padding: 16px;
+}
+.order-table {
+  border: var(--bsp-gray2) solid 1px;
+  border-radius: 6px;
+}
+.order-table ul {
+  margin: 0;
+  padding: 0;
+}
+.order-table ul li {
+  border: 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.order-table ul li > * {
+  width: 33.333333%;
+  padding: 4px 10px;
+}
+.order-table ul.thead {
+  background: var(--bsp-black);
+  color: var(--bsp-white);
+  font-weight: 500;
+}
+.order-table ul li .text-4 {
+  display: flex;
+  gap: 10px;
+}
+.order-table ul li .text-4 a {
+  font-family: var(--bsp-font-poppins);
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  height: 32px;
+  font-size: var(--bsp-body-12);
+  padding: 0 16px;
+  text-transform: uppercase;
+  color: var(--bsp-white);
+  background: var(--bsp-black);
+  transition: all 0.3s ease-in-out;
+  border: 0;
+  justify-content: center;
+}
+.order-table ul li .text-4 a:hover {
+  background: var(--bsp-gray2);
+}
+.order-table ul.tbody li > * {
+  padding: 6px 10px;
+}
+.order-table .product-item {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.order-table .product-item p:first-child {
+  width: 100%;
+  padding: 0 0 6px;
+}
+.custom-modal .modal-dialog {
+  width: 800px;
+  max-width: 90%;
+}
+.custom-modal .modal-title {
+  width: 100%;
+
+  font-family: var(--bsp-font-poppins);
+  font-weight: 500;
+  font-size: var(--bsp-body-20);
+  color: var(--bsp-black);
+}
+.eye-icon {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  margin: -20px 0 0 0;
+}
+.eye-icon a {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  background: url(../../public/images/eye.svg) no-repeat center center;
+  background-size: 24px auto;
+}
+
+@media (min-width: 1400px) and (max-width: 1599px) {
+}
+
+@media (min-width: 1301px) and (max-width: 1400px) {
+  .my-account-page {
+    padding: 80px 0;
+  }
+}
+@media (min-width: 1200px) and (max-width: 1300px) {
+  .my-account-page {
+    padding: 80px 0;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  .my-account-page {
+    padding: 64px 0;
+  }
+  .order-table ul li .text-4 a {
+    padding: 0 10px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .my-account-page {
+    padding: 64px 0;
+  }
+  .my-account-block-main {
+    padding: 0;
+  }
+  .form-main .col-sm-4 {
+    width: 50%;
+  }
+  .order-table ul li .text-4 a {
+    padding: 0 10px;
+  }
+  .order-table ul.thead {
+    display: none;
+  }
+  .order-table ul li {
+    flex-direction: column;
+    padding: 5px 0;
+  }
+  .order-table ul.tbody li > * {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    font-size: 14px;
+    padding: 5px 0;
+  }
+  .order-table ul li > *::before {
+    content: attr(data-title);
+    position: absolute;
+    left: 0px;
+    top: 5px;
+    font-weight: 500;
+    font-size: 14px;
+  }
+  .order-table {
+    border: 0;
+  }
+  .order-table ul.tbody li + li {
+    border-top: var(--bsp-gray7) solid 1px;
+  }
+}
+
+@media (max-width: 767px) {
+  .my-account-page {
+    padding: 64px 0;
+  }
+  .form-main .col-sm-4 {
+    width: 100%;
+  }
+  .my-account-block-main {
+    padding: 40px 0 0 0;
+  }
+  .order-table ul li .text-4 a {
+    padding: 0 10px;
+  }
+  .order-table ul.thead {
+    display: none;
+  }
+  .order-table ul li {
+    flex-direction: column;
+    padding: 5px 0;
+  }
+  .order-table ul.tbody li > * {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    font-size: 14px;
+    padding: 5px 0;
+  }
+  .order-table ul li > *::before {
+    content: attr(data-title);
+    position: absolute;
+    left: 0px;
+    top: 5px;
+    font-weight: 500;
+    font-size: 14px;
+  }
+  .order-table {
+    border: 0;
+  }
+  .order-table ul.tbody li + li {
+    border-top: var(--bsp-gray7) solid 1px;
+  }
+}

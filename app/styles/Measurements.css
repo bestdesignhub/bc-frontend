@@ -1,0 +1,217 @@
+.measurements-page {
+  display: block;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+.measurements-block {
+  width: 100%;
+  display: flex;
+  align-items: stretch;
+  min-height: 760px;
+}
+.measurements-left {
+  position: relative;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.measurements-left::after {
+  width: 100vw;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: var(--bsp-gray4);
+  content: '';
+  z-index: 1;
+}
+.measurements-left > * {
+  position: relative;
+  z-index: 5;
+}
+.measurements-left-sub {
+  max-width: 493px;
+  margin: 0 auto;
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 40px 0;
+}
+.measurements-left-sub h4 {
+  padding: 0 0 20px;
+  font-size: 32px;
+  font-weight: 500;
+  font-family: var(--bsp-font-poppins);
+}
+.measurements-left-sub p {
+  font-size: var(--bsp-body-text);
+  color: var(--bsp-gray2);
+}
+.measurements-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+}
+.measurements-right-sub {
+  max-width: 450px;
+  margin: 0 auto;
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 40px 0;
+}
+.measurements-right-sub h4 {
+  padding: 0 0 15px;
+  font-size: var(--bsp-heading5);
+  font-weight: 500;
+  font-family: var(--bsp-font-poppins);
+}
+.measurements-right-sub p {
+  font-size: var(--bsp-body-text);
+  color: var(--bsp-gray2);
+}
+.add-btn-set {
+  padding: 15px 0 10px;
+}
+.add-btn-set {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.add-btn-set a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 296px;
+  height: 30px;
+  color: var(--background);
+  text-transform: uppercase;
+  background: var(--bsp-black);
+  font-size: var(--bsp-body-12);
+  font-family: var(--bsp-font-poppins);
+  font-weight: 600;
+}
+.add-btn-set a:hover {
+  background: var(--bsp-gray2);
+}
+.add-btn-set .or-text {
+  width: 100%;
+  text-align: center;
+  font-size: var(--bsp-body-text);
+  color: var(--bsp-gray2);
+  padding: 10px 0;
+}
+.custom-size {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.custom-size .checkbox {
+  position: relative;
+}
+.custom-size .checkbox input {
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.custom-size .checkbox label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 30px;
+  min-height: 30px;
+  padding: 0 10px;
+  text-transform: uppercase;
+  color: var(--bsp-black);
+  font-size: 16px;
+  border: var(--bsp-black) solid 1px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+.custom-size .checkbox input:checked + label {
+  background: var(--bsp-black);
+  color: var(--background);
+}
+.measurements-login-link {
+  padding: 15px 0 0;
+}
+.measurements-login-link span {
+  font-size: var(--bsp-body-text);
+  color: var(--bsp-gray2);
+}
+.measurements-login-link span a {
+  color: var(--bsp-black);
+  font-weight: 600;
+}
+.measurements-login-link span a:hover {
+  opacity: 0.5;
+}
+.measurements-login-link .login-link-sub {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px 0;
+}
+.measurements-login-link .login-link-sub a {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 28px;
+  min-width: 140px;
+  border: var(--bsp-black) solid 1px;
+  color: var(--bsp-black);
+  font-size: var(--bsp-body-20);
+  font-weight: 500;
+}
+.measurements-login-link .login-link-sub a:hover {
+  background: var(--bsp-black);
+  color: var(--background);
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .measurements-block {
+    min-height: 600px;
+  }
+  .measurements-left-sub,
+  .measurements-right-sub {
+    padding: 24px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .measurements-block {
+    min-height: 600px;
+  }
+  .measurements-left-sub,
+  .measurements-right-sub {
+    padding: 24px;
+  }
+}
+@media (max-width: 767px) {
+  .measurements-block {
+    min-height: 0px;
+    flex-direction: column;
+  }
+  .measurements-left-sub,
+  .measurements-right-sub {
+    padding: 48px 16px;
+    width: 100%;
+  }
+  .measurements-left,
+  .measurements-right {
+    width: 100%;
+  }
+  .measurements-left-sub h4 {
+    font-size: 24px;
+  }
+}

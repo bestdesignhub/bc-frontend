@@ -1,0 +1,108 @@
+.client-wrapper {
+  padding: 165px 0;
+}
+.client-row {
+  margin: 0 57px;
+}
+.client-row .row {
+  align-items: center;
+}
+.client_content {
+  padding: 0 102px;
+  text-align: center;
+}
+.client_content h4 {
+  font-size: var(--bsp-heading4);
+  font-family: var(--bsp-font-poppins);
+  line-height: 1.5;
+  padding: 0 0 20px;
+}
+.client_content p {
+  font-size: var(--bsp-body-14);
+  line-height: 1.428;
+}
+.client_content button {
+  background: transparent;
+  margin: 20px 0 0;
+}
+.client_content button a {
+  font-size: var(--bsp-body-14);
+  padding: 0;
+  color: var(--bsp-black);
+  background: transparent;
+  padding: 0;
+  text-decoration: underline !important;
+  line-height: 1.428;
+}
+
+.testimonial-wrapper {
+  background: var(--bsp-primary);
+  padding: 120px 0;
+}
+.testimonialbox {
+  text-align: center;
+}
+.testimonialbox h6 {
+  font-family: var(--bsp-font-poppins);
+  font-size: var(--bsp-body-text);
+  padding: 0 0 40px;
+}
+.testimonialbox p {
+  font-size: var(--bsp-heading4);
+  line-height: 1.5;
+  padding: 0 0 40px;
+  text-transform: uppercase;
+}
+.testimonialbox h4 {
+  font-size: var(--bsp-heading4);
+  font-family: var(--bsp-font-poppins);
+  line-height: 1.5;
+}
+.testimonial-wrapper ul.slick-dots {
+  margin: 60px 0 0;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .client-wrapper {
+    padding: 60px 0;
+  }
+  .client_content {
+    padding: 24px 0 0;
+  }
+  .testimonial-wrapper {
+    padding: 60px 0;
+  }
+}
+@media (max-width: 767px) {
+  .client-wrapper {
+    padding: 60px 0;
+  }
+  .client-row {
+    margin: 0;
+  }
+  .client-row .image img {
+    max-width: 100%;
+    height: auto;
+  }
+  .client_content {
+    padding: 24px 0 0;
+  }
+  .client_content h4 {
+    padding: 0 0 10px;
+  }
+  .client_content button {
+    margin: 10px 0 0;
+  }
+  .testimonial-wrapper {
+    padding: 60px 0;
+  }
+  .testimonialbox h6 {
+    padding: 0 0 24px;
+  }
+  .testimonialbox p {
+    padding: 0 0 24px;
+  }
+  .testimonial-wrapper ul.slick-dots {
+    margin: 32px 0 0;
+  }
+}

@@ -1,0 +1,27 @@
+.order-success-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.order-success-card {
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.order-success-card h2 {
+  color: #28a745;
+  font-weight: bold;
+}
+
+.order-success-card .btn-success {
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+.order-success-card .btn-success:hover {
+  background-color: #218838;
+  border-color: #1e7e34;
+}
