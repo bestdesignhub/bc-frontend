@@ -11,8 +11,9 @@ const GenderModal = (props: {
   handleClose: () => void;
   genders: DropDownOptionType[];
   urlQueryString?: string;
+  url?: string;
 }) => {
-  const { show, handleClose, genders, urlQueryString } = props;
+  const { show, handleClose, genders, urlQueryString, url } = props;
   const t = useTranslations();
   const searchParams = useSearchParams();
   const queryString = urlQueryString || new URLSearchParams(searchParams).toString();
@@ -31,7 +32,11 @@ const GenderModal = (props: {
               return (
                 <Link
                   key={gender.label}
-                  href={`${USER_ROUTES.measurements}?${queryString}&${URL_SLUG.GENDER}=${gender.value}`}
+                  href={
+                    url
+                      ? url
+                      : `${USER_ROUTES.measurements}?${queryString}&${URL_SLUG.GENDER}=${gender.value}`
+                  }
                 >
                   <div
                     style={{

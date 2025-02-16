@@ -1,16 +1,16 @@
 'use client';
 
 import { DropDownOptionType } from '@/types';
-import React, { FC, useEffect } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { Accordion, Form, InputGroup } from 'react-bootstrap';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useDispatch } from 'react-redux';
 import { setLoading } from '@/lib/redux/slices/loaderSlice';
+import { getCurrentStepDetails, getStepTypesList } from '@/utils/server-api.utils';
 
 interface Props {
-  genders: DropDownOptionType[];
-  colours: DropDownOptionType[];
-  materials: DropDownOptionType[];
+  steps?: any;
+  step?: any;
 }
 
 const FILTERS = [
@@ -19,37 +19,20 @@ const FILTERS = [
   { key: '_material', label: 'Material', field: 'materials' },
 ];
 
-const YarnListingSidebar: FC<Props> = ({ colours, genders, materials }) => {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const dispatch = useDispatch();
-
-  const optionsMap: Record<string, DropDownOptionType[]> = { genders, colours, materials };
-
-  const updateParams = (key: string, value: string) => {
-    dispatch(setLoading(true)); // Start loader
-
-    const params = new URLSearchParams(searchParams.toString());
-
-    // If the selected option is already in the URL, unselect it by deleting the parameter
-    if (params.get(key) === value) {
-      params.delete(key);
-    } else {
-      // Set the parameter to the selected value
-      params.set(key, value);
-    }
-
-    router.push(`?${params.toString()}`);
-  };
-
-  const searchParamsString = searchParams.toString();
-  useEffect(() => {
-    dispatch(setLoading(false));
-  }, [searchParamsString, dispatch]);
+const YarnListingSidebar: FC<Props> = async ({ steps, step }: any) => {
+  const [activeTab, setActiveTab] = useState(Number(step));
+  //  Here we have to edit the name of tab just add image and label
+  const tabs = [
+    { id: 1, label: 'Tab 1', content: 'This is the content of Tab 1' },
+    { id: 2, label: 'Tab 2', content: 'This is the content of Tab 2' },
+    { id: 3, label: 'Tab 3', content: 'This is the content of Tab 3' },
+    { id: 4, label: 'Tab 4', content: 'This is the content of Tab 4' },
+    { id: 5, label: 'Tab 5', content: 'This is the content of Tab 5' },
+  ];
 
   return (
     <div className="sidebar">
-      <Accordion defaultActiveKey="0">
+      {/* <Accordion defaultActiveKey="0">
         {FILTERS.map(({ key, label, field }, index) => (
           <Accordion.Item eventKey={String(index)} key={key}>
             <Accordion.Header>{label}</Accordion.Header>
@@ -71,7 +54,25 @@ const YarnListingSidebar: FC<Props> = ({ colours, genders, materials }) => {
             </Accordion.Body>
           </Accordion.Item>
         ))}
-      </Accordion>
+      </Accordion> */}
+      <div style={{ padding: '20px', background: '#f4f4f4', borderRight: '1px solid #ddd' }}>
+        {tabs.map((tab) => (
+          <div
+            key={tab.id}
+            onClick={() => {
+              setActiveTab(tab.id);
+            }}
+            style={{
+              padding: '10px',
+              cursor: 'pointer',
+              backgroundColor: activeTab === tab.id ? '#ddd' : 'transparent',
+              marginBottom: '10px',
+            }}
+          >
+            {tab.label}
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

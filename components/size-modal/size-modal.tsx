@@ -20,7 +20,6 @@ const SizeModal = (props: { show: boolean; yarnDetails?: any; handleClose: () =>
 
   const handleSelect = useCallback(() => {
     if (yarnDetails?._id) {
-      dispatch(setIsPageSwitchLoading(true));
       const edit = searchParams?.get(URL_SLUG.EDIT);
       const change = searchParams?.get(URL_SLUG.CHANGE);
       if (change === 'true') {

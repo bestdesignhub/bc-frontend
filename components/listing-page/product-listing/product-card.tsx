@@ -1,6 +1,7 @@
+import GenderModal from '@/components/modals/gender-modal/gender-modal';
 import { SizeModal } from '@/components/size-modal';
 import userAxiosInstanceWithoutToken from '@/config/userAxiosInstanceWithoutToken';
-import { MESSAGES, URL_SLUG } from '@/constants';
+import { MESSAGES, URL_SLUG, USER_ROUTES } from '@/constants';
 import { YARN_GET_DETAIL_URL } from '@/constants/apis';
 import { useView } from '@/hooks';
 import { setLoading } from '@/lib/redux/slices/loaderSlice';
@@ -9,11 +10,12 @@ import { formatPrice, getAWSImageUrl } from '@/utils/common.utils';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
-import React, { FC, useState } from 'react';
+import { useRouter } from 'next/router';
+import React, { FC, useCallback, useState } from 'react';
 import { Col } from 'react-bootstrap';
 import toast from 'react-hot-toast';
 
-const ProductCard: FC<{ product: any }> = ({ product }) => {
+const ProductCard: FC<{ product: any; genders: any }> = ({ product, genders }) => {
   const { view } = useView();
   const t = useTranslations();
   const searchParams = useSearchParams();
@@ -22,6 +24,7 @@ const ProductCard: FC<{ product: any }> = ({ product }) => {
 
   const handleShow = () => {
     dispatch(setLoading(true));
+    const edit = searchParams?.get(URL_SLUG.EDIT);
     userAxiosInstanceWithoutToken
       .get(`${YARN_GET_DETAIL_URL}/${product._id}`)
       .then((response) => {
@@ -29,6 +32,9 @@ const ProductCard: FC<{ product: any }> = ({ product }) => {
         if (result.success) {
           setYarnDetails(result.data);
           setShowModal(true);
+          // router.push(
+          //   `${USER_ROUTES.sweater}/2?${URL_SLUG.YARN}=${yarnDetails?._id}${edit ? `&${URL_SLUG.EDIT}=${edit}` : ''}`
+          // );
         } else {
           toast.error(result?.message || t(MESSAGES.SOMETHING_WENT_WRONG));
           return;
@@ -87,7 +93,12 @@ const ProductCard: FC<{ product: any }> = ({ product }) => {
         </div>
       </Col>
       {showModal && (
-        <SizeModal yarnDetails={yarnDetails} show={showModal} handleClose={handleClose} />
+        <GenderModal
+          show={showModal}
+          handleClose={handleClose}
+          genders={genders}
+          url={`${USER_ROUTES.sweater}/2?${URL_SLUG.YARN}=${yarnDetails?._id}`}
+        />
       )}
     </>
   );

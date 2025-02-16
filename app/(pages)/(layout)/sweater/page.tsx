@@ -19,16 +19,11 @@ const SweaterPage = async ({
 }) => {
   const resolvedSearchParams = await searchParams;
   const t = await getTranslations();
-  const [genderResult, coloursResult, materialResult, yarnListResult] = await Promise.allSettled([
-    getDropdownList(GENDER_DROPDOWN_URL),
-    getDropdownList(COLOUR_DROPDOWN_URL),
-    getDropdownList(MATERIAL_DROPDOWN_URL),
+  const [yarnListResult, genderResult] = await Promise.allSettled([
     getYarnCardList(resolvedSearchParams),
+    getDropdownList(GENDER_DROPDOWN_URL),
   ]);
-
-  const colours = coloursResult.status === 'fulfilled' ? coloursResult.value : [];
   const genders = genderResult.status === 'fulfilled' ? genderResult.value : [];
-  const materials = materialResult.status === 'fulfilled' ? materialResult.value : [];
   const yarnList = yarnListResult.status === 'fulfilled' ? yarnListResult.value : {};
 
   return (
@@ -37,16 +32,16 @@ const SweaterPage = async ({
         <StepBanner step="1" stepData={{ label: t('COMMON.YARN_TEXT') }} />
         <div className="woman-product-wrapper">
           <Row className="g-4">
-            <Col xs={12} lg={2}>
-              <YarnListingSidebar genders={genders} colours={colours} materials={materials} />
+            <Col xs={12} lg={3}>
+              <YarnListingSidebar step={1} />
             </Col>
-            <Col xs={12} lg={10}>
-              <ProductTopbar text={t('COMMON.YARN_TEXT')} total={yarnList?.totalCount} />
-              <ProductListing list={yarnList.data} />
-              <CustomPagination
+            <Col xs={12} lg={9}>
+              {/* <ProductTopbar text={t('COMMON.YARN_TEXT')} total={yarnList?.totalCount} /> */}
+              <ProductListing list={yarnList.data} genders={genders} />
+              {/* <CustomPagination
                 currentPage={yarnList?.currentPage}
                 totalPage={yarnList?.totalPage}
-              />
+              /> */}
             </Col>
           </Row>
         </div>
