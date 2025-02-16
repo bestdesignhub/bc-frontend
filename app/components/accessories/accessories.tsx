@@ -12,11 +12,11 @@ import AccessoriesItem from './accessories-item';
 
 const settings = {
   dots: false,
-  infinite: true,
+  infinite: false,
   speed: 1500,
   autoplay: false,
   autoplaySpeed: 2000,
-  slidesToShow: 6.5,
+  slidesToShow: 4.5,
   slidesToScroll: 1,
   initialSlide: 0,
   // centerMode: true,

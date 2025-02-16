@@ -39,6 +39,7 @@ const HomeComponent = ({ homepageData, homeStoryData, homeProductList }: IHomePa
       <Hero heroData={heroData} />
       <Accessories accessoriesData={accessoriesData} homeProductList={homeProductList} />
       <PerfectFit perfectFitData={perfectFitData} />
+      <Accessories accessoriesData={accessoriesData} homeProductList={homeProductList} />
       <Marquee marqueeData={marqueeData} />
       <Category categoryData={categoryData} />
       <OffGift offGiftData={offGiftData} />

@@ -26,6 +26,7 @@
   --bsp-heading3: 36px;
   --bsp-heading4: 30px;
   --bsp-heading5: 20px;
+  --bsp-heading28: 28px;
   --bsp-heading6: 18px;
   --bsp-body-40: 40px;
   --bsp-body-22: 22px;
@@ -147,7 +148,7 @@ button {
   border: 0;
 }
 button a {
-  padding: 20px 30px;
+  padding: 15px 30px;
   display: -ms-flexbox;
   display: flex;
   align-items: center;
@@ -158,6 +159,7 @@ button a {
   font-weight: 600;
   text-transform: uppercase;
   line-height: 1;
+  border-radius: 10px;
 }
 button span {
   height: 30px;
