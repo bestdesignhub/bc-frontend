@@ -1,7 +1,10 @@
+// MenuList.js
+
 'use client';
 import '@/app/styles/header.css';
 import { useEffect, useState, useRef } from 'react';
 import MenuItem from './menu-item';
+import { fetchMenuData } from '../../servives/apiservice';  // Import the API service
 
 interface MenuDataItem {
   _id: string;
@@ -23,19 +26,16 @@ export default function MenuList() {
 
   // Fetch menu data when the component mounts
   useEffect(() => {
-    const fetchMenuData = async () => {
+    const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:50111/admin/home/dropdown');
-        const data = await response.json();
-        if (data && data.data) {
-          setMenuData(data.data);
-        }
+        const data = await fetchMenuData();  // Call the service method
+        setMenuData(data);
       } catch (error) {
         console.error('Error fetching menu data:', error);
       }
     };
 
-    fetchMenuData();
+    fetchData();
   }, []);
 
   // Close the menu if user clicks outside of it
