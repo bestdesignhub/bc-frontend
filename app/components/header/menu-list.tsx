@@ -1,15 +1,44 @@
 'use client';
 import '@/app/styles/header.css';
 import { useEffect, useState, useRef } from 'react';
-import MenuData from './menu-data';
 import MenuItem from './menu-item';
+
+interface MenuDataItem {
+  _id: string;
+  label: string;
+  value: string;
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
+}
 
 export default function MenuList() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [menuData, setMenuData] = useState<MenuDataItem[]>([]);
   const menuRef = useRef<HTMLDivElement>(null);
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  // Fetch menu data when the component mounts
+  useEffect(() => {
+    const fetchMenuData = async () => {
+      try {
+        const response = await fetch('http://localhost:50111/admin/home/dropdown');
+        const data = await response.json();
+        if (data && data.data) {
+          setMenuData(data.data);
+        }
+      } catch (error) {
+        console.error('Error fetching menu data:', error);
+      }
+    };
+
+    fetchMenuData();
+  }, []);
+
+  // Close the menu if user clicks outside of it
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
@@ -22,6 +51,7 @@ export default function MenuList() {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
+
   return (
     <>
       <div className="navigation" ref={menuRef}>
@@ -43,8 +73,8 @@ export default function MenuList() {
             </svg>
           </button>
           <ul>
-            {MenuData.map((menu: any) => (
-              <MenuItem key={menu.id} href={menu.href} title={menu.title} newTab={menu.newTab} />
+            {menuData.map((menu) => (
+              <MenuItem key={menu._id} href={`/${menu.value}`} title={menu.label} newTab={false} />
             ))}
           </ul>
         </div>
