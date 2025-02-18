@@ -19,9 +19,9 @@ const PriceRangeSlider = ({ min = 0, max = 1000, step = 10 }) => {
 
   const [priceRange, setPriceRange] = useState<[number, number]>([initialMin, initialMax]);
 
-  // Start loading when priceRange changes
   useEffect(() => {
-    dispatch(setLoading(true)); // Start loading on price range change
+    dispatch(setLoading(true)); // Start loading when price range changes
+
     const [newMin, newMax] = priceRange;
     const params = new URLSearchParams(searchParams.toString());
 
@@ -30,12 +30,14 @@ const PriceRangeSlider = ({ min = 0, max = 1000, step = 10 }) => {
 
     // Update the URL without scrolling
     router.push(`?${params.toString()}`, { scroll: false });
-  }, [priceRange]);
+  }, [priceRange, router, searchParams]);
 
-  // Stop loading only when searchParams changes
   useEffect(() => {
-    dispatch(setLoading(false)); // Stop loading after URL updates
-  }, [searchParams.toString()]);
+    const paramsString = searchParams.toString();
+    console.log('paramsString', paramsString);
+
+    dispatch(setLoading(false));
+  }, [searchParams]);
 
   return (
     <div className="py-4">

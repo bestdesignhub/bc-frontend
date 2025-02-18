@@ -11,17 +11,18 @@ export default function RangeSlider() {
   const [values, setValues] = useState({ from: 20, to: 80 });
 
   useEffect(() => {
-    if (sliderRef.current) {
-      if (sliderRef.current.noUiSlider) {
-        sliderRef.current.noUiSlider?.on('update', (updatedValues: (string | number)[]) => {
-          // Convert string | number to number before updating state
+    const sliderElement = sliderRef.current; // Store the ref value in a local variable
+
+    if (sliderElement) {
+      if (sliderElement.noUiSlider) {
+        sliderElement.noUiSlider.on('update', (updatedValues: (string | number)[]) => {
           setValues({
             from: Math.round(Number(updatedValues[0])),
             to: Math.round(Number(updatedValues[1])),
           });
         });
       } else {
-        noUiSlider.create(sliderRef.current, {
+        noUiSlider.create(sliderElement, {
           start: [values.from, values.to],
           connect: true,
           range: {
@@ -32,10 +33,10 @@ export default function RangeSlider() {
       }
     }
 
-    // Cleanup slider instance
+    // Cleanup function
     return () => {
-      if (sliderRef.current && sliderRef.current.noUiSlider) {
-        sliderRef.current.noUiSlider.destroy();
+      if (sliderElement?.noUiSlider) {
+        sliderElement.noUiSlider.destroy();
       }
     };
   }, [values.from, values.to]);
