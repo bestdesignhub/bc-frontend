@@ -72,7 +72,7 @@
 .accessoriesbox .info .pr-price {
   display: flex;
   align-items: center;
-  justify-content: start;
+  justify-content: flex-start; /* Change start to flex-start */
   gap: 10px;
   color: var(--bsp-black);
   margin-top: 18px;

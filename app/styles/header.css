@@ -126,7 +126,7 @@
 .top_details {
   display: flex;
   flex-wrap: wrap;
-  justify-content: end;
+  justify-content: flex-end; /* Change end to flex-end */
   align-items: center;
   gap: 20px;
   /* color: var(--bsp-black); */
@@ -170,7 +170,7 @@
 li.login-btm-section {
   display: flex;
   flex-direction: column;
-  align-items: start;
+  align-items: flex-start; /* Change start to flex-start */
   padding: 8px;
   gap: 5px;
 }
