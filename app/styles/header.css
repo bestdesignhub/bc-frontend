@@ -82,14 +82,14 @@
   justify-content: center;
 }
 .top_menu ul li {
-  list-style: none; 
+  list-style: none;
 }
-.top_menu ul li:first-child:after { 
-  content: "OR";
+.top_menu ul li:first-child:after {
+  content: 'OR';
   color: var(--bsp-white);
   padding: 0 30px;
-} 
-.top_menu ul li a {  
+}
+.top_menu ul li a {
   color: var(--bsp-white);
   padding: 6px 26px;
   background: #000;
@@ -97,7 +97,7 @@
   border-radius: 10px;
 }
 .logo {
-  display: block; 
+  display: block;
 }
 .searchbar {
   position: relative;
@@ -107,33 +107,38 @@
   margin-left: 50px;
 }
 
-.searchbar input {width: 100%;height: 38px;
+.searchbar input {
+  width: 100%;
+  height: 38px;
   border: none;
-  padding: 14px 44px 14px 14px;}
+  padding: 14px 44px 14px 14px;
+}
 
 .searchbar button {
-    position: absolute;
-    right: 0;
-    top: 0;
-    height: 100%;
-    padding: 0 12px;
-    background: black;
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  padding: 0 12px;
+  background: black;
 }
 .ml-auto {
   margin-left: auto;
 }
 .top_details {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: end;
-    align-items: center;
-    gap: 20px;
-    /* color: var(--bsp-black); */
-    color: var( --bsp-gray);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: end;
+  align-items: center;
+  gap: 20px;
+  /* color: var(--bsp-black); */
+  color: var(--bsp-gray);
 }
-.top_details svg {margin-right: 10px;}
+.top_details svg {
+  margin-right: 10px;
+}
 .top_details a {
-  color: var( --bsp-gray);
+  color: var(--bsp-gray);
 }
 
 .login-button ul.login-dropdown,
@@ -145,23 +150,23 @@
 
 .login-button .sign-icon,
 .cart-button .cart-icon {
-  display: flex; 
+  display: flex;
   line-height: 1.2;
   align-items: center;
 }
 .login-button:hover > ul.login-dropdown,
 .cart-button:hover > ul.login-dropdown {
-  display: block; 
-    border-radius: 2px;
-    box-shadow:0px 2px 2px rgba(0, 0, 0, .5);
-    width: 120px;
-    text-align: center;
-    border-top: 0;
-    border: 1px solid #e0e0e0;
-    margin: 0;
-    padding: 0;
-    z-index: 9;
-    list-style: none;
+  display: block;
+  border-radius: 2px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.5);
+  width: 120px;
+  text-align: center;
+  border-top: 0;
+  border: 1px solid #e0e0e0;
+  margin: 0;
+  padding: 0;
+  z-index: 9;
+  list-style: none;
 }
 
 li.login-btm-section {

@@ -1,6 +1,5 @@
 import { USER_ROUTES } from '@/constants';
 import { getAWSImageUrl } from '@/utils/common.utils';
-import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -13,7 +12,6 @@ type HeroItemProps = {
 };
 
 export default function HeroItem({ title, image }: Readonly<HeroItemProps>) {
-  const t = useTranslations();
   return (
     <div className="herobox">
       <div className="image">

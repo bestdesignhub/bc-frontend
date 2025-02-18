@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { Row, Col, Stack } from 'react-bootstrap';
+import { Stack } from 'react-bootstrap';
 import '@/app/styles/perfectfit.css';
 import { Section2 } from '@/types/components';
-import { getAWSImageUrl } from '@/utils/common.utils';
+
 import { USER_ROUTES } from '@/constants';
 
 interface IPerfectFitProps {
@@ -12,17 +12,17 @@ interface IPerfectFitProps {
 
 export default function PerfectFit({ perfectFitData }: IPerfectFitProps) {
   return (
-    <div
-      className="perfectfit_wrapper"
-
-    >
+    <div className="perfectfit_wrapper">
       <div className="container p-0">
-        <div alignitems={'center'} className='halfbx'>
-          <div className='half-boxes' style={{
-            backgroundColor: `#f6f6f6`,
-            padding: '30px',
-          }}>
-            <h2 className='text-center'>{perfectFitData?.titled ?? 'Create own sweater own'}</h2>
+        <div className="halfbx" style={{ alignItems: 'center' }}>
+          <div
+            className="half-boxes"
+            style={{
+              backgroundColor: `#f6f6f6`,
+              padding: '30px',
+            }}
+          >
+            <h2 className="text-center">{perfectFitData?.titled ?? 'Create own sweater own'}</h2>
             <div className="image-grip">
               <div className="image">
                 <Image
@@ -60,36 +60,36 @@ export default function PerfectFit({ perfectFitData }: IPerfectFitProps) {
             </div>
 
             <div className="content">
-
               {/* <p>
                 {perfectFitData?.description ??
                   `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel convallis
                   nulla. Etiam nisl augue.`}
               </p> */}
-              <Stack className="btn-group justify-content-center position-relative " direction="horizontal" gap={4}>
+              <Stack
+                className="btn-group justify-content-center position-relative "
+                direction="horizontal"
+                gap={4}
+              >
                 <button>
-                  <Link href={USER_ROUTES.sweater}>
-                    Create My SWEATER
-
-                  </Link>
+                  <Link href={USER_ROUTES.sweater}>Create My SWEATER</Link>
                 </button>
-                <button  >
-                  <Link href={USER_ROUTES.shop}>
-                    Customise a Sweater
-
-                  </Link>
+                <button>
+                  <Link href={USER_ROUTES.shop}>Customise a Sweater</Link>
                 </button>
               </Stack>
             </div>
           </div>
-          <div className='half-boxes-right' style={{
-            backgroundColor: `#f6f6f6`,
-            padding: '30px',
-          }}>
+          <div
+            className="half-boxes-right"
+            style={{
+              backgroundColor: `#f6f6f6`,
+              padding: '30px',
+            }}
+          >
             Banner Here
           </div>
         </div>
       </div>
-    </div >
+    </div>
   );
 }

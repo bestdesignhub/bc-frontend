@@ -1,7 +1,5 @@
 'use client';
 import '@/app/styles/header.css';
-import { useTranslations } from 'next-intl';
-import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import TopMenu from '../../components/header/top-menu';
 interface ISaleProps {
@@ -16,9 +14,8 @@ interface ISaleProps {
 }
 
 export default function TopBar({ flashSale }: Readonly<{ flashSale: ISaleProps }>) {
-  const t = useTranslations();
   const { start_time, end_time } = flashSale;
-  const [timeRemaining, setTimeRemaining] = useState<{
+  const [, setTimeRemaining] = useState<{
     days: number;
     hours: number;
     minutes: number;

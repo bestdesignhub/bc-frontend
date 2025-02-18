@@ -18,7 +18,8 @@ export default function ImageWithText() {
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer non tristique nibh.
                 Nullam porta viverra massa, sed ornare tortor gravida efficitur. Phasellus suscipit
                 est ex, et tristique mi accumsan sit amet. Pellentesque non sollicitudin nulla, ut
-                faucibus est. Proin nec lobortis urna, et convallis mauris. Proin et interdum metus.{' '}
+                faucibus est. Proin nec lobortis urna, et convallis mauris. Proin et interdum
+                metus.{' '}
               </p>
             </div>
           </div>
