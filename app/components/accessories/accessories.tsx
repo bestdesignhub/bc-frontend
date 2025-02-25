@@ -2,7 +2,6 @@
 import '@/app/styles/accessories.css';
 import { USER_ROUTES } from '@/constants';
 import { Section5 } from '@/types/components';
-import Link from 'next/link';
 import { Fragment } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import Slider from 'react-slick';

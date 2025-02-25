@@ -12,12 +12,13 @@ const compat = new FlatCompat({
 const eslintConfig = [
   ...compat.extends(
     'next/core-web-vitals',
-    'next/typescript',
-    'plugin:prettier/recommended' // Integrates Prettier
+    'next/typescript'
+    // 'plugin:prettier/recommended' // Integrates Prettier
   ),
   {
     rules: {
       '@typescript-eslint/no-explicit-any': 'off',
+      'prettier/prettier': 'off',
     },
   },
 ];

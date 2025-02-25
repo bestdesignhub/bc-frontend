@@ -11,14 +11,14 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  align-items: start;
-
+  align-items: flex-start;
 }
+
 .halfbx {
   display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      gap: 20px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 .halfbx .half-boxes {
   width: 70%;

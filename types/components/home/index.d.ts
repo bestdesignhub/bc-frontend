@@ -8,6 +8,7 @@ export interface Section2 {
   left_image: string;
   title: string;
   description: string;
+  titled: string;
 }
 
 export interface Section4Card {
@@ -26,6 +27,7 @@ export interface Section4 {
 }
 
 export interface Section5 {
+  titlenew: string;
   title: string;
 }
 
