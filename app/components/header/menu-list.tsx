@@ -17,7 +17,7 @@ interface MenuDataItem {
 
 export default function MenuList() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [menuData, setMenuData] = useState<MenuDataItem[]>([]);
+  //const [menuData, setMenuData] = useState<MenuDataItem[]>([]);
   const menuRef = useRef<HTMLDivElement>(null);
 
   const toggleMenu = () => {
@@ -73,9 +73,9 @@ export default function MenuList() {
             </svg>
           </button>
           <ul>
-            {menuData.map((menu) => (
+            {/* {menuData.map((menu) => (
               <MenuItem key={menu._id} href={`/${menu.value}`} title={menu.label} newTab={false} />
-            ))}
+            ))} */}
           </ul>
         </div>
       </div>
