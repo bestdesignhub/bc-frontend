@@ -18,9 +18,9 @@ export interface IFaqRe {
 export interface IListingFaqProps {
   faqData: IFaqRe;
 }
-
 const ListingFaq = ({ faqData }: IListingFaqProps) => {
-  console.log(faqData, '@@ faqData');
+  const faqs = faqData?.faqs || []; // Default to an empty array
+
   return (
     <div className="faq-wrapper">
       <Container fluid>
@@ -31,12 +31,16 @@ const ListingFaq = ({ faqData }: IListingFaqProps) => {
         <Row className="justify-content-center">
           <Col xs={12} lg={7}>
             <Accordion>
-              {faqData.faqs.map((faq: FAQ) => (
-                <Accordion.Item key={faq?.question} eventKey={faq?.question}>
-                  <Accordion.Header>{faq.question}</Accordion.Header>
-                  <Accordion.Body>{faq.answer}</Accordion.Body>
-                </Accordion.Item>
-              ))}
+              {faqs.length > 0 ? (
+                faqs.map((faq: FAQ) => (
+                  <Accordion.Item key={faq.question} eventKey={faq.question}>
+                    <Accordion.Header>{faq.question}</Accordion.Header>
+                    <Accordion.Body>{faq.answer}</Accordion.Body>
+                  </Accordion.Item>
+                ))
+              ) : (
+                <p>No FAQs available.</p>
+              )}
             </Accordion>
           </Col>
         </Row>
@@ -44,5 +48,6 @@ const ListingFaq = ({ faqData }: IListingFaqProps) => {
     </div>
   );
 };
+
 
 export default ListingFaq;

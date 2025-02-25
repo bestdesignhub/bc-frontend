@@ -13,16 +13,16 @@ import SelectYourMeasurementProfile from './select-your-measurement-profile';
 
 export default function MeasurementsBox({
   fittingName,
-  availableSizes,
-  steps,
+  availableSizes = [],
+  steps = [],
   productTypeId,
-  measurementProfiles,
+  measurementProfiles = [],
 }: {
   fittingName: string;
   availableSizes: any[];
   steps: any[];
   productTypeId: string;
-  measurementProfiles: DropDownOptionType[];
+  measurementProfiles?: DropDownOptionType[];
 }) {
   const t = useTranslations();
   const searchParams = useSearchParams();
@@ -40,8 +40,10 @@ export default function MeasurementsBox({
   const userToken = Cookies.get(COOKIES.userToken);
 
   const selectedMeasurementProfile = useMemo(() => {
-    return measurementProfiles.find((profile: any) => profile.value === measurementProfile)?.label;
+    const profiles = Array.isArray(measurementProfiles) ? measurementProfiles : [];
+    return profiles.find((profile) => profile.value === measurementProfile)?.label;
   }, [measurementProfile, measurementProfiles]);
+
   const addMeasurementQueryString = useMemo(() => {
     const params = new URLSearchParams(searchParams);
     if (params.has(URL_SLUG.MEASUREMENT_PROFILE)) {

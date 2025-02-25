@@ -4,7 +4,7 @@
 import '@/app/styles/header.css';
 import { useEffect, useState, useRef } from 'react';
 import MenuItem from './menu-item';
-import { fetchMenuData } from '../../servives/apiservice';  // Import the API service
+//import { fetchMenuData } from '../../servives/apiservice';  // Import the API service
 
 interface MenuDataItem {
   _id: string;
@@ -28,8 +28,8 @@ export default function MenuList() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await fetchMenuData();  // Call the service method
-        setMenuData(data);
+        //const data = await fetchMenuData();  // Call the service method
+        //setMenuData(data);
       } catch (error) {
         console.error('Error fetching menu data:', error);
       }
