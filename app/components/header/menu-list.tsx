@@ -3,17 +3,17 @@
 'use client';
 import '@/app/styles/header.css';
 import { useEffect, useState, useRef } from 'react';
-import MenuItem from './menu-item';
+//import MenuItem from './menu-item';
 //import { fetchMenuData } from '../../servives/apiservice';  // Import the API service
 
-interface MenuDataItem {
-  _id: string;
-  label: string;
-  value: string;
-  createdAt: string;
-  updatedAt: string;
-  __v: number;
-}
+// interface MenuDataItem {
+//   _id: string;
+//   label: string;
+//   value: string;
+//   createdAt: string;
+//   updatedAt: string;
+//   __v: number;
+// }
 
 export default function MenuList() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
