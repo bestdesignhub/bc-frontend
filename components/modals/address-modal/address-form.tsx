@@ -83,13 +83,13 @@ export default function AddressForm({
     try {
       setDisableSubmit(true);
       dispatch(setLoading(true));
-      if (!countries.some((country) => country.value === data.phone_code)) {
-        methods.setError('phone_code', {
-          type: 'custom',
-          message: t('COMMON.PLEASE_SELECT_PHONE_CODE'),
-        });
-        return;
-      }
+      // if (!countries.some((country) => country.value === data.phone_code)) {
+      //   methods.setError('phone_code', {
+      //     type: 'custom',
+      //     message: t('COMMON.PLEASE_SELECT_PHONE_CODE'),
+      //   });
+      //   return;
+      // }
       if (!countriesName.some((country) => country.value === data.country)) {
         methods.setError('country', { type: 'custom', message: t('COMMON.PLEASE_SELECT_COUNTRY') });
         return;

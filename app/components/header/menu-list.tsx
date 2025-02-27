@@ -1,44 +1,15 @@
-// MenuList.js
-
 'use client';
 import '@/app/styles/header.css';
 import { useEffect, useState, useRef } from 'react';
-//import MenuItem from './menu-item';
-//import { fetchMenuData } from '../../servives/apiservice';  // Import the API service
-
-// interface MenuDataItem {
-//   _id: string;
-//   label: string;
-//   value: string;
-//   createdAt: string;
-//   updatedAt: string;
-//   __v: number;
-// }
+import MenuData from './menu-data';
+import MenuItem from './menu-item';
 
 export default function MenuList() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  //const [menuData, setMenuData] = useState<MenuDataItem[]>([]);
   const menuRef = useRef<HTMLDivElement>(null);
-
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-
-  // Fetch menu data when the component mounts
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        //const data = await fetchMenuData();  // Call the service method
-        //setMenuData(data);
-      } catch (error) {
-        console.error('Error fetching menu data:', error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  // Close the menu if user clicks outside of it
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
@@ -51,7 +22,6 @@ export default function MenuList() {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
-
   return (
     <>
       <div className="navigation" ref={menuRef}>
@@ -73,9 +43,9 @@ export default function MenuList() {
             </svg>
           </button>
           <ul>
-            {/* {menuData.map((menu) => (
-              <MenuItem key={menu._id} href={`/${menu.value}`} title={menu.label} newTab={false} />
-            ))} */}
+            {MenuData.map((menu: any) => (
+              <MenuItem key={menu.id} href={menu.href} title={menu.title} newTab={menu.newTab} />
+            ))}
           </ul>
         </div>
       </div>
