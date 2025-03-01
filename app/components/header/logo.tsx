@@ -6,9 +6,9 @@ export default function Logo() {
   return (
     <>
       <div className="logo order-0">
-        <Link href="/">
+        {/* <Link href="/">
           <Image src="/images/b-logo.png" alt="Bespoke" width={173} height={54} priority />
-        </Link>
+        </Link> */}
       </div>
     </>
   );
