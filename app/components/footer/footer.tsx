@@ -200,18 +200,6 @@ export default async function Footer({ settings }: { settings?: ISettings }) {
           </Row>
         </Col>
       </Row>
-      <div className="copright">
-        <p>
-          Copyright © <strong>BESPOKE CASHMERE</strong> | Design & Development of{' '}
-          <a href="https://www.vamenture.com" target="_blank">
-            Vamenture Technology
-          </a>
-        </p>
-        <div className="payment-method">
-          {/* <Image src={'/images/paypal-payment.svg'} width={50} height={34} alt="paypal payment" /> */}
-          <Image src={'/images/strip-payment.svg'} width={50} height={34} alt="strip payment" />
-        </div>
-      </div>
     </div>
   );
 }
