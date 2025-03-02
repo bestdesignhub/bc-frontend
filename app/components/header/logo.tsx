@@ -1,5 +1,3 @@
-import Image from 'next/image';
-import Link from 'next/link';
 import '@/app/styles/header.css';
 
 export default function Logo() {

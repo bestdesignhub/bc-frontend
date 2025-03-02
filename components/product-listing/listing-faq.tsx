@@ -49,5 +49,4 @@ const ListingFaq = ({ faqData }: IListingFaqProps) => {
   );
 };
 
-
 export default ListingFaq;
