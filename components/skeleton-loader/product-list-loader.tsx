@@ -9,6 +9,7 @@ const ProductListingLoaderPage = () => {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to top on initial render
     // Check if the device is mobile on initial render
     const checkIsMobile = () => {
       setIsMobile(window.innerWidth <= 768);

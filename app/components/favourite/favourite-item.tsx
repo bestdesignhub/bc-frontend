@@ -24,7 +24,13 @@ export default function FavouriteItem({
       <div className="favouritebox">
         <Link href={href}>
           <div className="image">
-            <Image src={getAWSImageUrl(image)} alt={title} width={1520} height={680} priority />
+            <Image
+              loading="lazy"
+              src={getAWSImageUrl(image)}
+              alt={title}
+              width={1520}
+              height={680}
+            />
           </div>
           <div className="info">
             <p>{subtitle}</p>

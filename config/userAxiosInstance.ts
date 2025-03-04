@@ -10,18 +10,13 @@ import { getUserToken, getUserLocale } from './locale';
 // import { toast } from 'react-toastify' // Import a toast library (e.g., react-toastify)
 const userAxiosInstance = axios.create({
   baseURL: CONFIG.apiUrl, // Replace with your API base URL
-  timeout: 50000000, // Specify the timeout (optional)
+  timeout: 5000, // Specify the timeout (optional)
 });
 
 // Request interceptor for adding headers or performing any actions before the request is sent
 userAxiosInstance.interceptors.request.use(
   async (config: InternalAxiosRequestConfig) => {
-    let token = null;
-    if (typeof window !== 'undefined') {
-      token = Cookies.get(COOKIES.userToken);
-    } else {
-      token = await getUserToken();
-    }
+    let token = await getUserToken();
     if (token && config.headers) {
       config.headers.Authorization = token;
     }

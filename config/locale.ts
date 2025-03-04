@@ -17,9 +17,15 @@ export async function getCookieData() {
 }
 
 export async function getUserLocale() {
-  const cookieData: any = await getCookieData();
+  if (typeof window !== 'undefined') {
+    // ✅ Client-side: Use js-cookie
+    const Cookies = await import('js-cookie');
+    return Cookies.default.get(COOKIE_NAME) || CONFIG.defaultLocale;
+  }
 
-  return cookieData?.get(COOKIE_NAME)?.value || CONFIG.defaultLocale;
+  // ✅ Server-side: Use next/headers
+  const cookieData = cookies();
+  return (await cookieData).get(COOKIE_NAME)?.value || CONFIG.defaultLocale;
 }
 
 export async function setUserLocale(locale: Locale) {
@@ -28,9 +34,15 @@ export async function setUserLocale(locale: Locale) {
 }
 
 export async function getUserToken() {
-  const cookieData: any = await getCookieData();
+  if (typeof window !== 'undefined') {
+    // ✅ Client-side: Use js-cookie
+    const Cookies = await import('js-cookie');
+    return Cookies.default.get(COOKIES.userToken);
+  }
 
-  return cookieData?.get(COOKIES.userToken)?.value;
+  // ✅ Server-side: Use next/headers
+  const cookieData = cookies();
+  return (await cookieData).get(COOKIES.userToken)?.value || null;
 }
 
 export async function getUserData() {

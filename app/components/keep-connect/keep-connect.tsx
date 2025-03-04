@@ -62,6 +62,7 @@ export default function KeepConnect({ settings }: { settings?: ISettings }) {
                       width={30}
                       height={30}
                       alt="social-logo"
+                      loading="lazy"
                     />
                   </Link>
                 </li>
@@ -76,6 +77,7 @@ export default function KeepConnect({ settings }: { settings?: ISettings }) {
               alt={'keep connect'}
               width={1001}
               height={584}
+              loading="lazy"
             />
           </div>
         </Col>

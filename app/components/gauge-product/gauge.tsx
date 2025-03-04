@@ -32,7 +32,13 @@ export default function Gauge() {
                     onChange={() => handleSelection(gauge.id)}
                   />
                   <div className="image">
-                    <Image src={gauge.image} width={550} height={336} alt="product" />
+                    <Image
+                      loading="lazy"
+                      src={gauge.image}
+                      width={550}
+                      height={336}
+                      alt="product"
+                    />
                   </div>
                   <div className="info">
                     <h4>{gauge.name}</h4>

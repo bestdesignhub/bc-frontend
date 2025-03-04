@@ -129,7 +129,7 @@ export default function RatingSlider() {
                     width={24}
                     height={24}
                     alt="verify"
-                    priority
+                    loading="lazy"
                   />
                   Buyer
                 </div>
@@ -226,7 +226,7 @@ export default function RatingSlider() {
                     width={24}
                     height={24}
                     alt="verify"
-                    priority
+                    loading="lazy"
                   />
                   Buyer
                 </div>
@@ -323,7 +323,7 @@ export default function RatingSlider() {
                     width={24}
                     height={24}
                     alt="verify"
-                    priority
+                    loading="lazy"
                   />
                   Buyer
                 </div>
@@ -420,7 +420,7 @@ export default function RatingSlider() {
                     width={24}
                     height={24}
                     alt="verify"
-                    priority
+                    loading="lazy"
                   />
                   Buyer
                 </div>

@@ -69,7 +69,13 @@ export default function SweaterSlider({ images = [] }: { images: string[] }) {
         >
           {images?.map((image) => (
             <div key={image} className="slider-image-box-big">
-              <Image src={getAWSImageUrl(image)} alt="image" width={508} height={486} />
+              <Image
+                src={getAWSImageUrl(image)}
+                alt="image"
+                loading="lazy"
+                width={508}
+                height={486}
+              />
             </div>
           ))}
           {/*           

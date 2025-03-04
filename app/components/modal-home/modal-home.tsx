@@ -147,6 +147,7 @@ export default function ModalHome({ modelData }: IModelHomeProps) {
                 width={400}
                 height={670}
                 alt={'offer'}
+                loading="lazy"
               />
             </Col>
           </Row>

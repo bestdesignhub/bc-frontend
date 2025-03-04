@@ -14,6 +14,7 @@ export default function Service() {
                 width={70}
                 height={70}
                 alt="24/7 CUSTOMER SERVICE"
+                loading="lazy"
               />
               <p>24/7 CUSTOMER SERVICE</p>
             </div>
@@ -25,6 +26,7 @@ export default function Service() {
                 width={70}
                 height={70}
                 alt="24/7 CUSTOMER SERVICE"
+                loading="lazy"
               />
               <p>3 week delivery</p>
             </div>
@@ -36,6 +38,7 @@ export default function Service() {
                 width={70}
                 height={70}
                 alt="24/7 CUSTOMER SERVICE"
+                loading="lazy"
               />
               <p>Free SHIPPING</p>
             </div>
@@ -46,6 +49,7 @@ export default function Service() {
                 src={'/images/secure-payment.svg'}
                 width={70}
                 height={70}
+                loading="lazy"
                 alt="24/7 CUSTOMER SERVICE"
               />
               <p>100% SECURE PAYMENT</p>

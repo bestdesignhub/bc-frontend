@@ -104,7 +104,7 @@ function Sweater() {
             <div className="Sweater-right-middle">
               <div className="products-box-sub">
                 <div className="img">
-                  <Image src={checkImage1} alt="" width={170} height={170} />
+                  <Image src={checkImage1} loading="lazy" alt="" width={170} height={170} />
                 </div>
                 <div className="products-box-sub-inner">
                   <h5>Lorem ipsum</h5>

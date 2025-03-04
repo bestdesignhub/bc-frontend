@@ -16,6 +16,7 @@ export default function ImageWithText({ story }: IImageWithTextProps) {
           src={getAWSImageUrl(story?.image)}
           alt="Sustainability-image"
           width={960}
+          loading="lazy"
           height={680}
         />
       </div>

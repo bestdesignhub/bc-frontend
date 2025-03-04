@@ -1,5 +1,5 @@
 'use client';
-import { useLayoutEffect } from 'react';
+import { useLayoutEffect, useMemo } from 'react';
 import '@/app/styles/header.css';
 import Link from 'next/link';
 import Logo from './logo';
@@ -14,7 +14,7 @@ import { dispatch } from '@/lib/redux/store';
 import { setAllUserSettingsValues } from '@/lib/redux/slices/userSettingSlice';
 
 export default function Header() {
-  const token = Cookies.get(COOKIES.userToken);
+  const token = useMemo(() => Cookies.get(COOKIES.userToken), []);
   // const [isSearchActive, setSearchActive] = useState(false);
 
   useLayoutEffect(() => {
@@ -120,7 +120,7 @@ export default function Header() {
                 </Link>
               </div>
               {token && <CartWishlist />}
-              <div className="user_item web">
+              {/* <div className="user_item web">
                 <div className="icon">
                   <svg
                     width="24"
@@ -173,7 +173,7 @@ export default function Header() {
                     </defs>
                   </svg>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

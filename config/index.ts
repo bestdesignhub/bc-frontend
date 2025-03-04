@@ -7,6 +7,8 @@ const CONFIG = {
   bucketDomain: process.env.NEXT_PUBLIC_BUCKET_DOMAIN,
   developmentMode: process.env.NODE_ENV === 'development',
   stripePublicKey: process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY,
+
+  // settings
   hideProductType: true,
 } as const;
 

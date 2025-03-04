@@ -23,6 +23,7 @@ const SizeModal = (props: { show: boolean; yarnDetails?: any; handleClose: () =>
       dispatch(setIsPageSwitchLoading(true));
       const edit = searchParams?.get(URL_SLUG.EDIT);
       const change = searchParams?.get(URL_SLUG.CHANGE);
+      const gender = searchParams?.get(URL_SLUG.GENDER);
       if (change === 'true') {
         const params = new URLSearchParams(searchParams.toString());
         params.delete(URL_SLUG.YARN);
@@ -39,7 +40,7 @@ const SizeModal = (props: { show: boolean; yarnDetails?: any; handleClose: () =>
         return;
       } else {
         router.push(
-          `${USER_ROUTES.sweater}/2?${URL_SLUG.YARN}=${yarnDetails?._id}${edit ? `&${URL_SLUG.EDIT}=${edit}` : ''}`
+          `${USER_ROUTES.sweater}/2?${URL_SLUG.YARN}=${yarnDetails?._id}${gender ? `&${URL_SLUG.GENDER}=${gender}` : ''}${edit ? `&${URL_SLUG.EDIT}=${edit}` : ''}`
         );
       }
     }
@@ -112,7 +113,13 @@ const SizeModal = (props: { show: boolean; yarnDetails?: any; handleClose: () =>
           </div>
           <div className="modal-block-bottom">
             <div className="modal-left-pro">
-              <Image src={getAWSImageUrl(yarnDetails?.image)} alt="" width={170} height={170} />
+              <Image
+                src={getAWSImageUrl(yarnDetails?.image)}
+                loading="lazy"
+                alt=""
+                width={170}
+                height={170}
+              />
             </div>
             <div className="modal-bottom-right">
               <div className="modal-row">
@@ -161,6 +168,7 @@ const SizeModal = (props: { show: boolean; yarnDetails?: any; handleClose: () =>
                               alt={yarn.name}
                               width={24}
                               height={24}
+                              loading="lazy"
                             />
                           </i>
                         )}

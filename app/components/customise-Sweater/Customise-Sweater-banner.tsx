@@ -6,7 +6,13 @@ export default function GaugeBanner() {
     <>
       <div className="page-banner gauge">
         <div className="image">
-          <Image src="/images/look-good1.png" width={1920} height={650} alt={'banner'} />
+          <Image
+            src="/images/look-good1.png"
+            loading="lazy"
+            width={1920}
+            height={650}
+            alt={'banner'}
+          />
         </div>
         <div className="banner-caption">
           <div className="container">

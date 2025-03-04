@@ -1,19 +1,22 @@
 import { IBannerData } from '@/types';
-import { getAWSImageUrl } from '@/utils/common.utils';
-import { getBannerBySlug } from '@/utils/server-api.utils';
-import Image from 'next/image';
 import React from 'react';
+import Head from 'next/head';
+import { getAWSImageUrl } from '@/utils/common.utils';
+import Image from 'next/image';
 
-const BannerComponent = async ({ slug }: { slug: 'men' | 'women' | 'shop' | undefined }) => {
-  const bannerData = (await getBannerBySlug(slug ?? '')) as IBannerData;
+const BannerComponent = ({ bannerData }: { bannerData: IBannerData }) => {
   return (
     <div className="page-banner">
+      <Head>
+        <link rel="preload" as="image" href={getAWSImageUrl(bannerData.bg_image)} />
+      </Head>
       <div className="image">
         <Image
-          src={getAWSImageUrl(bannerData?.bg_image)}
+          src={getAWSImageUrl(bannerData.bg_image)}
           width={1920}
           height={650}
           alt={'banner'}
+          priority
         />
       </div>
       <div className="banner-caption">

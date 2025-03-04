@@ -12,7 +12,7 @@ export default function MeasurementsProfileBox() {
         <div className="profile-listing-main">
           <div className="profile-listing-row">
             <div className="img">
-              <Image src={Profileimg1} alt="image" width={230} height={280} />
+              <Image loading="lazy" src={Profileimg1} alt="image" width={230} height={280} />
             </div>
             <div className="profile-box-sub">
               <div className="profile-box-inner">
@@ -37,7 +37,7 @@ export default function MeasurementsProfileBox() {
           </div>
           <div className="profile-listing-row">
             <div className="img">
-              <Image src={Profileimg1} alt="image" width={230} height={280} />
+              <Image loading="lazy" src={Profileimg1} alt="image" width={230} height={280} />
             </div>
             <div className="profile-box-sub">
               <div className="profile-box-inner">

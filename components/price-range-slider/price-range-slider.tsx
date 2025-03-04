@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Slider from 'rc-slider';
-import 'rc-slider/assets/index.css'; // Import rc-slider styles
+import 'rc-slider/assets/index.css';
 import { dispatch } from '@/lib/redux/store';
 import { setLoading } from '@/lib/redux/slices/loaderSlice';
 import { formatPrice } from '@/utils/common.utils';
@@ -13,35 +13,33 @@ const PriceRangeSlider = ({ min = 0, max = 1000, step = 10 }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  // Get initial values from URL or fallback to defaults
   const initialMin = Number(searchParams.get(URL_SLUG.MIN_PRICE)) || min;
   const initialMax = Number(searchParams.get(URL_SLUG.MAX_PRICE)) || max;
 
   const [priceRange, setPriceRange] = useState<[number, number]>([initialMin, initialMax]);
 
-  useEffect(() => {
-    dispatch(setLoading(true)); // Start loading when price range changes
+  // Store searchParams string separately
+  const searchParamsString = searchParams ? searchParams.toString() : '';
 
+  // Update URL when priceRange changes
+  useEffect(() => {
+    dispatch(setLoading(true));
     const [newMin, newMax] = priceRange;
-    const params = new URLSearchParams(searchParams.toString());
+    const params = new URLSearchParams(searchParamsString);
 
     params.set(URL_SLUG.MIN_PRICE, newMin.toString());
     params.set(URL_SLUG.MAX_PRICE, newMax.toString());
 
-    // Update the URL without scrolling
     router.push(`?${params.toString()}`, { scroll: false });
-  }, [priceRange, router, searchParams]);
+  }, [priceRange, router, searchParamsString]);
 
+  // Stop loading when URL updates
   useEffect(() => {
-    const paramsString = searchParams.toString();
-    console.log('paramsString', paramsString);
-
     dispatch(setLoading(false));
-  }, [searchParams]);
+  }, [searchParamsString]);
 
   return (
     <div className="py-4">
-      {/* rc-slider component */}
       <Slider
         range
         min={min}

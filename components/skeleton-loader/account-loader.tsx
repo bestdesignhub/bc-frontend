@@ -1,7 +1,11 @@
 import ContentLoader from 'react-content-loader';
 import Loading from '../common/full-page-loading/loading';
+import { useCallback } from 'react';
 
 const AccountSkeletonLoader = () => {
+  useCallback(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <Loading />

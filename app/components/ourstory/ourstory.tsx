@@ -9,7 +9,13 @@ export default function Ourstorypage({ storyData }: IStoryDetailProps) {
     <div className="story-page">
       <div className="story-banner-outer">
         <div className="story-banner-img">
-          <Image src={getAWSImageUrl(storyData?.bg_image)} alt="" width={1920} height={650} />
+          <Image
+            loading="lazy"
+            src={getAWSImageUrl(storyData?.bg_image)}
+            alt=""
+            width={1920}
+            height={650}
+          />
         </div>
         <div className="banner-caption">
           <div className="container">

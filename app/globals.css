@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 :root {
   --bsp-font-poppins: 'Poppins', serif;
-  --bsp-font-libre: 'Poppins', serif;
+  --bsp-font-libre: 'Libre Caslon Text', serif;
   --background: #ffffff;
   --foreground: #171717;
-  --bsp-primary: #333333;
+  --bsp-primary: #afc7cd;
   --bsp-white: #ffffff;
   --bsp-black: #000000;
   --bsp-danger: hsl(0, 100%, 50%);
@@ -15,7 +15,6 @@
   --bsp-gray5: #f5f5f5;
   --bsp-gray6: #ededed;
   --bsp-gray7: #dcdcdc;
-  --bsp-grayd: #f9fafb;
   --bsp-black-10: rgba(0, 0, 0, 0.1);
   --bsp-black-15: rgba(0, 0, 0, 0.15);
   --bsp-black-20: rgba(0, 0, 0, 0.2);
@@ -23,10 +22,9 @@
 
   --bsp-heading1: 70px;
   --bsp-heading2: 60px;
-  --bsp-heading3: 36px;
+  --bsp-heading3: 50px;
   --bsp-heading4: 30px;
   --bsp-heading5: 20px;
-  --bsp-heading28: 28px;
   --bsp-heading6: 18px;
   --bsp-body-40: 40px;
   --bsp-body-22: 22px;
@@ -148,7 +146,7 @@ button {
   border: 0;
 }
 button a {
-  padding: 15px 30px;
+  padding: 20px 30px;
   display: -ms-flexbox;
   display: flex;
   align-items: center;
@@ -159,7 +157,6 @@ button a {
   font-weight: 600;
   text-transform: uppercase;
   line-height: 1;
-  border-radius: 10px;
 }
 button span {
   height: 30px;

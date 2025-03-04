@@ -22,6 +22,7 @@ export default function ZeeZap({ lookGoodData }: ILookGoodProps) {
                 height={600}
                 alt="hero"
                 className="img1"
+                loading="lazy"
               />
             </div>
           </Col>
@@ -51,6 +52,7 @@ export default function ZeeZap({ lookGoodData }: ILookGoodProps) {
                 height={600}
                 alt="hero"
                 className="img1"
+                loading="lazy"
               />
             </div>
           </Col>

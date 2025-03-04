@@ -11,7 +11,13 @@ const OurStoryCard = ({ data }: { data: IStoryItem }) => {
       <div className="womanproductbox">
         <Link href={`${USER_ROUTES.ourStory}/${data?._id}`}>
           <div className="image">
-            <Image src={getAWSImageUrl(data?.bg_image)} width={328} height={350} alt={'offer'} />
+            <Image
+              src={getAWSImageUrl(data?.bg_image)}
+              width={328}
+              height={350}
+              alt={'offer'}
+              loading="lazy"
+            />
           </div>
           <div className="info">
             <h6>{data?.title}</h6>

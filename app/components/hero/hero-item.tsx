@@ -1,5 +1,6 @@
 import { USER_ROUTES } from '@/constants';
 import { getAWSImageUrl } from '@/utils/common.utils';
+import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -12,19 +13,20 @@ type HeroItemProps = {
 };
 
 export default function HeroItem({ title, image }: Readonly<HeroItemProps>) {
+  const t = useTranslations();
   return (
     <div className="herobox">
       <div className="image">
-        <Image src={getAWSImageUrl(image)} alt={title} width={1520} height={680} priority />
+        <Image loading="lazy" src={getAWSImageUrl(image)} alt={title} width={1520} height={680} />
       </div>
       <div className="banner_caption">
         <div className="container">
           <div className="banner_content">
             <h1>{title}</h1>
             <button className="mr-2">
-              <Link href={`${USER_ROUTES.sweater}`}>
-                CREATE MY SWEATER
-                {/* <span>
+              <Link href={`${USER_ROUTES.men}`}>
+                {t('COMMON.MEN')}
+                <span>
                   <svg
                     width="20"
                     height="16"
@@ -41,13 +43,13 @@ export default function HeroItem({ title, image }: Readonly<HeroItemProps>) {
                       fill="white"
                     />
                   </svg>
-                </span> */}
+                </span>
               </Link>
             </button>
             <button>
-              <Link href={`${USER_ROUTES.shop}`}>
-                CUSTOMISE A SWEATER
-                {/* <span>
+              <Link href={`${USER_ROUTES.women}`}>
+                {t('COMMON.WOMEN')}
+                <span>
                   <svg
                     width="20"
                     height="16"
@@ -64,7 +66,7 @@ export default function HeroItem({ title, image }: Readonly<HeroItemProps>) {
                       fill="white"
                     />
                   </svg>
-                </span> */}
+                </span>
               </Link>
             </button>
           </div>

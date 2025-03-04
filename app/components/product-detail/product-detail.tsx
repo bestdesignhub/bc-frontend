@@ -1,8 +1,7 @@
 'use client';
 
 import { Row, Col, InputGroup, Form } from 'react-bootstrap';
-import Image from 'next/image';
-import { formatPrice, getAWSImageUrl } from '@/utils/common.utils';
+import { formatPrice } from '@/utils/common.utils';
 import { ChangeEvent, Fragment, useCallback, useMemo, useState } from 'react';
 import userAxiosInstance from '@/config/userAxiosInstance';
 import {
@@ -25,6 +24,7 @@ import {
   setUserSettingDecreaseWishlistCount,
   setUserSettingIncreaseWishlistCount,
 } from '@/lib/redux/slices/userSettingSlice';
+import ProductImageGallery from './product-gallery';
 
 export default function ProdutDetail({
   details,
@@ -115,7 +115,8 @@ export default function ProdutDetail({
         <div className="container">
           <Row>
             <Col xs={12} lg={6} xl={7}>
-              <div className="product-image-row d-flex flex-wrap">
+              <ProductImageGallery details={details} />
+              {/* <div className="product-image-row d-flex flex-wrap">
                 {details?.images?.map((image: string) => {
                   return (
                     <div className="image-item" key={image}>
@@ -125,7 +126,7 @@ export default function ProdutDetail({
                     </div>
                   );
                 })}
-              </div>
+              </div> */}
             </Col>
             <Col xs={12} lg={6} xl={4}>
               <div className="detail-content">

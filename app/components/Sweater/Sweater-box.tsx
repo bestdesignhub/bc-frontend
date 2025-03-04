@@ -13,7 +13,7 @@ export default function SweaterBox() {
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem.</p>
         </div>
         <div className="Sweater-img">
-          <Image src={Sweaterimg1} alt="" width={380} height={414} />
+          <Image loading="lazy" src={Sweaterimg1} alt="" width={380} height={414} />
         </div>
       </div>
     </>

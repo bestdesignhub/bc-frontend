@@ -105,6 +105,7 @@ const SelectField: React.FC<SelectProps> = ({
                   className="w-6 h-6 mr-2 rounded-full"
                   width={30}
                   height={30}
+                  loading="lazy"
                 />
               )}
               {option.label}

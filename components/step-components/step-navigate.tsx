@@ -74,7 +74,7 @@ export default function StepNavigate({
                   width={300}
                   height={200}
                   alt="gauge"
-                  priority
+                  loading="lazy"
                 />
               </div>
               <div className="info">
@@ -116,7 +116,7 @@ export default function StepNavigate({
                           width={300}
                           height={200}
                           alt={step.label}
-                          priority
+                          loading="lazy"
                         />
                       </div>
                       <div className="info">

@@ -72,6 +72,7 @@ export default function sustainabilitypage() {
                 alt="Sustainability-image"
                 width={1920}
                 height={692}
+                loading="lazy"
               />
             </div>
             <div className="image-over-text">

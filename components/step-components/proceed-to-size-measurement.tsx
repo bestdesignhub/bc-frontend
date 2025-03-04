@@ -2,23 +2,18 @@
 
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
-import React, { useState } from 'react';
-import GenderModal from '../modals/gender-modal/gender-modal';
-import { DropDownOptionType } from '@/types';
+import React from 'react';
+import { useSearchParams } from 'next/navigation';
+import { USER_ROUTES } from '@/constants';
 
-const ProceedToSizeMeasurement = ({ genders }: { genders: DropDownOptionType[] }) => {
+const ProceedToSizeMeasurement = () => {
   const t = useTranslations();
-  const [showModal, setShowModal] = useState(false);
-  const handleModalOpen = () => {
-    setShowModal(true);
-  };
-  const handleModalClose = () => {
-    setShowModal(false);
-  };
+  const searchParams = useSearchParams();
+  const queryString = new URLSearchParams(searchParams).toString();
   return (
     <>
-      <button onClick={handleModalOpen}>
-        <Link href="#">
+      <button>
+        <Link href={`${USER_ROUTES.measurements}?${queryString}`}>
           {t('COMMON.PROCEED_TO_SIZE_MEASUREMENT')}
           <span>
             <svg
@@ -40,7 +35,6 @@ const ProceedToSizeMeasurement = ({ genders }: { genders: DropDownOptionType[] }
           </span>
         </Link>
       </button>
-      <GenderModal handleClose={handleModalClose} show={showModal} genders={genders} />
     </>
   );
 };

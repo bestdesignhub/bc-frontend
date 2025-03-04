@@ -13,16 +13,16 @@ import SelectYourMeasurementProfile from './select-your-measurement-profile';
 
 export default function MeasurementsBox({
   fittingName,
-  availableSizes = [],
-  steps = [],
+  availableSizes,
+  steps,
   productTypeId,
-  measurementProfiles = [],
+  measurementProfiles,
 }: {
   fittingName: string;
   availableSizes: any[];
   steps: any[];
   productTypeId: string;
-  measurementProfiles?: DropDownOptionType[];
+  measurementProfiles: DropDownOptionType[];
 }) {
   const t = useTranslations();
   const searchParams = useSearchParams();
@@ -40,10 +40,8 @@ export default function MeasurementsBox({
   const userToken = Cookies.get(COOKIES.userToken);
 
   const selectedMeasurementProfile = useMemo(() => {
-    const profiles = Array.isArray(measurementProfiles) ? measurementProfiles : [];
-    return profiles.find((profile) => profile.value === measurementProfile)?.label;
+    return measurementProfiles?.find((profile: any) => profile.value === measurementProfile)?.label;
   }, [measurementProfile, measurementProfiles]);
-
   const addMeasurementQueryString = useMemo(() => {
     const params = new URLSearchParams(searchParams);
     if (params.has(URL_SLUG.MEASUREMENT_PROFILE)) {
@@ -58,11 +56,30 @@ export default function MeasurementsBox({
         <h4>{t('COMMON.CHOOSE_YOUR_SWEATER_SIZE')}</h4>
         <p>{t('COMMON.CHOOSE_YOUR_SWEATER_SIZE_DESCRIPTION')}</p>
         <div className="add-btn-set">
-          <div className="add-btn">
-            <Link href={`${USER_ROUTES.measurementProfile}?${addMeasurementQueryString}`}>
+          <div
+            className="add-btn"
+            style={
+              !userToken
+                ? {
+                    pointerEvents: 'none',
+                    userSelect: 'none',
+                    backgroundColor: 'var(--bsp-black-20)',
+                  }
+                : {}
+            }
+          >
+            <Link
+              style={!userToken ? { backgroundColor: 'var(--bsp-black-20)' } : {}}
+              href={`${USER_ROUTES.measurementProfile}?${addMeasurementQueryString}`}
+            >
               Add a new measurements profile
             </Link>
           </div>
+          {!userToken && (
+            <span style={{ color: 'red' }}>
+              Please login first to add a new measurement profile
+            </span>
+          )}
           {!!measurementProfiles.length && (
             <>
               <SelectYourMeasurementProfile measurementProfiles={measurementProfiles} />

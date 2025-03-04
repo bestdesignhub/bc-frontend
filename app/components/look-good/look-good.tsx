@@ -26,6 +26,7 @@ export default function LookGood({ lookGoodData }: ILookGoodProps) {
                   height={600}
                   alt="hero"
                   className="img1"
+                  loading="lazy"
                 />
                 <Image
                   src={getAWSImageUrl(lookGoodData?.card1?.second_image)}
@@ -33,6 +34,7 @@ export default function LookGood({ lookGoodData }: ILookGoodProps) {
                   height={484}
                   alt="hero"
                   className="img2"
+                  loading="lazy"
                 />
               </div>
             </div>

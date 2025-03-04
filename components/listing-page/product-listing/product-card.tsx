@@ -42,6 +42,7 @@ const ProductCard: FC<{ product: any }> = ({ product }) => {
         dispatch(setLoading(false));
       });
   };
+
   const handleClose = () => setShowModal(false);
 
   const yarnId = searchParams.get(URL_SLUG.YARN);
@@ -65,7 +66,13 @@ const ProductCard: FC<{ product: any }> = ({ product }) => {
           }
         >
           <div className="image" onClick={handleShow}>
-            <Image src={getAWSImageUrl(product.image)} width={328} height={350} alt={'offer'} />
+            <Image
+              src={getAWSImageUrl(product.image)}
+              width={328}
+              height={350}
+              alt={'offer'}
+              loading="lazy"
+            />
           </div>
           <div className="info">
             <h6>{product.name}</h6>

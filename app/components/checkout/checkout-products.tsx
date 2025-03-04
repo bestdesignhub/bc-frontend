@@ -7,7 +7,13 @@ export default function Checkoutproducts({ cart }: { cart: any }) {
     <>
       <div className="products-checkout-row">
         <div className="img">
-          <Image src={getAWSImageUrl(cart?.yarn?.image)} alt="yarn img" width={150} height={150} />
+          <Image
+            loading="lazy"
+            src={getAWSImageUrl(cart?.yarn?.image)}
+            alt="yarn img"
+            width={150}
+            height={150}
+          />
         </div>
         <div className="products-checkout-sub">
           <div className="products-checkout-left">

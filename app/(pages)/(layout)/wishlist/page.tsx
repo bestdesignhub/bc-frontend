@@ -37,6 +37,7 @@ export default async function WishlistPage({
                           width={328}
                           height={350}
                           alt={'offer'}
+                          loading="lazy"
                         />
                       </div>
                       <div className="info">

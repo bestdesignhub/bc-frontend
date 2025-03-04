@@ -12,7 +12,7 @@ export default function AlsoLikeItem({ href = '', image, title, price }: AlsoLik
     <div className="accessoriesbox">
       <Link href={href}>
         <div className="image">
-          <Image src={getAWSImageUrl(image)} alt={title} width={575} height={476} priority />
+          <Image src={getAWSImageUrl(image)} alt={title} width={575} height={476} loading="lazy" />
         </div>
         <div className="info">
           <h6>{title}</h6>

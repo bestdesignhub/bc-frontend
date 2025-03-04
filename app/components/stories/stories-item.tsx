@@ -15,7 +15,7 @@ export default function StoriesItem({ href = '', title, image, discription }: St
     <div className="storiesbox">
       <Link href={href}>
         <div className="image">
-          <Image src={getAWSImageUrl(image)} alt={title} width={1520} height={680} priority />
+          <Image src={getAWSImageUrl(image)} alt={title} width={1520} height={680} loading="lazy" />
         </div>
         <div className="info">
           <h5>{title}</h5>

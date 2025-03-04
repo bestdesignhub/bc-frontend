@@ -1,4 +1,3 @@
-import { Instagram } from '@/app/components';
 import '@/app/styles/woman.css';
 import { BannerComponent } from '@/components';
 import { CmsWrapperComponent } from '@/components/listing-page/cms-wrapper';
@@ -11,7 +10,12 @@ import {
   PATTERN_DROPDOWN_URL,
 } from '@/constants/apis';
 import { ISlug } from '@/types';
-import { getDropdownList, getFaqBySlug, getProductList } from '@/utils/server-api.utils';
+import {
+  getBannerBySlug,
+  getDropdownList,
+  getFaqBySlug,
+  getProductList,
+} from '@/utils/server-api.utils';
 
 type ProductPageProps = {
   searchParams: Promise<{ [key: string]: string }>;
@@ -30,7 +34,9 @@ export default async function ProductPage({
   showGenders,
   slug,
 }: ProductPageProps) {
+  console.time('ProductPage');
   const resolvedSearchParams = await searchParams;
+  // const locale = await getLocale();
 
   // Define the dropdown requests based on showGenders
   const dropdownRequests = [
@@ -38,6 +44,8 @@ export default async function ProductPage({
     getDropdownList(MATERIAL_DROPDOWN_URL),
     getDropdownList(PATTERN_DROPDOWN_URL),
     getProductList(resolvedSearchParams, category),
+    getFaqBySlug(slug ?? ''),
+    getBannerBySlug(slug ?? ''),
   ];
 
   if (showGenders) {
@@ -52,12 +60,14 @@ export default async function ProductPage({
   const materials = results[1].status === 'fulfilled' ? results[1].value : [];
   const patterns = results[2].status === 'fulfilled' ? results[2].value : [];
   const productList = results[3].status === 'fulfilled' ? results[3].value : [];
-  const genders = showGenders && results[4]?.status === 'fulfilled' ? results[4].value : [];
-  const faqData = await getFaqBySlug(slug ?? '');
+  const faqData = results[4].status === 'fulfilled' ? results[4].value : [];
+  const bannerData = results[5].status === 'fulfilled' ? results[5].value : {};
+  const genders = showGenders && results[6]?.status === 'fulfilled' ? results[6].value : [];
 
+  console.timeEnd('ProductPage');
   return (
     <>
-      <BannerComponent slug={slug} />
+      <BannerComponent bannerData={bannerData} />
       <ProductList
         colours={colours}
         materials={materials}
@@ -69,7 +79,7 @@ export default async function ProductPage({
       />
       <CmsWrapperComponent />
       <ListingFaq faqData={faqData} />
-      <Instagram />
+      {/* <Instagram /> */}
     </>
   );
 }

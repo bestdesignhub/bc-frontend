@@ -122,6 +122,7 @@ const SearchableDropdown: React.FC<SearchableDropdownProps> = ({
                   height={30}
                   className="me-2"
                   roundedCircle
+                  loading="lazy"
                 />
               )}
               {option.label}

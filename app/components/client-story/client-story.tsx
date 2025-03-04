@@ -28,6 +28,7 @@ export default function ClientStory({ clientStoryData }: IClientStoryProps) {
                   width={590}
                   height={590}
                   alt={'client'}
+                  loading="lazy"
                 />
               </div>
             </Col>

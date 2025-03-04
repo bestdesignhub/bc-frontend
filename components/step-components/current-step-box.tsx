@@ -31,7 +31,7 @@ const CurrentStepBox: FC<{ currentStepData: any; stepNumber: any }> = ({
           width={300}
           height={200}
           alt={currentStepData?.stepCard?.title}
-          priority
+          loading="lazy"
         />
       </div>
       <div className="info">

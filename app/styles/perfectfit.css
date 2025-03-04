@@ -1,50 +1,17 @@
 .perfectfit_wrapper {
-  /* background: url('/images/section-bg.png') no-repeat center center;
-  background-size: cover; */
-  margin: 20px 0 100px;
+  background: url('/images/section-bg.png') no-repeat center center;
+  background-size: cover;
+  margin: 118px 0 0;
 }
 .perfectfit_wrapper .row {
   align-items: center;
 }
-
-.image-grip {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: flex-start;
-}
-
-.halfbx {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-.halfbx .half-boxes {
-  width: 70%;
-}
-
-.halfbx .half-boxes-right {
-  width: calc(30% - 20px);
-}
-
-.image-grip .image {
-  display: flex;
-  gap: 20px;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.image-grip .image h3 {
-  font-size: var(--bsp-body-24);
-}
 .perfectfit_wrapper .image img {
-  /* width: 100%;
-  height: auto; */
+  width: 100%;
+  height: auto;
 }
 .perfectfit_wrapper h2 {
-  font-size: var(--bsp-heading28);
+  font-size: var(--bsp-heading1);
   padding: 0 0 20px;
 }
 .perfectfit_wrapper p {
@@ -53,8 +20,7 @@
   line-height: 1.8;
 }
 .perfectfit_wrapper .btn-group {
-  /* padding: 39px 0 0; */
-  top: 55px;
+  padding: 39px 0 0;
 }
 
 @media (min-width: 768px) and (max-width: 991px) {

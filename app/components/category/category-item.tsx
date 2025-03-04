@@ -14,7 +14,7 @@ export default function CategoryItem({ href = '', title, image }: CategoryItemPr
     <div className="categorybox">
       <Link href={href}>
         <div className="image">
-          <Image src={getAWSImageUrl(image)} alt={title} width={1520} height={680} priority />
+          <Image loading="lazy" src={getAWSImageUrl(image)} alt={title} width={1520} height={680} />
         </div>
         <div className="info">
           <h5>{title}</h5>

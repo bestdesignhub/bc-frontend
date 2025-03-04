@@ -31,15 +31,11 @@ import {
   WISHLIST_LIST_URL,
   YARN_CARD_LIST_URL,
 } from '@/constants/apis';
-import { getLocale } from 'next-intl/server';
 import { handleApiCall } from './common.utils';
 import { getUserData, getUserToken } from '@/config/locale';
 
 export const getCountryList = async () => {
-  const locale = await getLocale();
-  const res: any = await handleApiCall(COUNTRY_LIST_API, 'GET', null, {
-    'Accept-Language': locale,
-  });
+  const res: any = await handleApiCall(COUNTRY_LIST_API, 'GET', null);
   const filteredRes = res?.data?.map((country: any) => ({
     value: country?._id,
     label: `${country?.phoneCode}`,
@@ -50,10 +46,7 @@ export const getCountryList = async () => {
 };
 
 export const getCountryNameList = async () => {
-  const locale = await getLocale();
-  const res: any = await handleApiCall(COUNTRY_LIST_API, 'GET', null, {
-    'Accept-Language': locale,
-  });
+  const res: any = await handleApiCall(COUNTRY_LIST_API, 'GET', null);
   const filteredRes = res?.data?.map((country: any) => ({
     value: country?._id,
     label: `${country?.name}`,
@@ -83,10 +76,7 @@ export const getHomePageStoryData = async () => {
 };
 
 export const getDropdownList = async (url: string, payload: any = {}) => {
-  const locale = await getLocale();
-  const res: any = await handleApiCall(url, 'POST', payload, {
-    'Accept-Language': locale,
-  });
+  const res: any = await handleApiCall(url, 'POST', payload);
 
   const filteredRes =
     res?.data?.map((country: any) => ({
@@ -122,22 +112,14 @@ export const getYarnCardList = async (searchParams: { [key: string]: string }) =
     filterObj['materialId'] = material;
   }
 
-  const locale = await getLocale();
-  const res: any = await handleApiCall(
-    YARN_CARD_LIST_URL,
-    'POST',
-    {
-      page: parseInt(page.toString()),
-      perPage: 10,
-      search,
-      sortBy,
-      sortOrder,
-      filter: filterObj,
-    },
-    {
-      'Accept-Language': locale,
-    }
-  );
+  const res: any = await handleApiCall(YARN_CARD_LIST_URL, 'POST', {
+    page: parseInt(page.toString()),
+    perPage: 10,
+    search,
+    sortBy,
+    sortOrder,
+    filter: filterObj,
+  });
 
   if (res.code === 200) {
     return res?.data;
@@ -147,15 +129,7 @@ export const getYarnCardList = async (searchParams: { [key: string]: string }) =
 };
 
 export const getStepTypesList = async (value?: string) => {
-  const locale = await getLocale();
-  const res: any = await handleApiCall(
-    `${STEP_TYPE_DROPDOWN_URL}/${value}`,
-    'POST',
-    {},
-    {
-      'Accept-Language': locale,
-    }
-  );
+  const res: any = await handleApiCall(`${STEP_TYPE_DROPDOWN_URL}/${value}`, 'POST', {});
 
   const filteredRes =
     res?.data?.map((country: any) => ({
@@ -177,7 +151,6 @@ export const getCurrentStepDetails = async ({
   productTypeId: string;
   nextStepSlug?: string;
 }) => {
-  const locale = await getLocale();
   const newSteps = { ...steps };
   delete newSteps?.[URL_SLUG.EDIT];
   const { yarn, change, ...restSteps } = newSteps;
@@ -187,9 +160,7 @@ export const getCurrentStepDetails = async ({
     productTypeId,
     nextStepSlug,
   };
-  const res: any = await handleApiCall(STEP_TYPE_DETAILS_URL, 'POST', payload, {
-    'Accept-Language': locale,
-  });
+  const res: any = await handleApiCall(STEP_TYPE_DETAILS_URL, 'POST', payload);
 
   return res.data;
 };
@@ -201,7 +172,6 @@ export const getStepFullViewDetails = async ({
   steps: any;
   productTypeId: string;
 }) => {
-  const locale = await getLocale();
   const newSteps = { ...steps };
   delete newSteps?.[URL_SLUG.EDIT];
   const { yarn, product, ...restSteps } = newSteps;
@@ -211,48 +181,22 @@ export const getStepFullViewDetails = async ({
     productTypeId,
     productId: product,
   };
-  const res: any = await handleApiCall(STEP_TYPE_FULL_VIEW_URL, 'POST', payload, {
-    'Accept-Language': locale,
-  });
+  const res: any = await handleApiCall(STEP_TYPE_FULL_VIEW_URL, 'POST', payload);
   return res.data;
 };
 
 export const getFittingStepDetails = async ({ id }: { id: string }) => {
-  const locale = await getLocale();
-  const res: any = await handleApiCall(
-    `${STEP_CARD_DETAILS}/${id}`,
-    'GET',
-    {},
-    {
-      'Accept-Language': locale,
-    }
-  );
+  const res: any = await handleApiCall(`${STEP_CARD_DETAILS}/${id}`, 'GET', {});
   return res.data;
 };
 
 export const getAvailableSizes = async () => {
-  const locale = await getLocale();
-  const res: any = await handleApiCall(
-    GET_AVAIALBLE_SIZES,
-    'GET',
-    {},
-    {
-      'Accept-Language': locale,
-    }
-  );
+  const res: any = await handleApiCall(GET_AVAIALBLE_SIZES, 'GET', {});
   return res.data;
 };
 
 export const getDefaultProductType = async () => {
-  const locale = await getLocale();
-  const res: any = await handleApiCall(
-    DEFAULT_PRODUCT_TYPE_URL,
-    'GET',
-    {},
-    {
-      'Accept-Language': locale,
-    }
-  );
+  const res: any = await handleApiCall(DEFAULT_PRODUCT_TYPE_URL, 'GET', {});
   return res.data;
 };
 
@@ -303,22 +247,14 @@ export const getProductList = async (
     filterObj['maxPrice'] = maxPrice;
   }
 
-  const locale = await getLocale();
-  const res: any = await handleApiCall(
-    PRODUCT_LISTING,
-    'POST',
-    {
-      page: parseInt(page.toString()),
-      perPage: 10,
-      search,
-      sortBy,
-      sortOrder,
-      filter: filterObj,
-    },
-    {
-      'Accept-Language': locale,
-    }
-  );
+  const res: any = await handleApiCall(PRODUCT_LISTING, 'POST', {
+    page: parseInt(page.toString()),
+    perPage: 10,
+    search,
+    sortBy,
+    sortOrder,
+    filter: filterObj,
+  });
 
   if (res.code === 200) {
     return res?.data;
@@ -328,10 +264,7 @@ export const getProductList = async (
 };
 
 export const getGenderList = async () => {
-  const locale = await getLocale();
-  const res: any = await handleApiCall(GENDER_DROPDOWN_URL, 'POST', null, {
-    'Accept-Language': locale,
-  });
+  const res: any = await handleApiCall(GENDER_DROPDOWN_URL, 'POST', null);
 
   const filteredGenderList = res?.data?.map((gender: { value: string; label: string }) => ({
     value: gender?.value,
@@ -342,18 +275,10 @@ export const getGenderList = async () => {
 };
 
 export const getProductDetails = async (id: string) => {
-  const locale = await getLocale();
   const user = await getUserData();
-  const res: any = await handleApiCall(
-    `${PRODUCT_DETAILS_URL}/${id}`,
-    'POST',
-    {
-      userId: user?._id,
-    },
-    {
-      'Accept-Language': locale,
-    }
-  );
+  const res: any = await handleApiCall(`${PRODUCT_DETAILS_URL}/${id}`, 'POST', {
+    userId: user?._id,
+  });
   if (res.code === 200) {
     return res?.data;
   } else {
@@ -362,19 +287,11 @@ export const getProductDetails = async (id: string) => {
 };
 
 export const getHomeProductList = async () => {
-  const locale = await getLocale();
-  const res: any = await handleApiCall(
-    PRODUCT_LISTING,
-    'POST',
-    {
-      page: 1,
-      perPage: 6,
-      filter: {},
-    },
-    {
-      'Accept-Language': locale,
-    }
-  );
+  const res: any = await handleApiCall(PRODUCT_LISTING, 'POST', {
+    page: 1,
+    perPage: 6,
+    filter: {},
+  });
   if (res.code === 200) {
     return res?.data?.data;
   } else {
@@ -415,15 +332,7 @@ export const fetchStoryById = async (id: string) => {
 };
 
 export const getCartDetails = async () => {
-  const token = await getUserToken();
-  const res: any = await handleApiCall(
-    ADD_TO_CART_LIST_URL,
-    'GET',
-    {},
-    {
-      Authorization: `Bearer ${token}`,
-    }
-  );
+  const res: any = await handleApiCall(ADD_TO_CART_LIST_URL, 'GET', {});
 
   if (res.code === 200) {
     return res?.data;
@@ -433,15 +342,7 @@ export const getCartDetails = async () => {
 };
 
 export const getMyAddresses = async () => {
-  const token = await getUserToken();
-  const res: any = await handleApiCall(
-    MY_ADDRESS_LIST_URL,
-    'POST',
-    {},
-    {
-      Authorization: `Bearer ${token}`,
-    }
-  );
+  const res: any = await handleApiCall(MY_ADDRESS_LIST_URL, 'POST', {});
 
   if (res.code === 200) {
     return res?.data;
@@ -473,15 +374,7 @@ export const getUserSettingsDetails = async () => {
 };
 
 export const getUserProfileData = async () => {
-  const token = await getUserToken();
-  const res: any = await handleApiCall(
-    PROFILE_API_URL,
-    'GET',
-    {},
-    {
-      Authorization: `Bearer ${token}`,
-    }
-  );
+  const res: any = await handleApiCall(PROFILE_API_URL, 'GET', {});
 
   if (res.code === 200) {
     return res?.data;
@@ -492,19 +385,11 @@ export const getUserProfileData = async () => {
 
 export const getWishlistData = async ({ resolvedSearchParams }: { resolvedSearchParams: any }) => {
   const { _page: page = 1 } = resolvedSearchParams;
-  const token = await getUserToken();
-  const res: any = await handleApiCall(
-    WISHLIST_LIST_URL,
-    'POST',
-    {
-      page: parseInt(page.toString()),
-      perPage: 10,
-      search: '',
-    },
-    {
-      Authorization: `Bearer ${token}`,
-    }
-  );
+  const res: any = await handleApiCall(WISHLIST_LIST_URL, 'POST', {
+    page: parseInt(page.toString()),
+    perPage: 10,
+    search: '',
+  });
 
   if (res.code === 200) {
     return res?.data;
@@ -553,18 +438,10 @@ export const getFaqBySlug = async (slug: string) => {
 
 export const getUserOrders = async (searchParams: { [key: string]: string }) => {
   const { _page: page = 1 } = searchParams;
-  const token = await getUserToken();
-  const res: any = await handleApiCall(
-    GET_USER_ORDERS,
-    'POST',
-    {
-      page: parseInt(page.toString()),
-      perPage: 10,
-    },
-    {
-      Authorization: `Bearer ${token}`,
-    }
-  );
+  const res: any = await handleApiCall(GET_USER_ORDERS, 'POST', {
+    page: parseInt(page.toString()),
+    perPage: 10,
+  });
   if (res.code === 200) {
     return res?.data;
   } else {
@@ -583,32 +460,16 @@ export const getHomeModelBySlug = async (slug: string) => {
 };
 
 export const getMeasurementProfiles = async () => {
-  const token = await getUserToken();
-  const res: any = await handleApiCall(
-    MEASUREMENT_PROFILE_OPTIONS,
-    'POST',
-    {},
-    {
-      Authorization: `Bearer ${token}`,
-    }
-  );
+  const res: any = await handleApiCall(MEASUREMENT_PROFILE_OPTIONS, 'POST', {});
   if (res.code === 200) {
     return res?.data;
   } else {
-    return {};
+    return [];
   }
 };
 
 export const getMeasurementProfileById = async (id: string) => {
-  const token = await getUserToken();
-  const res: any = await handleApiCall(
-    `${MEASUREMENT_PROFILE_GET_URL}/${id}`,
-    'GET',
-    {},
-    {
-      Authorization: `Bearer ${token}`,
-    }
-  );
+  const res: any = await handleApiCall(`${MEASUREMENT_PROFILE_GET_URL}/${id}`, 'GET', {});
   if (res.code === 200) {
     return res?.data;
   } else {
@@ -617,15 +478,7 @@ export const getMeasurementProfileById = async (id: string) => {
 };
 
 export const getUserMeasurementActive = async () => {
-  const token = await getUserToken();
-  const res: any = await handleApiCall(
-    USER_MEASUREMENT_ACTIVE,
-    'GET',
-    {},
-    {
-      Authorization: `Bearer ${token}`,
-    }
-  );
+  const res: any = await handleApiCall(USER_MEASUREMENT_ACTIVE, 'GET', {});
   if (res.code === 200) {
     return res?.data;
   } else {
@@ -634,15 +487,7 @@ export const getUserMeasurementActive = async () => {
 };
 
 export const getUserMeasurementBySlug = async () => {
-  const token = await getUserToken();
-  const res: any = await handleApiCall(
-    USER_MEASUREMENT_SLUG_URL,
-    'GET',
-    {},
-    {
-      Authorization: `Bearer ${token}`,
-    }
-  );
+  const res: any = await handleApiCall(USER_MEASUREMENT_SLUG_URL, 'GET', {});
   if (res.code === 200) {
     return res?.data;
   } else {

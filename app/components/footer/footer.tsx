@@ -16,7 +16,13 @@ export default async function Footer({ settings }: { settings?: ISettings }) {
           <div className="footerbox">
             <div className="footer_logo">
               <Link href={'/'}>
-                <Image src={getAWSImageUrl(settings?.logo)} width={90} height={100} alt="Bespoke" />
+                <Image
+                  loading="lazy"
+                  src={getAWSImageUrl(settings?.logo)}
+                  width={90}
+                  height={100}
+                  alt="Bespoke"
+                />
               </Link>
             </div>
             <p>{settings?.footer_description ?? ''}</p>
@@ -30,6 +36,7 @@ export default async function Footer({ settings }: { settings?: ISettings }) {
                         width={30}
                         height={30}
                         alt="social-logo"
+                        loading="lazy"
                       />
                     </Link>
                   </li>
@@ -200,6 +207,24 @@ export default async function Footer({ settings }: { settings?: ISettings }) {
           </Row>
         </Col>
       </Row>
+      <div className="copright">
+        <p>
+          Copyright © <strong>BESPOKE CASHMERE</strong> | Design & Development of{' '}
+          <a href="https://www.vamenture.com" target="_blank">
+            Vamenture Technology
+          </a>
+        </p>
+        <div className="payment-method">
+          {/* <Image src={'/images/paypal-payment.svg'} width={50} height={34} alt="paypal payment" /> */}
+          <Image
+            loading="lazy"
+            src={'/images/strip-payment.svg'}
+            width={50}
+            height={34}
+            alt="strip payment"
+          />
+        </div>
+      </div>
     </div>
   );
 }

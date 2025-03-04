@@ -7,7 +7,7 @@ import {
   StepBanner,
 } from '@/components';
 import { FIXED_STEPS_COUNT, URL_SLUG } from '@/constants';
-import { GENDER_DROPDOWN_URL, PRODUCT_TYPE_DROPDOWN_URL } from '@/constants/apis';
+import { PRODUCT_TYPE_DROPDOWN_URL } from '@/constants/apis';
 import { getDropdownList, getStepFullViewDetails } from '@/utils/server-api.utils';
 import Image from 'next/image';
 import React from 'react';
@@ -24,12 +24,7 @@ const LastStepPage = async ({
 }) => {
   const resolvedSearchParams = await searchParams;
   const t = await getTranslations();
-  const [productTypeResult, genderResult] = await Promise.allSettled([
-    getDropdownList(PRODUCT_TYPE_DROPDOWN_URL),
-    getDropdownList(GENDER_DROPDOWN_URL),
-  ]);
-  const productTypeData = productTypeResult.status === 'fulfilled' ? productTypeResult.value : [];
-  const genderData = genderResult.status === 'fulfilled' ? genderResult.value : [];
+  const productTypeData = await getDropdownList(PRODUCT_TYPE_DROPDOWN_URL);
   const productTypeId = productTypeData?.[0]?.value;
   const stepData = await getStepFullViewDetails({ productTypeId, steps: resolvedSearchParams });
 
@@ -86,7 +81,7 @@ const LastStepPage = async ({
                 {resolvedSearchParams.hasOwnProperty(URL_SLUG.ADD_TO_CART) ? (
                   <SaveAndGoToCart steps={stepData.steps} />
                 ) : (
-                  <ProceedToSizeMeasurement genders={genderData} />
+                  <ProceedToSizeMeasurement />
                 )}
               </div>
             </div>
@@ -98,6 +93,7 @@ const LastStepPage = async ({
                     alt="yarn img"
                     width={170}
                     height={170}
+                    loading="lazy"
                   />
                 </div>
                 <div className="products-box-sub-inner">
@@ -157,6 +153,7 @@ const LastStepPage = async ({
                                 alt=""
                                 width={24}
                                 height={24}
+                                loading="lazy"
                               />
                             </i>
                           )}

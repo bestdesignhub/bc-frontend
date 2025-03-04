@@ -1,7 +1,9 @@
 'use client';
 import '@/app/styles/header.css';
+import { useTranslations } from 'next-intl';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import TopMenu from '../../components/header/top-menu';
+
 interface ISaleProps {
   _id: string;
   slug: string;
@@ -14,8 +16,9 @@ interface ISaleProps {
 }
 
 export default function TopBar({ flashSale }: Readonly<{ flashSale: ISaleProps }>) {
+  const t = useTranslations();
   const { start_time, end_time } = flashSale;
-  const [, setTimeRemaining] = useState<{
+  const [timeRemaining, setTimeRemaining] = useState<{
     days: number;
     hours: number;
     minutes: number;
@@ -63,17 +66,16 @@ export default function TopBar({ flashSale }: Readonly<{ flashSale: ISaleProps }
       {isSaleActive && (
         <div className="topbar">
           <div className="container">
-            <div className="flexrow justify-content-between">
+            <div className="flexrow">
               <div className="topbar_item">
                 <ul>
                   <li>{flashSale?.title}</li>
-                  {/* <li>
+                  <li>
                     <Link href={flashSale?.button_url}>{t('FLASH_SALE.SHOP_NOW')}</Link>
-                  </li> */}
+                  </li>
                 </ul>
               </div>
-              <TopMenu />
-              {/* <div className="topbar_item">
+              <div className="topbar_item">
                 <div className="flexrow count-row">
                   <div className="count-item">
                     <div className="countbox">
@@ -100,7 +102,7 @@ export default function TopBar({ flashSale }: Readonly<{ flashSale: ISaleProps }
                     </div>
                   </div>
                 </div>
-              </div> */}
+              </div>
             </div>
           </div>
         </div>

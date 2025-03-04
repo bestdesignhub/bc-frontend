@@ -75,7 +75,13 @@ export default function Login() {
             </Form.Group>
             <Form.Group className="form-control google-btn" controlId="googlebtnForm.ControlInput">
               <button className="google bordered">
-                <Image src={'/images/google-icon.svg'} width={16} height={17} alt="google" />
+                <Image
+                  src={'/images/google-icon.svg'}
+                  loading="lazy"
+                  width={16}
+                  height={17}
+                  alt="google"
+                />
                 Google
               </button>
             </Form.Group>

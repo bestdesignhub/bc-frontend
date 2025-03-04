@@ -120,7 +120,13 @@ export default function Cartbox({ cart, fetchCartData }: { cart: any; fetchCartD
         </div>
         <div className="cart-box-middle">
           <div className="cart-img-big">
-            <Image src={getAWSImageUrl(cart?.yarn?.image)} alt="image" width={327} height={328} />
+            <Image
+              loading="lazy"
+              src={getAWSImageUrl(cart?.yarn?.image)}
+              alt="image"
+              width={327}
+              height={328}
+            />
           </div>
           <div className="cart-box-sub">
             {cart?.steps?.map((step: any, index: number) => {
@@ -132,6 +138,7 @@ export default function Cartbox({ cart, fetchCartData }: { cart: any; fetchCartD
                       alt="image"
                       width={85}
                       height={61}
+                      loading="lazy"
                     />
                   </div>
                   <div className="box-sub">

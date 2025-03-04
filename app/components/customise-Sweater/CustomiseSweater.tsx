@@ -94,7 +94,7 @@ export default function Sweater() {
             <div className="Sweater-right-middle">
               <div className="products-box-sub">
                 <div className="img">
-                  <Image src={Sweaterimg1} alt="" width={170} height={170} />
+                  <Image src={Sweaterimg1} loading="lazy" alt="" width={170} height={170} />
                 </div>
                 <div className="products-box-sub-inner">
                   <h5>Lorem ipsum</h5>

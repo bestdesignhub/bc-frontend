@@ -107,7 +107,13 @@ export default function Checkout({
                     />
                     <label htmlFor={PAYMENT_OPTIONS.STRIPE}>
                       <span>
-                        <Image src={Paymentimg2} alt="image" width={86} height={36} />
+                        <Image
+                          loading="lazy"
+                          src={Paymentimg2}
+                          alt="image"
+                          width={86}
+                          height={36}
+                        />
                       </span>
                     </label>
                   </div>

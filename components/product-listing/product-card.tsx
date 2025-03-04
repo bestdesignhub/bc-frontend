@@ -27,6 +27,7 @@ const ProductCard = ({ productData, view, productDetailsURl }: IProductCardProps
               width={328}
               height={350}
               alt={'offer'}
+              loading="lazy"
             />
           </div>
           <div className="info">

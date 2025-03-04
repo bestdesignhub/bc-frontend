@@ -51,7 +51,7 @@ export default function InstagramItem({ href = '', title, image }: InstagramItem
               </defs>
             </svg>
           </div>
-          <Image src={image} alt={title} width={1520} height={680} priority />
+          <Image loading="lazy" src={image} alt={title} width={1520} height={680} />
         </div>
       </Link>
     </div>

@@ -42,6 +42,7 @@ const StepCard: FC<{
             width={550}
             height={336}
             alt="product"
+            loading="lazy"
           />
         </div>
         <div className="info">

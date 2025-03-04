@@ -16,6 +16,7 @@ export default async function StepBanner({ stepData, step }: { stepData?: any; s
           width={1920}
           height={650}
           alt={'banner'}
+          loading="lazy"
         />
       </div>
       <div className="banner-caption">

@@ -2,6 +2,8 @@ import CONFIG from '@/config';
 import { getUserLocale } from '@/config/locale';
 import userAxiosInstance from '@/config/userAxiosInstance';
 import { COOKIES } from '@/constants';
+import { setAllUserSettingsValues } from '@/lib/redux/slices/userSettingSlice';
+import { dispatch } from '@/lib/redux/store';
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 import Cookies from 'js-cookie';
 
@@ -14,6 +16,8 @@ interface FetchApiConfig extends AxiosRequestConfig {
 export const clearLocalStorageTokenAndData = () => {
   if (typeof window !== 'undefined') {
     Cookies.remove(COOKIES.userToken);
+    Cookies.remove(COOKIES.user);
+    dispatch(setAllUserSettingsValues({ cartCount: 0, wishlistCount: 0 }));
   }
 };
 
@@ -38,13 +42,12 @@ export const handleApiCall = async <T extends AxiosResponse<T, any>>(
   headers: Record<string, string> = {}
 ): Promise<T | object> => {
   try {
-    const locale = await getUserLocale();
     const config: FetchApiConfig = {
       url,
       method,
       headers: {
         ...headers,
-        'Accept-Language': locale,
+        // 'Accept-Language': locale,
       },
     };
 
