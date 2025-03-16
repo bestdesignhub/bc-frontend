@@ -1,0 +1,113 @@
+.favourite-wrapper {
+  padding: 30px 50px;
+}
+.favourite-wrapper .section_title {
+  padding: 0 0 60px;
+}
+.favourite-wrapper .section_title p {
+  max-width: 68%;
+  margin: 0 auto !important;
+  display: block;
+}
+.favourite-post {
+}
+.favourite-post .row {
+  --bs-gutter-y: 1.5rem;
+}
+.favourite-post .row .col {
+  flex: 0 0 33.333333%;
+}
+.favourite-post .row .col:first-child,
+.favourite-post .row .col:first-child + .col,
+.favourite-post .row .col:nth-child(5n + 1),
+.favourite-post .row .col:nth-child(5n + 2) {
+  flex: 0 0 50%;
+}
+.favouritebox a {
+  position: relative;
+}
+.favouritebox .image {
+  position: relative;
+}
+.favouritebox .image::after {
+  content: '';
+  display: block;
+  padding-top: 108.5%;
+}
+.favouritebox .image::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+.favouritebox .image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.favouritebox .info {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  z-index: 1;
+}
+.favouritebox .info p {
+  color: var(--bsp-white);
+  font-size: var(--bsp-body-text);
+  font-weight: 600;
+  line-height: 1.5;
+  padding: 0 0 15px;
+}
+.favouritebox .info h5 {
+  font-family: var(--bsp-font-poppins);
+  font-size: var(--bsp-heading4);
+  color: var(--bsp-white);
+  line-height: 1.5;
+}
+.favouritebox button {
+  background: var(--bsp-black);
+  color: var(--bsp-white);
+  font-size: var(--bsp-body-text);
+  line-height: 1.25;
+  padding: 15px 30px;
+  margin: 0;
+}
+
+@media (max-width: 767px) {
+  .favourite-wrapper {
+    padding: 30px 16px;
+  }
+  .favourite-wrapper .section_title {
+    padding: 0 0 24px;
+  }
+  .favourite-post .row {
+    --bs-gutter-y: 1rem;
+    --bs-gutter-x: 1rem;
+  }
+  .favourite-post .row .col,
+  .favourite-post .row .col:first-child,
+  .favourite-post .row .col:first-child + .col,
+  .favourite-post .row .col:nth-child(5n + 1),
+  .favourite-post .row .col:nth-child(5n + 2) {
+    flex: 0 0 50%;
+  }
+  .favouritebox button {
+    font-size: var(--bsp-body-14);
+    margin: 0;
+    padding: 11px 24px;
+  }
+}

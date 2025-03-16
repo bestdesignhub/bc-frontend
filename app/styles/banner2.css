@@ -1,0 +1,20 @@
+.banner-img {
+  height: 50vh;
+  position: relative;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 60%,
+    rgba(0, 0, 0, 0.4)
+  );
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4); /* Stronger vertical shadow */
+  z-index: 1;
+}
+.page-banner{
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4); /* Stronger vertical shadow */
+}
+
+video{
+  z-index: 999;
+}

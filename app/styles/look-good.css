@@ -1,0 +1,115 @@
+.lookgood-wrapper {
+  padding: 0px 50px;
+}
+.lookgood-wrapper .section_title {
+  padding: 0 0 60px;
+}
+.lookgood-row .flexrow {
+  margin: 0 -50px;
+}
+.lookgood-row .flexrow .col-7 {
+  flex: 0 0 58.33333333%;
+  max-width: 58.33333333%;
+  padding: 0 50px;
+}
+.lookgood-row .flexrow .col-5 {
+  flex: 0 0 41.66666667%;
+  max-width: 41.66666667%;
+  padding: 0 50px;
+}
+.lookgood-wrapper .image {
+  position: relative;
+}
+.lookgood-wrapper .image img {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+.lookgood-wrapper .image img.img2 {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  left: auto;
+  transform: translateY(-50%);
+}
+.lookgood-wrapper .lookgood_content h6 {
+  font-size: var(--bsp-body-text);
+  color: var(--bsp-black);
+  font-family: var(--bsp-font-poppins);
+  text-transform: uppercase;
+  font-weight: 500;
+  padding: 0 0 15px;
+}
+.lookgood-wrapper .lookgood_content h4 {
+  font-size: var(--bsp-heading4);
+  color: var(--bsp-black);
+  font-family: var(--bsp-font-poppins);
+  text-transform: uppercase;
+  font-weight: 500;
+  line-height: 1.5;
+}
+.lookgood-wrapper .lookgood_content p {
+  font-size: var(--bsp-body-14);
+  color: var(--bsp-gray1);
+  line-height: 1.857;
+  padding: 15px 0 0;
+}
+.lookgood-wrapper .lookgood_content button {
+  margin: 20px 0 0;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .lookgood-wrapper {
+    padding: 30px 32px;
+  }
+  .lookgood-row .flexrow {
+    margin: 0 -16px;
+  }
+  .lookgood-row .flexrow .col-5,
+  .lookgood-row .flexrow .col-7 {
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding: 0 16px;
+  }
+  .lookgood-wrapper .lookgood_content {
+    padding: 24px 0 0;
+  }
+}
+@media (max-width: 767px) {
+  .lookgood-wrapper {
+    padding: 30px 16px;
+  }
+  .lookgood-wrapper .section_title {
+    padding: 0 0 24px;
+  }
+  .lookgood-row .flexrow {
+    margin: 0 -16px;
+  }
+  .lookgood-row .flexrow .col-5,
+  .lookgood-row .flexrow .col-7 {
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding: 0 16px;
+  }
+  .lookgood-wrapper .image img {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+  }
+  .lookgood-wrapper .image img.img2 {
+    position: relative;
+    top: 0;
+    transform: none;
+    margin: 10px 0 16px;
+  }
+  .lookgood-wrapper .lookgood_content h6 {
+    padding: 0 0 6px;
+  }
+  .lookgood-wrapper .lookgood_content p {
+    padding: 8px 0 0;
+    line-height: 1.5;
+  }
+  .lookgood-wrapper .lookgood_content button {
+    margin: 10px 0 0;
+  }
+}

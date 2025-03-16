@@ -1,0 +1,116 @@
+.hero-wrapper {
+  position: relative;
+}
+.herobox {
+  position: relative;
+  z-index: 1;
+}
+.herobox .image {
+  position: relative;
+}
+@media screen and (max-width: 592px) {
+  .herobox video{
+    height: 360px !important;
+    width: auto !important;
+  }
+}
+
+.herobox .image::after {
+  content: '';
+  display: block;
+  padding-top: 44.8%;
+}
+.herobox .image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+.banner_caption {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.banner_caption .container {
+  width: 100%;
+}
+.banner_caption .banner_content {
+  display: block;
+  max-width: 66%;
+}
+.banner_caption h1 {
+  color: var(--bsp-white);
+  font-size: var(--bsp-heading2);
+  line-height: 1.416;
+  padding: 0 0 40px;
+}
+.banner_caption button {
+  border: 0;
+  margin-right: 5px;
+}
+.banner_caption button a {
+  padding: 15px 30px;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--bsp-white);
+  background: var(--bsp-black);
+  font-size: var(--bsp-body-20);
+  color: var(--bsp-white);
+  font-weight: 600;
+  text-transform: uppercase;
+  line-height: 1;
+}
+.banner_caption button span {
+  height: 30px;
+  border-left: 1px solid var(--bsp-white);
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
+  margin: 0 0 0 20px;
+}
+.banner_caption button span svg {
+  margin: 0 0 0 20px;
+  transform: translateX(0);
+  transition: all 0.3s ease-in-out;
+}
+.banner_caption button a:hover span svg {
+  transform: translateX(-5px);
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .herobox .image::after {
+    padding-top: 56.25%;
+  }
+  .banner_caption h1 {
+    font-size: var(--bsp-heading4);
+    padding: 0 0 20px;
+  }
+  .banner_caption button a {
+    font-size: var(--bsp-body-text);
+    padding: 9px 24px;
+  }
+}
+@media (max-width: 767px) {
+  .herobox .image::after {
+    padding-top: 100%;
+  }
+  .banner_caption h1 {
+    font-size: var(--bsp-heading5);
+    padding: 0 0 20px;
+  }
+  .banner_caption button a {
+    font-size: var(--bsp-body-text);
+    padding: 9px 24px;
+  }
+}

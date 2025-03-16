@@ -1,0 +1,53 @@
+.payment-status-wrapper {
+  padding: 100px 0;
+}
+.payment-content {
+  max-width: 42%;
+  margin: 0 auto;
+  display: block;
+  text-align: center;
+}
+.payment-content svg {
+  width: 82px;
+  height: auto;
+  margin: 0 0 24px;
+}
+.payment-content h6 {
+  font-family: var(--bsp-font-poppins);
+  font-size: var(--bsp-heading-4);
+  padding: 8px 0 8px;
+}
+.payment-content p {
+  font-size: 20px;
+}
+.payment-content button {
+  margin: 24px 0 0;
+}
+
+@media (max-width: 1199px) {
+  .payment-content {
+    max-width: 50%;
+  }
+  .payment-content svg {
+    width: 62px;
+  }
+}
+@media (max-width: 991px) {
+  .payment-content {
+    max-width: 60%;
+  }
+  .payment-content svg {
+    width: 62px;
+  }
+}
+@media (max-width: 767px) {
+  .payment-content {
+    max-width: 100%;
+  }
+  .payment-content svg {
+    width: 62px;
+  }
+  .payment-content p {
+    font-size: 16px;
+  }
+}

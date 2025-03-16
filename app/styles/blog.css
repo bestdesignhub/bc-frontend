@@ -1,0 +1,319 @@
+.blog-listing {
+  padding: 100px 0 150px;
+  max-width: 1260px;
+  margin: 0 auto;
+  width: 100%;
+}
+.blog-listing .row {
+  margin: 0 -30px !important;
+  row-gap: 50px;
+}
+.blog-listing .row > * {
+  padding: 0 30px !important;
+}
+.blog-box-full {
+  width: 100%;
+  position: relative;
+  display: block;
+}
+.blog-box-full .img {
+  width: 100%;
+  position: relative;
+  display: flex;
+  height: 500px;
+  background: var(--bsp-black);
+  z-index: 1;
+  border-radius: 10px;
+}
+.blog-box-full .img img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.6;
+}
+.blog-box-over {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 2;
+  padding: 40px;
+}
+.blog-box-over h4 {
+  color: var(--bsp-white);
+  font-size: 32px;
+  text-transform: uppercase;
+  font-family: var(--bsp-font-poppins);
+  font-weight: 500;
+  padding: 0 0 20px;
+}
+.blog-box-over .link {
+  display: flex;
+  align-items: center;
+}
+.blog-box-over .link a {
+  display: flex;
+  align-items: center;
+  min-height: 50px;
+  justify-content: center;
+  text-transform: uppercase;
+  background: var(--bsp-black);
+  font-size: var(--bsp-body-text);
+  font-family: var(--bsp-font-poppins);
+  font-weight: 600;
+  color: var(--bsp-white);
+  padding: 0 35px;
+}
+.blog-box-over .link a:hover {
+  background: var(--bsp-gray);
+}
+.blog-box {
+  width: 100%;
+  display: block;
+}
+.blog-box .img {
+  width: 100%;
+  position: relative;
+  display: flex;
+  height: 215px;
+  background: var(--bsp-black);
+  z-index: 1;
+  border-radius: 10px;
+}
+.blog-box .img img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.blog-box .blog-box-sub {
+  display: block;
+  padding: 20px 0 0 0;
+  width: 100%;
+}
+.blog-box .blog-box-sub h4 {
+  padding: 0 0 15px;
+  font-size: var(--bsp-body-22);
+  font-weight: 500;
+  font-family: var(--bsp-font-poppins);
+  text-transform: uppercase;
+}
+.blog-box .blog-box-sub p {
+  color: var(--bsp-black);
+  opacity: 0.7;
+  font-family: var(--bsp-font-poppins);
+  font-size: var(--bsp-body-14);
+}
+.blog-box .blog-box-sub .link {
+  padding: 10px 0 0 0;
+  display: flex;
+}
+.blog-box .blog-box-sub .link a {
+  color: var(--bsp-black);
+  font-family: var(--bsp-font-poppins);
+  font-size: var(--bsp-body-14);
+  display: flex;
+}
+.blog-box .blog-box-sub .link a:hover {
+  opacity: 0.5;
+}
+.custom-paginaction {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.custom-paginaction ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 0 0 0;
+  gap: 8px;
+}
+.custom-paginaction ul li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.custom-paginaction ul li a {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--foreground);
+  border-radius: 8px;
+}
+.custom-paginaction ul li a:hover,
+.custom-paginaction ul li.active a {
+  background: var(--foreground);
+  color: var(--bsp-white);
+}
+.custom-paginaction ul li.prev a,
+.custom-paginaction ul li.next a {
+  width: auto;
+  gap: 12px;
+  margin: 0 15px;
+}
+.custom-paginaction ul li.prev a:hover,
+.custom-paginaction ul li.next a:hover {
+  background: none;
+  color: var(--foreground);
+}
+@media (min-width: 1400px) and (max-width: 1599px) {
+  .blog-listing {
+    padding: 80px 0 100px;
+  }
+  .blog-listing .row {
+    row-gap: 40px;
+    margin: 0 -20px !important;
+  }
+  .blog-listing .row > * {
+    padding: 0 20px !important;
+  }
+}
+@media (min-width: 1301px) and (max-width: 1400px) {
+  .blog-listing {
+    padding: 80px 0 100px;
+  }
+  .blog-listing .row {
+    row-gap: 40px;
+    margin: 0 -20px !important;
+  }
+  .blog-listing .row > * {
+    padding: 0 20px !important;
+  }
+  .blog-box-full .img {
+    height: 422px;
+  }
+}
+@media (min-width: 1200px) and (max-width: 1300px) {
+  .blog-listing {
+    padding: 60px 0 80px;
+  }
+  .blog-listing .row {
+    row-gap: 30px;
+    margin: 0 -15px !important;
+  }
+  .blog-listing .row > * {
+    padding: 0 15px !important;
+  }
+  .blog-box .blog-box-sub h4 {
+    font-size: 20px;
+  }
+  .blog-box-full .img {
+    height: 422px;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  .blog-listing {
+    padding: 60px 0 80px;
+  }
+  .blog-listing .row {
+    row-gap: 30px;
+    margin: 0 -15px !important;
+  }
+  .blog-listing .row > * {
+    padding: 0 15px !important;
+  }
+  .blog-box .blog-box-sub h4 {
+    font-size: 20px;
+  }
+  .blog-box-full .img {
+    height: 370px;
+  }
+  .blog-box-over {
+    padding: 24px;
+  }
+  .blog-box-over h4 {
+    font-size: 24px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .blog-listing {
+    padding: 60px 0 80px;
+  }
+  .blog-listing .row {
+    row-gap: 30px;
+    margin: 0 -15px !important;
+  }
+  .blog-listing .row > * {
+    padding: 0 15px !important;
+    width: 50%;
+  }
+  .blog-listing .row > .col-md-12 {
+    width: 100%;
+  }
+  .blog-box .blog-box-sub h4 {
+    font-size: 20px;
+  }
+  .blog-box-full .img {
+    height: 370px;
+  }
+  .blog-box-over {
+    padding: 24px;
+  }
+  .blog-box-over h4 {
+    font-size: 24px;
+  }
+}
+@media (max-width: 767px) {
+  .blog-listing {
+    padding: 48px 0 64px;
+  }
+  .blog-listing .row {
+    row-gap: 30px;
+    margin: 0 -15px !important;
+  }
+  .blog-listing .row > * {
+    padding: 0 15px !important;
+  }
+  .blog-listing .row > .col-md-12 {
+    width: 100%;
+  }
+  .blog-box .blog-box-sub h4 {
+    font-size: 20px;
+  }
+  .blog-box-full .img {
+    height: 260px;
+  }
+  .blog-box-over {
+    padding: 16px;
+  }
+  .blog-box-over h4 {
+    font-size: 20px;
+    padding: 0 0 10px;
+  }
+  .blog-box-over .link a {
+    font-size: 14px;
+    min-height: 40px;
+    padding: 0 24px;
+  }
+  .custom-paginaction ul {
+    padding: 48px 0 0 0;
+  }
+  .custom-paginaction ul {
+    gap: 2px;
+  }
+  .custom-paginaction ul li a {
+    width: 28px;
+    height: 28px;
+  }
+  .custom-paginaction ul li.prev a,
+  .custom-paginaction ul li.next a {
+    margin: 0 10px;
+    gap: 6px;
+  }
+  .blog-box .img {
+    height: auto;
+  }
+  .blog-box .img img {
+    height: auto;
+    position: relative;
+  }
+}
