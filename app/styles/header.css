@@ -67,6 +67,7 @@
 }
 .header_middle {
   padding: 15px 0;
+  background: red;
 }
 .header_middle .flexrow {
   align-items: center;
