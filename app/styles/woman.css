@@ -3,6 +3,9 @@
   position: relative;
   z-index: 1;
 }
+.active {
+  font-weight: bold;
+}
 .page-banner .image {
   position: relative;
 }

@@ -34,8 +34,10 @@ const PriceRangeSlider = ({ min = 0, max = 1000, step = 10 }) => {
 
   // Stop loading only when searchParams changes
   useEffect(() => {
-    dispatch(setLoading(false)); // Stop loading after URL updates
-  }, [searchParams.toString()]);
+    const paramsString = searchParams.toString();
+
+    dispatch(setLoading(false));
+  }, [searchParams]);
 
   return (
     <div className="py-4">

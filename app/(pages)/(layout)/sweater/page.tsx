@@ -1,8 +1,10 @@
 import {
+  BannerComponent,
   CustomPagination,
   ProductListing,
   ProductTopbar,
   StepBanner,
+  StepNavigate,
   YarnListingSidebar,
 } from '@/components';
 import GenderModalWrapper from '@/components/modals/gender-modal/gender-modal-wrapper';
@@ -11,6 +13,7 @@ import { COLOUR_DROPDOWN_URL, GENDER_DROPDOWN_URL, MATERIAL_DROPDOWN_URL } from 
 import { ViewProvider } from '@/context';
 import { getDropdownList, getYarnCardList } from '@/utils/server-api.utils';
 import { getTranslations } from 'next-intl/server';
+import Image from 'next/image';
 import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 
@@ -37,7 +40,26 @@ const SweaterPage = async ({
   return (
     <>
       <ViewProvider>
+        <div className="page-banner">
+          <div className="image">
+            {/* <Image
+              src={"https://picsum.photos/200/300"}
+              width={1920}
+              height={650}
+              alt={'banner'}
+            /> */}
+          </div>
+          <div className="banner-caption">
+            <div className="container">
+              <div className="banner-content">
+                <h1>Common Banner</h1>
+                <p>Common Banner Paragraph</p>
+              </div>
+            </div>
+          </div>
+        </div>
         <StepBanner step="1" stepData={{ label: t('COMMON.YARN_TEXT') }} />
+        <StepNavigate></StepNavigate>
         <div className="woman-product-wrapper">
           <Row className="g-4">
             <Col xs={12} lg={2}>

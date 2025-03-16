@@ -70,6 +70,14 @@ const PAYMENT_OPTIONS = {
 
 const FIXED_STEPS_COUNT = 2;
 
+const STEPPERPATHS = [
+  { label: 'Step 1', step: '1' },
+  { label: 'Step 2', step: '2' },
+  { label: 'Step 3', step: '3' },
+  { label: 'Step 4', step: '4' },
+  { label: 'Step 5', step: '5' },
+];
+
 export {
   LOCALES,
   URL_SLUG,
@@ -79,4 +87,5 @@ export {
   SITE_SETTINGS,
   FIXED_STEPS_COUNT,
   PAYMENT_OPTIONS,
+  STEPPERPATHS,
 };

@@ -1,6 +1,8 @@
+"use client"
+
 import { SizeModal } from '@/components/size-modal';
 import userAxiosInstanceWithoutToken from '@/config/userAxiosInstanceWithoutToken';
-import { MESSAGES, URL_SLUG } from '@/constants';
+import { MESSAGES, URL_SLUG, USER_ROUTES } from '@/constants';
 import { YARN_GET_DETAIL_URL } from '@/constants/apis';
 import { useView } from '@/hooks';
 import { setLoading } from '@/lib/redux/slices/loaderSlice';
@@ -12,13 +14,17 @@ import { useSearchParams } from 'next/navigation';
 import React, { FC, useState } from 'react';
 import { Col } from 'react-bootstrap';
 import toast from 'react-hot-toast';
+import { useRouter } from 'next/navigation';
+
 
 const ProductCard: FC<{ product: any }> = ({ product }) => {
   const { view } = useView();
   const t = useTranslations();
   const searchParams = useSearchParams();
   const [showModal, setShowModal] = useState(false);
-  const [yarnDetails, setYarnDetails] = useState<any>(null);
+  // const [yarnDetails, setYarnDetails] = useState<any>(null);
+  const router = useRouter();
+
 
   const handleShow = () => {
     dispatch(setLoading(true));
@@ -27,8 +33,32 @@ const ProductCard: FC<{ product: any }> = ({ product }) => {
       .then((response) => {
         const result = response.data as any;
         if (result.success) {
-          setYarnDetails(result.data);
-          setShowModal(true);
+          if (result?.data?._id) {
+            // dispatch(setIsPageSwitchLoading(true));
+            const edit = searchParams?.get(URL_SLUG.EDIT);
+            const change = searchParams?.get(URL_SLUG.CHANGE);
+            if (change === 'true') {
+              const params = new URLSearchParams(searchParams.toString());
+              params.delete(URL_SLUG.YARN);
+              params.delete(URL_SLUG.CHANGE);
+              for (const key of Array.from(params.keys())) {
+                if (key.startsWith('_')) {
+                  params.delete(key);
+                }
+              }
+              const queryString = params.toString();
+              router.push(
+                `${USER_ROUTES.sweater}/last-step?${URL_SLUG.YARN}=${result?.data?._id}&${queryString}`
+              );
+              return;
+            } else {
+              router.push(
+                `${USER_ROUTES.sweater}/2?${URL_SLUG.YARN}=${result?.data?._id}${edit ? `&${URL_SLUG.EDIT}=${edit}` : ''}`
+              );
+            }
+          }
+          // setYarnDetails(result.data);
+          // setShowModal(true);
         } else {
           toast.error(result?.message || t(MESSAGES.SOMETHING_WENT_WRONG));
           return;
@@ -60,8 +90,8 @@ const ProductCard: FC<{ product: any }> = ({ product }) => {
           style={
             yarnId === product?._id
               ? {
-                  border: '3px solid',
-                }
+                border: '3px solid',
+              }
               : {}
           }
         >
@@ -93,9 +123,9 @@ const ProductCard: FC<{ product: any }> = ({ product }) => {
           </button>
         </div>
       </Col>
-      {showModal && (
+      {/* {showModal && (
         <SizeModal yarnDetails={yarnDetails} show={showModal} handleClose={handleClose} />
-      )}
+      )} */}
     </>
   );
 };
