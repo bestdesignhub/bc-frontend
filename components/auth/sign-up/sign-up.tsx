@@ -1,6 +1,7 @@
 'use client';
 import '@/app/styles/login.css';
 import { InputField, SelectField } from '@/components/common';
+import BannerWrapper from '@/components/common/banner/BannerWrapper';
 import userAxiosInstance from '@/config/userAxiosInstance';
 import { COOKIES, MESSAGES, URL_SLUG, USER_ROUTES } from '@/constants';
 import { REGISTARTION_URL } from '@/constants/apis';
@@ -103,148 +104,149 @@ export default function SignUp({ countries, genderList }: ISignUpForm) {
   };
 
   return (
-    <div className="loginform-wrapper">
-      <div className="container">
-        <div className="login_title">
-          <h1>{t('SIGNUP.TITLE')}</h1>
-          {/* <p>
+    <BannerWrapper>
+      <div className="loginform-wrapper">
+        <div className="container">
+          <div className="login_title">
+            <h1>{t('SIGNUP.TITLE')}</h1>
+            {/* <p>
             {t('SIGNUP.TITLE')}? <Link href={'/'}>{t('COMMON.GET_STARTED')}!</Link>
           </p> */}
-        </div>
-        <FormProvider {...methods}>
-          <Form className="col-form-2" onSubmit={handleSubmit(onSubmit)} method="post">
-            <Form.Group className="form-control" controlId="newsletterForm.ControlInput">
-              <InputField
-                name="first_name"
-                label={t('COMMON.FIRST_NAME')}
-                placeholder={t('COMMON.FIRST_NAME')}
-                type="text"
-                required={true}
-              />
-            </Form.Group>
-            <Form.Group className="form-control" controlId="newsletterForm.ControlInput">
-              <InputField
-                name="middle_name"
-                label={t('COMMON.MIDDLE_NAME')}
-                placeholder={t('COMMON.MIDDLE_NAME')}
-                type="text"
-              />
-            </Form.Group>
-            <Form.Group className="form-control" controlId="newsletterForm.ControlInput">
-              <InputField
-                name="last_name"
-                label={t('COMMON.LAST_NAME')}
-                placeholder={t('COMMON.LAST_NAME')}
-                type="text"
-                required={true}
-              />
-            </Form.Group>
-            {genderList && (
+          </div>
+          <FormProvider {...methods}>
+            <Form className="col-form-2" onSubmit={handleSubmit(onSubmit)} method="post">
               <Form.Group className="form-control" controlId="newsletterForm.ControlInput">
-                <SelectField
-                  name="gender_id"
-                  label={t('COMMON.GENDER')}
-                  options={genderList}
-                  required={true}
-                  isSearchable={false}
-                  placeholder={t('COMMON.GENDER')}
-                />
-              </Form.Group>
-            )}
-            <Form.Group className="form-control" controlId="newsletterForm.ControlInput">
-              <InputField
-                name="email"
-                label={t('COMMON.EMAIL_ADDRESS')}
-                placeholder="xyz@gmail.com"
-                type="email"
-                required={true}
-              />
-            </Form.Group>
-            <Form.Group className="form-control" controlId="newsletterForm.ControlInput">
-              <InputField
-                name="password"
-                label={t('COMMON.PASSWORD')}
-                placeholder={t('COMMON.PASSWORD')}
-                type="password"
-                required={true}
-                rules={{
-                  minLength: {
-                    value: 8,
-                    message: t('COMMON.PASSWORD_AT_LEAST_EIGHT', {
-                      label: t('COMMON.PASSWORD'),
-                    }),
-                  },
-                }}
-              />
-            </Form.Group>
-            {countries && (
-              <Form.Group className="form-control" controlId="newsletterForm.ControlInput">
-                <SelectField
-                  name="country_id"
-                  label={t('COMMON.CODE')}
-                  options={countries}
+                <InputField
+                  name="first_name"
+                  label={t('COMMON.FIRST_NAME')}
+                  placeholder={t('COMMON.FIRST_NAME')}
+                  type="text"
                   required={true}
                 />
               </Form.Group>
-            )}
-            <Form.Group className="form-control" controlId="newsletterForm.ControlInput">
-              <InputField
-                name="mobile_number"
-                label={t('COMMON.MOBILE_NUMBER')}
-                placeholder={t('COMMON.MOBILE_NUMBER')}
-                type="text"
-                required={true}
+              <Form.Group className="form-control" controlId="newsletterForm.ControlInput">
+                <InputField
+                  name="middle_name"
+                  label={t('COMMON.MIDDLE_NAME')}
+                  placeholder={t('COMMON.MIDDLE_NAME')}
+                  type="text"
+                />
+              </Form.Group>
+              <Form.Group className="form-control" controlId="newsletterForm.ControlInput">
+                <InputField
+                  name="last_name"
+                  label={t('COMMON.LAST_NAME')}
+                  placeholder={t('COMMON.LAST_NAME')}
+                  type="text"
+                  required={true}
+                />
+              </Form.Group>
+              {genderList && (
+                <Form.Group className="form-control" controlId="newsletterForm.ControlInput">
+                  <SelectField
+                    name="gender_id"
+                    label={t('COMMON.GENDER')}
+                    options={genderList}
+                    required={true}
+                    isSearchable={false}
+                    placeholder={t('COMMON.GENDER')}
+                  />
+                </Form.Group>
+              )}
+              <Form.Group className="form-control" controlId="newsletterForm.ControlInput">
+                <InputField
+                  name="email"
+                  label={t('COMMON.EMAIL_ADDRESS')}
+                  placeholder="xyz@gmail.com"
+                  type="email"
+                  required={true}
+                />
+              </Form.Group>
+              <Form.Group className="form-control" controlId="newsletterForm.ControlInput">
+                <InputField
+                  name="password"
+                  label={t('COMMON.PASSWORD')}
+                  placeholder={t('COMMON.PASSWORD')}
+                  type="password"
+                  required={true}
+                  rules={{
+                    minLength: {
+                      value: 8,
+                      message: t('COMMON.PASSWORD_AT_LEAST_EIGHT', {
+                        label: t('COMMON.PASSWORD'),
+                      }),
+                    },
+                  }}
+                />
+              </Form.Group>
+              {countries && (
+                <Form.Group className="form-control" controlId="newsletterForm.ControlInput">
+                  <SelectField
+                    name="country_id"
+                    label={t('COMMON.CODE')}
+                    options={countries}
+                    required={true}
+                  />
+                </Form.Group>
+              )}
+              <Form.Group className="form-control" controlId="newsletterForm.ControlInput">
+                <InputField
+                  name="mobile_number"
+                  label={t('COMMON.MOBILE_NUMBER')}
+                  placeholder={t('COMMON.MOBILE_NUMBER')}
+                  type="text"
+                  required={true}
                 // rules={{
                 //   pattern: {
                 //     value: /^[6-9]\d{9}$/,
                 //     message: t('VALIDATIONS.VALIDATE_MOBILE_NUMBER'),
                 //   },
                 // }}
-              />
-            </Form.Group>
-            <Form.Group className="form-control" controlId="newsletterForm.ControlInput">
-              <InputField
-                name="weight"
-                label={`${t('COMMON.WEIGHT')} (kg)`}
-                placeholder={`${t('COMMON.WEIGHT')} (kg)`}
-                type="text"
-                rules={{
-                  pattern: {
-                    value: /^[0-9]+$/,
-                    message: t('VALIDATIONS.ONLY_NUMBER'),
-                  },
-                }}
-              />
-            </Form.Group>
-            <Form.Group className="form-control" controlId="newsletterForm.ControlInput">
-              <InputField
-                name="height"
-                label={`${t('COMMON.HEIGHT')} (cm)`}
-                placeholder={`${t('COMMON.HEIGHT')} (cm)`}
-                type="text"
-                rules={{
-                  pattern: {
-                    value: /^[0-9]+$/,
-                    message: t('VALIDATIONS.ONLY_NUMBER'),
-                  },
-                }}
-              />
-            </Form.Group>
-            <Form.Group className="form-control full" controlId="newsletterForm.ControlInput">
-              <Button variant="primary" type="submit" disabled={disableSubmit}>
-                {t('SIGNUP.TITLE')}
-              </Button>
-            </Form.Group>
-            <Form.Group
-              className="form-control login-link full"
-              controlId="forgotForm.ControlInput"
-            >
-              <p>
-                {t('SIGNUP.ALREADY_HAVE_ACCOUNT')}?{' '}
-                <Link href={USER_ROUTES.signin}>{t('SIGNUP.LOGIN')}!</Link>
-              </p>
-            </Form.Group>
-            {/* <Form.Group
+                />
+              </Form.Group>
+              <Form.Group className="form-control" controlId="newsletterForm.ControlInput">
+                <InputField
+                  name="weight"
+                  label={`${t('COMMON.WEIGHT')} (kg)`}
+                  placeholder={`${t('COMMON.WEIGHT')} (kg)`}
+                  type="text"
+                  rules={{
+                    pattern: {
+                      value: /^[0-9]+$/,
+                      message: t('VALIDATIONS.ONLY_NUMBER'),
+                    },
+                  }}
+                />
+              </Form.Group>
+              <Form.Group className="form-control" controlId="newsletterForm.ControlInput">
+                <InputField
+                  name="height"
+                  label={`${t('COMMON.HEIGHT')} (cm)`}
+                  placeholder={`${t('COMMON.HEIGHT')} (cm)`}
+                  type="text"
+                  rules={{
+                    pattern: {
+                      value: /^[0-9]+$/,
+                      message: t('VALIDATIONS.ONLY_NUMBER'),
+                    },
+                  }}
+                />
+              </Form.Group>
+              <Form.Group className="form-control full" controlId="newsletterForm.ControlInput">
+                <Button variant="primary" type="submit" disabled={disableSubmit}>
+                  {t('SIGNUP.TITLE')}
+                </Button>
+              </Form.Group>
+              <Form.Group
+                className="form-control login-link full"
+                controlId="forgotForm.ControlInput"
+              >
+                <p>
+                  {t('SIGNUP.ALREADY_HAVE_ACCOUNT')}?{' '}
+                  <Link href={USER_ROUTES.signin}>{t('SIGNUP.LOGIN')}!</Link>
+                </p>
+              </Form.Group>
+              {/* <Form.Group
               className="form-control google-btn full"
               controlId="googlebtnForm.ControlInput"
             >
@@ -253,9 +255,10 @@ export default function SignUp({ countries, genderList }: ISignUpForm) {
                 {t('COMMON.GOOGLE')}
               </button>
             </Form.Group> */}
-          </Form>
-        </FormProvider>
+            </Form>
+          </FormProvider>
+        </div>
       </div>
-    </div>
+    </BannerWrapper>
   );
 }

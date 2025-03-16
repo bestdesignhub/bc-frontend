@@ -1,13 +1,10 @@
 import { IBannerData } from '@/types';
 import { getAWSImageUrl } from '@/utils/common.utils';
 import { getBannerBySlug } from '@/utils/server-api.utils';
-import { getTranslations } from 'next-intl/server';
 import Image from 'next/image';
 
-export default async function StepBanner({ stepData, step }: { stepData?: any; step: string }) {
+export default async function StepBanner({ step }: { stepData?: any; step: string }) {
   const sweaterBannerData = (await getBannerBySlug(`sweater-${step}`)) as IBannerData;
-  const t = await getTranslations();
-
   return (
     <div className="page-banner gauge">
       <div className="image">
@@ -23,10 +20,11 @@ export default async function StepBanner({ stepData, step }: { stepData?: any; s
         <div className="container">
           <div className="banner-content">
             <h1>
-              {t('COMMON.STEP')} {step}:{' '}
+              {/* {t('COMMON.STEP')} {step}:{' '}
               {stepData
                 ? `${t('COMMON.CHOOSE_A')} ${stepData?.label}`
-                : t('COMMON.FULL_VIEW_SWEATER')}
+                : t('COMMON.FULL_VIEW_SWEATER')} */}
+              {sweaterBannerData?.title ?? ''}
             </h1>
             <p>{sweaterBannerData?.description ?? ''}</p>
           </div>

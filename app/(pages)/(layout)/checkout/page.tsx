@@ -1,4 +1,5 @@
 import Checkout from '@/app/components/checkout/checkout';
+import BannerWrapper from '@/components/common/banner/BannerWrapper';
 import {
   getCartDetails,
   getCountryList,
@@ -20,7 +21,7 @@ export default async function CheckoutPage() {
   const countriesName = countriesNameResult.status === 'fulfilled' ? countriesNameResult.value : [];
 
   return (
-    <>
+    <BannerWrapper>
       <Checkout
         cartData={cartData}
         myAddresses={myAddresses}
@@ -28,6 +29,6 @@ export default async function CheckoutPage() {
         countriesName={countriesName}
       />
       {/* <Service /> */}
-    </>
+    </BannerWrapper>
   );
 }

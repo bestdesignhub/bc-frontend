@@ -1,16 +1,16 @@
 .marquee-wrapper {
-  padding: 42px 0;
+  padding: 26px 0;
 }
 .marqueebox {
   padding: 0 64px;
 }
 .marqueebox h6 {
   font-family: var(--bsp-font-poppins);
-  font-size: var(--bsp-body-22);
-  color: var(--bsp-gray);
+  font-size: var(--bsp-body-20);
+  color: var(--bsp-black);
 }
 .category-wrapper {
-  padding: 18px 0 50px;
+  padding: 0px 0 0px;
 }
 .categorybox a {
   display: block;

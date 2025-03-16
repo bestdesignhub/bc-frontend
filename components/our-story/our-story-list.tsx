@@ -1,7 +1,8 @@
 import '@/app/styles/woman.css';
 import { Row } from 'react-bootstrap';
-import { CustomPagination } from '../common';
+import { BannerComponent, CustomPagination } from '../common';
 import OurStoryCard from './our-story-card';
+import { IBannerData } from '@/types';
 
 export interface IStoryItem {
   _id: string;
@@ -23,9 +24,10 @@ export interface IStoryResponse {
 
 export interface IStoryProps {
   storyListData: IStoryResponse;
+  bannerData: IBannerData
 }
 
-const OurStoryList = ({ storyListData }: IStoryProps) => {
+const OurStoryList = ({ storyListData, bannerData }: IStoryProps) => {
   return (
     <>
       {/* {storyListData?.data?.map((stories) => (
@@ -37,6 +39,7 @@ const OurStoryList = ({ storyListData }: IStoryProps) => {
           image={stories?.thumb_image}
         />
       ))} */}
+      <BannerComponent bannerData={bannerData} />
       <div className="woman-product-wrapper">
         <Row className={`product-container g-4 grid`}>
           {storyListData?.data?.map((data, index: number) => (

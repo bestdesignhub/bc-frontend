@@ -12,6 +12,7 @@ import { USER_MEASUREMENT_SLUG_URL } from '@/constants/apis';
 import { MESSAGES } from '@/constants';
 import toast from 'react-hot-toast';
 import { useTranslations } from 'next-intl';
+import BannerWrapper from '@/components/common/banner/BannerWrapper';
 
 export default function MeasurementProfileComponent({
   userMeasurementBySlug,
@@ -42,7 +43,7 @@ export default function MeasurementProfileComponent({
     }
   };
   return (
-    <>
+    <BannerWrapper>
       <div className="measurements-page">
         <div className="measurements-block">
           <div className="measurements-left">
@@ -67,6 +68,6 @@ export default function MeasurementProfileComponent({
         </div>
       </div>
       {/* <Customisebreadcrumb /> */}
-    </>
+    </BannerWrapper>
   );
 }

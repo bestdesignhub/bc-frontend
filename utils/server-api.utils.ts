@@ -12,6 +12,7 @@ import {
   GET_HOME_DATA,
   GET_HOME_STORIES,
   GET_SETTINNG_URL,
+  GET_TESTIMONIAL_URL,
   GET_USER_ORDERS,
   HOME_MODEL_URL,
   MEASUREMENT_PROFILE_GET_URL,
@@ -305,7 +306,7 @@ export const getStoryPageList = async (page = 1) => {
     'POST',
     {
       page,
-      perPage: 4,
+      perPage: 12,
       search: '',
       filter: {
         status: true,
@@ -398,6 +399,25 @@ export const getWishlistData = async ({ resolvedSearchParams }: { resolvedSearch
   }
 };
 
+export const getTestimonials = async () => {
+  const res: any = await handleApiCall(
+    GET_TESTIMONIAL_URL,
+    'POST',
+    {
+      page: 1,
+      perPage: 3,
+      search: '',
+    },
+    {}
+  );
+
+  if (res.code === 200) {
+    return res?.data?.data;
+  } else {
+    return {};
+  }
+};
+
 export const getWebSiteSettings = async () => {
   const res: any = await handleApiCall(GET_SETTINNG_URL, 'GET', {}, {});
 
@@ -451,11 +471,10 @@ export const getUserOrders = async (searchParams: { [key: string]: string }) => 
 
 export const getHomeModelBySlug = async (slug: string) => {
   const res: any = await handleApiCall(HOME_MODEL_URL, 'GET', { slug }, {});
-
   if (res.code === 200) {
     return res?.data;
   } else {
-    return {};
+    return null;
   }
 };
 

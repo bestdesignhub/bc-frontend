@@ -15,6 +15,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { pickProperties } from '@/utils/common.utils';
 import { dispatch } from '@/lib/redux/store';
 import { setLoading } from '@/lib/redux/slices/loaderSlice';
+import BannerWrapper from '@/components/common/banner/BannerWrapper';
 
 interface ISignInFormType {
   email: string;
@@ -82,70 +83,72 @@ export default function Login() {
   };
 
   return (
-    <div className="loginform-wrapper">
-      <div className="container">
-        <div className="login_title">
-          <h1>{t('COMMON.LOG_IN').toUpperCase()}</h1>
-          <p>
-            {t('COMMON.NEED_AN_ACCOUNT')}?{' '}
-            <Link href={USER_ROUTES.signup}>{t('COMMON.GET_STARTED')}!</Link>
-          </p>
-        </div>
-        <FormProvider {...methods}>
-          <Form onSubmit={handleSubmit(onSubmit)} method="post">
-            <Form.Group className="form-control" controlId="newsletterForm.ControlInput">
-              <InputField
-                name="email"
-                label={t('COMMON.EMAIL_ADDRESS')}
-                placeholder="xyz@gmail.com"
-                type="email"
-                required={true}
-              />
-              <div className="icon" onClick={() => setShowPassword(!showPassword)}>
-                <EmailAtSign />
-              </div>
-            </Form.Group>
-            <Form.Group className="form-control" controlId="newsletterForm.ControlInput">
-              <InputField
-                name="password"
-                label={t('COMMON.PASSWORD')}
-                placeholder="Enter your password"
-                type={showPassword ? 'text' : 'password'}
-                required={true}
-                rules={{
-                  minLength: {
-                    value: 8,
-                    message: t('COMMON.PASSWORD_AT_LEAST_EIGHT', {
-                      label: t('COMMON.PASSWORD'),
-                    }),
-                  },
-                }}
-              />
-              <div className="icon" onClick={() => setShowPassword(!showPassword)}>
-                {showPassword ? <PasswordLockIcon /> : <PasswordUnLockIcon />}
-              </div>
-            </Form.Group>
-            <Form.Group className="form-control" controlId="newsletterForm.ControlInput">
-              <Button variant="primary" type="submit" disabled={disableSubmit}>
-                {t('COMMON.LOG_IN')}
-              </Button>
-            </Form.Group>
-            <Form.Group className="form-control forgot-link" controlId="forgotForm.ControlInput">
-              <p>
-                <Link href={USER_ROUTES.forgotPassword}>
-                  {t('FORGOT_PASSWORD.FORGOT_YOUR_PASSWORD')}?
-                </Link>
-              </p>
-            </Form.Group>
-            {/* <Form.Group className="form-control google-btn" controlId="googlebtnForm.ControlInput">
+    <BannerWrapper>
+      <div className="loginform-wrapper">
+        <div className="container">
+          <div className="login_title">
+            <h1>{t('COMMON.LOG_IN').toUpperCase()}</h1>
+            <p>
+              {t('COMMON.NEED_AN_ACCOUNT')}?{' '}
+              <Link href={USER_ROUTES.signup}>{t('COMMON.GET_STARTED')}!</Link>
+            </p>
+          </div>
+          <FormProvider {...methods}>
+            <Form onSubmit={handleSubmit(onSubmit)} method="post">
+              <Form.Group className="form-control" controlId="newsletterForm.ControlInput">
+                <InputField
+                  name="email"
+                  label={t('COMMON.EMAIL_ADDRESS')}
+                  placeholder="xyz@gmail.com"
+                  type="email"
+                  required={true}
+                />
+                <div className="icon" onClick={() => setShowPassword(!showPassword)}>
+                  <EmailAtSign />
+                </div>
+              </Form.Group>
+              <Form.Group className="form-control" controlId="newsletterForm.ControlInput">
+                <InputField
+                  name="password"
+                  label={t('COMMON.PASSWORD')}
+                  placeholder="Enter your password"
+                  type={showPassword ? 'text' : 'password'}
+                  required={true}
+                  rules={{
+                    minLength: {
+                      value: 8,
+                      message: t('COMMON.PASSWORD_AT_LEAST_EIGHT', {
+                        label: t('COMMON.PASSWORD'),
+                      }),
+                    },
+                  }}
+                />
+                <div className="icon" onClick={() => setShowPassword(!showPassword)}>
+                  {showPassword ? <PasswordLockIcon /> : <PasswordUnLockIcon />}
+                </div>
+              </Form.Group>
+              <Form.Group className="form-control" controlId="newsletterForm.ControlInput">
+                <Button variant="primary" type="submit" disabled={disableSubmit}>
+                  {t('COMMON.LOG_IN')}
+                </Button>
+              </Form.Group>
+              <Form.Group className="form-control forgot-link" controlId="forgotForm.ControlInput">
+                <p>
+                  <Link href={USER_ROUTES.forgotPassword}>
+                    {t('FORGOT_PASSWORD.FORGOT_YOUR_PASSWORD')}?
+                  </Link>
+                </p>
+              </Form.Group>
+              {/* <Form.Group className="form-control google-btn" controlId="googlebtnForm.ControlInput">
               <button className="google bordered">
                 <Image src={'/images/google-icon.svg'} width={16} height={17} alt="google" />
                 {t('COMMON.GOOGLE')}
               </button>
             </Form.Group> */}
-          </Form>
-        </FormProvider>
+            </Form>
+          </FormProvider>
+        </div>
       </div>
-    </div>
+    </BannerWrapper>
   );
 }

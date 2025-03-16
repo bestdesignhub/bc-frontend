@@ -54,7 +54,7 @@ export const WISHLIST_DELETE_BY_PRODUCT_ID_URL = '/wishlist/delete-by-product';
 
 //Settings
 export const GET_SETTINNG_URL = '/fetch-setting';
-
+export const GET_TESTIMONIAL_URL = '/fetch-testimonials';
 //Flash Sale
 export const FLASH_SALE_URL = '/slug/fetch-flash-sale';
 

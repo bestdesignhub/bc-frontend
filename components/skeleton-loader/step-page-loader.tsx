@@ -9,7 +9,7 @@ const StepPageSkeletonLoader = () => {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, behavior: 'instant' });
     // Check if the device is mobile on initial render
     const checkIsMobile = () => {
       setIsMobile(window.innerWidth <= 768);

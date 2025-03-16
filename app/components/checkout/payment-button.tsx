@@ -66,7 +66,6 @@ const PaymentButton = ({
         email: userData?.email,
         orderId: placeOrder?.data?.data?._id,
       });
-      console.log('session: ', session);
       if (session.data.success) {
         const stripe: any = await loadStripe(CONFIG?.stripePublicKey as string);
         const { error } = await stripe.redirectToCheckout({

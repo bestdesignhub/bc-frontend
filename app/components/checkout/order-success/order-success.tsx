@@ -11,6 +11,7 @@ import { useTranslations } from 'next-intl';
 import { MESSAGES, USER_ROUTES } from '@/constants';
 import userAxiosInstance from '@/config/userAxiosInstance';
 import { setUserSettingCartCount } from '@/lib/redux/slices/userSettingSlice';
+import BannerWrapper from '@/components/common/banner/BannerWrapper';
 
 const OrderSuccess: React.FC<{ _id: string }> = ({ _id }) => {
   const t = useTranslations();
@@ -36,7 +37,7 @@ const OrderSuccess: React.FC<{ _id: string }> = ({ _id }) => {
   }, [_id, t]);
 
   return (
-    <>
+    <BannerWrapper>
       <div className="payment-status-wrapper">
         <div className="container">
           <div className="payment-content success">
@@ -55,7 +56,7 @@ const OrderSuccess: React.FC<{ _id: string }> = ({ _id }) => {
           </div>
         </div>
       </div>
-    </>
+    </BannerWrapper>
     // <Container className="order-success-container">
     //   <Row className="justify-content-center">
     //     <Col md={6}>

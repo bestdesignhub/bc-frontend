@@ -1,6 +1,7 @@
 'use client';
 import '@/app/styles/login.css';
 import { EmailAtSign, InputField } from '@/components/common';
+import BannerWrapper from '@/components/common/banner/BannerWrapper';
 import { MESSAGES, USER_ROUTES } from '@/constants';
 import {
   REQUEST_FORGOT_PASSWORD_LINK_URL,
@@ -76,69 +77,71 @@ export default function ForgotPassword({ token }: { token?: string }) {
   };
 
   return (
-    <div className="loginform-wrapper">
-      <div className="container">
-        <div className="login_title">
-          <h1>{t(token ? 'SET_NEW_PASSWORD.TITLE' : 'FORGOT_PASSWORD.TITLE')}</h1>
+    <BannerWrapper>
+      <div className="loginform-wrapper">
+        <div className="container">
+          <div className="login_title">
+            <h1>{t(token ? 'SET_NEW_PASSWORD.TITLE' : 'FORGOT_PASSWORD.TITLE')}</h1>
+          </div>
+          <FormProvider {...methods}>
+            <Form onSubmit={handleSubmit(onSubmit)} method="post">
+              {!token && (
+                <Form.Group className="form-control" controlId="newsletterForm.ControlInput">
+                  <InputField
+                    name="email"
+                    label={t('COMMON.EMAIL_ADDRESS')}
+                    placeholder="xyz@gmail.com"
+                    type="email"
+                    required={true}
+                  />
+                  <div className="icon">
+                    <EmailAtSign />
+                  </div>
+                </Form.Group>
+              )}
+
+              {token && (
+                <>
+                  <Form.Group className="form-control" controlId="passwordForm.ControlInput">
+                    <InputField
+                      name="password"
+                      label={t('COMMON.PASSWORD')}
+                      type="password"
+                      required={true}
+                    />
+                  </Form.Group>
+                  <Form.Group className="form-control" controlId="confirmPasswordForm.ControlInput">
+                    <InputField
+                      name="confirmPassword"
+                      label={t('COMMON.CONFIRM_PASSWORD')}
+                      type="password"
+                      required={true}
+                      rules={{
+                        validate: (value: string) =>
+                          value === password || t('COMMON.PASSWORDS_DO_NOT_MATCH'),
+                      }}
+                    />
+                  </Form.Group>
+                </>
+              )}
+
+              <Form.Group className="form-control" controlId="submitForm.ControlInput">
+                <Button variant="primary" type="submit" disabled={disableSubmit}>
+                  {t('COMMON.SUBMIT')}
+                </Button>
+              </Form.Group>
+
+              {!token && (
+                <Form.Group className="form-control forgot-link" controlId="forgotForm.ControlInput">
+                  <p>
+                    <Link href={USER_ROUTES.signin}>{t('COMMON.LOG_IN')}</Link>
+                  </p>
+                </Form.Group>
+              )}
+            </Form>
+          </FormProvider>
         </div>
-        <FormProvider {...methods}>
-          <Form onSubmit={handleSubmit(onSubmit)} method="post">
-            {!token && (
-              <Form.Group className="form-control" controlId="newsletterForm.ControlInput">
-                <InputField
-                  name="email"
-                  label={t('COMMON.EMAIL_ADDRESS')}
-                  placeholder="xyz@gmail.com"
-                  type="email"
-                  required={true}
-                />
-                <div className="icon">
-                  <EmailAtSign />
-                </div>
-              </Form.Group>
-            )}
-
-            {token && (
-              <>
-                <Form.Group className="form-control" controlId="passwordForm.ControlInput">
-                  <InputField
-                    name="password"
-                    label={t('COMMON.PASSWORD')}
-                    type="password"
-                    required={true}
-                  />
-                </Form.Group>
-                <Form.Group className="form-control" controlId="confirmPasswordForm.ControlInput">
-                  <InputField
-                    name="confirmPassword"
-                    label={t('COMMON.CONFIRM_PASSWORD')}
-                    type="password"
-                    required={true}
-                    rules={{
-                      validate: (value: string) =>
-                        value === password || t('COMMON.PASSWORDS_DO_NOT_MATCH'),
-                    }}
-                  />
-                </Form.Group>
-              </>
-            )}
-
-            <Form.Group className="form-control" controlId="submitForm.ControlInput">
-              <Button variant="primary" type="submit" disabled={disableSubmit}>
-                {t('COMMON.SUBMIT')}
-              </Button>
-            </Form.Group>
-
-            {!token && (
-              <Form.Group className="form-control forgot-link" controlId="forgotForm.ControlInput">
-                <p>
-                  <Link href={USER_ROUTES.signin}>{t('COMMON.LOG_IN')}</Link>
-                </p>
-              </Form.Group>
-            )}
-          </Form>
-        </FormProvider>
       </div>
-    </div>
+    </BannerWrapper>
   );
 }

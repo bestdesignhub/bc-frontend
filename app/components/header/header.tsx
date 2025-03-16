@@ -1,10 +1,9 @@
 'use client';
-import { useLayoutEffect, useMemo } from 'react';
+import { useEffect, useLayoutEffect, useMemo, useState } from 'react';
 import '@/app/styles/header.css';
 import Link from 'next/link';
 import Logo from './logo';
 import MenuList from './menu-list';
-import TopMenu from './top-menu';
 import { COOKIES, USER_ROUTES } from '@/constants';
 import CartWishlist from './cart-wishlist';
 import Cookies from 'js-cookie';
@@ -12,9 +11,12 @@ import userAxiosInstance from '@/config/userAxiosInstance';
 import { GENERAL_USER_SETTINGS_URL } from '@/constants/apis';
 import { dispatch } from '@/lib/redux/store';
 import { setAllUserSettingsValues } from '@/lib/redux/slices/userSettingSlice';
+import { usePathname } from 'next/navigation';
 
 export default function Header() {
-  const token = useMemo(() => Cookies.get(COOKIES.userToken), []);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const location = usePathname();
+  const token = useMemo(() => Cookies.get(COOKIES.userToken), [location]);
   // const [isSearchActive, setSearchActive] = useState(false);
 
   useLayoutEffect(() => {
@@ -39,23 +41,33 @@ export default function Header() {
     }
   }, [token]);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   // const toggleSearch = () => {
   //   setSearchActive(!isSearchActive);
   // };
   return (
     <>
-      <div className="header_middle">
+      {/* <div className="header_middle">
         <div className="container">
           <div className="flexrow">
-            <Logo />
             <TopMenu />
+            <Logo />
             <button className="bsp-btn">Become a wholesaler</button>
           </div>
         </div>
-      </div>
-      <div className="header_bottom">
+      </div> */}
+      <div className={`header_bottom ${isScrolled ? 'scrolled' : ''}`}>
         <div className="container">
           <div className="flexrow">
+            <Logo />
             <MenuList />
             <div className="header_right">
               {/* <div className={`user_item search ${isSearchActive ? 'active' : ''}`}>

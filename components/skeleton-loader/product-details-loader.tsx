@@ -8,7 +8,7 @@ const ProductDetailsSkeleton = () => {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, behavior: 'instant' });
     const checkIsMobile = () => {
       setIsMobile(window.innerWidth <= 768);
     };

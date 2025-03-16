@@ -21,9 +21,15 @@ interface IHomePageProps {
   homepageData: IHomeApiRes;
   homeStoryData: any;
   homeProductList: IProduct[];
+  testimonialData: { position: string; title: string; name: string }[];
 }
 
-const HomeComponent = ({ homepageData, homeStoryData, homeProductList }: IHomePageProps) => {
+const HomeComponent = ({
+  homepageData,
+  homeStoryData,
+  homeProductList,
+  testimonialData,
+}: IHomePageProps) => {
   const heroData = homepageData?.section1;
   const perfectFitData = homepageData?.section2;
   const marqueeData = homepageData?.sectionNString;
@@ -34,6 +40,7 @@ const HomeComponent = ({ homepageData, homeStoryData, homeProductList }: IHomePa
   const storiesData = homepageData?.section7;
   const lookGoodData = homepageData?.section8;
   const clientStoryData = homepageData?.section9;
+  console.log('testimonialData: ', testimonialData);
   return (
     <>
       <Hero heroData={heroData} />
@@ -47,7 +54,7 @@ const HomeComponent = ({ homepageData, homeStoryData, homeProductList }: IHomePa
       <LookGood lookGoodData={lookGoodData} />
       <ZeeZap lookGoodData={lookGoodData} />
       <ClientStory clientStoryData={clientStoryData} />
-      <Testimonial />
+      <Testimonial testimonialData={testimonialData} />
       <Instagram />
       <Service />
     </>

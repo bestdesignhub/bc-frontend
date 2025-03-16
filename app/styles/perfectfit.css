@@ -1,7 +1,7 @@
 .perfectfit_wrapper {
   background: url('/images/section-bg.png') no-repeat center center;
   background-size: cover;
-  margin: 118px 0 0;
+  /* margin: 118px 0 0; */
 }
 .perfectfit_wrapper .row {
   align-items: center;

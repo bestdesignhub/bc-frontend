@@ -13,6 +13,7 @@ import { useTranslations } from 'next-intl';
 import userAxiosInstance from '@/config/userAxiosInstance';
 import { SIGNOUT_API_URL } from '@/constants/apis';
 import { clearLocalStorageTokenAndData } from '@/utils/common.utils';
+import BannerWrapper from '@/components/common/banner/BannerWrapper';
 
 export default function MyAccountLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -37,53 +38,55 @@ export default function MyAccountLayout({ children }: { children: React.ReactNod
   };
 
   return (
-    <div className="my-account-page">
-      <div className="container">
-        <Row>
-          <Col md={3}>
-            <nav className="flex-column nav nav-pills">
-              <div className="nav-item">
-                <Link
-                  href={USER_ROUTES.myAccount}
-                  className={`nav-link ${pathname === USER_ROUTES.myAccount ? 'active' : ''}`}
-                >
-                  {t('COMMON.MY_ACCOUNT')}
-                </Link>
-              </div>
-              <div className="nav-item">
-                <Link
-                  href={`${USER_ROUTES.myAccount}${USER_ROUTES.myAddresses}`}
-                  className={`nav-item nav-link ${pathname === `${USER_ROUTES.myAccount}${USER_ROUTES.myAddresses}` ? 'active' : ''}`}
-                >
-                  {t('COMMON.MY_ADDRESS')}
-                </Link>
-              </div>
-              <div className="nav-item">
-                <Link
-                  href={`${USER_ROUTES.myAccount}${USER_ROUTES.orderHistory}`}
-                  className={`nav-item nav-link ${pathname === `${USER_ROUTES.myAccount}${USER_ROUTES.orderHistory}` ? 'active' : ''}`}
-                >
-                  {t('COMMON.ORDER_HISTORY')}
-                </Link>
-              </div>
-              <div className="nav-item">
-                <Link
-                  href={`${USER_ROUTES.myAccount}${USER_ROUTES.settings}`}
-                  className={`nav-item nav-link ${pathname === `${USER_ROUTES.myAccount}${USER_ROUTES.settings}` ? 'active' : ''}`}
-                >
-                  {t('COMMON.SETTINGS')}
-                </Link>
-              </div>
-              <div className="nav-item">
-                <Link className="nav-item nav-link " href="#" onClick={handleLogout}>
-                  {t('COMMON.LOGOUT')}
-                </Link>
-              </div>
-            </nav>
-          </Col>
-          <Col md={9}>{children}</Col>
-        </Row>
+    <BannerWrapper>
+      <div className="my-account-page">
+        <div className="container">
+          <Row>
+            <Col md={3}>
+              <nav className="flex-column nav nav-pills">
+                <div className="nav-item">
+                  <Link
+                    href={USER_ROUTES.myAccount}
+                    className={`nav-link ${pathname === USER_ROUTES.myAccount ? 'active' : ''}`}
+                  >
+                    {t('COMMON.MY_ACCOUNT')}
+                  </Link>
+                </div>
+                <div className="nav-item">
+                  <Link
+                    href={`${USER_ROUTES.myAccount}${USER_ROUTES.myAddresses}`}
+                    className={`nav-item nav-link ${pathname === `${USER_ROUTES.myAccount}${USER_ROUTES.myAddresses}` ? 'active' : ''}`}
+                  >
+                    {t('COMMON.MY_ADDRESS')}
+                  </Link>
+                </div>
+                <div className="nav-item">
+                  <Link
+                    href={`${USER_ROUTES.myAccount}${USER_ROUTES.orderHistory}`}
+                    className={`nav-item nav-link ${pathname === `${USER_ROUTES.myAccount}${USER_ROUTES.orderHistory}` ? 'active' : ''}`}
+                  >
+                    {t('COMMON.ORDER_HISTORY')}
+                  </Link>
+                </div>
+                <div className="nav-item">
+                  <Link
+                    href={`${USER_ROUTES.myAccount}${USER_ROUTES.settings}`}
+                    className={`nav-item nav-link ${pathname === `${USER_ROUTES.myAccount}${USER_ROUTES.settings}` ? 'active' : ''}`}
+                  >
+                    {t('COMMON.SETTINGS')}
+                  </Link>
+                </div>
+                <div className="nav-item">
+                  <Link className="nav-item nav-link " href="#" onClick={handleLogout}>
+                    {t('COMMON.LOGOUT')}
+                  </Link>
+                </div>
+              </nav>
+            </Col>
+            <Col md={9}>{children}</Col>
+          </Row>
+        </div>
       </div>
-    </div>
+    </BannerWrapper>
   );
 }

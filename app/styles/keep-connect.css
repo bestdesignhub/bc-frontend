@@ -167,6 +167,7 @@
   .keepconnect-wrapper .image {
     position: relative;
     right: 0;
+    object-fit: cover;
   }
   .keepconnect-wrapper .social {
     padding: 0 0 24px;

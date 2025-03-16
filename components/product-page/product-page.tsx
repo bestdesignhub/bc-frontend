@@ -34,7 +34,6 @@ export default async function ProductPage({
   showGenders,
   slug,
 }: ProductPageProps) {
-  console.time('ProductPage');
   const resolvedSearchParams = await searchParams;
   // const locale = await getLocale();
 
@@ -63,8 +62,6 @@ export default async function ProductPage({
   const faqData = results[4].status === 'fulfilled' ? results[4].value : [];
   const bannerData = results[5].status === 'fulfilled' ? results[5].value : {};
   const genders = showGenders && results[6]?.status === 'fulfilled' ? results[6].value : [];
-
-  console.timeEnd('ProductPage');
   return (
     <>
       <BannerComponent bannerData={bannerData} />

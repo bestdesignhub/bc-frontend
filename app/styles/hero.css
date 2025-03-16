@@ -8,6 +8,13 @@
 .herobox .image {
   position: relative;
 }
+@media screen and (max-width: 592px) {
+  .herobox video{
+    height: 360px !important;
+    width: auto !important;
+  }
+}
+
 .herobox .image::after {
   content: '';
   display: block;

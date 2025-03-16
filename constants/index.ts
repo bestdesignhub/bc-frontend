@@ -58,6 +58,9 @@ const URL_SLUG = {
   PRODUCT: 'product',
   ADD_TO_CART: 'cart',
   MEASUREMENT_PROFILE: 'measurement-profile',
+  PAGINATION: {
+    PAGE: '_page',
+  },
 };
 
 const PAYMENT_OPTIONS = {

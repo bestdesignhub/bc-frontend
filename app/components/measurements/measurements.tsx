@@ -6,6 +6,7 @@ import '@/app/styles/Measurements.css';
 import { useTranslations } from 'next-intl';
 import MeasurementsBox from './measurements-box';
 import { DropDownOptionType } from '@/types';
+import BannerWrapper from '@/components/common/banner/BannerWrapper';
 
 export default function Measurementspage({
   fittingName,
@@ -22,7 +23,7 @@ export default function Measurementspage({
 }) {
   const t = useTranslations();
   return (
-    <>
+    <BannerWrapper>
       <div className="measurements-page">
         <div className="measurements-block">
           <div className="measurements-left">
@@ -43,6 +44,6 @@ export default function Measurementspage({
         </div>
       </div>
       {/* <Customisebreadcrumb /> */}
-    </>
+    </BannerWrapper>
   );
 }

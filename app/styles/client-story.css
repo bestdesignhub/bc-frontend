@@ -10,15 +10,18 @@
 .client_content {
   padding: 0 102px;
   text-align: center;
+  /* text-shadow: 2px 1px 3px var(--bsp-gray4); */
 }
+
 .client_content h4 {
-  font-size: var(--bsp-heading4);
+  font-size: var(--bsp-heading3);
   font-family: var(--bsp-font-poppins);
   line-height: 1.5;
   padding: 0 0 20px;
+  font-weight: 500;
 }
 .client_content p {
-  font-size: var(--bsp-body-14);
+  font-size: var(--bsp-body-20);
   line-height: 1.428;
 }
 .client_content button {

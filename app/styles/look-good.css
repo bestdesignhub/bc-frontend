@@ -1,5 +1,5 @@
 .lookgood-wrapper {
-  padding: 42px 50px;
+  padding: 0px 50px;
 }
 .lookgood-wrapper .section_title {
   padding: 0 0 60px;
@@ -50,7 +50,7 @@
 }
 .lookgood-wrapper .lookgood_content p {
   font-size: var(--bsp-body-14);
-  color: var(--bsp-gray3);
+  color: var(--bsp-gray1);
   line-height: 1.857;
   padding: 15px 0 0;
 }

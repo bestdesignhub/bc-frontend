@@ -39,7 +39,7 @@ const settings = {
   ],
 };
 
-export default function Testimonial() {
+export default function Testimonial({ testimonialData }: { testimonialData: any[] }) {
   return (
     <>
       <div className="testimonial-wrapper">
@@ -47,30 +47,13 @@ export default function Testimonial() {
           <Row className="justify-content-center">
             <Col xs={12} lg={6}>
               <Slider {...settings}>
-                <div className="testimonialbox">
-                  <h6>Lorem ipsum dolor sit amet</h6>
-                  <p>
-                    “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer non tristique
-                    nibh. Nullam porta viverra massa, sed ornare tortor gravida efficitur.”
-                  </p>
-                  <h4>Lorem, ipsum</h4>
-                </div>
-                <div className="testimonialbox">
-                  <h6>Lorem ipsum dolor sit amet</h6>
-                  <p>
-                    “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer non tristique
-                    nibh. Nullam porta viverra massa, sed ornare tortor gravida efficitur.”
-                  </p>
-                  <h4>Lorem, ipsum</h4>
-                </div>
-                <div className="testimonialbox">
-                  <h6>Lorem ipsum dolor sit amet</h6>
-                  <p>
-                    “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer non tristique
-                    nibh. Nullam porta viverra massa, sed ornare tortor gravida efficitur.”
-                  </p>
-                  <h4>Lorem, ipsum</h4>
-                </div>
+                {testimonialData?.map((testimonial, index: number) => (
+                  <div className="testimonialbox" key={index}>
+                    <h6>{testimonial.name}</h6>
+                    <p>“{testimonial.title}”</p>
+                    <h4>{testimonial.position}</h4>
+                  </div>
+                ))}
               </Slider>
             </Col>
           </Row>

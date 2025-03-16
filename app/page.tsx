@@ -6,6 +6,7 @@ import {
   getHomePageData,
   getHomePageStoryData,
   getHomeProductList,
+  getTestimonials,
   getWebSiteSettings,
 } from '@/utils/server-api.utils';
 import { IProduct } from './components/accessories/accessories';
@@ -22,6 +23,7 @@ export default async function Home() {
     settingDataResult,
     flashSaleResult,
     homeModelResult,
+    testimonialResult,
   ] = await Promise.allSettled([
     getHomePageData(),
     getHomePageStoryData(),
@@ -29,6 +31,7 @@ export default async function Home() {
     getWebSiteSettings(),
     getFlashSaleBySlug('home'),
     getHomeModelBySlug('home-model'),
+    getTestimonials(),
   ]);
 
   const homepageData = homepageDataResult.status === 'fulfilled' ? homepageDataResult.value : {};
@@ -39,7 +42,7 @@ export default async function Home() {
     settingDataResult.status === 'fulfilled' ? (settingDataResult.value as ISettings) : undefined;
   const flashSale = flashSaleResult.status === 'fulfilled' ? flashSaleResult.value : null;
   const homeModelData = homeModelResult.status === 'fulfilled' ? homeModelResult.value : null;
-
+  const testimonialData = testimonialResult.status === 'fulfilled' ? testimonialResult.value : [];
   return (
     <div className={styles.page}>
       <main className={styles.main}>
@@ -49,10 +52,11 @@ export default async function Home() {
           homepageData={homepageData}
           homeStoryData={homeStoryData}
           homeProductList={homeProductList}
+          testimonialData={testimonialData}
         />
         <KeepConnect settings={settingData} />
         <Footer settings={settingData} />
-        <ModalHome modelData={homeModelData} />
+        {homeModelData && homeModelData?.status && <ModalHome modelData={homeModelData} />}
       </main>
     </div>
   );

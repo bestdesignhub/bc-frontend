@@ -1,5 +1,5 @@
 .topbar {
-  background: var(--bsp-primary);
+  background: var(--bsp-primary2);
   padding: 7px 0;
 }
 .topbar .flexrow {
@@ -67,7 +67,6 @@
 }
 .header_middle {
   padding: 15px 0;
-  background: red;
 }
 .header_middle .flexrow {
   align-items: center;
@@ -110,9 +109,34 @@
   cursor: pointer;
 }
 .header_bottom {
-  background: var(--bsp-black);
+  background: transparent;
   padding: 13px 0;
+  position: absolute;
+  z-index: 999;
+  width: 100%;
+  transition: all 0.3s ease;
 }
+
+@media screen and (min-width: 992px) {
+/* When scrolled */
+.header_bottom.scrolled {
+  position: fixed;
+  background: white;
+  color: black;
+  top: 0;
+  left: 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+/* When scrolled */
+.header_bottom:hover {
+  position: fixed;
+  background: white;
+  color: black;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+}
+
+
 .header_bottom .flexrow {
   justify-content: space-between;
   align-items: center;
@@ -134,6 +158,41 @@
   color: var(--bsp-white);
   text-transform: uppercase;
 }
+/* Default state */
+.dark-logo {
+  display: none;
+}
+.light-logo {
+  display: block;
+}
+
+@media screen and (min-width: 992px) {
+
+.header_bottom:hover .navigation ul li a,
+.header_bottom.scrolled .navigation ul li a {
+  color: var(--bsp-black);
+}
+
+
+/* On hover OR scroll, switch logos */
+.header_bottom:hover .logo .dark-logo,
+.header_bottom.scrolled .logo .dark-logo {
+  display: block;
+}
+
+.header_bottom:hover .logo .light-logo,
+.header_bottom.scrolled .logo .light-logo {
+  display: none;
+}
+
+/* Hover: Always white */
+
+.header_bottom.scrolled .user_item svg path,
+.header_bottom:hover .user_item svg path {
+  stroke: var(--bsp-black);
+}
+}
+
 .header_bottom .header_right {
   display: -ms-flexbox;
   display: flex;
