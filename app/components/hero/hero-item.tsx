@@ -1,4 +1,5 @@
 // import { useTranslations } from 'next-intl';
+import { getAWSImageUrl } from '@/utils/common.utils';
 import Image from 'next/image';
 
 type HeroItemProps = {
@@ -9,22 +10,22 @@ type HeroItemProps = {
   buttonText: string;
 };
 
-export default function HeroItem({}: Readonly<HeroItemProps>) {
+export default function HeroItem({ title, image }: Readonly<HeroItemProps>) {
   // const t = useTranslations();
   return (
     <div className="mainBanner">
-       <div className="relative">
-       <div className="container containe-bnr">
-        <h2 className=" style-title bnr">Design Your <br/>Perfect Cashmere <br/> Sweater Online</h2>
-      </div> 
-      <Image
-        src="https://bespokecashmere.eu/banner.jpg"
-        alt="Bespoke"
-        fill
-        className="object-cover"
-        loading="lazy"
-      />
-       </div>
+      <div className="relative">
+        <div className="container containe-bnr">
+          <h2 className="style-title bnr">{title}</h2>
+        </div>
+        <Image
+          src={getAWSImageUrl(image)}
+          alt="Bespoke"
+          fill
+          className="object-cover"
+          loading="lazy"
+        />
+      </div>
       {/* <div className="image"> */}
       {/* <Image loading="lazy" src={getAWSImageUrl(image)} alt={title} width={1520} height={680} /> */}
       {/* </div> */}
