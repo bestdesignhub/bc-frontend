@@ -1,6 +1,5 @@
 "use client"
 
-import { SizeModal } from '@/components/size-modal';
 import userAxiosInstanceWithoutToken from '@/config/userAxiosInstanceWithoutToken';
 import { MESSAGES, URL_SLUG, USER_ROUTES } from '@/constants';
 import { YARN_GET_DETAIL_URL } from '@/constants/apis';
@@ -11,7 +10,7 @@ import { formatPrice, getAWSImageUrl } from '@/utils/common.utils';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import { Col } from 'react-bootstrap';
 import toast from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
@@ -21,7 +20,7 @@ const ProductCard: FC<{ product: any }> = ({ product }) => {
   const { view } = useView();
   const t = useTranslations();
   const searchParams = useSearchParams();
-  const [showModal, setShowModal] = useState(false);
+  // const [showModal, setShowModal] = useState(false);
   // const [yarnDetails, setYarnDetails] = useState<any>(null);
   const router = useRouter();
 
@@ -72,9 +71,6 @@ const ProductCard: FC<{ product: any }> = ({ product }) => {
         dispatch(setLoading(false));
       });
   };
-
-  const handleClose = () => setShowModal(false);
-
   const yarnId = searchParams.get(URL_SLUG.YARN);
   return (
     <>
