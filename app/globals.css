@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Homemade+Apple&family=Iansui&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Rationale&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Gilda+Display&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
 :root {
-  --bsp-font-poppins: 'Noto Sans', serif;
-  --bsp-font-libre: 'Libre Caslon Text', serif;
+  --bsp-font-poppins: 'Lato', sans-serif;
+  --bsp-font-libre: 'Gilda Display', serif;
   --background: #ffffff;
   --foreground: #171717;
    --bsp-primary: #afc7cd;
@@ -59,7 +59,6 @@ body {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: var(--bsp-font-poppins) !important;
 }
 
 a {
@@ -263,6 +262,34 @@ ul.slick-dots li button:before {
 .not-found p {
   font-size: var(--bsp-body-24);
   padding: 0 0 24px;
+}
+
+.mainBanner {
+  position: relative;
+  height: 665px;
+  max-height: 665px;
+}
+
+.mainBanner img{
+  position: static !important;
+}
+
+.containe-bnr, .relative {
+  position: relative;
+}
+
+h2.style-title.bnr {
+  font-size: 64px;
+  text-align: left;
+  text-transform: uppercase;
+  line-height: 64px;
+  padding-top: 175px;
+  position: absolute;
+  font-family: var(--bsp-font-libre);
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: -1px;
+  color: #726a5f;
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {

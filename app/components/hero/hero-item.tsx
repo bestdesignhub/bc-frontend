@@ -2,6 +2,7 @@ import VideoPlayer from '@/components/common/video/VideoPlayer';
 import { USER_ROUTES } from '@/constants';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
+import Image from 'next/image';
 
 type HeroItemProps = {
   href: string;
@@ -14,12 +15,23 @@ type HeroItemProps = {
 export default function HeroItem({ title }: Readonly<HeroItemProps>) {
   const t = useTranslations();
   return (
-    <div className="herobox">
+    <div className="mainBanner">
+       <div className="relative">
+       <div className="container containe-bnr">
+        <h2 className=" style-title bnr">Design Your <br/>Perfect Cashmere <br/> Sweater Online</h2>
+      </div> 
+      <Image
+        src="https://bespokecashmere.eu/banner.jpg"
+        alt="Bespoke"
+        fill
+        className="object-cover"
+        loading="lazy"
+      />
+       </div>
       {/* <div className="image"> */}
       {/* <Image loading="lazy" src={getAWSImageUrl(image)} alt={title} width={1520} height={680} /> */}
-      <VideoPlayer url='https://videos.pexels.com/video-files/5788041/5788041-hd_1920_1080_25fps.mp4' controls={false} loop />
       {/* </div> */}
-      <div className="banner_caption">
+      {/* <div className="banner_caption">
         <div className="container">
           <div className="banner_content">
             <h1>{title}</h1>
@@ -71,7 +83,7 @@ export default function HeroItem({ title }: Readonly<HeroItemProps>) {
             </button>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
