@@ -1,18 +1,26 @@
 import Image from 'next/image';
-import Link from 'next/link';
-import { Container } from 'react-bootstrap';
+// import Link from 'next/link';
+// import { Container } from 'react-bootstrap';
 import '@/app/styles/look-good.css';
 import { Section8 } from '@/types/components';
-import { getAWSImageUrl } from '@/utils/common.utils';
+// import { getAWSImageUrl } from '@/utils/common.utils';
 
 interface ILookGoodProps {
   lookGoodData: Section8;
 }
 
-export default function LookGood({ lookGoodData }: ILookGoodProps) {
+export default function LookGood({}: ILookGoodProps) {
   return (
     <div className="lookgood-wrapper">
-      <Container fluid>
+      <Image
+        src="https://bespokecashmere.eu/step-banner.jpg"
+        width={1920}
+        height={514}
+        alt="hero"
+        className="img1"
+        loading="lazy"
+      />
+      {/* <Container fluid>
         <div className="section_title center">
           <h2>{lookGoodData?.title ?? ''}</h2>
         </div>
@@ -43,10 +51,6 @@ export default function LookGood({ lookGoodData }: ILookGoodProps) {
                 <h6>{lookGoodData?.card1?.title ?? ''}</h6>
                 <h4>{lookGoodData?.card1?.sub_title ?? ''}</h4>
                 <p>{lookGoodData?.card1?.description ?? ''}</p>
-                {/* <p>
-                  In nec nisi in urna facilisis placerat vitae ut est.Lorem ipsum dolor sit amet,
-                  consectetur adipiscing elit. Integer non tristique nibh.
-                </p> */}
                 <button className="small">
                   <Link href={lookGoodData?.card1?.button_link ?? '#'}>
                     {lookGoodData?.card1?.button_text ?? ''}
@@ -56,7 +60,7 @@ export default function LookGood({ lookGoodData }: ILookGoodProps) {
             </div>
           </div>
         </div>
-      </Container>
+      </Container> */}
     </div>
   );
 }

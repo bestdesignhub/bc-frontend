@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { Col } from 'react-bootstrap';
 import { getAWSImageUrl } from '@/utils/common.utils';
 
 type FavouriteItemProps = {
@@ -18,20 +17,18 @@ export default function FavouriteItem({
   image
 }: FavouriteItemProps) {
   return (
-    <Col>
-      <div className="favouritebox">
-        <Link href={href}>
-          <div className="image">
-            <Image
-              loading="lazy"
-              src={getAWSImageUrl(image)}
-              alt={title}
-              width={1520}
-              height={680}
-            />
-          </div>
-        </Link>
+    <div className="favouritebox">
+    <Link href={href}>
+      <div className="image">
+        <Image
+          loading="lazy"
+          src={getAWSImageUrl(image)}
+          alt={title}
+          width={1520}
+          height={680}
+        />
       </div>
-    </Col>
+    </Link>
+  </div>
   );
 }

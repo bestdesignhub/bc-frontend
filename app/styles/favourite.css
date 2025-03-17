@@ -1,6 +1,14 @@
 .favourite-wrapper {
-  padding: 30px 50px;
+  padding: 50px 20px;
+  text-align: center;
 }
+ 
+.favourite-wrapper h2 {
+  padding-bottom: 20px;
+  display: inline-block;
+  text-transform: normal  ;
+}
+
 .favourite-wrapper .section_title {
   padding: 0 0 60px;
 }
@@ -9,8 +17,7 @@
   margin: 0 auto !important;
   display: block;
 }
-.favourite-post {
-}
+
 .favourite-post .row {
   --bs-gutter-y: 1.5rem;
 }
@@ -86,6 +93,17 @@
   padding: 15px 30px;
   margin: 0;
 }
+
+.favourite-section {
+  display: flex;
+  width: 100%;
+  gap: 20px;
+}
+
+.favourite-section .favouritebox {
+  width: 25%;
+}
+
 
 @media (max-width: 767px) {
   .favourite-wrapper {
