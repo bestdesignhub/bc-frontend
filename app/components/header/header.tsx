@@ -64,11 +64,28 @@ export default function Header() {
           </div>
         </div>
       </div> */}
+      <div className='top-strip'>
+        <div className='container'>
+          <div className='inner-content'>
+          <div className='left-text'>
+            Free Shipping on all orders over $500
+          </div>
+          <div className='top-right-panel'>
+            <Link className='button-top' href="/sweater">
+              Create My Sweater
+            </Link>
+            <Link className='button-top' href="/shop">
+              Customise a sweater
+            </Link>
+          </div>
+          </div>
+        </div>
+      </div>
+
       <div className={`header_bottom ${isScrolled ? 'scrolled' : ''}`}>
         <div className="container">
           <div className="flexrow">
             <Logo />
-            <MenuList />
             <div className="header_right">
               {/* <div className={`user_item search ${isSearchActive ? 'active' : ''}`}>
                 <input type="text" className="search_input" placeholder="Search..." />
@@ -111,7 +128,6 @@ export default function Header() {
                       width="24"
                       height="24"
                       viewBox="0 0 24 24"
-                      fill="none"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
@@ -188,6 +204,13 @@ export default function Header() {
               </div> */}
             </div>
           </div>
+          <div>
+          </div>
+        </div>
+      </div>
+      <div className='menubar'>
+        <div className='container'>
+          <MenuList />
         </div>
       </div>
     </>

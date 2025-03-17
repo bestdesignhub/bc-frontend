@@ -12,6 +12,7 @@ const nextConfig = {
       'stage-bespoke-cashmeres.s3.eu-west-1.amazonaws.com',
       'bespokecashemeres.s3.us-east-1.amazonaws.com',
       'stage.bespokecashmeres.com',
+      'bespokecashmere.eu',
     ], // Allow images from all domains
   },
 };
