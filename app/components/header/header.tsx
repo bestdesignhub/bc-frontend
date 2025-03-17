@@ -11,12 +11,10 @@ import userAxiosInstance from '@/config/userAxiosInstance';
 import { GENERAL_USER_SETTINGS_URL } from '@/constants/apis';
 import { dispatch } from '@/lib/redux/store';
 import { setAllUserSettingsValues } from '@/lib/redux/slices/userSettingSlice';
-import { usePathname } from 'next/navigation';
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const location = usePathname();
-  const token = useMemo(() => Cookies.get(COOKIES.userToken), [location]);
+  const token = useMemo(() => Cookies.get(COOKIES.userToken), []);
   // const [isSearchActive, setSearchActive] = useState(false);
 
   useLayoutEffect(() => {

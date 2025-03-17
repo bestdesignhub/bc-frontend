@@ -45,7 +45,10 @@ interface ICategoryProps {
 
 export default function Category({ categoryData }: ICategoryProps) {
   return (
-    <div className="category-wrapper">
+    <div className='latest-products'>
+      <div className='container'>
+      <div className="category-wrapper">
+      <h2>Trending Products</h2>
       <Slider {...settings}>
         {categoryData?.map((category: any) => (
           <CategoryItem
@@ -56,6 +59,8 @@ export default function Category({ categoryData }: ICategoryProps) {
           />
         ))}
       </Slider>
+    </div>
+      </div>
     </div>
   );
 }

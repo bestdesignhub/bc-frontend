@@ -38,7 +38,7 @@ export default function ModalHome({ modelData }: IModelHomeProps) {
 
   const { handleSubmit } = methods;
 
-  const onSubmit = async (data: any) => {
+  const onSubmit = async () => {
     // try {
     //   dispatch(setLoading(true));
     // } catch (error) {

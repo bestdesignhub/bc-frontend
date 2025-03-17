@@ -1,6 +1,5 @@
 .zeezap-wrapper {
-  padding: 50px 50px 0;
-  overflow: hidden;
+  padding: 0;
 }
 .zeezap-wrapper .row:nth-child(odd) {
   flex-direction: row-reverse;
@@ -8,14 +7,13 @@
 .zeezap-wrapper .image {
   position: relative;
   float: right;
-  width: 50vw;
-  height: 100%;
+  width: 100%;
+  height: 500px;
+  max-height: 500px;
 }
-.zeezap-wrapper .row:nth-child(odd) .image {
-  float: left;
-}
+
 .zeezap-wrapper .image img {
-  position: absolute;
+  position: static;
   top: 0;
   left: 0;
   width: 100%;
@@ -24,7 +22,9 @@
 }
 .zeezap-wrapper .zeezap_content {
   padding: 176px 95px;
+  display: none;
 }
+
 .zeezap-wrapper .zeezap_content h6 {
   font-size: var(--bsp-body-text);
   color: var(--bsp-black);

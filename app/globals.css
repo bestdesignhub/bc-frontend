@@ -66,12 +66,9 @@ a {
   text-decoration: none;
   transition: all 0.3s ease-in-out;
 }
+ 
 
-@media (prefers-color-scheme: dark) {
-  /* html {
-    color-scheme: dark;
-  } */
-}
+
 
 .container {
   margin: 0 auto;
@@ -290,6 +287,64 @@ h2.style-title.bnr {
   font-style: normal;
   letter-spacing: -1px;
   color: #726a5f;
+}
+
+.latest-products {
+  width: 100%;
+  text-align: center;
+  padding: 50px 0;
+}
+
+.latest-products h2{
+  font-size: 45px;
+  display: inline-block;
+  padding-bottom: 20px;
+  color: #7f7263;
+}
+
+.latest-products .slick-slide {
+  padding: 0 10px;
+}
+
+.accessoriesbox, .latest-products .categorybox {
+  background-color: white;
+  box-shadow: 2px 1px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.accessoriesbox img, .latest-products .categorybox img {
+  border-radius: 8px 8px 0 0;
+  -moz-border-radius: 8px 8px 0 0;
+  -webkit-border-radius: 8px 8px 0 0;
+}
+
+.latest-products .categorybox .info {
+  padding: 20px 0;
+}
+
+.latest-products .categorybox .info h5 {
+  font-size: 16px;
+}
+
+.marketing-block {
+  width: 100%;
+}
+
+.marketing-block-content {
+  display: flex;
+  gap: 20px;
+}
+
+.marketing-block .perfectfit_wrapper {
+  background: #f6f4e7;
+  width: 60%;
+  max-width: 60%;
+}
+
+.marketing-img {
+  width: 40%;
+  max-width: 40%;
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {

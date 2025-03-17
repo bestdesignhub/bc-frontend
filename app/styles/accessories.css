@@ -8,7 +8,7 @@
   margin: 0 -30px;
 }
 .accessoriesbox {
-  padding: 0 30px;
+  padding: 0;
 }
 .accessoriesbox .image {
   position: relative;
@@ -27,16 +27,26 @@
   object-fit: cover;
 }
 .accessoriesbox .info {
-  background: transparent;
-  text-align: center;
-  padding: 20px 0 0;
+  text-align: left;
+  padding: 20px;
 }
 .accessoriesbox .info h6 {
   font-size: var(--bsp-body-text);
-  text-transform: uppercase;
   font-family: var(--bsp-font-poppins);
   color: var(--bsp-black);
+  font-weight: bold;
+  padding-bottom: 10px;
+  display: inline-block;
 }
+
+.accessoriesbox .info .pr-price {
+  color: #7f7263;
+}
+
+.accessoriesbox .info .pr-price strong {
+  font-weight: bold;
+}
+
 .accessoriesbox .info ul {
   display: flex;
   align-items: center;
@@ -54,9 +64,8 @@
 }
 .accessoriesbox .info .pr-price {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
+  align-items: left;
+  justify-content: left;
 }
 .accessoriesbox .info .pr-price ins {
   font-size: var(--bsp-body-14);

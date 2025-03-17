@@ -25,8 +25,6 @@ export default function ZeeZap({ lookGoodData }: ILookGoodProps) {
                 loading="lazy"
               />
             </div>
-          </Col>
-          <Col xs={12} lg={6}>
             <div className="zeezap_content">
               <h6>{lookGoodData?.card2?.title ?? ''}</h6>
               <h3>{lookGoodData?.card2?.sub_title ?? ''}</h3>
@@ -40,10 +38,7 @@ export default function ZeeZap({ lookGoodData }: ILookGoodProps) {
               )}
             </div>
           </Col>
-        </Row>
-      )}
-      {lookGoodData?.card3 && (
-        <Row className="g-0">
+          {lookGoodData?.card3 && ( 
           <Col xs={12} lg={6}>
             <div className="image">
               <Image
@@ -54,9 +49,7 @@ export default function ZeeZap({ lookGoodData }: ILookGoodProps) {
                 className="img1"
                 loading="lazy"
               />
-            </div>
-          </Col>
-          <Col xs={12} lg={6}>
+            </div>            
             <div className="zeezap_content">
               <h6>{lookGoodData?.card3?.title ?? ''}</h6>
               <h3>{lookGoodData?.card3?.sub_title ?? ''}</h3>
@@ -69,9 +62,11 @@ export default function ZeeZap({ lookGoodData }: ILookGoodProps) {
                 </button>
               )}
             </div>
-          </Col>
+          </Col> 
+      )}
         </Row>
       )}
+      
     </div>
   );
 }

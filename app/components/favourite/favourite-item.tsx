@@ -15,9 +15,7 @@ type FavouriteItemProps = {
 export default function FavouriteItem({
   href = '',
   title,
-  subtitle,
-  image,
-  buttonText,
+  image
 }: FavouriteItemProps) {
   return (
     <Col>
@@ -31,11 +29,6 @@ export default function FavouriteItem({
               width={1520}
               height={680}
             />
-          </div>
-          <div className="info">
-            <p>{subtitle}</p>
-            <h5>{title}</h5>
-            <button>{buttonText}</button>
           </div>
         </Link>
       </div>

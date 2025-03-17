@@ -1,5 +1,4 @@
 import {
-  BannerComponent,
   CustomPagination,
   ProductListing,
   ProductTopbar,
@@ -13,7 +12,6 @@ import { COLOUR_DROPDOWN_URL, GENDER_DROPDOWN_URL, MATERIAL_DROPDOWN_URL } from 
 import { ViewProvider } from '@/context';
 import { getDropdownList, getYarnCardList } from '@/utils/server-api.utils';
 import { getTranslations } from 'next-intl/server';
-import Image from 'next/image';
 import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 

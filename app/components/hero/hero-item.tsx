@@ -1,7 +1,4 @@
-import VideoPlayer from '@/components/common/video/VideoPlayer';
-import { USER_ROUTES } from '@/constants';
-import { useTranslations } from 'next-intl';
-import Link from 'next/link';
+// import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 
 type HeroItemProps = {
@@ -12,8 +9,8 @@ type HeroItemProps = {
   buttonText: string;
 };
 
-export default function HeroItem({ title }: Readonly<HeroItemProps>) {
-  const t = useTranslations();
+export default function HeroItem({}: Readonly<HeroItemProps>) {
+  // const t = useTranslations();
   return (
     <div className="mainBanner">
        <div className="relative">
