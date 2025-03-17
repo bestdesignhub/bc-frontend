@@ -7,8 +7,7 @@ export default function Logo() {
     <>
       <div className="logo">
         <Link href="/">
-          <Image className="dark-logo" loading="lazy" src="/images/logo.png" alt="Bespoke" width={50} height={60} />
-          <Image className="light-logo" loading="lazy" src="/images/logowhite.png" alt="Bespoke" width={50} height={60} />
+          <Image loading="lazy" src="https://bespokecashmere.eu/logo.png" alt="Bespoke Cashmere" width={200} height={53} />
         </Link>
       </div>
     </>

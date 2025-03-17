@@ -1,6 +1,7 @@
-import VideoPlayer from '@/components/common/video/VideoPlayer';
 import { USER_ROUTES } from '@/constants';
+import { getAWSImageUrl } from '@/utils/common.utils';
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 import Link from 'next/link';
 
 type HeroItemProps = {
@@ -11,14 +12,13 @@ type HeroItemProps = {
   buttonText: string;
 };
 
-export default function HeroItem({ title }: Readonly<HeroItemProps>) {
+export default function HeroItem({ title, image }: Readonly<HeroItemProps>) {
   const t = useTranslations();
   return (
     <div className="herobox">
-      {/* <div className="image"> */}
-      {/* <Image loading="lazy" src={getAWSImageUrl(image)} alt={title} width={1520} height={680} /> */}
-      <VideoPlayer url='https://videos.pexels.com/video-files/5788041/5788041-hd_1920_1080_25fps.mp4' controls={false} loop />
-      {/* </div> */}
+      <div className="image">
+        <Image loading="lazy" src={getAWSImageUrl(image)} alt={title} width={1520} height={680} />
+      </div>
       <div className="banner_caption">
         <div className="container">
           <div className="banner_content">

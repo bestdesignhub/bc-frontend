@@ -1,12 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Homemade+Apple&family=Iansui&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Rationale&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Gilda+Display&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Gilda+Display&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+
 :root {
-  --bsp-font-poppins: 'Noto Sans', serif;
-  --bsp-font-libre: 'Libre Caslon Text', serif;
+  --bsp-font-poppins: 'Gilda Display', serif;
+  --bsp-font-libre: 'Lato', sans-serif;
   --background: #ffffff;
   --foreground: #171717;
    --bsp-primary: #afc7cd;
   --bsp-primary2: #1E201E;
-  --bsp-white: #ffffff;
+  --bsp-white: #000;
   --bsp-black: #1E201E;
   --bsp-danger: hsl(0, 100%, 50%);
   --bsp-gray: #636363;
@@ -50,7 +52,7 @@ body {
 
 body {
   color: var(--foreground);
-  font-family: var(--bsp-font-poppins) !important;
+  font-family: var(--bsp-font-libre) !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -59,7 +61,7 @@ body {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: var(--bsp-font-poppins) !important;
+  /* font-family: var(--bsp-font-poppins) !important; */
 }
 
 a {
@@ -120,11 +122,23 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--bsp-font-libre);
+  font-family: var(--bsp-font-poppins);
   font-weight: 600;
   margin: 0 !important;
   /* text-transform: uppercase */
 }
+
+.main-title {
+  text-align: left;
+  font-size: 40px;
+  line-height: 40px;
+  text-transform: uppercase;
+  padding:0 20px;
+  font-family: "Gilda Display", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
 p {
   margin: 0 !important;
 }
