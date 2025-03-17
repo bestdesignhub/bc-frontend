@@ -3,8 +3,10 @@ import Link from 'next/link';
 import { Row, Col, Stack } from 'react-bootstrap';
 import '@/app/styles/perfectfit.css';
 import { Section2 } from '@/types/components';
-import { getAWSImageUrl } from '@/utils/common.utils';
+import customimg from '@/public/images/yarn-graphics.jpg';
 import { USER_ROUTES } from '@/constants';
+// import { getAWSImageUrl } from '@/utils/common.utils';
+// import { USER_ROUTES } from '@/constants';
 
 interface IPerfectFitProps {
   perfectFitData: Section2;
@@ -14,29 +16,39 @@ export default function PerfectFit({ perfectFitData }: IPerfectFitProps) {
   return (
     <div className='marketing-block'>
       <div className='container'>
-
         <div className='marketing-block-content'>
         <div className="perfectfit_wrapper"
       style={{
-        backgroundImage: `url(${getAWSImageUrl(perfectFitData?.bg_image)})`,
+        // backgroundImage: `url(${getAWSImageUrl(perfectFitData?.bg_image)})`,
+        backgroundImage: `url('/yarn-graphics.jpg')`,
         backgroundSize: 'cover', // Ensures the image covers the div
         backgroundPosition: 'center', // Centers the image
         backgroundRepeat: 'no-repeat', // Prevents repeating
       }}
-    >       
-        <Row alignitems={'center'}>
-          <Col xs={12} lg={5}>
+    >    
             <div className="image">
               <Image
-                src={getAWSImageUrl(perfectFitData?.left_image)}
+                // src={getAWSImageUrl(perfectFitData?.left_image)}
+                src={customimg}
                 width={770}
                 height={770}
                 alt="sweater"
                 loading="lazy"
               />
+            </div>   
+            <div className='buttons'>
+                <button>
+                  <Link href={USER_ROUTES.sweater}>
+                    Create My SWEATER
+                  </Link>
+                </button>
+                <button className="outline">
+                  <Link href={USER_ROUTES.shop}>
+                    Customise a Sweater
+                  </Link>
+                </button>                    
             </div>
-          </Col>
-          <Col xs={12} lg={7}>
+          {/* <Col xs={12} lg={7}>
             <div className="content">
               <h2>{perfectFitData?.title ?? 'Perfect-fit sweater created online'}</h2>
               <Stack className="btn-group" direction="horizontal" gap={4}>
@@ -52,8 +64,7 @@ export default function PerfectFit({ perfectFitData }: IPerfectFitProps) {
                 </button>
               </Stack>
             </div>
-          </Col>
-        </Row> 
+          </Col> */} 
     </div>
     <div className='marketing-img'>
         <p>
