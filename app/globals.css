@@ -287,6 +287,8 @@ h2.style-title.bnr {
   font-style: normal;
   letter-spacing: -1px;
   color: #726a5f;
+  width: 720px;
+  max-width: 720px;
 }
 
 .latest-products {

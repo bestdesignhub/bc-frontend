@@ -55,7 +55,8 @@ export default function ModalHome({ modelData }: IModelHomeProps) {
   // Automatically show modal after page load
   useEffect(() => {
     const timer = setTimeout(() => {
-      setShow(true);
+      // setShow(true);
+      setShow(false);
     }, 500); // Optional delay (500ms)
     return () => clearTimeout(timer); // Cleanup timeout
   }, []);
