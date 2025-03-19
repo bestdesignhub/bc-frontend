@@ -1,13 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { Row, Col, Stack } from 'react-bootstrap';
 import '@/app/styles/perfectfit.css';
 import { Section2 } from '@/types/components';
-import customimg from '@/public/images/yarn-graphics.jpg';
 import { USER_ROUTES } from '@/constants';
 import { getAWSImageUrl } from '@/utils/common.utils';
-// import { getAWSImageUrl } from '@/utils/common.utils';
-// import { USER_ROUTES } from '@/constants';
 
 interface IPerfectFitProps {
   perfectFitData: Section2;
@@ -22,7 +18,6 @@ export default function PerfectFit({ perfectFitData }: IPerfectFitProps) {
             <div className="image">
               <Image
                 src={getAWSImageUrl(perfectFitData?.left_image)}
-                //src={customimg}
                 width={770}
                 height={770}
                 alt="sweater"
@@ -37,28 +32,10 @@ export default function PerfectFit({ perfectFitData }: IPerfectFitProps) {
                 <Link href={USER_ROUTES.shop}>Customise a Sweater</Link>
               </button>
             </div>
-            {/* <Col xs={12} lg={7}>
-            <div className="content">
-              <h2>{perfectFitData?.title ?? 'Perfect-fit sweater created online'}</h2>
-              <Stack className="btn-group" direction="horizontal" gap={4}>
-                <button>
-                  <Link href={USER_ROUTES.sweater}>
-                    Create My SWEATER
-                  </Link>
-                </button>
-                <button className="outline">
-                  <Link href={USER_ROUTES.shop}>
-                    Customise a Sweater
-                  </Link>
-                </button>
-              </Stack>
-            </div>
-          </Col> */}
           </div>
           <div className="marketing-img">
             <Image
               src={getAWSImageUrl(perfectFitData?.bg_image)}
-              //src={customimg}
               width={770}
               height={770}
               alt="sweater"
