@@ -4,6 +4,7 @@ import { StepBanner, StepListing, StepNavigate } from '@/components';
 import { FIXED_STEPS_COUNT, URL_SLUG } from '@/constants';
 import { PRODUCT_TYPE_DROPDOWN_URL } from '@/constants/apis';
 import { getCurrentStepDetails, getDropdownList, getStepTypesList } from '@/utils/server-api.utils';
+import { Row, Col } from 'react-bootstrap';
 
 const SweaterStep = async ({
   params,
@@ -28,17 +29,23 @@ const SweaterStep = async ({
   return (
     <>
       <StepBanner stepData={stepData} step={step} />
-      <StepNavigate
-        steps={steps}
-        stepPageData={stepPageData}
-        edit={resolvedSearchParams?.[URL_SLUG.EDIT]}
-      />
-      <StepListing
-        stepList={stepPageData.list}
-        steps={steps}
-        step={step}
-        nextStepSlug={stepData?.slug}
-      />
+      <Row className="g-4">
+        <Col xs={12} lg={3}>
+          <StepNavigate
+            steps={steps}
+            stepPageData={stepPageData}
+            edit={resolvedSearchParams?.[URL_SLUG.EDIT]}
+          />
+        </Col>
+        <Col xs={12} lg={9}>
+          <StepListing
+            stepList={stepPageData.list}
+            steps={steps}
+            step={step}
+            nextStepSlug={stepData?.slug}
+          />
+        </Col>
+      </Row>
     </>
   );
 };

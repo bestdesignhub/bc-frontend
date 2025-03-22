@@ -57,11 +57,12 @@ const SweaterPage = async ({
           </div>
         </div>
         <StepBanner step="1" stepData={{ label: t('COMMON.YARN_TEXT') }} />
-        <StepNavigate></StepNavigate>
+        <YarnListingSidebar genders={genders} colours={colours} materials={materials} />
+
         <div className="woman-product-wrapper">
           <Row className="g-4">
             <Col xs={12} lg={2}>
-              <YarnListingSidebar genders={genders} colours={colours} materials={materials} />
+              <StepNavigate></StepNavigate>
             </Col>
             <Col xs={12} lg={10}>
               {!genderSlug && <GenderModalWrapper genders={genders} />}

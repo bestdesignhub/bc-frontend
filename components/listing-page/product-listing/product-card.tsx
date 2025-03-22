@@ -1,4 +1,4 @@
-"use client"
+'use client';
 
 import userAxiosInstanceWithoutToken from '@/config/userAxiosInstanceWithoutToken';
 import { MESSAGES, URL_SLUG, USER_ROUTES } from '@/constants';
@@ -15,7 +15,6 @@ import { Col } from 'react-bootstrap';
 import toast from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
 
-
 const ProductCard: FC<{ product: any }> = ({ product }) => {
   const { view } = useView();
   const t = useTranslations();
@@ -24,9 +23,8 @@ const ProductCard: FC<{ product: any }> = ({ product }) => {
   // const [yarnDetails, setYarnDetails] = useState<any>(null);
   const router = useRouter();
 
-
   const handleShow = () => {
-    dispatch(setLoading(true));
+    dispatch(setLoading(false));
     userAxiosInstanceWithoutToken
       .get(`${YARN_GET_DETAIL_URL}/${product._id}`)
       .then((response) => {
@@ -86,8 +84,8 @@ const ProductCard: FC<{ product: any }> = ({ product }) => {
           style={
             yarnId === product?._id
               ? {
-                border: '3px solid',
-              }
+                  border: '3px solid',
+                }
               : {}
           }
         >

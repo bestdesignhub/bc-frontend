@@ -70,13 +70,15 @@ export default function StepNavigate({
             >
               <div className="navigatebox">
                 <div className="image">
-                  <Image
-                    src={getAWSImageUrl(stepPageData?.yarn?.image)}
-                    width={300}
-                    height={200}
-                    alt="gauge"
-                    loading="lazy"
-                  />
+                  {stepPageData?.yarn?.image && (
+                    <Image
+                      src={getAWSImageUrl(stepPageData.yarn.image)}
+                      width={300}
+                      height={200}
+                      alt="gauge"
+                      loading="lazy"
+                    />
+                  )}
                 </div>
                 <div className="info">
                   <div className="title">
@@ -86,7 +88,9 @@ export default function StepNavigate({
                     </p>
                   </div>
                   <div className="price">
-                    <strong>{formatPrice(stepPageData?.yarn?.price)}</strong>
+                    <strong>
+                      {stepPageData?.yarn?.price ? formatPrice(stepPageData.yarn.price) : '$0.00'}
+                    </strong>
                   </div>
                 </div>
               </div>

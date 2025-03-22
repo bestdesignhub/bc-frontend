@@ -2,7 +2,7 @@ import StepPageSkeletonLoader from '@/components/skeleton-loader/step-page-loade
 import React from 'react';
 
 const LoadingPage = () => {
-  return <StepPageSkeletonLoader />;
+  return '';
 };
 
 export default LoadingPage;
