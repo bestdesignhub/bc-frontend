@@ -313,6 +313,13 @@
   padding: 0;
   overflow: hidden;
 }
+.gauge-navigate.smallbx {
+  padding: 0;
+}
+
+.gauge-navigate.smallbx .navigatebox {
+  border-radius: 10px;
+}
 .gauge-navigate .d-flex {
   margin: 0 -20px;
 }

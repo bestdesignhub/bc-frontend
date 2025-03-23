@@ -14,7 +14,7 @@ export default function Woman() {
         <div className="image">
           <Image src="/images/look-good1.png" width={1920} height={650} alt={'banner'} />
         </div>
-        <div className="banner-caption">
+        <div className="banner-caption min-heigth">
           <div className="container">
             <div className="banner-content">
               <h1>Lorem ipsum dolor sit</h1>

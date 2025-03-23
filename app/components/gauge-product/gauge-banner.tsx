@@ -14,7 +14,7 @@ export default function GaugeBanner() {
             alt={'banner'}
           />
         </div>
-        <div className="banner-caption">
+        <div className="banner-caption min-height">
           <div className="container">
             <div className="banner-content">
               <h1>Step 2: Choose a Gauge</h1>

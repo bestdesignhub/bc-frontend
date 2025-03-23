@@ -29,6 +29,9 @@
   top: 0;
   left: 0;
 }
+.min-height {
+  min-height: 300px;
+}
 .page-banner.gauge .banner-caption {
   text-align: center;
   position: absolute;
@@ -598,6 +601,9 @@
   }
   .gauge-navigate {
     padding: 30px 20px;
+  }
+  .gauge-navigate.smallbx {
+    padding: 0;
   }
   .gauge-navigate .navigate-item {
     padding: 10px 10px;

@@ -47,7 +47,7 @@ const SweaterPage = async ({
               alt={'banner'}
             /> */}
           </div>
-          <div className="banner-caption">
+          <div className="banner-caption min-height">
             <div className="container">
               <div className="banner-content">
                 <h1>Common Banner</h1>
@@ -59,7 +59,7 @@ const SweaterPage = async ({
         <StepBanner step="1" stepData={{ label: t('COMMON.YARN_TEXT') }} />
         <YarnListingSidebar genders={genders} colours={colours} materials={materials} />
 
-        <div className="woman-product-wrapper">
+        <div className="woman-product-wrappe bgsweater">
           <Row className="g-4">
             <Col xs={12} lg={2}>
               <StepNavigate></StepNavigate>

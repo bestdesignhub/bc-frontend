@@ -17,7 +17,7 @@ export default function Ourstorypage({ storyData }: IStoryDetailProps) {
             height={650}
           />
         </div>
-        <div className="banner-caption">
+        <div className="banner-caption min-height">
           <div className="container">
             <div className="story-banner-text">
               <h1>{storyData?.title}</h1>

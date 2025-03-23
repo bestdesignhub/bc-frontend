@@ -60,8 +60,8 @@ export default function StepNavigate({
 
   return (
     <>
-      <div className="gauge-navigate">
-        <div className="d-flex flex-wrap">
+      <div className="gauge-navigate smallbx">
+        <div className="d-flex  d-flex flex-column gap-3">
           {searchParams.size !== 0 && (
             <div
               className="navigate-item"

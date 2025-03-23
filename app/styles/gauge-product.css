@@ -141,13 +141,23 @@
 .gauge-navigate .d-flex {
   margin: 0 -20px;
 }
+.gauge-navigate.smallbx {
+  padding: 0;
+}
+.bgsweater {
+  background: #f2f8ff;
+}
+.gauge-navigate.smallbx .navigatebox {
+  border-radius: 10px;
+}
 .gauge-navigate .navigate-item {
   flex: auto;
   padding: 0 20px;
 }
 .navigatebox {
   display: flex;
-  border: 1px solid var(--bsp-black);
+  /* border: 1px solid var(--bsp-black); */
+  background: white;
   padding: 12px 14px;
   height: 100%;
 }
