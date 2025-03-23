@@ -154,6 +154,7 @@
   flex: auto;
   padding: 0 20px;
 }
+
 .navigatebox {
   display: flex;
   /* border: 1px solid var(--bsp-black); */
@@ -161,6 +162,12 @@
   padding: 12px 14px;
   height: 100%;
 }
+
+.navigatebox:hover {
+background: #5f5e5e;
+color: white;
+}
+
 .navigatebox .image {
   max-width: 64px;
   flex: 0 0 64px;
