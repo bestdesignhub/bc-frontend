@@ -24,7 +24,7 @@ export default function Cartbox({ cart, fetchCartData }: { cart: any; fetchCartD
     cart?.steps?.forEach(({ stepTypeSlug, stepCardId }: any) =>
       params.append(stepTypeSlug, stepCardId)
     );
-    params.append(URL_SLUG.GENDER, cart?.gender);
+    //params.append(URL_SLUG.GENDER, cart?.gender);
     params.append(URL_SLUG.FITTING_SIZE, cart?.fittingSizeid);
     params.append(URL_SLUG.ADD_TO_CART, cart?._id);
     return `${params.toString()}`;
