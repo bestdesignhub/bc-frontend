@@ -68,37 +68,38 @@ export default function StepNavigate({
               style={{ cursor: 'pointer' }}
               onClick={handleYarnCardClick}
             >
-              {/* <div className="navigatebox">
-                <div className="image">
-                  {stepPageData?.yarn?.image && (
-                    <Image
-                      src={getAWSImageUrl(stepPageData.yarn.image)}
-                      width={300}
-                      height={200}
-                      alt="gauge"
-                      loading="lazy"
-                    />
-                  )}
-                </div>
-                <div className="info">
-                  <div className="title">
-                    <h6>{stepPageData?.yarn?.name}</h6>
-                    <p>
-                      {t('COMMON.COLOUR')}: <strong>{stepPageData?.yarn?.colour}</strong>
-                    </p>
+              {stepPageData?.yarn?.price && (
+                <div className="navigatebox">
+                  <div className="image">
+                    {stepPageData?.yarn?.image && (
+                      <Image
+                        src={getAWSImageUrl(stepPageData.yarn.image)}
+                        width={300}
+                        height={200}
+                        alt="gauge"
+                        loading="lazy"
+                      />
+                    )}
                   </div>
-                  <div className="price">
-                    <strong>
-                      {stepPageData?.yarn?.price ? formatPrice(stepPageData.yarn.price) : '$0.00'}
-                    </strong>
+                  <div className="info">
+                    <div className="title">
+                      <h6>{stepPageData?.yarn?.name}</h6>
+                      <p>
+                        {t('COMMON.COLOUR')}: <strong>{stepPageData?.yarn?.colour}</strong>
+                      </p>
+                    </div>
+                    <div className="price">
+                      <strong>{formatPrice(stepPageData.yarn.price)}</strong>
+                    </div>
                   </div>
                 </div>
-              </div> */}
+              )}
             </div>
           )}
           {searchParams.size !== 0 &&
             steps?.map((step: any, index: number) => {
               const isDataExists = stepPageData.hasOwnProperty(step.slug);
+              const stepLabels = ['Gauge', 'Pattern', 'Styles', 'Measurement'];
               return (
                 <div
                   className="navigate-item"
@@ -129,7 +130,7 @@ export default function StepNavigate({
                         <div className="info">
                           <div className="title">
                             {/* <h6>{`${index + 1}`}</h6> */}
-                            <h6>{index + 2}</h6>
+                            <h6>{stepLabels[index] || index + 2}</h6>
                             <button>
                               <Link href={'#'}>
                                 {t('COMMON.CHANGE')}
@@ -158,7 +159,9 @@ export default function StepNavigate({
                       </>
                     )}
 
-                    {!isDataExists && <div className="only-title">{index + 2}</div>}
+                    {!isDataExists && (
+                      <div className="only-title">{stepLabels[index] || index + 2}</div>
+                    )}
                   </div>
                 </div>
               );
