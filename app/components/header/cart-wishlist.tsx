@@ -5,13 +5,11 @@ import { RootState } from '@/lib/redux/store';
 import Link from 'next/link';
 import React from 'react';
 import { useSelector } from 'react-redux';
-import Settings from '@/app/components/MyAcounts/settings'; // Import the Settings component
 
 const CartWishlist = () => {
   const { cartCount, wishlistCount } = useSelector((state: RootState) => state.userSetting);
   return (
     <>
-      <Settings />
       <div className="user_item wishlist">
         <Link href={USER_ROUTES.wishlist}>
           <div className="icon">

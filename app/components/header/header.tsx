@@ -11,6 +11,7 @@ import userAxiosInstance from '@/config/userAxiosInstance';
 import { GENERAL_USER_SETTINGS_URL } from '@/constants/apis';
 import { dispatch } from '@/lib/redux/store';
 import { setAllUserSettingsValues } from '@/lib/redux/slices/userSettingSlice';
+import Settings from '@/app/components/MyAcounts/settings'; // Import the Settings component
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -62,20 +63,18 @@ export default function Header() {
           </div>
         </div>
       </div> */}
-      <div className='top-strip'>
-        <div className='container'>
-          <div className='inner-content'>
-          <div className='left-text'>
-            Free Shipping on all orders over $500
-          </div>
-          <div className='top-right-panel'>
-            <Link className='button-top' href="/sweater">
-              Create My Sweater
-            </Link>
-            <Link className='button-top' href="/shop">
-              Customise a sweater
-            </Link>
-          </div>
+      <div className="top-strip">
+        <div className="container">
+          <div className="inner-content">
+            <div className="left-text">Free Shipping on all orders over $500</div>
+            <div className="top-right-panel">
+              <Link className="button-top" href="/sweater">
+                Create My Sweater
+              </Link>
+              <Link className="button-top" href="/shop">
+                Customise a sweater
+              </Link>
+            </div>
           </div>
         </div>
       </div>
@@ -85,6 +84,7 @@ export default function Header() {
           <div className="flexrow">
             <Logo />
             <div className="header_right">
+              <Settings />
               {/* <div className={`user_item search ${isSearchActive ? 'active' : ''}`}>
                 <input type="text" className="search_input" placeholder="Search..." />
                 <div className="icon" onClick={toggleSearch}>
@@ -202,12 +202,11 @@ export default function Header() {
               </div> */}
             </div>
           </div>
-          <div>
-          </div>
+          <div></div>
         </div>
       </div>
-      <div className='menubar'>
-        <div className='container'>
+      <div className="menubar">
+        <div className="container">
           <MenuList />
         </div>
       </div>
