@@ -68,7 +68,7 @@ export default function StepNavigate({
               style={{ cursor: 'pointer' }}
               onClick={handleYarnCardClick}
             >
-              <div className="navigatebox">
+              {/* <div className="navigatebox">
                 <div className="image">
                   {stepPageData?.yarn?.image && (
                     <Image
@@ -93,7 +93,7 @@ export default function StepNavigate({
                     </strong>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           )}
           {searchParams.size !== 0 &&

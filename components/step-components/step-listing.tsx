@@ -18,7 +18,7 @@ const StepListing: FC<{ stepList: any[]; steps: any[]; step: string; nextStepSlu
   const searchParams = useSearchParams();
 
   const handleSelection = (id: any) => {
-    dispatch(setIsPageSwitchLoading(false));
+    dispatch(setIsPageSwitchLoading(true));
     const params = new URLSearchParams(searchParams?.toString() || '');
     if (searchParams.has(URL_SLUG.CHANGE)) {
       params.delete(URL_SLUG.CHANGE);
