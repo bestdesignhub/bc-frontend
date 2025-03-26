@@ -66,4 +66,4 @@ export interface IBannerData {
   description: string;
 }
 
-export type ISlug = 'women' | 'men' | 'shop';
+export type ISlug = 'women' | 'men' | 'shop' | 'sweater';

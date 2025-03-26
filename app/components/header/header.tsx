@@ -54,7 +54,7 @@ export default function Header() {
   const handleSearchSubmit = (e: any) => {
     e.preventDefault();
     if (searchQuery.trim()) {
-      router.push(`/men?search=${encodeURIComponent(searchQuery)}`);
+      router.push(`/search?search=${encodeURIComponent(searchQuery)}`);
     } else {
       router.push('/men');
     }

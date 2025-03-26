@@ -19,7 +19,7 @@ import {
 
 type ProductPageProps = {
   searchParams: Promise<{ [key: string]: string }>;
-  category?: 'women' | 'men';
+  category?: 'women' | 'men' | 'sweater';
   productDetailsURL: string;
   filters: { key: string; label: string; field: string }[];
   showGenders?: boolean;
