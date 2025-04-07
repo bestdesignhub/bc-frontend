@@ -1,6 +1,6 @@
-//import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import type { Metadata } from 'next';
-//import './globals.css';
+import './globals.css';
 import './style.css';
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';

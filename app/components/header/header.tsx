@@ -7,6 +7,7 @@ import userAxiosInstance from '@/config/userAxiosInstance';
 import { GENERAL_USER_SETTINGS_URL } from '@/constants/apis';
 import { dispatch } from '@/lib/redux/store';
 import { setAllUserSettingsValues } from '@/lib/redux/slices/userSettingSlice';
+import Logo from './logo';
 
 export default function Header() {
   const token = useMemo(() => Cookies.get('userToken'), []);
@@ -48,12 +49,12 @@ export default function Header() {
           <span className="f-shipping">Free Shipping on all orders over $500</span>
           <ul className="h-top-btn">
             <li>
-              <a href="#" title="Create My SWEATER">
+              <a href="/sweater" title="Create My SWEATER">
                 Create My SWEATER
               </a>
             </li>
             <li>
-              <a href="#" title="Customise a Sweater">
+              <a href="/shop" title="Customise a Sweater">
                 Customise a Sweater
               </a>
             </li>
@@ -63,9 +64,7 @@ export default function Header() {
 
       <header className="header-main">
         <div className="f-container">
-          <a className="logo" href="#" title="Bespoke Cashmere">
-            <img src="images/logo.png" alt="Bespoke Cashmere" />
-          </a>
+          <Logo />
           <div className="search-box">
             <input className="search-input" type="search" name="search" placeholder="search" />
           </div>
@@ -122,32 +121,32 @@ export default function Header() {
           <nav className="navigation-menu">
             <ul className="category-list">
               <li>
-                <a href="#" title="Women">
+                <a href="/women" title="Women">
                   Women
                 </a>
               </li>
               <li>
-                <a href="#" title="Men">
+                <a href="/men" title="Men">
                   Men
                 </a>
               </li>
               <li>
-                <a href="#" title="Shop">
+                <a href="/shop" title="Shop">
                   Shop
                 </a>
               </li>
               <li>
-                <a href="#" title="Our Story">
+                <a href="/our-story" title="Our Story">
                   Our Story
                 </a>
               </li>
               <li>
-                <a href="#" title="Gift">
+                <a href="/gift" title="Gift">
                   Gift
                 </a>
               </li>
               <li>
-                <a href="#" title="Discovery">
+                <a href="/discovery" title="Discovery">
                   Discovery
                 </a>
               </li>
