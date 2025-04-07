@@ -44,20 +44,17 @@ export default async function Home() {
   const homeModelData = homeModelResult.status === 'fulfilled' ? homeModelResult.value : null;
   const testimonialData = testimonialResult.status === 'fulfilled' ? testimonialResult.value : [];
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <TopBar flashSale={flashSale} />
-        <Header />
-        <HomeComponent
-          homepageData={homepageData}
-          homeStoryData={homeStoryData}
-          homeProductList={homeProductList}
-          testimonialData={testimonialData}
-        />
-        <KeepConnect settings={settingData} />
-        <Footer settings={settingData} />
-        {homeModelData && homeModelData?.status && <ModalHome modelData={homeModelData} />}
-      </main>
+    <div className={`page-wrapper`}>
+      <Header />
+      <HomeComponent
+        homepageData={homepageData}
+        homeStoryData={homeStoryData}
+        homeProductList={homeProductList}
+        testimonialData={testimonialData}
+      />
+      {/* <KeepConnect settings={settingData} /> */}
+      <Footer settings={settingData} />
+      {homeModelData && homeModelData?.status && <ModalHome modelData={homeModelData} />}
     </div>
   );
 }

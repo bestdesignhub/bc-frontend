@@ -1,24 +1,15 @@
 'use client';
-import { useEffect, useLayoutEffect, useMemo, useState } from 'react';
-import { useRouter } from 'next/navigation'; // Import router for navigation
-import '@/app/styles/header.css';
-import Link from 'next/link';
-import Logo from './logo';
-import MenuList from './menu-list';
-import { COOKIES, USER_ROUTES } from '@/constants';
-import CartWishlist from './cart-wishlist';
+import { useEffect, useLayoutEffect, useMemo } from 'react';
+import Image from 'next/image';
+//import '@/app/styles/header.css';
 import Cookies from 'js-cookie';
 import userAxiosInstance from '@/config/userAxiosInstance';
 import { GENERAL_USER_SETTINGS_URL } from '@/constants/apis';
 import { dispatch } from '@/lib/redux/store';
 import { setAllUserSettingsValues } from '@/lib/redux/slices/userSettingSlice';
-import Settings from '@/app/components/MyAcounts/settings';
 
 export default function Header() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [searchQuery, setSearchQuery] = useState(''); // Search state
-  const router = useRouter();
-  const token = useMemo(() => Cookies.get(COOKIES.userToken), []);
+  const token = useMemo(() => Cookies.get('userToken'), []);
 
   useLayoutEffect(() => {
     const fetchUserSettings = async () => {
@@ -44,95 +35,143 @@ export default function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      // Reserved for scroll logic (e.g., sticky header)
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleSearchSubmit = (e: any) => {
-    e.preventDefault();
-    if (searchQuery.trim()) {
-      router.push(`/search?search=${encodeURIComponent(searchQuery)}`);
-    } else {
-      router.push('/men');
-    }
-  };
-
   return (
     <>
-      <div className="top-strip">
-        <div className="container">
-          <div className="inner-content">
-            <div className="left-text">Free Shipping on all orders over $500</div>
-            <div className="top-right-panel">
-              <Link className="button-top" href="/sweater">
-                Create My Sweater
-              </Link>
-              <Link className="button-top" href="/shop">
-                Customise a sweater
-              </Link>
-            </div>
-          </div>
+      <div className="header-top">
+        <div className="f-container">
+          <span className="f-shipping">Free Shipping on all orders over $500</span>
+          <ul className="h-top-btn">
+            <li>
+              <a href="#" title="Create My SWEATER">
+                Create My SWEATER
+              </a>
+            </li>
+            <li>
+              <a href="#" title="Customise a Sweater">
+                Customise a Sweater
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
 
-      <div className={`header_bottom ${isScrolled ? 'scrolled' : ''}`}>
-        <div className="container">
-          <div className="flexrow">
-            <Logo />
-            {/* Search Bar */}
-            <form onSubmit={handleSearchSubmit} className="search-bar">
-              <input
-                type="text"
-                placeholder="Search..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="search-input"
-              />
-              <button type="submit" className="search-button">
-                Search
-              </button>
-            </form>
-            <div className="header_right">
-              <Settings />
-              <div className="user_item user">
-                <Link href={USER_ROUTES[token ? 'myAccount' : 'signin']}>
-                  <div className="icon">
-                    <svg
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M16.125 8.75C15.941 11.228 14.062 13.25 12 13.25C9.93798 13.25 8.05598 11.229 7.87498 8.75C7.68798 6.172 9.51498 4.25 12 4.25C14.484 4.25 16.313 6.219 16.125 8.75Z"
-                        stroke="white"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                      <path
-                        d="M3.01709 20.747C3.78309 16.5 7.92209 14.25 12.0001 14.25C16.0781 14.25 20.2171 16.5 20.9841 20.747"
-                        stroke="white"
-                        strokeWidth="1.5"
-                        strokeMiterlimit="10"
-                      />
-                    </svg>
-                  </div>
-                </Link>
-              </div>
-              {token && <CartWishlist />}
-            </div>
+      <header className="header-main">
+        <div className="f-container">
+          <a className="logo" href="#" title="Bespoke Cashmere">
+            <img src="images/logo.png" alt="Bespoke Cashmere" />
+          </a>
+          <div className="search-box">
+            <input className="search-input" type="search" name="search" placeholder="search" />
+          </div>
+          <ul className="header-links">
+            <li>
+              <a className="phone" href="tel:+4531327890" title="+45 3132 7890">
+                +45 3132 7890
+              </a>
+            </li>
+            <li>
+              <a className="order-Track" href="#" title="Order Tracking">
+                Order Tracking
+              </a>
+            </li>
+            <li>
+              <a className="my-account" href="#" title="My Account">
+                My Account
+              </a>
+            </li>
+          </ul>
+          <div className="my-cart">
+            <a className="minicart" href="#" title="My Cart">
+              <span className="cart-text">My Cart</span>
+              <span className="counter-number">10</span>
+            </a>
+          </div>
+          <div className="country-selecter">
+            <button className="country-dropdown" type="button">
+              Text
+            </button>
+            <ul className="country-list">
+              <li>
+                <a href="#" title="English">
+                  <span className="country-flag">
+                    <Image src="/images/english.png" alt="English" width={24} height={16} />
+                  </span>
+                  <span className="country-name">English</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" title="Danish">
+                  <span className="country-flag">
+                    <Image src="/images/danish.png" alt="Danish" width={24} height={16} />
+                  </span>
+                  <span className="country-name">Danish</span>
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
-      </div>
-      <div className="menubar">
-        <div className="container">
-          <MenuList />
+      </header>
+      <nav className="nav-row">
+        <div className="f-container">
+          <nav className="navigation-menu">
+            <ul className="category-list">
+              <li>
+                <a href="#" title="Women">
+                  Women
+                </a>
+              </li>
+              <li>
+                <a href="#" title="Men">
+                  Men
+                </a>
+              </li>
+              <li>
+                <a href="#" title="Shop">
+                  Shop
+                </a>
+              </li>
+              <li>
+                <a href="#" title="Our Story">
+                  Our Story
+                </a>
+              </li>
+              <li>
+                <a href="#" title="Gift">
+                  Gift
+                </a>
+              </li>
+              <li>
+                <a href="#" title="Discovery">
+                  Discovery
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <ul className="usefull-links">
+            <li>
+              <a className="wholeseller" href="#" title="Wholeseller">
+                Wholeseller
+              </a>
+            </li>
+            <li>
+              <a href="#" title="Download manual book">
+                Download manual book
+              </a>
+            </li>
+            <li>
+              <a href="#" title="Download color book">
+                Download color book
+              </a>
+            </li>
+          </ul>
         </div>
-      </div>
+      </nav>
     </>
   );
 }
