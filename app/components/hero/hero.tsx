@@ -32,12 +32,12 @@ export default function Hero({ heroData }: IHeroProps) {
           <h2 className="banner-title">Design Your Perfect Cashmere Sweater Online</h2>
           <ul className="banner-buttons">
             <li>
-              <a href="#" title="Create My SWEATER">
+              <a href="/sweater" title="Create My SWEATER">
                 Create My SWEATER
               </a>
             </li>
             <li>
-              <a href="#" title="Customise a Sweater">
+              <a href="/shop" title="Customise a Sweater">
                 Customise a Sweater
               </a>
             </li>
