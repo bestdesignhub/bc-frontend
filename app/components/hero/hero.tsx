@@ -26,7 +26,7 @@ export default function Hero({ heroData }: IHeroProps) {
 
   return (
     <section className="index-banner">
-      <div className="banner">
+      {/* <div className="banner">
         <img src="images/banner.webp" alt="Bespoke Cashmere" />
         <div className="banner-content f-container">
           <h2 className="banner-title">Design Your Perfect Cashmere Sweater Online</h2>
@@ -43,6 +43,20 @@ export default function Hero({ heroData }: IHeroProps) {
             </li>
           </ul>
         </div>
+      </div> */}
+      <div className="hero-wrapper">
+        <Slider {...settings}>
+          {/* {HeroData.map((hero: any) => ( */}
+          {/* <Fragment key={hero.id}> */}
+          <HeroItem
+            href={''}
+            title={heroData?.title}
+            image={heroData?.bg_image}
+            buttonText={'Pending'}
+          />
+          {/* </Fragment> */}
+          {/* ))} */}
+        </Slider>
       </div>
     </section>
   );
