@@ -315,7 +315,6 @@
 }
 .gauge-navigate.smallbx {
   padding: 0;
-  margin-right: -45px;
 }
 
 .gauge-navigate.smallbx .navigatebox {
@@ -619,8 +618,9 @@
     padding: 16px;
   }
   .gauge-row .gaugebox .info h4 {
-    font-size: var(--bsp-body-24);
+    font-size: 16px;
   }
+  
   .gauge-row .gaugebox .info p {
     padding: 10px 0 0;
   }
