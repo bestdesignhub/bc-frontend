@@ -26,9 +26,7 @@ const Settings = () => {
 
   return (
     <div className="my-account-block-main">
-      <h2>{t('COMMON.SETTINGS')}</h2>
       <div className="border-box-account">
-        <h3>{t('COMMON.SETTINGS')}</h3>
         <div className="form-main">
           <form>
             <Row>

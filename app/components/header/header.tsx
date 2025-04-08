@@ -8,6 +8,7 @@ import { GENERAL_USER_SETTINGS_URL } from '@/constants/apis';
 import { dispatch } from '@/lib/redux/store';
 import { setAllUserSettingsValues } from '@/lib/redux/slices/userSettingSlice';
 import Logo from './logo';
+import Settings from '../MyAcounts/settings';
 
 export default function Header() {
   const token = useMemo(() => Cookies.get('userToken'), []);
@@ -91,7 +92,9 @@ export default function Header() {
               <span className="counter-number">10</span>
             </a>
           </div>
-          <div className="country-selecter">
+
+          <Settings />
+          {/* <div className="country-selecter">
             <button className="country-dropdown" type="button">
               Text
             </button>
@@ -113,7 +116,7 @@ export default function Header() {
                 </a>
               </li>
             </ul>
-          </div>
+          </div> */}
         </div>
       </header>
       <nav className="nav-row">
