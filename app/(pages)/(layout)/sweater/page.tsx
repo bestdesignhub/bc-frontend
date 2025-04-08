@@ -38,52 +38,36 @@ const SweaterPage = async ({
   return (
     <>
       <ViewProvider>
-        <div className="page-banner">
-          <div className="image">
-            {/* <Image
-              src={"https://picsum.photos/200/300"}
-              width={1920}
-              height={650}
-              alt={'banner'}
-            /> */}
+        <div className="sweater-inner-step">
+          <StepBanner step="1" stepData={{ label: t('COMMON.YARN_TEXT') }} />
+          <div className="container">
+            <div className="sweater-inner-container">
+              <div className="woman-product-wrappe bgsweater">
+                <Row className="g-4">
+                  <Col xs={12} lg={2}>
+                    <StepNavigate></StepNavigate>
+                  </Col>
+                  <Col xs={12} lg={10}>
+                    <div className="sweater-bg-step">
+                      <YarnListingSidebar
+                        genders={genders}
+                        colours={colours}
+                        materials={materials}
+                      />
+                      {!genderSlug && <GenderModalWrapper genders={genders} />}
+                      <ProductTopbar text={t('COMMON.YARN_TEXT')} total={yarnList?.totalCount} />
+                      <ProductListing list={yarnList.data} />
+                      <CustomPagination
+                        currentPage={yarnList?.currentPage}
+                        totalPage={yarnList?.totalPage}
+                      />
+                    </div>
+                  </Col>
+                </Row>
+              </div>
+            </div>
           </div>
-          {/* <div className="banner-caption min-height">
-            <div className="container">
-              <div className="banner-content">
-                <h1>Common Banner mangilal</h1>
-                <p>Common Banner Paragraph</p>
-              </div>
-            </div>
-          </div> */}
         </div>
-        <div className='sweater-inner-step'>
-        <StepBanner step="1" stepData={{ label: t('COMMON.YARN_TEXT') }} />
-            <div className='container'>
-              <div className='sweater-inner-container'>
-            <div className="woman-product-wrappe bgsweater">
-          <Row className="g-4">
-            <Col xs={12} lg={2}>
-              <StepNavigate></StepNavigate>
-            </Col>
-            <Col xs={12} lg={10}>
-            <div className='sweater-bg-step'>
-            <YarnListingSidebar genders={genders} colours={colours} materials={materials} />
-              {!genderSlug && <GenderModalWrapper genders={genders} />}
-              <ProductTopbar text={t('COMMON.YARN_TEXT')} total={yarnList?.totalCount} />
-              <ProductListing list={yarnList.data} />
-              <CustomPagination
-                currentPage={yarnList?.currentPage}
-                totalPage={yarnList?.totalPage}
-              />
-            </div>
-                        </Col>
-          </Row>
-        </div>
-
-              </div>
-            </div>
-
-            </div>
       </ViewProvider>
     </>
   );
