@@ -1,6 +1,7 @@
 // import { useTranslations } from 'next-intl';
 import { getAWSImageUrl } from '@/utils/common.utils';
 import Image from 'next/image';
+import Link from 'next/link';
 
 type HeroItemProps = {
   href: string;
@@ -10,7 +11,7 @@ type HeroItemProps = {
   buttonText: string;
 };
 
-export default function HeroItem({ title, image }: Readonly<HeroItemProps>) {
+export default function HeroItem({ image }: Readonly<HeroItemProps>) {
   // const t = useTranslations();
   return (
     <div className="mainBanner">
@@ -28,14 +29,14 @@ export default function HeroItem({ title, image }: Readonly<HeroItemProps>) {
             <h2 className="banner-title">Design Your Perfect Cashmere Sweater Online</h2>
             <ul className="banner-buttons">
               <li>
-                <a href="/sweater" title="Create My SWEATER">
+                <Link href="/sweater" title="Create My SWEATER">
                   Create My SWEATER
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/shop" title="Customise a Sweater">
+                <Link href="/shop" title="Customise a Sweater">
                   Customise a Sweater
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

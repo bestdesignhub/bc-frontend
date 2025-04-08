@@ -1,6 +1,5 @@
 'use client';
 import { useEffect, useLayoutEffect, useMemo, useState } from 'react';
-import Image from 'next/image';
 //import '@/app/styles/header.css';
 import Cookies from 'js-cookie';
 import userAxiosInstance from '@/config/userAxiosInstance';
@@ -10,7 +9,7 @@ import { setAllUserSettingsValues } from '@/lib/redux/slices/userSettingSlice';
 import Logo from './logo';
 import Settings from '../MyAcounts/settings';
 import Link from 'next/link';
-import { COOKIES, USER_ROUTES } from '@/constants';
+import { USER_ROUTES } from '@/constants';
 import CartWishlist from './cart-wishlist';
 import { useRouter } from 'next/navigation'; // Import router for navigation
 
@@ -65,14 +64,14 @@ export default function Header() {
           <span className="f-shipping">Free Shipping on all orders over $500</span>
           <ul className="h-top-btn">
             <li>
-              <a href="/sweater" title="Create My SWEATER">
+            <Link href="/sweater" title="Create My SWEATER">
                 Create My SWEATER
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/shop" title="Customise a Sweater">
+              <Link href="/shop" title="Customise a Sweater">
                 Customise a Sweater
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
@@ -145,52 +144,52 @@ export default function Header() {
           <nav className="navigation-menu">
             <ul className="category-list">
               <li>
-                <a href="/women" title="Women">
+                <Link href="/women" title="Women">
                   Women
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/men" title="Men">
+                <Link href="/men" title="Men">
                   Men
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/shop" title="Shop">
+                <Link href="/shop" title="Shop">
                   Shop
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/our-story" title="Our Story">
+                <Link href="/our-story" title="Our Story">
                   Our Story
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/gift" title="Gift">
+                <Link href="/gift" title="Gift">
                   Gift
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/discovery" title="Discovery">
+                <Link href="/discovery" title="Discovery">
                   Discovery
-                </a>
+                </Link>
               </li>
             </ul>
           </nav>
           <ul className="usefull-links">
             <li>
-              <a className="wholeseller" href="#" title="Wholeseller">
+              <Link className="wholeseller" href="#" title="Wholeseller">
                 Wholeseller
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#" title="Download manual book">
+              <Link href="#" title="Download manual book">
                 Download manual book
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#" title="Download color book">
+              <Link href="#" title="Download color book">
                 Download color book
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

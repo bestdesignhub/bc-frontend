@@ -1,16 +1,11 @@
 import {
   Accessories,
-  Category,
-  Hero,
-  Instagram,
-  LookGood,
-  PerfectFit,
-  Service,
+  Hero
 } from '@/app/components';
 import { IProduct } from '@/app/components/accessories/accessories';
-import { Favourite } from '@/app/components/favourite';
 import { ZeeZap } from '@/app/components/zee-zap';
 import { IHomeApiRes } from '@/types/components';
+import Link from 'next/link';
 
 interface IHomePageProps {
   homepageData: IHomeApiRes;
@@ -21,10 +16,10 @@ interface IHomePageProps {
 
 const HomeComponent = ({ homepageData, homeProductList }: IHomePageProps) => {
   const heroData = homepageData?.section1;
-  const perfectFitData = homepageData?.section2;
-  const categoryData = homepageData?.section3;
+  // const perfectFitData = homepageData?.section2;
+  // const categoryData = homepageData?.section3;
   const accessoriesData = homepageData?.section5;
-  const favouriteData = homepageData?.section6;
+  // const favouriteData = homepageData?.section6;
   const lookGoodData = homepageData?.section8;
   return (
     <>
@@ -50,45 +45,45 @@ const HomeComponent = ({ homepageData, homeProductList }: IHomePageProps) => {
             <ul className="custom-sweater-list">
               <li>
                 <div className="custom-sweater-img">
-                  <a href="#" title="Quality Yarn">
+                  <Link href="#" title="Quality Yarn">
                     <img src="/images/custom-sweater-1.webp" alt="Quality Yarn" />
-                  </a>
+                  </Link>
                 </div>
-                <a className="custom-sweater-name" href="#" title="Quality Yarn">
+                <Link className="custom-sweater-name" href="#" title="Quality Yarn">
                   Quality Yarn
-                </a>
+                </Link>
               </li>
               <li>
                 <div className="custom-sweater-img">
-                  <a href="#" title="Quality Handcraft">
+                  <Link href="#" title="Quality Handcraft">
                     <img src="/images/custom-sweater-2.webp" alt="Quality Handcraft" />
-                  </a>
+                  </Link>
                 </div>
-                <a className="custom-sweater-name" href="#" title="Quality Handcraft">
+                <Link className="custom-sweater-name" href="#" title="Quality Handcraft">
                   Quality Handcraft
-                </a>
+                </Link>
               </li>
               <li>
                 <div className="custom-sweater-img">
-                  <a href="#" title="Finished Product">
+                  <Link href="#" title="Finished Product">
                     <img src="/images/custom-sweater-3.webp" alt="Finished Product" />
-                  </a>
+                  </Link>
                 </div>
-                <a className="custom-sweater-name" href="#" title="Finished Product">
+                <Link className="custom-sweater-name" href="#" title="Finished Product">
                   Finished Product
-                </a>
+                </Link>
               </li>
             </ul>
             <ul className="custom-sweater-btn">
               <li>
-                <a href="#" title="Create My SWEATER">
+                <Link href="#" title="Create My SWEATER">
                   Create My SWEATER
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" title="Customise a Sweater">
+                <Link href="#" title="Customise a Sweater">
                   Customise a Sweater
-                </a>
+                </Link>
               </li>
             </ul>
           </aside>
@@ -112,50 +107,50 @@ const HomeComponent = ({ homepageData, homeProductList }: IHomePageProps) => {
           <h3>Our All Sweater Styles</h3>
           <ul className="all-sweater-list">
             <li>
-              <a className="sweater-style-img" href="#" title="Crew Neck Pullover">
+              <Link className="sweater-style-img" href="#" title="Crew Neck Pullover">
                 <img src="/images/crew-neck-pullover.webp" alt="Crew Neck Pullover" />
-              </a>
-              <a className="sweater-style-name" href="#" title="Crew Neck Pullover">
+              </Link>
+              <Link className="sweater-style-name" href="#" title="Crew Neck Pullover">
                 Crew Neck Pullover
-              </a>
+              </Link>
             </li>
             <li>
-              <a className="sweater-style-img" href="#" title="V Neck Pullover">
+              <Link className="sweater-style-img" href="#" title="V Neck Pullover">
                 <img src="/images/v-neck-pullover.webp" alt="V Neck Pullover" />
-              </a>
-              <a className="sweater-style-name" href="#" title="V Neck Pullover">
+              </Link>
+              <Link className="sweater-style-name" href="#" title="V Neck Pullover">
                 V Neck Pullover
-              </a>
+              </Link>
             </li>
             <li>
-              <a className="sweater-style-img" href="#" title="Mock Neck Pullover">
+              <Link className="sweater-style-img" href="#" title="Mock Neck Pullover">
                 <img src="/images/mock-neck-pullover.webp" alt="Mock Neck Pullover" />
-              </a>
-              <a className="sweater-style-name" href="#" title="Mock Neck Pullover">
+              </Link>
+              <Link className="sweater-style-name" href="#" title="Mock Neck Pullover">
                 Mock Neck Pullover
-              </a>
+              </Link>
             </li>
             <li>
-              <a className="sweater-style-img" href="#" title="Turtle Neck Pullover">
+              <Link className="sweater-style-img" href="#" title="Turtle Neck Pullover">
                 <img src="/images/turtle-neck-pullover.webp" alt="Turtle Neck Pullover" />
-              </a>
-              <a className="sweater-style-name" href="#" title="Turtle Neck Pullover">
+              </Link>
+              <Link className="sweater-style-name" href="#" title="Turtle Neck Pullover">
                 Turtle Neck Pullover
-              </a>
+              </Link>
             </li>
             <li>
-              <a className="sweater-style-img" href="#" title="V Neck Button Cardigan">
+              <Link className="sweater-style-img" href="#" title="V Neck Button Cardigan">
                 <img src="/images/v-neck-button-cardigan.webp" alt="V Neck Button Cardigan" />
-              </a>
-              <a className="sweater-style-name" href="#" title="V Neck Button Cardigan">
+              </Link>
+              <Link className="sweater-style-name" href="#" title="V Neck Button Cardigan">
                 V Neck Button Cardigan
-              </a>
+              </Link>
             </li>
           </ul>
           <div className="view-all-style">
-            <a href="#" title="View All Styles">
+            <Link href="#" title="View All Styles">
               View All Styles
-            </a>
+            </Link>
           </div>
         </section>
         <section className="ordering-steps">
@@ -221,9 +216,9 @@ const HomeComponent = ({ homepageData, homeProductList }: IHomePageProps) => {
               perfect solutions for all your knitting and crafting needs, ensuring quality,
               durability, and a luxurious finish for every project.
             </p>
-            <a className="download-book" href="#" title="Download Book">
+            <Link className="download-book" href="#" title="Download Book">
               Download Book
-            </a>
+            </Link>
           </div>
           <div className="collection-img">
             <img src="/images/collection-img.webp" alt="Explore our Yarn Collection" />
@@ -286,9 +281,9 @@ const HomeComponent = ({ homepageData, homeProductList }: IHomePageProps) => {
             using our simple online personalizing tool.
           </p>
           <div className="about-detail">
-            <a href="#" title="Click More Details">
+            <Link href="#" title="Click More Details">
               Click More Details
-            </a>
+            </Link>
           </div>
         </section>
       </main>

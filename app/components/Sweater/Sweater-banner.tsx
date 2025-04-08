@@ -11,7 +11,7 @@ export default function GaugeBanner() {
         <div className="banner-caption min-height">
           <div className="container">
             <div className="banner-content">
-              <h1>Step 5: Full View Sweater</h1>
+              <h1>Full View Sweater</h1>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eleifend lacus
                 quam, eleifend lacinia nibh ornare eget.

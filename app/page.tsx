@@ -1,4 +1,4 @@
-import { Header, KeepConnect, TopBar } from '@/app/components';
+import { Header } from '@/app/components';
 import { HomeComponent } from '@/components/home';
 import {
   getFlashSaleBySlug,
@@ -12,7 +12,7 @@ import {
 import { IProduct } from './components/accessories/accessories';
 import Footer from './components/footer/footer';
 import ModalHome from './components/modal-home/modal-home';
-import styles from './page.module.css';
+// import styles from './page.module.css';
 import { ISettings } from '@/types';
 
 export default async function Home() {
@@ -21,7 +21,6 @@ export default async function Home() {
     homeStoryDataResult,
     homeProductListResult,
     settingDataResult,
-    flashSaleResult,
     homeModelResult,
     testimonialResult,
   ] = await Promise.allSettled([
@@ -40,7 +39,7 @@ export default async function Home() {
     homeProductListResult.status === 'fulfilled' ? (homeProductListResult.value as IProduct[]) : [];
   const settingData =
     settingDataResult.status === 'fulfilled' ? (settingDataResult.value as ISettings) : undefined;
-  const flashSale = flashSaleResult.status === 'fulfilled' ? flashSaleResult.value : null;
+  // const flashSale = flashSaleResult.status === 'fulfilled' ? flashSaleResult.value : null;
   const homeModelData = homeModelResult.status === 'fulfilled' ? homeModelResult.value : null;
   const testimonialData = testimonialResult.status === 'fulfilled' ? testimonialResult.value : [];
   return (

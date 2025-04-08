@@ -4,9 +4,8 @@ import { setUserLocale } from '@/config/locale';
 import { setLoading } from '@/lib/redux/slices/loaderSlice';
 import { dispatch } from '@/lib/redux/store';
 import { Locale } from '@/types';
-import { useLocale, useTranslations } from 'next-intl';
+import { useLocale } from 'next-intl';
 import React from 'react';
-import { Col, Row } from 'react-bootstrap';
 
 const LOCALES = [
   { code: 'en', name: 'English' },
@@ -14,7 +13,6 @@ const LOCALES = [
 ] as const;
 
 const Settings = () => {
-  const t = useTranslations();
   const defaultLocale = useLocale();
 
   const handleChange = async (event: React.ChangeEvent<HTMLSelectElement>) => {

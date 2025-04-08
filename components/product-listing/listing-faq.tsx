@@ -1,5 +1,5 @@
 'use client';
-import { Accordion, Col, Container, Row } from 'react-bootstrap';
+import { Accordion, Col, Row } from 'react-bootstrap';
 
 interface FAQ {
   question: string;

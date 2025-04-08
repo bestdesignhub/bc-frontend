@@ -1,14 +1,8 @@
 import '@/app/styles/footer.css';
-import { USER_ROUTES } from '@/constants';
 import { ISettings } from '@/types';
-import { getAWSImageUrl } from '@/utils/common.utils';
-import { getTranslations } from 'next-intl/server';
-import Image from 'next/image';
 import Link from 'next/link';
-import { Col, Row } from 'react-bootstrap';
 
-export default async function Footer({ settings }: { settings?: ISettings }) {
-  const t = await getTranslations();
+export default async function Footer({}: { settings?: ISettings }) {
   return (
     // <div className="footer">
     //   <Row>
@@ -223,13 +217,14 @@ export default async function Footer({ settings }: { settings?: ISettings }) {
     //     </div>
     //   </div>
     // </div>
+    <>
     <footer className="footer">
       <div className="f-container">
         <div className="f-logo-section">
           <div className="f-logo">
-            <a href="#" className="BESPOKE CASHMERE">
+            <Link href="#" className="BESPOKE CASHMERE">
               <img src="images/footer-logo.webp" alt="BESPOKE CASHMERE" />
-            </a>
+            </Link>
           </div>
           <div className="company-registration">
             <p>Company Registration:</p>
@@ -239,24 +234,24 @@ export default async function Footer({ settings }: { settings?: ISettings }) {
             Social Persence:
             <ul className="social-icon">
               <li>
-                <a href="#" title="instagram">
+                <Link href="#" title="instagram">
                   <img src="images/insta.webp" alt="instagram" />
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" title="linkedin">
+                <Link href="#" title="linkedin">
                   <img src="images/linkedin.webp" alt="linkedin" />
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" title="whatsapp">
+                <Link href="#" title="whatsapp">
                   <img src="images/whatsapp.webp" alt="whatsapp" />
-                </a>
+                </Link> 
               </li>
               <li>
-                <a href="#" title="facebook">
+                <Link href="#" title="facebook">
                   <img src="images/facebook.webp" alt="facebook" />
-                </a>
+                </Link> 
               </li>
             </ul>
           </div>
@@ -269,29 +264,29 @@ export default async function Footer({ settings }: { settings?: ISettings }) {
           <h4>Menu</h4>
           <ul className="f-link">
             <li>
-              <a href="#" title="Women">
+              <Link href="#" title="Women">
                 Women
-              </a>
+              </Link> 
             </li>
             <li>
-              <a href="#" title="Men">
+              <Link href="#" title="Men">
                 Men
-              </a>
+              </Link> 
             </li>
             <li>
-              <a href="#" title="Shop">
+              <Link href="#" title="Shop">
                 Shop
-              </a>
+              </Link> 
             </li>
             <li>
-              <a href="#" title="Our Yarn Details">
+              <Link href="#" title="Our Yarn Details">
                 Our Yarn Details
-              </a>
+              </Link> 
             </li>
             <li>
-              <a href="#" title="Our Styles">
+              <Link href="#" title="Our Styles">
                 Our Styles
-              </a>
+              </Link> 
             </li>
           </ul>
         </div>
@@ -299,29 +294,29 @@ export default async function Footer({ settings }: { settings?: ISettings }) {
           <h4>Explore</h4>
           <ul className="f-link">
             <li>
-              <a href="#" title="About Us">
+              <Link href="#" title="About Us">
                 About Us
-              </a>
+              </Link> 
             </li>
             <li>
-              <a href="#" title="Mind Behind Idea">
+              <Link href="#" title="Mind Behind Idea">
                 Mind Behind Idea
-              </a>
+              </Link> 
             </li>
             <li>
-              <a href="#" title="Contact Us">
+              <Link href="#" title="Contact Us">
                 Contact Us
-              </a>
+              </Link> 
             </li>
             <li>
-              <a href="#" title="New In">
+              <Link href="#" title="New In">
                 New In
-              </a>
+              </Link> 
             </li>
             <li>
-              <a href="#" title="Our Story">
+              <Link href="#" title="Our Story">
                 Our Story
-              </a>
+              </Link> 
             </li>
           </ul>
         </div>
@@ -329,24 +324,24 @@ export default async function Footer({ settings }: { settings?: ISettings }) {
           <h4>Support</h4>
           <ul className="f-link">
             <li>
-              <a href="#" title="Payment Conditions">
+              <Link href="#" title="Payment Conditions">
                 Payment Conditions
-              </a>
+              </Link> 
             </li>
             <li>
-              <a href="#" title="Returns Policy">
+              <Link href="#" title="Returns Policy">
                 Returns Policy
-              </a>
+              </Link> 
             </li>
             <li>
-              <a href="#" title="Privacy Policy">
+              <Link href="#" title="Privacy Policy">
                 Privacy Policy
-              </a>
+              </Link> 
             </li>
             <li>
-              <a href="#" title="Terms of use">
+              <Link href="#" title="Terms of use">
                 Terms of use
-              </a>
+              </Link> 
             </li>
           </ul>
         </div>
@@ -354,21 +349,28 @@ export default async function Footer({ settings }: { settings?: ISettings }) {
           <h4>Contact Us</h4>
           <ul className="f-link">
             <li>
-              <a href="mailto:contact@bespokecashmere.eu" title="contact@bespokecashmere.eu">
+              <Link href="mailto:contact@bespokecashmere.eu" title="contact@bespokecashmere.eu">
                 contact@bespokecashmere.eu
-              </a>
+              </Link> 
             </li>
             <li>
               <span>Contact : Soren J. Hansen</span>
             </li>
             <li>
-              <a href="tel:+4531327890" title="+45 31 32 78 90">
+              <Link href="tel:+4531327890" title="+45 31 32 78 90">
                 +45 31 32 78 90
-              </a>
+              </Link> 
             </li>
           </ul>
         </div>
       </div>
     </footer>
+     <small className="copyright-row">
+     <span className="f-container">
+         <span className="copyright-text">
+             <span className="Copyright">Copyright © 2025 BESPOKE CASHMERE</span>  | <span className="made-in"> Made in Switzerland</span></span>
+     </span>
+    </small>
+    </>
   );
 }

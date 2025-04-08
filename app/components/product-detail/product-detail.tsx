@@ -25,6 +25,7 @@ import {
   setUserSettingIncreaseWishlistCount,
 } from '@/lib/redux/slices/userSettingSlice';
 import ProductImageGallery from './product-gallery';
+import Image from 'next/image';
 
 export default function ProdutDetail({
   details,
@@ -240,6 +241,15 @@ export default function ProdutDetail({
                       ))}
                     </InputGroup>
                   </div>
+                  <br/><br/><br/><br/>
+                  <Image
+                    src={'/images/sizes.jpg'}
+                    alt={'size'}
+                    width={417}
+                    height={272}
+                    loading="lazy"
+                  />
+                                    <br/><br/><br/><br/>
                   {/* <div className="size-item">
                     <SizeChart />
                   </div> */}

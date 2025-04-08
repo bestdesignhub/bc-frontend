@@ -7,7 +7,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 const CartWishlist = () => {
-  const { cartCount, wishlistCount } = useSelector((state: RootState) => state.userSetting);
+  const { cartCount } = useSelector((state: RootState) => state.userSetting);
   return (
     <>
       <Link className="minicart" href={USER_ROUTES.cart}>

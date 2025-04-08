@@ -355,7 +355,6 @@ h2.style-title.bnr {
 }
 
 .sweater-inner-container {
-  display: flex;
   gap: 50px;
 }
 
@@ -366,6 +365,9 @@ h2.style-title.bnr {
 .sweater-bg-step {
   background: #fff;
   padding: 20px;
+  margin-top: -20px;
+  z-index: 2;
+  position: relative;
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {

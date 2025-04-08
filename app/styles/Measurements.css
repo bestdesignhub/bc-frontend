@@ -4,12 +4,14 @@
   position: relative;
   overflow: hidden;
   z-index: 1;
+  background: #f6f4e7;
 }
+
 .measurements-block {
   width: 100%;
-  display: flex;
-  align-items: stretch;
-  min-height: 760px;
+  text-align: center;
+  padding: 80px 0;
+  
 }
 .measurements-left {
   position: relative;

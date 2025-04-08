@@ -1,14 +1,10 @@
 .banner-img {
-  height: 50vh;
-  position: relative;
-  background-image: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0) 60%,
-    rgba(0, 0, 0, 0.4)
-  );
-  background-size: cover;
-  background-position: center;
   z-index: 1;
+}
+
+.swetar-img
+{
+  text-align: center;
 }
 
 video{
