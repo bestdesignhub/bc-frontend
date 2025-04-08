@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useLayoutEffect, useMemo } from 'react';
+import { useEffect, useLayoutEffect, useMemo, useState } from 'react';
 import Image from 'next/image';
 //import '@/app/styles/header.css';
 import Cookies from 'js-cookie';
@@ -12,9 +12,12 @@ import Settings from '../MyAcounts/settings';
 import Link from 'next/link';
 import { COOKIES, USER_ROUTES } from '@/constants';
 import CartWishlist from './cart-wishlist';
+import { useRouter } from 'next/navigation'; // Import router for navigation
 
 export default function Header() {
   const token = useMemo(() => Cookies.get('userToken'), []);
+  const [searchQuery, setSearchQuery] = useState('');
+  const router = useRouter();
 
   useLayoutEffect(() => {
     const fetchUserSettings = async () => {
@@ -46,6 +49,15 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const handleSearchSubmit = (e: any) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      router.push(`/search?search=${encodeURIComponent(searchQuery)}`);
+    } else {
+      router.push('/men');
+    }
+  };
+
   return (
     <>
       <div className="header-top">
@@ -69,9 +81,19 @@ export default function Header() {
       <header className="header-main">
         <div className="f-container">
           <Logo />
+
           <div className="search-box">
-            <input className="search-input" type="search" name="search" placeholder="search" />
+            <form onSubmit={handleSearchSubmit} className="search-bar">
+              <input
+                type="text"
+                placeholder="Search..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="search-input"
+              />
+            </form>
           </div>
+
           <ul className="header-links">
             <li>
               <a className="phone" href="tel:+4531327890" title="+45 3132 7890">
