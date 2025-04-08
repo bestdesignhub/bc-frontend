@@ -28,13 +28,13 @@ const LastStepPage = async ({
   const productTypeId = productTypeData?.[0]?.value;
   const stepData = await getStepFullViewDetails({ productTypeId, steps: resolvedSearchParams });
 
-  console.log('stepData', stepData);
-
   return (
     <>
       <StepBanner step={stepData?.steps?.length + FIXED_STEPS_COUNT} />
       <div className="Sweater-page">
         <div className="Sweater-block-main">
+        <div className='container'>
+          <div className='final-step-sweaterbg'>
           <div className="Sweater-left">
             <div className="Sweater-left-inner">
               {stepData?.productData?.images?.length ? (
@@ -44,7 +44,6 @@ const LastStepPage = async ({
               )}
             </div>
           </div>
-
           <div className="Sweater-right">
             <div className="Sweater-block-top">
               <div className="short-text" />
@@ -160,6 +159,8 @@ const LastStepPage = async ({
                 </div>
               </div>
             </div>
+          </div>
+          </div>
           </div>
         </div>
       </div>

@@ -370,6 +370,10 @@ h2.style-title.bnr {
   position: relative;
 }
 
+.stepBackground {
+  background: #f6f4e7;
+}
+
 @media (min-width: 992px) and (max-width: 1199px) {
   :root {
     --bsp-heading1: 32px;

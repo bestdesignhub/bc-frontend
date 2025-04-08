@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Image, { StaticImageData } from 'next/image';
 import { useSearchParams } from 'next/navigation';
 import '@/app/styles/Sweater-product.css';
-import Sweaterimg1 from '@/public/images/Sweater-img.png';
+import Sweaterimg1 from '@/public/images/round-neck-sweater.jpg';
 import userAxiosInstanceWithoutToken from '@/config/userAxiosInstanceWithoutToken';
 
 const BUCKET_DOMAIN = process.env.NEXT_PUBLIC_BUCKET_DOMAIN;
@@ -21,8 +21,6 @@ export default function SweaterBox({ stepData }: SweaterBoxProps) {
   const style = searchParams.get('style');
   const fitting = searchParams.get('fitting');
   const color = stepData.yarn.colourId;
-
-  console.log('stepData----', stepData.yarn.colourId);
 
   const [imageSrc, setImageSrc] = useState<string | StaticImageData>(Sweaterimg1);
   const [loading, setLoading] = useState(false);
@@ -59,12 +57,12 @@ export default function SweaterBox({ stepData }: SweaterBoxProps) {
   return (
     <div className="defult-block">
       <div className="Sweater-top-data">
-        <h3>Your Sweater</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem.</p>
+        <h3>Your Final Sweater</h3>
+        <p>Whatevert you select in previous all styles, color, patterns as per final result</p>
       </div>
       <div className="Sweater-img">
         {loading ? (
-          <p>Loading sweater...</p>
+          <p>Generating sweater...</p>
         ) : (
           <Image
             loading="lazy"

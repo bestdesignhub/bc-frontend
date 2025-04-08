@@ -32,10 +32,11 @@ function Sweater() {
   return (
     <>
       <SweaterBanner />
-
       <SizeModal show={showModal} handleClose={handleClose} />
       <div className="Sweater-page">
         <div className="Sweater-block-main">
+          <div className='container'>
+            <div className='final-step-sweaterbg'>
           <div className="Sweater-left">
             <div className="Sweater-left-inner">
               <SweaterBox />
@@ -407,6 +408,8 @@ function Sweater() {
                 </div>
               </div>
             </div>
+          </div>
+          </div>
           </div>
         </div>
       </div>
