@@ -9,6 +9,8 @@ import { dispatch } from '@/lib/redux/store';
 import { setAllUserSettingsValues } from '@/lib/redux/slices/userSettingSlice';
 import Logo from './logo';
 import Settings from '../MyAcounts/settings';
+import Link from 'next/link';
+import { COOKIES, USER_ROUTES } from '@/constants';
 
 export default function Header() {
   const token = useMemo(() => Cookies.get('userToken'), []);
@@ -81,9 +83,10 @@ export default function Header() {
               </a>
             </li>
             <li>
-              <a className="my-account" href="#" title="My Account">
+              {/* <a className="my-account" href="#" title="My Account">
                 My Account
-              </a>
+              </a> */}
+              <Link href={USER_ROUTES[token ? 'myAccount' : 'signin']}>My Account</Link>
             </li>
           </ul>
           <div className="my-cart">
