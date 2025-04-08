@@ -99,14 +99,14 @@ const HomeComponent = ({ homepageData, homeProductList }: IHomePageProps) => {
           </div>
         </section>
 
-        <section className="women-men-sweater">
-          <div className="women-sweater">
+
+        <ZeeZap lookGoodData={lookGoodData} />
+          {/* <div className="women-sweater">
             <img src="/images/ww.webp" />
           </div>
           <div className="men-sweater">
             <img src="/images/ww.webp" />
-          </div>
-        </section>
+          </div> */}
 
         <section className="all-sweater-style f-container">
           <h3>Our All Sweater Styles</h3>

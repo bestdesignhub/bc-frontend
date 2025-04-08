@@ -3,7 +3,8 @@
   position: relative;
   z-index: 1;
 }
-.page-banner.gauge .image {
+
+/* .page-banner.gauge .image {
   position: relative;
   height: 50vh;
 }
@@ -28,11 +29,12 @@
   position: absolute;
   top: 0;
   left: 0;
-}
+} */
 .min-height {
   min-height: 300px;
 }
-.page-banner.gauge .banner-caption {
+
+/* .page-banner.gauge .banner-caption {
   text-align: center;
   position: absolute;
   top: 0;
@@ -58,10 +60,13 @@
 .page-banner.gauge .banner-content {
   max-width: 57.5%;
   margin: 0 auto;
+} */
+
+.sweater-inner-step {
+  background: #f6f4e7;
 }
+
 .Sweater-block-main {
-  max-width: 1720px;
-  margin: 0 auto;
   display: flex;
   align-items: stretch;
 }

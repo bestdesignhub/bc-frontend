@@ -388,9 +388,9 @@ export default function Woman() {
         </Row>
       </div>
       <div className="woman-cms-wrapper">
-        <Container fluid>
-          <Row className="justify-content-center">
-            <Col xs={12} lg={10}>
+        <div className='container'>              
+          <Row>
+            <Col xs={12} lg={12}>
               <div className="cms-content">
                 <h3>Lorem ipsum dolor sit amet consectetur</h3>
                 <p>
@@ -438,7 +438,7 @@ export default function Woman() {
               </div>
             </Col>
           </Row>
-        </Container>
+        </div>
       </div>
       <div className="faq-wrapper">
         <Container fluid>

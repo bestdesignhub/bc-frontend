@@ -1,12 +1,14 @@
-.page-banner.gauge {
+/* .page-banner.gauge {
   overflow: hidden;
   position: relative;
   z-index: 1;
 }
+
 .page-banner.gauge .image {
   position: relative;
   height: 50vh;
 }
+
 .page-banner.gauge .image::before {
   content: '';
   display: block;
@@ -54,24 +56,24 @@
 .page-banner.gauge .banner-content {
   max-width: 57.5%;
   margin: 0 auto;
-}
+} */
 .gauge-wrapper {
   padding: 40px 0 150px;
   overflow: hidden;
 }
 .gauge-row {
-  padding: 0 100px;
+  padding: 0;
 }
 .gauge-row .row {
   --bs-gutter-y: 3rem;
 }
 .gauge-row .gaugebox {
-  border-radius: 16px;
   background: var(--bsp-white);
   overflow: hidden;
   position: relative;
-  box-shadow: 0 4px 16px 0 var(--bsp-black-10);
+  border: 1px solid #d9d6d1;
 }
+
 .gauge-row .gaugebox .image {
   position: relative;
 }
@@ -144,9 +146,8 @@
 .gauge-navigate.smallbx {
   padding: 0;
 }
-.bgsweater {
-  background: #f2f8ff;
-}
+
+
 .gauge-navigate.smallbx .navigatebox {
   border-radius: 10px;
 }

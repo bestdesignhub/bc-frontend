@@ -25,27 +25,59 @@ const Settings = () => {
   };
 
   return (
-    <div className="my-account-block-main">
-      <div className="border-box-account">
-        <div className="form-main">
-          <form>
-            <Row>
-              <Col sm={4}>
-                <div className="input-box">
-                  <select value={defaultLocale} onChange={handleChange}>
-                    {LOCALES.map((locale) => (
-                      <option key={locale.code} value={locale.code}>
-                        {locale.name}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              </Col>
-            </Row>
-          </form>
-        </div>
-      </div>
-    </div>
+
+
+    <div className="country-selecter">
+    <button className="country-dropdown" type="button">Text</button>
+    <select value={defaultLocale} onChange={handleChange}>
+    {LOCALES.map((locale) => (
+      <option className='en' key={locale.code} value={locale.code}>
+                         {locale.name}
+                       </option>
+                     ))}
+                   </select>
+
+    {/* <ul className="country-list">
+        <li>
+           <a href="#" title="English">
+                <span className="country-flag">
+                    <img src="images/english.png" alt="English" />
+                </span>
+                <span className="country-name">English</span>
+            </a>
+        </li>
+        <li>
+            <a href="#" title="danish">
+                <span className="country-flag">
+                    <img src="images/danish.png" alt="danish" />
+                </span>
+                <span className="country-name">danish</span>
+            </a>
+        </li>
+    </ul> */}
+</div>
+
+    // <div className="my-account-block-main">
+    //   <div className="border-box-account">
+    //     <div className="form-main">
+    //       <form>
+    //         <Row>
+    //           <Col sm={4}>
+    //             <div className="input-box">
+    //               <select value={defaultLocale} onChange={handleChange}>
+    //                 {LOCALES.map((locale) => (
+    //                   <option key={locale.code} value={locale.code}>
+    //                     {locale.name}
+    //                   </option>
+    //                 ))}
+    //               </select>
+    //             </div>
+    //           </Col>
+    //         </Row>
+    //       </form>
+    //     </div>
+    //   </div>
+    // </div>
   );
 };
 

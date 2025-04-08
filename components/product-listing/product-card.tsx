@@ -33,8 +33,11 @@ const ProductCard = ({ productData, view, productDetailsURl }: IProductCardProps
           <div className="info">
             <h6>{productData?.title}</h6>
             <div className="pr-price">
-              <ins>{formatPrice(productData?.price)}</ins>
+              Our Best price <strong>{formatPrice(productData?.price)}</strong>
             </div>
+            <Link className='w-view-details-btn' href={`${productDetailsURl}/${productData?._id}`}>
+              View Details
+            </Link>
           </div>
         </Link>
       </div>

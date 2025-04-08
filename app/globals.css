@@ -7,7 +7,7 @@
   --bsp-primary: #afc7cd;
   --bsp-primary2: #1e201e;
   --bsp-white: #ffffff;
-  --bsp-black: #1e201e;
+  --bsp-black: #7f7263;
   --bsp-danger: hsl(0, 100%, 50%);
   --bsp-gray: #636363;
   --bsp-gray2: #868686;
@@ -309,16 +309,12 @@ h2.style-title.bnr {
 .accessoriesbox,
 .latest-products .categorybox {
   background-color: white;
-  box-shadow: 2px 1px 10px rgba(0, 0, 0, 0.2);
-  border-radius: 8px;
-  margin-bottom: 15px;
+  border: 1px solid #d9d6d1;
 }
 
 .accessoriesbox img,
 .latest-products .categorybox img {
-  border-radius: 8px 8px 0 0;
-  -moz-border-radius: 8px 8px 0 0;
-  -webkit-border-radius: 8px 8px 0 0;
+
 }
 
 .latest-products .categorybox .info {
@@ -358,6 +354,20 @@ h2.style-title.bnr {
   max-width: 40%;
 }
 
+.sweater-inner-container {
+  display: flex;
+  gap: 50px;
+}
+
+.sweater-inner-step {
+  background: #f6f4e7;
+}
+
+.sweater-bg-step {
+  background: #fff;
+  padding: 20px;
+}
+
 @media (min-width: 992px) and (max-width: 1199px) {
   :root {
     --bsp-heading1: 32px;
@@ -394,3 +404,5 @@ h2.style-title.bnr {
     padding: 0 0 10px;
   }
 }
+
+

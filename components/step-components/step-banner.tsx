@@ -11,24 +11,10 @@ export default async function StepBanner({ step }: { stepData?: any; step: strin
         <Image
           src={getAWSImageUrl(sweaterBannerData?.bg_image)}
           width={1920}
-          height={650}
+          height={384}
           alt={'banner'}
           loading="lazy"
         />
-      </div>
-      <div className="banner-caption">
-        <div className="container">
-          <div className="banner-content">
-            <h1>
-              {/* {t('COMMON.STEP')} {step}:{' '}
-              {stepData
-                ? `${t('COMMON.CHOOSE_A')} ${stepData?.label}`
-                : t('COMMON.FULL_VIEW_SWEATER')} */}
-              {sweaterBannerData?.title ?? ''}
-            </h1>
-            <p>{sweaterBannerData?.description ?? ''}</p>
-          </div>
-        </div>
       </div>
     </div>
   );

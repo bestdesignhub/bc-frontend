@@ -22,12 +22,12 @@ export interface IListingFaqProps {
 const ListingFaq = ({ faqData }: IListingFaqProps) => {
   return (
     <div className="faq-wrapper">
-      <Container fluid>
+      <div className='container'>
         <div className="section_title center">
           <h6>DISCOVER MORE</h6>
           <h2>Frequently Asked Questions</h2>
         </div>
-        <Row className="justify-content-center">
+        <Row>
           <Col xs={12} lg={7}>
             <Accordion>
               {faqData?.faqs?.map((faq: FAQ) => (
@@ -39,7 +39,7 @@ const ListingFaq = ({ faqData }: IListingFaqProps) => {
             </Accordion>
           </Col>
         </Row>
-      </Container>
+        </div>
     </div>
   );
 };

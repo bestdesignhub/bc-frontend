@@ -14,16 +14,18 @@ export default function ZeeZap({ lookGoodData }: ILookGoodProps) {
     <div className="zeezap-wrapper">
       {lookGoodData?.card2 && (
         <Row className="g-0">
-          <Col xs={12} lg={6}>
+          <Col xs={12} lg={6} className='women'>
             <div className="image">
+              <Link href="/men">
               <Image
                 src={getAWSImageUrl(lookGoodData?.card2?.image)}
-                width={400}
-                height={600}
+                width={938}
+                height={456}
                 alt="hero"
                 className="img1"
                 loading="lazy"
               />
+              </Link>
             </div>
             <div className="zeezap_content">
               <h6>{lookGoodData?.card2?.title ?? ''}</h6>
@@ -39,16 +41,18 @@ export default function ZeeZap({ lookGoodData }: ILookGoodProps) {
             </div>
           </Col>
           {lookGoodData?.card3 && ( 
-          <Col xs={12} lg={6}>
+          <Col xs={12} lg={6} className='men'>
             <div className="image">
+            <Link href="/women">
               <Image
                 src={getAWSImageUrl(lookGoodData?.card3?.image)}
-                width={400}
-                height={600}
+                width={938}
+                height={456}
                 alt="hero"
                 className="img1"
                 loading="lazy"
               />
+              </Link>
             </div>            
             <div className="zeezap_content">
               <h6>{lookGoodData?.card3?.title ?? ''}</h6>

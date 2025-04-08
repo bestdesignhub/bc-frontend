@@ -1,4 +1,4 @@
-import { Header, KeepConnect, Footer } from '@/app/components';
+import { Header, Footer } from '@/app/components';
 import { ResetPassword } from '@/app/components/reset-password';
 import BannerWrapper from '@/components/common/banner/BannerWrapper';
 export default function ForgotPasswordPage() {
@@ -6,7 +6,7 @@ export default function ForgotPasswordPage() {
     <BannerWrapper>
       <Header />
       <ResetPassword />
-      <KeepConnect />
+      {/* <KeepConnect /> */}
       <Footer />
     </BannerWrapper>
   );

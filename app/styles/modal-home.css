@@ -1,6 +1,5 @@
 .modal-backdrop {
-  backdrop-filter: blur(20px);
-  display: none !important;
+  backdrop-filter: 0;
 }
 .entry-modal .modal-dialog {
   max-width: 800px;

@@ -27,16 +27,20 @@
   object-fit: cover;
 }
 .accessoriesbox .info {
-  text-align: left;
-  padding: 20px;
+  /* text-align: left;
+  padding: 20px; */
 }
+
 .accessoriesbox .info h6 {
-  font-size: var(--bsp-body-text);
-  font-family: var(--bsp-font-poppins);
-  color: var(--bsp-black);
-  font-weight: bold;
-  padding-bottom: 10px;
-  display: inline-block;
+  padding: 15px 15px;
+  font-size: 20px;
+  font-family: "Gilda Display", serif;
+  font-weight: 400;
+  color: #7f7263;
+  display: block;
+  border-bottom: 1px solid #d9d6d1;
+  min-height: 72px;
+  display: flex;
 }
 
 .accessoriesbox .info .pr-price {
@@ -63,10 +67,15 @@
   color: var(--bsp-black);
 }
 .accessoriesbox .info .pr-price {
-  display: flex;
-  align-items: left;
-  justify-content: left;
+  padding: 13px 15px;
+  font-size: 18px;
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  color: #7f7263;
+  display: block;
+  text-align: left;
 }
+
 .accessoriesbox .info .pr-price ins {
   font-size: var(--bsp-body-14);
   color: var(--bsp-black);

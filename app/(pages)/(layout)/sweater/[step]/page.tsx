@@ -29,6 +29,7 @@ const SweaterStep = async ({
   return (
     <>
       <StepBanner stepData={stepData} step={step} />
+      <div className='container'>
       <Row className="g-4">
         <Col xs={12} lg={3}>
           <StepNavigate
@@ -46,6 +47,7 @@ const SweaterStep = async ({
           />
         </Col>
       </Row>
+      </div>
     </>
   );
 };

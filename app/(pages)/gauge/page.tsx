@@ -1,11 +1,10 @@
-import { Footer, Gauge, Header, KeepConnect } from '@/app/components';
+import { Footer, Gauge, Header } from '@/app/components';
 
 export default function GaugePage() {
   return (
     <>
       <Header />
       <Gauge />
-      <KeepConnect />
       <Footer />
     </>
   );

@@ -34,6 +34,7 @@ export default function ProductList({
   return (
     <ViewProvider>
       <div className="woman-product-wrapper">
+        <div className='container'>
         <Row className="g-4">
           <Col xs={12} lg={2}>
             <ProductListFilters
@@ -49,6 +50,7 @@ export default function ProductList({
             />
           </Col>
           <Col xs={12} lg={10}>
+              <div className='listing-rightside'>
             <ProductTopbar text={t('COMMON.PRODUCT_TEXT')} total={productList?.totalCount} />
             <ProductCardContainer
               productList={productList?.data ?? []}
@@ -58,8 +60,10 @@ export default function ProductList({
               currentPage={productList?.currentPage ?? 0}
               totalPage={productList?.totalPage ?? 0}
             />
+                          </div>
           </Col>
         </Row>
+        </div>
       </div>
     </ViewProvider>
   );

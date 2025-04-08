@@ -37,6 +37,8 @@
 .latest-products .viewbtn {
   color: #7f7263;
   text-decoration: underline;
+  margin-top: 15px;
+  display: inline-block;
 }
 
 .latest-products .viewbtn:hover {

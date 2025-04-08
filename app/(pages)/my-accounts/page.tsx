@@ -1,4 +1,4 @@
-import { Footer, Header, KeepConnect, Service } from '@/app/components';
+import { Footer, Header, Service } from '@/app/components';
 import MyAcounts from '@/app/components/MyAcounts/MyAcounts'; // Default import
 
 export default function MyAcountspage() {
@@ -7,7 +7,7 @@ export default function MyAcountspage() {
       <Header />
       <MyAcounts />
       <Service />
-      <KeepConnect />
+      {/* <KeepConnect /> */}
 
       <Footer />
     </>

@@ -1,4 +1,4 @@
-import { Footer, Header, KeepConnect, Service } from '@/app/components';
+import { Footer, Header, Service } from '@/app/components';
 import Blog from '@/app/components/blog/blog'; // Default import
 
 export default function Blogpage() {
@@ -7,7 +7,7 @@ export default function Blogpage() {
       <Header />
       <Blog />
       <Service />
-      <KeepConnect />
+      {/* <KeepConnect /> */}
 
       <Footer />
     </>
