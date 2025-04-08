@@ -9,16 +9,22 @@ import userAxiosInstanceWithoutToken from '@/config/userAxiosInstanceWithoutToke
 
 const BUCKET_DOMAIN = process.env.NEXT_PUBLIC_BUCKET_DOMAIN;
 
-export default function SweaterBox() {
+type SweaterBoxProps = {
+  stepData?: any; // You can type this better if you want
+};
+
+export default function SweaterBox({ stepData }: SweaterBoxProps) {
   const searchParams = useSearchParams();
 
   const slug = searchParams.get('gauge');
   const pattern = searchParams.get('pattern');
   const style = searchParams.get('style');
   const fitting = searchParams.get('fitting');
+  const color = stepData.yarn.colourId;
+
+  console.log('stepData----', stepData.yarn.colourId);
 
   const [imageSrc, setImageSrc] = useState<string | StaticImageData>(Sweaterimg1);
-
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -32,6 +38,7 @@ export default function SweaterBox() {
           pattern,
           style,
           fitting,
+          color,
         });
 
         if (response.data.success && response.data.data.bg_image) {
