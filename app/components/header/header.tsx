@@ -11,6 +11,7 @@ import Logo from './logo';
 import Settings from '../MyAcounts/settings';
 import Link from 'next/link';
 import { COOKIES, USER_ROUTES } from '@/constants';
+import CartWishlist from './cart-wishlist';
 
 export default function Header() {
   const token = useMemo(() => Cookies.get('userToken'), []);
@@ -89,12 +90,7 @@ export default function Header() {
               <Link href={USER_ROUTES[token ? 'myAccount' : 'signin']}>My Account</Link>
             </li>
           </ul>
-          <div className="my-cart">
-            <a className="minicart" href="#" title="My Cart">
-              <span className="cart-text">My Cart</span>
-              <span className="counter-number">10</span>
-            </a>
-          </div>
+          <div className="my-cart">{token && <CartWishlist />}</div>
 
           <Settings />
           {/* <div className="country-selecter">
