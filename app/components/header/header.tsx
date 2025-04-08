@@ -51,7 +51,7 @@ export default function Header() {
   const handleSearchSubmit = (e: any) => {
     e.preventDefault();
     if (searchQuery.trim()) {
-      router.push(`/search?search=${encodeURIComponent(searchQuery)}`);
+      router.push(`/shop?_search=${encodeURIComponent(searchQuery)}`);
     } else {
       router.push('/men');
     }
@@ -64,7 +64,7 @@ export default function Header() {
           <span className="f-shipping">Free Shipping on all orders over $500</span>
           <ul className="h-top-btn">
             <li>
-            <Link href="/sweater" title="Create My SWEATER">
+              <Link href="/sweater" title="Create My SWEATER">
                 Create My SWEATER
               </Link>
             </li>
