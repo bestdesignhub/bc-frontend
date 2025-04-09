@@ -76,12 +76,12 @@ const HomeComponent = ({ homepageData, homeProductList }: IHomePageProps) => {
             </ul>
             <ul className="custom-sweater-btn">
               <li>
-                <Link href="#" title="Create My SWEATER">
+                <Link href="/sweater" title="Create My SWEATER">
                   Create My SWEATER
                 </Link>
               </li>
               <li>
-                <Link href="#" title="Customise a Sweater">
+                <Link href="/shop" title="Customise a Sweater">
                   Customise a Sweater
                 </Link>
               </li>
@@ -93,8 +93,6 @@ const HomeComponent = ({ homepageData, homeProductList }: IHomePageProps) => {
             <img src="/images/your-style.webp" alt="Your Style & Colors" />
           </div>
         </section>
-
-
         <ZeeZap lookGoodData={lookGoodData} />
           {/* <div className="women-sweater">
             <img src="/images/ww.webp" />
