@@ -15,12 +15,13 @@ import {
   getUserMeasurementBySlug,
 } from '@/utils/server-api.utils';
 import Image from 'next/image';
-import React from 'react';
 
 import { formatPrice, getAWSImageUrl } from '@/utils/common.utils';
 import { getTranslations } from 'next-intl/server';
 import CurrentStepBox from '@/components/step-components/current-step-box';
 import SweaterSlider from '@/components/step-components/sweater-slider';
+import React, { useState } from 'react'; // Already imported React, just add useState
+
 import {
   getAvailableSizes,
   getDefaultProductType,
@@ -30,10 +31,13 @@ import {
 } from '@/utils/server-api.utils';
 import MeasurementsBox from '@/app/components/measurements/measurements-box';
 import { MeasurementProfileComponent } from '@/app/components/measurements-profile';
+import MeasurementProfileSelector from '@/components/MeasurementProfileSelector';
 
 const LastStepPage = async ({
   searchParams,
+  profiles,
 }: {
+  profiles: any;
   availableSizes: any;
   searchParams: Promise<{ [key: string]: string }>;
 }) => {
@@ -221,7 +225,9 @@ const LastStepPage = async ({
                       />
                     </div>
 
-                    <div>Profile </div>
+                    <div>
+                      <MeasurementProfileSelector profiles={measurementProfiles} />
+                    </div>
 
                     <div>
                       <MeasurementsBox
