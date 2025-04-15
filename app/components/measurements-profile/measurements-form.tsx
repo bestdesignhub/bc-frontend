@@ -9,7 +9,7 @@ import { dispatch } from '@/lib/redux/store';
 import { setLoading } from '@/lib/redux/slices/loaderSlice';
 import toast from 'react-hot-toast';
 import { useLocale, useTranslations } from 'next-intl';
-import { MESSAGES, URL_SLUG, USER_ROUTES } from '@/constants';
+import { MESSAGES, URL_SLUG } from '@/constants';
 import { useEffect, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 
@@ -56,6 +56,7 @@ export default function MeasurementsForm({
     try {
       setDisableSubmit(true);
       dispatch(setLoading(true));
+
       const { profileName, notes, ...rest } = data;
       const result = measurementList
         .filter((item: any) => rest.hasOwnProperty(item.slug))
@@ -64,6 +65,7 @@ export default function MeasurementsForm({
           name: item.name,
           value: rest[item.slug],
         }));
+
       const isEditData = searchParams.has(URL_SLUG.MEASUREMENT_PROFILE);
       const payload = {
         measurements: result,
@@ -71,15 +73,15 @@ export default function MeasurementsForm({
         profileName,
         ...(isEditData ? { _id: searchParams.get(URL_SLUG.MEASUREMENT_PROFILE) } : {}),
       };
+
       const response = await userAxiosInstance({
         url: isEditData ? USER_MEASUREMENT_UPDATE_URL : USER_MEASUREMENT_ADD_URL,
         method: isEditData ? 'PUT' : 'POST',
         data: payload,
       });
+
       if (response.data.success) {
         toast.success(t(MESSAGES.SUCCESS));
-        const params = new URLSearchParams(searchParams.toString());
-        //router.push(`${USER_ROUTES.measurements}?${params.toString()}`);
         methods.reset();
         router.refresh();
       }
@@ -99,68 +101,63 @@ export default function MeasurementsForm({
           <div className="input-box-main">
             <div className="label-title">Profile Name</div>
             <InputField name="profileName" placeholder="Profile Name" required type="text" />
-            {/* <SearchableDropdown
-              name="selectedProfile"
-              options={profiles}
-              placeholder="Profile"
-              handleOnSelect={handleSelectedProfile}
-            /> */}
           </div>
         </div>
 
         <div className="tab-contain-block">
           <div className="tab-custom-form">
             <Row>
-              {measurementList.map((measurement) => {
-                const valueInCm = Number(watch(measurement.slug) || '');
+              {Array.isArray(measurementList) &&
+                measurementList.map((measurement) => {
+                  const valueInCm = Number(watch(measurement.slug) || '');
+                  const valueInInches = cmToInches(valueInCm);
+                  const name = measurement?.name?.[locale] ?? measurement?.name?.en;
 
-                const valueInInches = cmToInches(valueInCm);
-                const name = measurement?.name?.[locale] ?? measurement?.name?.en;
-                return (
-                  <Col sm={6} key={measurement.slug}>
-                    <div className="input-box-cls">
-                      <div className="input-title">{name}</div>
-                      <div className="icon-with-input">
-                        {measurement.info && (
-                          <div className="i-icon">
-                            <InfoIcon id={measurement.slug} title={measurement.info} />
-                          </div>
-                        )}
-                        <div className="input-box-in flex">
-                          <InputField
-                            name={measurement.slug}
-                            placeholder={`Enter ${name}`}
-                            type="number"
-                            onFocus={() => handleMeasurementFieldFocus(measurement.slug)}
-                            required
-                            rules={{
-                              min:
-                                measurement.min !== undefined
-                                  ? {
-                                      value: measurement.min,
-                                      message: `Minimum value is ${measurement.min}`,
-                                    }
-                                  : undefined,
-                              max:
-                                measurement.max !== undefined
-                                  ? {
-                                      value: measurement.max,
-                                      message: `Maximum value is ${measurement.max}`,
-                                    }
-                                  : undefined,
-                            }}
-                          />
-                          {valueInCm !== 0 && (
-                            <span className="ml-2 text-xs text-gray-600">
-                              ({valueInInches} inches)
-                            </span>
+                  return (
+                    <Col sm={6} key={measurement.slug}>
+                      <div className="input-box-cls">
+                        <div className="input-title">{name}</div>
+                        <div className="icon-with-input">
+                          {measurement.info && (
+                            <div className="i-icon">
+                              <InfoIcon id={measurement.slug} title={measurement.info} />
+                            </div>
                           )}
+                          <div className="input-box-in flex">
+                            <InputField
+                              name={measurement.slug}
+                              placeholder={`Enter ${name}`}
+                              type="number"
+                              onFocus={() => handleMeasurementFieldFocus(measurement.slug)}
+                              required
+                              rules={{
+                                min:
+                                  measurement.min !== undefined
+                                    ? {
+                                        value: measurement.min,
+                                        message: `Minimum value is ${measurement.min}`,
+                                      }
+                                    : undefined,
+                                max:
+                                  measurement.max !== undefined
+                                    ? {
+                                        value: measurement.max,
+                                        message: `Maximum value is ${measurement.max}`,
+                                      }
+                                    : undefined,
+                              }}
+                            />
+                            {valueInCm !== 0 && (
+                              <span className="ml-2 text-xs text-gray-600">
+                                ({valueInInches} inches)
+                              </span>
+                            )}
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </Col>
-                );
-              })}
+                    </Col>
+                  );
+                })}
 
               <Col sm={6}>
                 <div className="input-box-cls">

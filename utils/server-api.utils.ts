@@ -186,7 +186,7 @@ export const getStepFullViewDetails = async ({
   return res.data;
 };
 
-export const getFittingStepDetails = async ({ id }: { id: string }) => {
+export const getFittingStepDetails = async ({ id }: { id: any }) => {
   const res: any = await handleApiCall(`${STEP_CARD_DETAILS}/${id}`, 'GET', {});
   return res.data;
 };
