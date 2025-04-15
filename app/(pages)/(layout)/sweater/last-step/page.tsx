@@ -17,7 +17,7 @@ import {
   getDefaultProductType,
   //getFittingStepDetails,
   getMeasurementProfiles,
-  //getStepTypesList,
+  getStepTypesList,
 } from '@/utils/server-api.utils';
 import Image from 'next/image';
 import React from 'react';
@@ -29,13 +29,14 @@ import SweaterSlider from '@/components/step-components/sweater-slider';
 import { MeasurementProfileComponent } from '@/app/components/measurements-profile';
 import MeasurementProfileSelector from '@/components/MeasurementProfileSelector';
 import AvailableSizeSelector from '@/components/AvailableSizeSelector';
+import MeasurementsBox from '@/app/components/measurements/measurements-box';
 
 const LastStepPage = async ({
   searchParams,
 }: {
   searchParams: Promise<{ [key: string]: string }>;
 }) => {
-  const [productTypeData] = await Promise.all([
+  const [productType, productTypeData] = await Promise.all([
     getDefaultProductType(),
     getDropdownList(PRODUCT_TYPE_DROPDOWN_URL),
   ]);
@@ -44,18 +45,22 @@ const LastStepPage = async ({
   const t = await getTranslations();
   const productTypeId = productTypeData?.[0]?.value;
   const stepData = await getStepFullViewDetails({ productTypeId, steps: resolvedSearchParams });
+  const fittingName = stepData?.fitting?.stepCard?.title;
 
   const [
+    stepsResult,
     availableSizesResult,
     measurementProfileResult,
     userMeasurementActiveResult,
     userMeasurementBySlugResult,
   ] = await Promise.allSettled([
+    getStepTypesList(productType?._id),
     getAvailableSizes(),
     getMeasurementProfiles(),
     getUserMeasurementActive(),
     getUserMeasurementBySlug(),
   ]);
+  const steps = stepsResult.status === 'fulfilled' ? stepsResult.value : [];
 
   const availableSizes =
     availableSizesResult.status === 'fulfilled' ? availableSizesResult.value : [];
@@ -210,6 +215,13 @@ const LastStepPage = async ({
                     />
                     {<MeasurementProfileSelector profiles={measurementProfiles} />}
                     <AvailableSizeSelector sizes={availableSizes} />
+                    <MeasurementsBox
+                      productTypeId={productTypeId}
+                      fittingName={fittingName}
+                      steps={steps}
+                      availableSizes={availableSizes}
+                      measurementProfiles={measurementProfiles}
+                    />
                   </div>
                 </div>
               </div>
