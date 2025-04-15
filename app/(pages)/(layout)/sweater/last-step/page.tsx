@@ -1,78 +1,65 @@
-import React from 'react';
-import Image from 'next/image';
 import '@/app/styles/Sweater-product.css';
-
 import SweaterBox from '@/app/components/Sweater/Sweater-box';
-import SweaterSlider from '@/components/step-components/sweater-slider';
-import CurrentStepBox from '@/components/step-components/current-step-box';
-import MeasurementsBox from '@/app/components/measurements/measurements-box';
-import { MeasurementProfileComponent } from '@/app/components/measurements-profile';
-import MeasurementProfileSelector from '@/components/MeasurementProfileSelector';
-import AvailableSizeSelector from '@/components/AvailableSizeSelector';
-
 import {
   ChangeYarnButton,
   ProceedToSizeMeasurement,
   SaveAndGoToCart,
   StepBanner,
 } from '@/components';
-
+import { FIXED_STEPS_COUNT, URL_SLUG } from '@/constants';
+import { PRODUCT_TYPE_DROPDOWN_URL } from '@/constants/apis';
 import {
   getDropdownList,
   getStepFullViewDetails,
   getUserMeasurementActive,
   getUserMeasurementBySlug,
-  getAvailableSizes,
+  //getAvailableSizes,
   getDefaultProductType,
-  getFittingStepDetails,
+  //getFittingStepDetails,
   getMeasurementProfiles,
-  getStepTypesList,
+  //getStepTypesList,
 } from '@/utils/server-api.utils';
+import Image from 'next/image';
+import React from 'react';
 
-import { getAWSImageUrl, formatPrice } from '@/utils/common.utils';
+import { formatPrice, getAWSImageUrl } from '@/utils/common.utils';
 import { getTranslations } from 'next-intl/server';
-import { FIXED_STEPS_COUNT, URL_SLUG } from '@/constants';
-import { PRODUCT_TYPE_DROPDOWN_URL } from '@/constants/apis';
+import CurrentStepBox from '@/components/step-components/current-step-box';
+import SweaterSlider from '@/components/step-components/sweater-slider';
+import { MeasurementProfileComponent } from '@/app/components/measurements-profile';
+import MeasurementProfileSelector from '@/components/MeasurementProfileSelector';
 
 const LastStepPage = async ({
   searchParams,
 }: {
-  profiles: any;
-  availableSizes: any;
   searchParams: Promise<{ [key: string]: string }>;
 }) => {
-  const resolvedSearchParams = await searchParams;
-  const t = await getTranslations();
-
-  const [productType, productTypeData] = await Promise.all([
+  const [productTypeData] = await Promise.all([
     getDefaultProductType(),
     getDropdownList(PRODUCT_TYPE_DROPDOWN_URL),
   ]);
 
+  const resolvedSearchParams = await searchParams;
+  const t = await getTranslations();
   const productTypeId = productTypeData?.[0]?.value;
-
   const stepData = await getStepFullViewDetails({ productTypeId, steps: resolvedSearchParams });
-  const fittingName = stepData?.fitting?.stepCard?.title;
 
   const [
-    stepsResult,
-    availableSizesResult,
-    fittingStepDetailsResult,
+    //stepsResult,
+    //availableSizesResult,
+    //fittingStepDetailsResult,
     measurementProfileResult,
     userMeasurementActiveResult,
     userMeasurementBySlugResult,
   ] = await Promise.allSettled([
-    getStepTypesList(productType?._id),
-    getAvailableSizes(),
-    getFittingStepDetails({ id: resolvedSearchParams[URL_SLUG.FITTING] }),
+    //getStepTypesList(productType?._id),
+    //getAvailableSizes(),
+    //getFittingStepDetails({ id: resolvedSearchParams[URL_SLUG.FITTING] }),
     getMeasurementProfiles(),
     getUserMeasurementActive(),
     getUserMeasurementBySlug(),
   ]);
 
-  const steps = stepsResult.status === 'fulfilled' ? stepsResult.value : [];
-  const availableSizes =
-    availableSizesResult.status === 'fulfilled' ? availableSizesResult.value : [];
   const measurementProfiles =
     measurementProfileResult.status === 'fulfilled' ? measurementProfileResult.value : [];
   const userMeasurementActive =
@@ -83,10 +70,11 @@ const LastStepPage = async ({
   const measurementProfileId = resolvedSearchParams[URL_SLUG.MEASUREMENT_PROFILE];
   const measurementProfile = measurementProfileId && userMeasurementBySlug;
 
+  console.log('measurementProfiles', stepData);
+
   return (
     <>
-      <StepBanner step={(stepData?.steps?.length || 0) + FIXED_STEPS_COUNT} />
-
+      <StepBanner step={stepData?.steps?.length + FIXED_STEPS_COUNT} />
       <div className="Sweater-page">
         <div className="Sweater-block-main">
           <div className="container">
@@ -94,13 +82,12 @@ const LastStepPage = async ({
               <div className="Sweater-left">
                 <div className="Sweater-left-inner">
                   {stepData?.productData?.images?.length ? (
-                    <SweaterSlider images={stepData.productData.images} />
+                    <SweaterSlider images={stepData?.productData?.images} />
                   ) : (
                     <SweaterBox stepData={stepData} />
                   )}
                 </div>
               </div>
-
               <div className="Sweater-right">
                 <div className="Sweater-block-top">
                   <div className="short-text" />
@@ -144,23 +131,43 @@ const LastStepPage = async ({
                   <h4>{t('COMMON.YARN_CHARACTERISTICS')}</h4>
                   <div className="fabric-listing">
                     <ul>
-                      {['gender', 'material', 'colour', 'seasonality', 'perceivedWeight'].map(
-                        (attr) => (
-                          <li key={attr}>
-                            <div className="icon-text">
-                              <span>{t(`COMMON.${attr.toUpperCase()}`)}:</span>
-                            </div>
-                            <div className="bg-text">{stepData?.yarn?.[attr]}</div>
-                          </li>
-                        )
-                      )}
+                      <li>
+                        <div className="icon-text">
+                          <span>{t('COMMON.GENDER')}:</span>
+                        </div>
+                        <div className="bg-text">{stepData?.yarn?.gender}</div>
+                      </li>
+                      <li>
+                        <div className="icon-text">
+                          <span>{t('COMMON.MATERIAL')}:</span>
+                        </div>
+                        <div className="bg-text">{stepData?.yarn?.material}</div>
+                      </li>
+                      <li>
+                        <div className="icon-text">
+                          <span>{t('COMMON.COLOUR')}:</span>
+                        </div>
+                        <div className="bg-text">{stepData?.yarn?.colour}</div>
+                      </li>
+                      <li>
+                        <div className="icon-text">
+                          <span>{t('COMMON.SEASONALITY')}:</span>
+                        </div>
+                        <div className="bg-text">{stepData?.yarn?.seasonality}</div>
+                      </li>
+                      <li>
+                        <div className="icon-text">
+                          <span>{t('COMMON.PERCEIVED_WEIGHT')}:</span>
+                        </div>
+                        <div className="bg-text">{stepData?.yarn?.perceivedWeight}</div>
+                      </li>
                       {stepData?.yarn?.yarns?.map((yarn: any, index: number) => (
                         <li key={index}>
                           <div className="icon-text">
                             {yarn.image && (
                               <i>
                                 <Image
-                                  src={getAWSImageUrl(yarn.image)}
+                                  src={getAWSImageUrl(yarn?.image)}
                                   alt=""
                                   width={24}
                                   height={24}
@@ -194,21 +201,15 @@ const LastStepPage = async ({
                         );
                       })}
                     </div>
+                  </div>
 
+                  <div>
                     <MeasurementProfileComponent
                       userMeasurementBySlug={userMeasurementBySlug}
                       userMeasurementActiveList={userMeasurementActive}
                       measurementProfile={measurementProfile}
                     />
-                    <MeasurementProfileSelector profiles={measurementProfiles} />
-                    <AvailableSizeSelector sizes={availableSizes} />
-                    <MeasurementsBox
-                      productTypeId={productTypeId}
-                      fittingName={fittingName}
-                      steps={steps}
-                      availableSizes={availableSizes}
-                      measurementProfiles={measurementProfiles}
-                    />
+                    {<MeasurementProfileSelector profiles={measurementProfiles} />}
                   </div>
                 </div>
               </div>

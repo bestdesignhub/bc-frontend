@@ -9,6 +9,8 @@ const MeasurementProfileSelector = ({
 }) => {
   const [selectedProfile, setSelectedProfile] = useState('');
 
+  console.log('profiles', profiles);
+
   return (
     <div>
       <h5>Select a Measurement Profile:</h5>
