@@ -79,7 +79,9 @@ export default function MeasurementsForm({
       if (response.data.success) {
         toast.success(t(MESSAGES.SUCCESS));
         const params = new URLSearchParams(searchParams.toString());
-        router.push(`${USER_ROUTES.measurements}?${params.toString()}`);
+        //router.push(`${USER_ROUTES.measurements}?${params.toString()}`);
+        methods.reset();
+        router.refresh();
       }
     } catch (error) {
       console.error(error);
