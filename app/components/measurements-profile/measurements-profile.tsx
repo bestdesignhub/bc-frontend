@@ -42,32 +42,14 @@ export default function MeasurementProfileComponent({
       }
     }
   };
+
   return (
-    <BannerWrapper>
-      <div className="measurements-page">
-        <div className="measurements-block">
-          <div className="measurements-left">
-            <div className="measurements-left-sub">
-              <h4>{measurementDetails?.title ?? ''}</h4>
-              <p style={{ whiteSpace: 'pre-wrap' }}>{measurementDetails?.description ?? ''}</p>
-              <video
-                controls
-                src={getAWSImageUrl(measurementDetails?.video)}
-                width="100%"
-                style={{ marginTop: '25px' }}
-              />
-            </div>
-          </div>
-          <div className="measurements-right">
-            <Measurementsform
-              measurementProfile={measurementProfile}
-              measurementList={userMeasurementActiveList}
-              handleMeasurementFieldFocus={handleMeasurementFieldFocus}
-            />
-          </div>
-        </div>
-      </div>
-      {/* <Customisebreadcrumb /> */}
-    </BannerWrapper>
+    <div className="measurements-right">
+      <Measurementsform
+        measurementProfile={measurementProfile}
+        measurementList={userMeasurementActiveList}
+        handleMeasurementFieldFocus={handleMeasurementFieldFocus}
+      />
+    </div>
   );
 }
