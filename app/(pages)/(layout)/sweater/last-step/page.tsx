@@ -13,7 +13,7 @@ import {
   getStepFullViewDetails,
   getUserMeasurementActive,
   getUserMeasurementBySlug,
-  //getAvailableSizes,
+  getAvailableSizes,
   getDefaultProductType,
   //getFittingStepDetails,
   getMeasurementProfiles,
@@ -28,6 +28,7 @@ import CurrentStepBox from '@/components/step-components/current-step-box';
 import SweaterSlider from '@/components/step-components/sweater-slider';
 import { MeasurementProfileComponent } from '@/app/components/measurements-profile';
 import MeasurementProfileSelector from '@/components/MeasurementProfileSelector';
+import AvailableSizeSelector from '@/components/AvailableSizeSelector';
 
 const LastStepPage = async ({
   searchParams,
@@ -45,21 +46,19 @@ const LastStepPage = async ({
   const stepData = await getStepFullViewDetails({ productTypeId, steps: resolvedSearchParams });
 
   const [
-    //stepsResult,
-    //availableSizesResult,
-    //fittingStepDetailsResult,
+    availableSizesResult,
     measurementProfileResult,
     userMeasurementActiveResult,
     userMeasurementBySlugResult,
   ] = await Promise.allSettled([
-    //getStepTypesList(productType?._id),
-    //getAvailableSizes(),
-    //getFittingStepDetails({ id: resolvedSearchParams[URL_SLUG.FITTING] }),
+    getAvailableSizes(),
     getMeasurementProfiles(),
     getUserMeasurementActive(),
     getUserMeasurementBySlug(),
   ]);
 
+  const availableSizes =
+    availableSizesResult.status === 'fulfilled' ? availableSizesResult.value : [];
   const measurementProfiles =
     measurementProfileResult.status === 'fulfilled' ? measurementProfileResult.value : [];
   const userMeasurementActive =
@@ -210,6 +209,7 @@ const LastStepPage = async ({
                       measurementProfile={measurementProfile}
                     />
                     {<MeasurementProfileSelector profiles={measurementProfiles} />}
+                    <AvailableSizeSelector sizes={availableSizes} />
                   </div>
                 </div>
               </div>
