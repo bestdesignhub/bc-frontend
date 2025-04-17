@@ -15,7 +15,6 @@ import {
   getUserMeasurementBySlug,
   getAvailableSizes,
   getDefaultProductType,
-  //getFittingStepDetails,
   getMeasurementProfiles,
   getStepTypesList,
 } from '@/utils/server-api.utils';
@@ -36,17 +35,28 @@ const LastStepPage = async ({
 }: {
   searchParams: Promise<{ [key: string]: string }>;
 }) => {
+  const resolvedSearchParams = await searchParams;
+  const t = await getTranslations();
+
+  // Cached/static data (revalidated)
   const [productType, productTypeData] = await Promise.all([
     getDefaultProductType(),
     getDropdownList(PRODUCT_TYPE_DROPDOWN_URL),
   ]);
 
-  const resolvedSearchParams = await searchParams;
-  const t = await getTranslations();
   const productTypeId = productTypeData?.[0]?.value;
+
+  // Fetch main step data
   const stepData = await getStepFullViewDetails({ productTypeId, steps: resolvedSearchParams });
   const fittingName = stepData?.fitting?.stepCard?.title;
 
+  // Conditionally fetch userMeasurementBySlug only if needed
+  const measurementProfileId = resolvedSearchParams[URL_SLUG.MEASUREMENT_PROFILE];
+  const userMeasurementBySlugPromise = measurementProfileId
+    ? getUserMeasurementBySlug()
+    : Promise.resolve(null);
+
+  // Fetch other data in parallel
   const [
     stepsResult,
     availableSizesResult,
@@ -58,10 +68,10 @@ const LastStepPage = async ({
     getAvailableSizes(),
     getMeasurementProfiles(),
     getUserMeasurementActive(),
-    getUserMeasurementBySlug(),
+    userMeasurementBySlugPromise,
   ]);
-  const steps = stepsResult.status === 'fulfilled' ? stepsResult.value : [];
 
+  const steps = stepsResult.status === 'fulfilled' ? stepsResult.value : [];
   const availableSizes =
     availableSizesResult.status === 'fulfilled' ? availableSizesResult.value : [];
   const measurementProfiles =
@@ -69,12 +79,9 @@ const LastStepPage = async ({
   const userMeasurementActive =
     userMeasurementActiveResult.status === 'fulfilled' ? userMeasurementActiveResult.value : [];
   const userMeasurementBySlug =
-    userMeasurementBySlugResult.status === 'fulfilled' ? userMeasurementBySlugResult.value : [];
+    userMeasurementBySlugResult.status === 'fulfilled' ? userMeasurementBySlugResult.value : null;
 
-  const measurementProfileId = resolvedSearchParams[URL_SLUG.MEASUREMENT_PROFILE];
   const measurementProfile = measurementProfileId && userMeasurementBySlug;
-
-  console.log('measurementProfiles', stepData);
 
   return (
     <>
@@ -107,6 +114,7 @@ const LastStepPage = async ({
                   </div>
                 </div>
 
+                {/* Yarn Info */}
                 <div className="Sweater-right-middle">
                   <div className="products-box-sub">
                     <div className="img">
@@ -131,38 +139,29 @@ const LastStepPage = async ({
                   <ChangeYarnButton searchParams={resolvedSearchParams} />
                 </div>
 
+                {/* Yarn Characteristics */}
                 <div className="Sweater-right-bottom">
                   <h4>{t('COMMON.YARN_CHARACTERISTICS')}</h4>
                   <div className="fabric-listing">
                     <ul>
                       <li>
-                        <div className="icon-text">
-                          <span>{t('COMMON.GENDER')}:</span>
-                        </div>
+                        <span>{t('COMMON.GENDER')}:</span>{' '}
                         <div className="bg-text">{stepData?.yarn?.gender}</div>
                       </li>
                       <li>
-                        <div className="icon-text">
-                          <span>{t('COMMON.MATERIAL')}:</span>
-                        </div>
+                        <span>{t('COMMON.MATERIAL')}:</span>{' '}
                         <div className="bg-text">{stepData?.yarn?.material}</div>
                       </li>
                       <li>
-                        <div className="icon-text">
-                          <span>{t('COMMON.COLOUR')}:</span>
-                        </div>
+                        <span>{t('COMMON.COLOUR')}:</span>{' '}
                         <div className="bg-text">{stepData?.yarn?.colour}</div>
                       </li>
                       <li>
-                        <div className="icon-text">
-                          <span>{t('COMMON.SEASONALITY')}:</span>
-                        </div>
+                        <span>{t('COMMON.SEASONALITY')}:</span>{' '}
                         <div className="bg-text">{stepData?.yarn?.seasonality}</div>
                       </li>
                       <li>
-                        <div className="icon-text">
-                          <span>{t('COMMON.PERCEIVED_WEIGHT')}:</span>
-                        </div>
+                        <span>{t('COMMON.PERCEIVED_WEIGHT')}:</span>{' '}
                         <div className="bg-text">{stepData?.yarn?.perceivedWeight}</div>
                       </li>
                       {stepData?.yarn?.yarns?.map((yarn: any, index: number) => (
@@ -188,6 +187,7 @@ const LastStepPage = async ({
                   </div>
                 </div>
 
+                {/* Sweater Steps + Size + Measurements */}
                 <div className="Sweater-right-bottom sweater-type">
                   <h4>{t('COMMON.SWEATER_CHARACTERISTICS')}</h4>
                   <div className="gauge-navigate">
@@ -207,22 +207,23 @@ const LastStepPage = async ({
                     </div>
                   </div>
 
-                  <div>
-                    <MeasurementProfileComponent
-                      userMeasurementBySlug={userMeasurementBySlug}
-                      userMeasurementActiveList={userMeasurementActive}
-                      measurementProfile={measurementProfile}
-                    />
-                    {<MeasurementProfileSelector profiles={measurementProfiles} />}
-                    <AvailableSizeSelector sizes={availableSizes} />
-                    <MeasurementsBox
-                      productTypeId={productTypeId}
-                      fittingName={fittingName}
-                      steps={steps}
-                      availableSizes={availableSizes}
-                      measurementProfiles={measurementProfiles}
-                    />
-                  </div>
+                  {/* Fit, Sizes, Measurements (can move to client-side if editable) */}
+                  {/* ...fit radio, size buttons, and input fields remain same... */}
+
+                  <MeasurementProfileComponent
+                    userMeasurementBySlug={userMeasurementBySlug}
+                    userMeasurementActiveList={userMeasurementActive}
+                    measurementProfile={measurementProfile}
+                  />
+                  <MeasurementProfileSelector profiles={measurementProfiles} />
+                  <AvailableSizeSelector sizes={availableSizes} />
+                  <MeasurementsBox
+                    productTypeId={productTypeId}
+                    fittingName={fittingName}
+                    steps={steps}
+                    availableSizes={availableSizes}
+                    measurementProfiles={measurementProfiles}
+                  />
                 </div>
               </div>
             </div>
