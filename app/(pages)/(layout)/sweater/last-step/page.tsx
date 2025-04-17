@@ -209,6 +209,67 @@ const LastStepPage = async ({
                     </div>
 
                     <AvailableSizeSelector sizes={availableSizes} />
+
+                    {/* custom form */}
+
+                    <div className="measurements">
+                      <div className="measure-row">
+                        <div className="measure-label">BODY LENGTH - HSP</div>
+                        <input className="measure-input" type="number" value="65" />
+                        <span className="tolerance">+/- 5</span>
+                      </div>
+                      <div className="measure-row">
+                        <div className="measure-label">HEM WIDTH</div>
+                        <input className="measure-input" type="number" value="36" />
+                        <span className="tolerance">+/- 3</span>
+                      </div>
+
+                      <div className="measure-row">
+                        <div className="measure-label">CHEST WIDTH</div>
+                        <input className="measure-input" type="number" value="46" />
+                        <span className="tolerance">+/- 2</span>
+                      </div>
+                      <div className="measure-row">
+                        <div className="measure-label">ARMHOLE STRAIGHT</div>
+                        <input className="measure-input" type="number" value="22" />
+                        <span className="tolerance">+/- 2</span>
+                      </div>
+
+                      <div className="measure-row">
+                        <div className="measure-label">SHOULDER WIDTH</div>
+                        <input className="measure-input" type="number" value="37" />
+                        <span className="tolerance">+/- 2</span>
+                      </div>
+                      <div className="measure-row">
+                        <div className="measure-label">SLEEVE LENGTH - HSP</div>
+                        <input className="measure-input" type="number" value="64" />
+                        <span className="tolerance">+/- 2</span>
+                      </div>
+
+                      <div className="measure-row">
+                        <div className="measure-label">NECK WIDTH</div>
+                        <input className="measure-input" type="number" value="15.5" />
+                        <span className="tolerance">+/- 2</span>
+                      </div>
+                      <div className="measure-row">
+                        <div className="measure-label">SLEEVE WIDTH</div>
+                        <input className="measure-input" type="number" value="17" />
+                        <span className="tolerance">+/- 2</span>
+                      </div>
+                    </div>
+
+                    <p className="note">
+                      Above measurement boxes please insert in the right box if you need to change
+                      the measurement
+                    </p>
+
+                    <div className="how-to">
+                      <img
+                        src="https://cdn-icons-png.flaticon.com/512/709/709496.png"
+                        alt="measure-icon"
+                      />
+                      How to Measure?
+                    </div>
                   </div>
 
                   {/* Fit, Sizes, Measurements (can move to client-side if editable) */}
