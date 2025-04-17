@@ -8,37 +8,53 @@ type Size = {
   name: string;
 };
 
+const SLIM_SIZES = ['XS', 'S', 'M', 'L'];
+const REGULAR_SIZES = ['XL', '2XL', '3XL', '4XL', '5XL'];
+
 const AvailableSizeSelector = ({ sizes }: { sizes: Size[] }) => {
+  const [selectedFit, setSelectedFit] = useState<'slim' | 'regular'>('slim');
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
+
+  const filteredSizes = sizes.filter((size) =>
+    selectedFit === 'slim' ? SLIM_SIZES.includes(size.name) : REGULAR_SIZES.includes(size.name)
+  );
 
   return (
     <div>
-      <h5>Select Your Size</h5>
-      <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
-        {sizes.map((size) => (
-          <li key={size._id}>
-            <button
-              onClick={() => setSelectedSize(size.slug)}
-              style={{
-                padding: '10px 16px',
-                border: '1px solid #ccc',
-                borderRadius: '8px',
-                backgroundColor: selectedSize === size.slug ? '#333' : '#f5f5f5',
-                color: selectedSize === size.slug ? '#fff' : '#000',
-                cursor: 'pointer',
-              }}
-            >
-              {size.name}
-            </button>
-          </li>
-        ))}
-      </ul>
+      {/* Fit Tabs */}
+      <div className="fit-tabs">
+        <label className={`fit-option slim-option ${selectedFit === 'slim' ? 'active' : ''}`}>
+          <input
+            type="radio"
+            name="fit"
+            checked={selectedFit === 'slim'}
+            onChange={() => setSelectedFit('slim')}
+          />
+          SLIM FIT
+        </label>
+        <label className={`fit-option regular-option ${selectedFit === 'regular' ? 'active' : ''}`}>
+          <input
+            type="radio"
+            name="fit"
+            checked={selectedFit === 'regular'}
+            onChange={() => setSelectedFit('regular')}
+          />
+          REGULAR FIT
+        </label>
+      </div>
 
-      {selectedSize && (
-        <p style={{ marginTop: '10px' }}>
-          <strong>Selected Size:</strong> {selectedSize}
-        </p>
-      )}
+      {/* Size Buttons */}
+      <div className="size-buttons">
+        {filteredSizes.map((size) => (
+          <button
+            key={size._id}
+            className={selectedSize === size.slug ? 'active' : ''}
+            onClick={() => setSelectedSize(size.slug)}
+          >
+            {size.name}
+          </button>
+        ))}
+      </div>
     </div>
   );
 };

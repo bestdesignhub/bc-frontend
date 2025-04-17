@@ -187,6 +187,8 @@ const LastStepPage = async ({
                   </div>
                 </div>
 
+                <div></div>
+
                 {/* Sweater Steps + Size + Measurements */}
                 <div className="Sweater-right-bottom sweater-type">
                   <h4>{t('COMMON.SWEATER_CHARACTERISTICS')}</h4>
@@ -205,6 +207,8 @@ const LastStepPage = async ({
                         );
                       })}
                     </div>
+
+                    <AvailableSizeSelector sizes={availableSizes} />
                   </div>
 
                   {/* Fit, Sizes, Measurements (can move to client-side if editable) */}
@@ -216,7 +220,7 @@ const LastStepPage = async ({
                     measurementProfile={measurementProfile}
                   />
                   <MeasurementProfileSelector profiles={measurementProfiles} />
-                  <AvailableSizeSelector sizes={availableSizes} />
+
                   <MeasurementsBox
                     productTypeId={productTypeId}
                     fittingName={fittingName}
