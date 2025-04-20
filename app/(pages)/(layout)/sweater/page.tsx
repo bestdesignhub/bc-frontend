@@ -52,8 +52,9 @@ const SweaterPage = async ({
               <div className="woman-product-wrappe bgsweater">
                 <Row className="g-4">
                   <Col xs={12} lg={2}>
-                    <StepNavigate />
+                    <StepNavigate genders={genders} genderSlug={genderSlug} />
                   </Col>
+
                   <Col xs={12} lg={10}>
                     <div className="sweater-bg-step">
                       <YarnListingSidebar
