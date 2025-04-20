@@ -81,6 +81,7 @@ export default function StepNavigate({
             </div>
           </div>
         )}
+
         {searchParams.size !== 0 && (
           <div
             className="navigate-item"
