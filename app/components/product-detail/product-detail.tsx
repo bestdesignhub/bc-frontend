@@ -117,17 +117,6 @@ export default function ProdutDetail({
           <Row>
             <Col xs={12} lg={6} xl={7}>
               <ProductImageGallery details={details} />
-              {/* <div className="product-image-row d-flex flex-wrap">
-                {details?.images?.map((image: string) => {
-                  return (
-                    <div className="image-item" key={image}>
-                      <div className="image">
-                        <Image src={getAWSImageUrl(image)} width={370} height={520} alt="product" />
-                      </div>
-                    </div>
-                  );
-                })}
-              </div> */}
             </Col>
             <Col xs={12} lg={6} xl={4}>
               <div className="detail-content">
@@ -144,81 +133,7 @@ export default function ProdutDetail({
                   )}
                   {}
                 </div>
-                {/* <div className="pr-rating">
-                  <ul>
-                    <li className="active">
-                      <svg
-                        width="16"
-                        height="15"
-                        viewBox="0 0 16 15"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
-                          fill="currentColor"
-                        />
-                      </svg>
-                    </li>
-                    <li className="active">
-                      <svg
-                        width="16"
-                        height="15"
-                        viewBox="0 0 16 15"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
-                          fill="currentColor"
-                        />
-                      </svg>
-                    </li>
-                    <li className="active">
-                      <svg
-                        width="16"
-                        height="15"
-                        viewBox="0 0 16 15"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
-                          fill="currentColor"
-                        />
-                      </svg>
-                    </li>
-                    <li className="active">
-                      <svg
-                        width="16"
-                        height="15"
-                        viewBox="0 0 16 15"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
-                          fill="currentColor"
-                        />
-                      </svg>
-                    </li>
-                    <li>
-                      <svg
-                        width="16"
-                        height="15"
-                        viewBox="0 0 16 15"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z"
-                          fill="currentColor"
-                        />
-                      </svg>
-                    </li>
-                  </ul>
-                  <p>4.8 Reviews</p>
-                </div> */}
+
                 <div className="pr-price">
                   <ins>{formatPrice(price)}</ins>
                   {/* <del>$60.00</del> */}
@@ -241,7 +156,10 @@ export default function ProdutDetail({
                       ))}
                     </InputGroup>
                   </div>
-                  <br/><br/><br/><br/>
+                  <br />
+                  <br />
+                  <br />
+                  <br />
                   <Image
                     src={'/images/sizes.jpg'}
                     alt={'size'}
@@ -249,10 +167,6 @@ export default function ProdutDetail({
                     height={272}
                     loading="lazy"
                   />
-                                    <br/><br/><br/><br/>
-                  {/* <div className="size-item">
-                    <SizeChart />
-                  </div> */}
                 </div>
                 <div style={{ marginBottom: '10px' }}>
                   <AddToCartButton genders={genders} queryString={urlQueryString} />
