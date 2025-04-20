@@ -15,7 +15,7 @@ import { Col } from 'react-bootstrap';
 import toast from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
 
-const ProductCard: FC<{ product: any }> = ({ product }) => {
+const ProductCard: FC<{ product: any; genderSlug: string }> = ({ product, genderSlug }) => {
   const { view } = useView();
   const t = useTranslations();
   const searchParams = useSearchParams();
@@ -43,14 +43,17 @@ const ProductCard: FC<{ product: any }> = ({ product }) => {
                   params.delete(key);
                 }
               }
+
               const queryString = params.toString();
               router.push(
-                `${USER_ROUTES.sweater}/last-step?${URL_SLUG.YARN}=${result?.data?._id}&${queryString}`
+                `${USER_ROUTES.sweater}/last-step?${URL_SLUG.YARN}=${result?.data?._id}&${queryString}&gender=${genderSlug}`
               );
               return;
             } else {
               router.push(
-                `${USER_ROUTES.sweater}/2?${URL_SLUG.YARN}=${result?.data?._id}${edit ? `&${URL_SLUG.EDIT}=${edit}` : ''}`
+                `${USER_ROUTES.sweater}/2?${URL_SLUG.YARN}=${result?.data?._id}${
+                  edit ? `&${URL_SLUG.EDIT}=${edit}` : ''
+                }&gender=${genderSlug}`
               );
             }
           }

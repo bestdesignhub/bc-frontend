@@ -67,7 +67,7 @@ const SweaterPage = async ({
                         text={t('COMMON.YARN_TEXT')}
                         total={filteredYarnList?.length}
                       />
-                      <ProductListing list={filteredYarnList} />
+                      <ProductListing list={filteredYarnList} genderSlug={genderSlug} />
                       <CustomPagination
                         currentPage={yarnList?.currentPage}
                         totalPage={yarnList?.totalPage}

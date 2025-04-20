@@ -25,6 +25,8 @@ export default function StepNavigate({
   const router = useRouter();
   const searchParams = useSearchParams();
 
+  // Usage
+
   const handlePrevStepClick = useCallback(
     (currentSlug: string, stepNumber: string) => {
       const params = new URLSearchParams(searchParams);
@@ -63,6 +65,22 @@ export default function StepNavigate({
   return (
     <div className="gauge-navigate smallbx">
       <div className="d-flex flex-column gap-3">
+        {searchParams.size !== 0 && genderSlug && genders && genders.length && (
+          <div className="navigate-item">
+            <div className="navigatebox">
+              <div className="info">
+                <div className="title">
+                  <h6>Gender</h6>
+                  <p>
+                    <strong>
+                      {genders.find((g) => g.value === genderSlug)?.label || 'Unknown'}
+                    </strong>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
         {searchParams.size !== 0 && (
           <div
             className="navigate-item"
@@ -82,6 +100,7 @@ export default function StepNavigate({
                     />
                   )}
                 </div>
+
                 <div className="info">
                   <div className="title">
                     <h6>{stepPageData?.yarn?.name}</h6>
@@ -158,7 +177,7 @@ export default function StepNavigate({
               </div>
             );
           })}
-        {genderSlug && genders && genders.length > 0 && (
+        {/* {genderSlug && genders && genders.length > 0 && (
           <div className="navigate-item">
             <div className="navigatebox">
               <div className="info">
@@ -173,7 +192,7 @@ export default function StepNavigate({
               </div>
             </div>
           </div>
-        )}
+        )} */}
         {!steps &&
           STEPPERPATHS.map((step, index) => (
             <div className="navigate-item" key={index}>

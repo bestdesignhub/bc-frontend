@@ -5,13 +5,18 @@ import { Row } from 'react-bootstrap';
 import { useView } from '@/hooks';
 import ProductCard from './product-card';
 
-const ProductListing: FC<{ list: any[] }> = ({ list }) => {
+type ProductListingProps = {
+  list: any[];
+  genderSlug: string;
+};
+
+const ProductListing: FC<ProductListingProps> = ({ list, genderSlug }) => {
   const { view } = useView();
 
   return (
     <Row className={`product-container g-4 ${view}`}>
-      {list.map((woman) => (
-        <ProductCard key={woman?._id} product={woman} />
+      {list.map((product) => (
+        <ProductCard key={product?._id} product={product} genderSlug={genderSlug} />
       ))}
     </Row>
   );
