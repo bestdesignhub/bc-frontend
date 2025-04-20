@@ -14,9 +14,9 @@ interface Props {
 }
 
 const FILTERS = [
-  { key: '_gender', label: 'Gender', field: 'genders' },
-  { key: '_colour', label: 'Colour', field: 'colours' },
-  { key: '_material', label: 'Material', field: 'materials' },
+  { key: 'gender', label: 'Gender', field: 'genders' },
+  { key: 'colour', label: 'Colour', field: 'colours' },
+  { key: 'material', label: 'Material', field: 'materials' },
 ];
 
 const YarnListingSidebar: FC<Props> = ({ colours, genders, materials }) => {
@@ -27,15 +27,13 @@ const YarnListingSidebar: FC<Props> = ({ colours, genders, materials }) => {
   const optionsMap: Record<string, DropDownOptionType[]> = { genders, colours, materials };
 
   const updateParams = (key: string, value: string) => {
-    dispatch(setLoading(true)); // Start loader
+    dispatch(setLoading(true));
 
     const params = new URLSearchParams(searchParams.toString());
 
-    // If the selected option is already in the URL, unselect it by deleting the parameter
     if (params.get(key) === value) {
       params.delete(key);
     } else {
-      // Set the parameter to the selected value
       params.set(key, value);
     }
 
@@ -55,18 +53,21 @@ const YarnListingSidebar: FC<Props> = ({ colours, genders, materials }) => {
             <Accordion.Header>{label}</Accordion.Header>
             <Accordion.Body>
               <InputGroup className="gender-checkbox">
-                {optionsMap[field].map((option) => (
-                  <Form.Check
-                    inline
-                    key={option.value}
-                    label={option.label}
-                    name={key}
-                    type="checkbox" // Using checkbox for toggling behavior
-                    id={option.value}
-                    checked={searchParams.get(key) === option.value} // Check if this option is selected
-                    onChange={() => updateParams(key, option.value)} // Toggle the selection
-                  />
-                ))}
+                {optionsMap[field].map((option) => {
+                  const isChecked = searchParams.get(key) === option.value;
+                  return (
+                    <Form.Check
+                      inline
+                      key={option.value}
+                      label={option.label}
+                      name={key}
+                      type="checkbox"
+                      id={option.value}
+                      checked={isChecked}
+                      onChange={() => updateParams(key, option.value)}
+                    />
+                  );
+                })}
               </InputGroup>
             </Accordion.Body>
           </Accordion.Item>

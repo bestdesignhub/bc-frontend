@@ -208,7 +208,9 @@ const LastStepPage = async ({
                       })}
                     </div>
 
-                    <AvailableSizeSelector sizes={availableSizes} />
+                    <div>
+                      <AvailableSizeSelector sizes={availableSizes} />
+                    </div>
 
                     {/* custom form */}
 
