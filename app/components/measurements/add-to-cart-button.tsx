@@ -22,6 +22,8 @@ const MeasurementAddToCartButton = ({
   const handleModalClose = () => {
     setShowModal(false);
   };
+  const filteredSteps = steps.filter((step) => step.slug !== 'price_module');
+
   return (
     <>
       <div className="login-link-sub" onClick={handleModalOpen}>
@@ -29,7 +31,7 @@ const MeasurementAddToCartButton = ({
       </div>
       <MeasurementConfirmationModal
         productTypeId={productTypeId}
-        steps={steps}
+        steps={filteredSteps}
         defaultFittingSize={defaultFittingSize}
         handleClose={handleModalClose}
         show={showModal}
