@@ -45,9 +45,13 @@ const ProductCard: FC<{ product: any; genderSlug: string }> = ({ product, gender
               }
 
               const queryString = params.toString();
+              // router.push(
+              //   `${USER_ROUTES.sweater}/last-step?${URL_SLUG.YARN}=${result?.data?._id}&${queryString}&gender=${genderSlug}`
+              // );
               router.push(
-                `${USER_ROUTES.sweater}/last-step?${URL_SLUG.YARN}=${result?.data?._id}&${queryString}&gender=${genderSlug}`
+                `${USER_ROUTES.sweater}/last-step?${URL_SLUG.YARN}=${result?.data?._id}&${queryString}`
               );
+
               return;
             } else {
               router.push(
