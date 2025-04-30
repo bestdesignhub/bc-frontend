@@ -196,6 +196,10 @@ const LastStepPage = async ({
                     <div className="d-flex flex-wrap">
                       {stepData?.steps?.map((stepObj: any, index: number) => {
                         const currentStepData = stepData?.[stepObj?.slug] || {};
+
+                        console.log('steppp1111', stepObj?.name);
+                        if (stepObj?.name === 'Price Module') return null;
+
                         return (
                           <div className="navigate-item" key={index}>
                             <h6>{stepObj?.name}</h6>
