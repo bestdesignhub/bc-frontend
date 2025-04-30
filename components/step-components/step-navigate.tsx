@@ -119,6 +119,7 @@ export default function StepNavigate({
         )}
         {searchParams.size !== 0 &&
           steps?.map((step: any, index: number) => {
+            if (index + 2 === 6) return null; // Skip rendering if index + 2 equals 6
             const isDataExists = stepPageData.hasOwnProperty(step.slug);
             const stepLabels = ['Gauge', 'Pattern', 'Styles', 'Measurement'];
             return (
