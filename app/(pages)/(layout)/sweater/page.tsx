@@ -50,7 +50,7 @@ const SweaterPage = async ({
           <div className="container">
             <div className="sweater-inner-container">
               <div className="woman-product-wrappe bgsweater">
-                <Row className="g-4">
+                <Row Row className="g-4 no-horizontal-padding">
                   <Col xs={12} lg={2}>
                     <StepNavigate genders={genders} genderSlug={genderSlug} />
                   </Col>

@@ -14,7 +14,7 @@ interface Props {
 }
 
 const FILTERS = [
-  { key: 'gender', label: 'Gender', field: 'genders' },
+  // { key: 'gender', label: 'Gender', field: 'genders' },
   { key: 'colour', label: 'Colour', field: 'colours' },
   { key: 'material', label: 'Material', field: 'materials' },
 ];

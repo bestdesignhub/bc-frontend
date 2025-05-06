@@ -29,56 +29,64 @@ const GenderModal = (props: {
   } = props;
   const searchParams = useSearchParams();
   const queryString = urlQueryString || new URLSearchParams(searchParams).toString();
+  const domain = process.env.NEXT_PUBLIC_FRONT_DOMAIN_URL || '';
 
   return (
-    <Modal show={show} onHide={handleClose} animation={false} centered>
-      <div className="modal-block-main">
-        <div className="modal-block-top">
-          <div className="modal-left-top">
-            <h5>{message}:</h5>
+    <Modal show={show} onHide={handleClose} animation={false} centered className='customize-gender-model'>
+      <div className='model-gender-upper-block'>
+        <div className="modal-block-main model-gender-inner-block">
+          <div className="modal-block-top">
+            <div className="modal-left-top">
+              {/* <h5>{message}:</h5> */}
+            </div>
           </div>
-        </div>
-        <div className="d-flex" style={{ justifyContent: 'center', userSelect: 'none' }}>
-          <div className="d-flex gap-3">
-            {genders.map((gender) => {
-              if (handleSelect) {
+          <div className="d-flex" style={{ justifyContent: 'center', userSelect: 'none' }}>
+            <div className="d-flex gap-3">
+              {genders.map((gender) => {
+                const backgroundImage = `url(${domain}/images/${gender.label === 'Men' ? 'product-5.webp' : 'product-2.webp'})`;
+                if (handleSelect) {
+                  return (
+                    <div
+                      key={gender.value}
+                      style={{
+                        width: '140px',
+                        height: '180px',
+                        backgroundImage: backgroundImage,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                        position: 'relative',
+                        cursor: 'pointer',
+                      }}
+                      onClick={() => {
+                        handleSelect?.(gender.value);
+                      }}
+                    >
+                      <div className="title">
+                        <h6 style={{ color: '#fff' }}>{gender.label}</h6>
+                      </div>
+                    </div>
+                  );
+                }
                 return (
-                  <div
-                    key={gender.value}
-                    style={{
-                      border: '1px solid var(--bsp-black)',
-                      padding: '12px 14px',
-                      cursor: 'pointer',
-                    }}
-                    onClick={() => {
-                      handleSelect?.(gender.value);
-                    }}
+                  <Link
+                    key={gender.label}
+                    href={`${redirectRoute}?${queryString}${!!queryString.length ? `&` : ``}${URL_SLUG.GENDER}=${gender.value}`}
                   >
-                    <div className="title">
-                      <h6 style={{ color: 'var(--bsp-black)' }}>{gender.label}</h6>
+                    <div
+                      style={{
+                        border: '1px solid var(--bsp-black)',
+                        padding: '12px 14px',
+                        cursor: 'pointer',
+                      }}
+                    >
+                      <div className="title">
+                        <h6 style={{ color: 'var(--bsp-black)' }}>{gender.label}</h6>
+                      </div>
                     </div>
-                  </div>
+                  </Link>
                 );
-              }
-              return (
-                <Link
-                  key={gender.label}
-                  href={`${redirectRoute}?${queryString}${!!queryString.length ? `&` : ``}${URL_SLUG.GENDER}=${gender.value}`}
-                >
-                  <div
-                    style={{
-                      border: '1px solid var(--bsp-black)',
-                      padding: '12px 14px',
-                      cursor: 'pointer',
-                    }}
-                  >
-                    <div className="title">
-                      <h6 style={{ color: 'var(--bsp-black)' }}>{gender.label}</h6>
-                    </div>
-                  </div>
-                </Link>
-              );
-            })}
+              })}
+            </div>
           </div>
         </div>
       </div>

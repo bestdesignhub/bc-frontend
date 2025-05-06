@@ -6,7 +6,7 @@ import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 
 export default function StepNavigate({
   steps,
@@ -21,6 +21,9 @@ export default function StepNavigate({
   genders?: any[];
   genderSlug?: any;
 }) {
+
+  console.log(genderSlug, '....genderSlug StepNavigate')
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const t = useTranslations();
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -64,7 +67,7 @@ export default function StepNavigate({
 
   return (
     <div className="gauge-navigate smallbx">
-      <div className="d-flex flex-column gap-3">
+      <div className="d-flex flex-column gap-3" style={{ paddingTop: '20px' }}>
         {searchParams.size !== 0 && genderSlug && genders && genders.length && (
           <div className="navigate-item">
             <div className="navigatebox">
@@ -127,9 +130,17 @@ export default function StepNavigate({
                 className="navigate-item"
                 key={index}
                 style={isDataExists ? { cursor: 'pointer' } : {}}
-                onClick={() =>
-                  isDataExists && handlePrevStepClick(step.slug, `${index + FIXED_STEPS_COUNT}`)
-                }
+                // onClick={() =>
+                //   isDataExists && handlePrevStepClick(step.slug, `${index + FIXED_STEPS_COUNT}`)
+                // }
+
+                onClick={() => {
+                  if (isDataExists) {
+                    setActiveIndex(index); // 👈 set the clicked step as active
+                    handlePrevStepClick(step.slug, `${index + FIXED_STEPS_COUNT}`);
+                  }
+                }}
+
               >
                 <div className="navigatebox">
                   {isDataExists && searchParams.size !== 0 ? (
@@ -196,18 +207,22 @@ export default function StepNavigate({
           </div>
         )} */}
         {!steps &&
-          STEPPERPATHS.map((step, index) => (
-            <div className="navigate-item" key={index}>
+          STEPPERPATHS.map((step, index) => {
+            const words = step.label.trim().split(" ");
+            const lastWord = words.pop();
+            const firstPart = words.join(" ");
+            return (<div className={`navigate-item ${activeIndex === index ? 'active-step' : ''}`} key={index}>
               <div className="navigatebox">
                 <div className="info">
                   <div className="title">
-                    <h6>{step.label}</h6>
+                    <h6> {firstPart} <b>{lastWord}</b></h6>
                   </div>
                 </div>
               </div>
             </div>
-          ))}
+            )
+          })}
       </div>
-    </div>
+    </div >
   );
 }

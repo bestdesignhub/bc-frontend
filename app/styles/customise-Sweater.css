@@ -70,11 +70,13 @@
   display: flex;
   align-items: stretch;
 }
+
 .Sweater-block-main .Sweater-left,
 .Sweater-block-main .Sweater-right {
   width: 50%;
   position: relative;
 }
+
 .Sweater-page {
   background: #f6f4e7;
   width: 100%;
@@ -95,15 +97,17 @@
   content: '';
   z-index: 1;
 } */
-.Sweater-block-main .Sweater-left > * {
+.Sweater-block-main .Sweater-left>* {
   position: relative;
   z-index: 2;
 }
+
 .Sweater-left-inner {
   width: 100%;
   display: block;
   padding: 60px 0 120px;
 }
+
 .Sweater-top-data {
   text-align: center;
   width: 100%;
@@ -112,27 +116,32 @@
   margin: 0 auto;
   padding: 0 0 40px;
 }
+
 .Sweater-top-data h3 {
   font-size: 32px;
   text-transform: uppercase;
   padding: 0 0 10px;
   font-weight: 500;
 }
+
 .Sweater-top-data p {
   font-family: var(--bsp-font-poppins);
   font-size: var(--bsp-body-20);
   color: var(--bsp-gray2);
 }
+
 .Sweater-left-inner .Sweater-img {
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .Sweater-left-inner .Sweater-img img {
   max-width: 380px;
   width: auto;
   height: auto;
 }
+
 .Sweater-right .Sweater-block-top {
   padding: 10px 0 10px 80px;
   border-bottom: var(--bsp-gray7) solid 1px;
@@ -140,38 +149,46 @@
   align-items: center;
   justify-content: space-between;
 }
+
 .Sweater-right .Sweater-block-top .short-text {
   max-width: 222px;
 }
+
 .Sweater-right .Sweater-block-top .short-text p {
   font-size: var(--bsp-body-text);
   color: var(--bsp-gray2);
   font-family: var(--bsp-font-poppins);
   line-height: 1.5;
 }
+
 .Sweater-block-top-right {
   display: flex;
   align-items: center;
 }
+
 .Sweater-block-top-right button a {
   font-size: var(--bsp-body-14);
   line-height: 1.4;
   max-width: 256px;
   padding: 10px 30px;
 }
+
 .Sweater-block-top-right .i-icon {
   padding: 0 10px 0 0;
   display: flex;
   align-items: center;
 }
+
 .Sweater-block-top-right .i-icon a {
   display: flex;
   align-items: center;
 }
+
 .Sweater-block-top-right .i-icon a svg {
   width: 24px;
   height: auto;
 }
+
 .Sweater-block-top-right .price {
   font-family: var(--bsp-font-poppins);
   font-weight: 500;
@@ -182,21 +199,25 @@
   align-items: center;
   padding: 0 30px 0 0;
 }
+
 .Sweater-block-top-right .price span.old-price {
   text-decoration: line-through;
   color: var(--bsp-gray2);
 }
+
 .Sweater-right-middle {
   display: flex;
   align-items: flex-start;
   padding: 20px;
   justify-content: space-between;
 }
+
 .Sweater-right-middle .products-box-sub {
   display: flex;
   align-items: flex-start;
   gap: 20px;
 }
+
 .Sweater-right-middle .products-box-sub .img {
   width: 170px;
   height: 170px;
@@ -204,6 +225,7 @@
   position: relative;
   background: var(--bsp-gray6);
 }
+
 .Sweater-right-middle .products-box-sub .img img {
   width: 100%;
   height: 100%;
@@ -212,6 +234,7 @@
   left: 0;
   top: 0;
 }
+
 .products-box-sub-inner h5 {
   padding: 0 0 20px;
   font-family: var(--bsp-font-poppins);
@@ -219,6 +242,7 @@
   color: var(--bsp-black);
   font-weight: 600;
 }
+
 .products-box-sub-inner .name {
   padding: 0px 0 0 0;
   font-family: var(--bsp-font-poppins);
@@ -226,12 +250,15 @@
   font-weight: 500;
   color: var(--bsp-black);
 }
+
 .products-box-sub-inner .name span {
   color: var(--bsp-gray2);
 }
+
 .change-link-2 {
   display: flex;
 }
+
 .change-link-2 a {
   display: flex;
   height: 40px;
@@ -245,13 +272,16 @@
   color: var(--bsp-black);
   padding: 0 20px;
 }
+
 .change-link-2 a:hover {
   background: var(--bsp-black);
   color: var(--bsp-white);
 }
+
 .Sweater-right-bottom {
   padding: 20px;
 }
+
 .Sweater-right-bottom h4 {
   padding: 0 0 30px;
   font-family: var(--bsp-font-poppins);
@@ -259,6 +289,7 @@
   font-weight: 600;
   color: var(--bsp-black);
 }
+
 .fabric-listing ul {
   display: flex;
   align-items: flex-start;
@@ -269,12 +300,14 @@
   row-gap: 20px;
   justify-content: space-between;
 }
+
 .fabric-listing ul li {
   list-style: none;
   width: 45%;
   display: flex;
   align-items: center;
 }
+
 .fabric-listing ul li .icon-text {
   display: flex;
   align-items: center;
@@ -283,6 +316,7 @@
   width: 125px;
   font-family: var(--bsp-font-poppins);
 }
+
 .fabric-listing ul li .bg-text {
   background: var(--bsp-gray5);
   min-height: 30px;
@@ -292,6 +326,7 @@
   font-size: var(--bsp-body-14);
   color: var(--bsp-black);
 }
+
 .fabric-listing ul li .icon-text i {
   display: flex;
   align-items: center;
@@ -300,6 +335,7 @@
   height: 24px;
   margin: 0 5px 0 0;
 }
+
 .fabric-listing ul li .icon-text i img {
   max-width: 24px;
   max-height: 24px;
@@ -313,6 +349,7 @@
   display: block;
   max-width: 90%;
 }
+
 .slider-block .slider-for {
   width: 508px;
   margin: 0 auto;
@@ -320,6 +357,7 @@
   padding: 0 0 48px;
   max-width: 100%;
 }
+
 .slider-image-box-big {
   width: 100%;
   min-height: 486px;
@@ -327,6 +365,7 @@
   align-items: center;
   justify-content: center;
 }
+
 .thumbnail-slider .thumbnail {
   width: 100%;
   display: block;
@@ -338,9 +377,11 @@
   transition: all 0.3s ease-in-out;
   max-width: 80px;
 }
+
 .thumbnail-slider .slick-current .thumbnail {
   border-color: var(--bsp-black);
 }
+
 .thumbnail-slider .slick-slide {
   margin: 0 15px;
 }
@@ -348,24 +389,29 @@
 .thumbnail-slider .slick-list {
   margin: 0 -15px;
 }
+
 .thumbnail-slider .slick-track {
   display: flex;
 }
+
 .slider-block img {
   width: auto;
   height: auto;
   max-width: 100%;
   max-height: 100%;
 }
+
 .slider-block .slick-arrow::before {
   display: none;
 }
+
 .slider-block .slick-arrow {
   font-size: 0;
   min-width: 30px;
   min-height: 30px;
   background: url(../../public/images/arrow-left.svg) no-repeat center center;
 }
+
 .slider-block .slick-prev {
   font-size: 0;
   min-width: 30px;
@@ -377,95 +423,121 @@
   .Sweater-block-main {
     max-width: 1550px;
   }
+
   .Sweater-top-data h3 {
     font-size: 26px;
   }
+
   .Sweater-top-data p {
     font-size: 16px;
   }
+
   .Sweater-right .Sweater-block-top,
   .Sweater-right-middle,
   .Sweater-right-bottom {
     padding-left: 40px;
   }
+
   .Sweater-block-top-right .price {
     font-size: 20px;
   }
+
   .fabric-listing ul li {
     width: 43%;
   }
 }
+
 @media (min-width: 1501px) and (max-width: 1600px) {
   .Sweater-block-main {
     max-width: 1400px;
   }
+
   .Sweater-top-data h3 {
     font-size: 26px;
   }
+
   .Sweater-top-data p {
     font-size: 16px;
   }
+
   .Sweater-right .Sweater-block-top,
   .Sweater-right-middle,
   .Sweater-right-bottom {
     padding-left: 40px;
   }
+
   .Sweater-block-top-right .price {
     font-size: 16px;
     padding: 0 20px 0 0;
   }
+
   .fabric-listing ul li {
     width: 48%;
   }
+
   .Sweater-right .Sweater-block-top .short-text p {
     font-size: 14px;
   }
+
   .Sweater-block-top-right button a {
     padding: 8px 20px;
     max-width: 240px;
   }
+
   .products-box-sub-inner h5 {
     font-size: 20px;
   }
 }
+
 @media (min-width: 1400px) and (max-width: 1500px) {
   .Sweater-block-main {
     max-width: 1300px;
   }
+
   .Sweater-top-data h3 {
     font-size: 26px;
   }
+
   .Sweater-top-data p {
     font-size: 16px;
   }
+
   .Sweater-right .Sweater-block-top,
   .Sweater-right-middle,
   .Sweater-right-bottom {
     padding-left: 40px;
   }
+
   .Sweater-block-top-right .price {
     font-size: 16px;
     padding: 0 20px 0 0;
   }
+
   .fabric-listing ul li {
     width: 48%;
   }
+
   .Sweater-right .Sweater-block-top .short-text p {
     font-size: 14px;
   }
+
   .Sweater-block-top-right button a {
     padding: 8px 20px;
     max-width: 240px;
   }
+
   .products-box-sub-inner h5 {
     font-size: 20px;
   }
+
   .Sweater-block-main .Sweater-left {
     width: 40%;
   }
+
   .Sweater-block-main .Sweater-right {
     width: 60%;
   }
+
   .thumbnail-slider .slick-slide {
     margin: 0 8px;
   }
@@ -479,40 +551,51 @@
   .Sweater-block-main {
     max-width: 1200px;
   }
+
   .Sweater-top-data h3 {
     font-size: 26px;
   }
+
   .Sweater-top-data p {
     font-size: 16px;
   }
+
   .Sweater-right .Sweater-block-top,
   .Sweater-right-middle,
   .Sweater-right-bottom {
     padding-left: 40px;
   }
+
   .Sweater-block-top-right .price {
     font-size: 16px;
     padding: 0 20px 0 0;
   }
+
   .fabric-listing ul li {
     width: 48%;
   }
+
   .Sweater-right .Sweater-block-top .short-text p {
     font-size: 14px;
   }
+
   .Sweater-block-top-right button a {
     padding: 8px 20px;
     max-width: 240px;
   }
+
   .products-box-sub-inner h5 {
     font-size: 20px;
   }
+
   .Sweater-block-main .Sweater-left {
     width: 40%;
   }
+
   .Sweater-block-main .Sweater-right {
     width: 60%;
   }
+
   .thumbnail-slider .slick-slide {
     margin: 0 4px;
   }
@@ -520,6 +603,7 @@
   .thumbnail-slider .slick-list {
     margin: 0 -4px;
   }
+
   .slider-block .slider-for {
     max-width: 432px;
   }
@@ -528,44 +612,56 @@
     min-height: 432px;
   }
 }
+
 @media (min-width: 1200px) and (max-width: 1301px) {
   .Sweater-block-main {
     max-width: 1140px;
   }
+
   .Sweater-top-data h3 {
     font-size: 26px;
   }
+
   .Sweater-top-data p {
     font-size: 16px;
   }
+
   .Sweater-right .Sweater-block-top,
   .Sweater-right-middle,
   .Sweater-right-bottom {
     padding-left: 40px;
   }
+
   .Sweater-block-top-right .price {
     font-size: 16px;
     padding: 0 20px 0 0;
   }
+
   .fabric-listing ul li {
     width: 48%;
   }
+
   .Sweater-right .Sweater-block-top .short-text p {
     font-size: 14px;
   }
+
   .Sweater-block-top-right button a {
     padding: 8px 20px;
     max-width: 240px;
   }
+
   .products-box-sub-inner h5 {
     font-size: 20px;
   }
+
   .Sweater-block-main .Sweater-left {
     width: 40%;
   }
+
   .Sweater-block-main .Sweater-right {
     width: 60%;
   }
+
   .Sweater-left-inner .Sweater-img img {
     max-width: 300px;
   }
@@ -577,6 +673,7 @@
   .thumbnail-slider .slick-list {
     margin: 0 -4px;
   }
+
   .slider-block .slider-for {
     max-width: 404px;
   }
@@ -584,10 +681,12 @@
   .slider-image-box-big {
     min-height: 404px;
   }
+
   .Sweater-left-inner {
     padding: 40px 0 80px;
   }
 }
+
 @media (min-width: 1200px) and (max-width: 1399px) {
   .page-banner.gauge .image::before {
     padding-top: 20.25%;
@@ -598,49 +697,63 @@
     padding: 8px 12px;
   }
 }
+
 @media (min-width: 992px) and (max-width: 1199px) {
   .page-banner.gauge .image::before {
     padding-top: 20.25%;
   }
+
   .page-banner.gauge .banner-content {
     max-width: 70%;
   }
+
   .gauge-navigate {
     padding: 30px 20px;
   }
+
   .gauge-navigate.smallbx {
     padding: 0;
   }
+
   .gauge-navigate .navigate-item {
-    padding: 10px 10px;
+    /* padding: 10px 10px; */
   }
+
   .gauge-row {
     padding: 0 20px;
   }
+
   .gauge-row .row {
     --bs-gutter-y: 3rem;
   }
+
   .gauge-row .gaugebox button {
     height: 60px;
     font-size: var(--bsp-body-text);
   }
+
   .gauge-row .gaugebox .info {
     padding: 16px;
   }
+
   .gauge-row .gaugebox .info h4 {
     font-size: 16px;
   }
+
   .gauge-row .gaugebox .info p {
     padding: 10px 0 0;
   }
+
   .step-breadcrumb {
     padding: 18px 16px;
   }
+
   .step-breadcrumb ul {
     overflow: auto;
     padding: 0 0 10px;
     justify-content: flex-start;
   }
+
   .step-breadcrumb ul li span {
     font-size: var(--bsp-body-12);
     padding: 8px 12px;
@@ -651,17 +764,21 @@
     max-width: 100%;
     padding: 0 20px;
   }
+
   .Sweater-top-data h3 {
     font-size: 26px;
   }
+
   .Sweater-top-data p {
     font-size: 16px;
   }
+
   .Sweater-right .Sweater-block-top,
   .Sweater-right-middle,
   .Sweater-right-bottom {
     padding-left: 20px;
   }
+
   .Sweater-block-top-right .price {
     font-size: 16px;
     padding: 0 10px 0 0;
@@ -670,33 +787,42 @@
     align-items: flex-start;
     gap: 0;
   }
+
   .fabric-listing ul li {
     width: 48%;
   }
+
   .Sweater-right .Sweater-block-top .short-text p {
     font-size: 14px;
   }
+
   .Sweater-block-top-right button a {
     padding: 8px 20px;
     max-width: 240px;
     font-size: 12px;
   }
+
   .products-box-sub-inner h5 {
     font-size: 20px;
   }
+
   .Sweater-block-main .Sweater-left {
     width: 40%;
   }
+
   .Sweater-block-main .Sweater-right {
     width: 60%;
   }
+
   .Sweater-left-inner .Sweater-img img {
     max-width: 300px;
   }
+
   .fabric-listing ul li .icon-text {
     font-size: 12px;
     width: 160px;
   }
+
   .fabric-listing ul li .bg-text {
     max-width: calc(100% - 160px);
   }
@@ -708,6 +834,7 @@
   .thumbnail-slider .slick-list {
     margin: 0 -4px;
   }
+
   .slider-block .slider-for {
     max-width: 345px;
     padding: 0 0 20px;
@@ -716,12 +843,15 @@
   .slider-image-box-big {
     min-height: 345px;
   }
+
   .Sweater-left-inner {
     padding: 40px 0 80px;
   }
+
   .thumbnail-slider .thumbnail {
     min-height: 63px;
   }
+
   .thumbnail-slider .thumbnail img {
     max-height: 63px;
   }
@@ -731,64 +861,81 @@
   .page-banner.gauge .image::before {
     padding-top: 25.25%;
   }
+
   .page-banner.gauge .banner-content {
     max-width: 100%;
   }
+
   .gauge-navigate {
     padding: 30px 20px;
   }
+
   .gauge-navigate .navigate-item {
     width: 50%;
     flex: 0 0 50%;
     padding: 10px 10px;
   }
+
   .gauge-row {
     padding: 0 20px;
   }
+
   .gauge-row .row {
     --bs-gutter-y: 3rem;
   }
+
   .gauge-row .gaugebox button {
     height: 60px;
     font-size: var(--bsp-body-text);
   }
+
   .gauge-row .gaugebox .info {
     padding: 16px;
   }
+
   .gauge-row .gaugebox .info h4 {
     font-size: var(--bsp-body-24);
   }
+
   .gauge-row .gaugebox .info p {
     padding: 10px 0 0;
   }
+
   .step-breadcrumb {
     padding: 18px 16px;
   }
+
   .step-breadcrumb ul {
     overflow: auto;
     padding: 0 0 10px;
     justify-content: flex-start;
   }
+
   .step-breadcrumb ul li span {
     font-size: var(--bsp-body-12);
     padding: 8px 12px;
     white-space: nowrap;
   }
+
   .Sweater-block-main {
     max-width: 100%;
     padding: 0 0px;
   }
+
   .Sweater-top-data h3 {
     font-size: 26px;
   }
+
   .Sweater-top-data p {
     font-size: 16px;
   }
+
   .Sweater-right .Sweater-block-top,
   .Sweater-right-middle,
   .Sweater-right-bottom {
     padding-left: 0;
   }
+
   .Sweater-block-top-right .price {
     font-size: 16px;
     padding: 0 10px 0 0;
@@ -797,40 +944,51 @@
     align-items: flex-start;
     gap: 0;
   }
+
   .fabric-listing ul li {
     width: 48%;
   }
+
   .Sweater-right .Sweater-block-top .short-text p {
     font-size: 14px;
   }
+
   .Sweater-block-top-right button a {
     padding: 8px 20px;
     max-width: 240px;
     font-size: 12px;
   }
+
   .products-box-sub-inner h5 {
     font-size: 20px;
   }
+
   .Sweater-block-main {
     flex-direction: column;
   }
+
   .Sweater-block-main .Sweater-left {
     width: 100%;
   }
+
   .Sweater-block-main .Sweater-right {
     width: 100%;
     padding: 0 20px;
   }
+
   .Sweater-left-inner .Sweater-img img {
     max-width: 300px;
   }
+
   .fabric-listing ul li .icon-text {
     font-size: 12px;
     width: 160px;
   }
+
   .fabric-listing ul li .bg-text {
     max-width: calc(100% - 160px);
   }
+
   .fabric-listing ul {
     row-gap: 10px;
   }
@@ -842,6 +1000,7 @@
   .thumbnail-slider .slick-list {
     margin: 0 -4px;
   }
+
   .slider-block .slider-for {
     max-width: 345px;
     padding: 0 0 20px;
@@ -850,26 +1009,33 @@
   .slider-image-box-big {
     min-height: 345px;
   }
+
   .Sweater-left-inner {
     padding: 40px 0 80px;
   }
+
   .thumbnail-slider .thumbnail {
     min-height: 63px;
   }
+
   .thumbnail-slider .thumbnail img {
     max-height: 63px;
   }
 }
+
 @media (max-width: 767px) {
   .page-banner.gauge .image::before {
     padding-top: 56.25%;
   }
+
   .page-banner.gauge .banner-content {
     max-width: 100%;
   }
+
   .page-banner.gauge .banner-caption h1 {
     font-size: var(--bsp-heading4);
   }
+
   .page-banner.gauge .banner-caption p {
     font-size: var(--bsp-body-text);
     padding: 10px 0 0;
@@ -883,20 +1049,25 @@
     max-width: 100%;
     padding: 0 0px;
   }
+
   .Sweater-top-data {
     padding: 0 30px 30px;
   }
+
   .Sweater-top-data h3 {
     font-size: 20px;
   }
+
   .Sweater-top-data p {
     font-size: 14px;
   }
+
   .Sweater-right .Sweater-block-top,
   .Sweater-right-middle,
   .Sweater-right-bottom {
     padding-left: 0;
   }
+
   .Sweater-block-top-right .price {
     font-size: 16px;
     padding: 0 10px 0 0;
@@ -905,78 +1076,100 @@
     align-items: flex-start;
     gap: 0;
   }
+
   .fabric-listing ul li {
     width: 100%;
   }
+
   .Sweater-right .Sweater-block-top .short-text p {
     font-size: 14px;
   }
+
   .Sweater-block-top-right button a {
     padding: 8px 8px;
     max-width: 210px;
     font-size: 12px;
   }
+
   .Sweater-block-top-right button span {
     margin: 0 0 0 10px;
   }
+
   .Sweater-block-top-right button span svg {
     margin: 0 0 0 10px;
   }
+
   .products-box-sub-inner h5 {
     font-size: 18px;
   }
+
   .Sweater-block-main {
     flex-direction: column;
   }
+
   .Sweater-block-main .Sweater-left {
     width: 100%;
   }
+
   .Sweater-block-main .Sweater-right {
     width: 100%;
     padding: 0 20px;
   }
+
   .Sweater-left-inner .Sweater-img img {
     max-width: 300px;
   }
+
   .fabric-listing ul li .icon-text {
     font-size: 12px;
     width: 180px;
   }
+
   .fabric-listing ul li .bg-text {
     max-width: calc(100% - 180px);
   }
+
   .Sweater-left-inner {
     padding: 48px 0;
   }
+
   .Sweater-right .Sweater-block-top {
     flex-direction: column;
   }
+
   .Sweater-right .Sweater-block-top .short-text {
     width: 100%;
     padding: 0 0 20px;
     max-width: 100%;
   }
+
   .Sweater-right-middle {
     padding: 30px 0 0 0;
     flex-direction: column;
   }
+
   .change-link-2 {
     padding: 20px 0 0;
     width: 100%;
   }
+
   .change-link-2 a {
     width: 100%;
   }
+
   .Sweater-right-middle .products-box-sub .img {
     width: 140px;
     height: 140px;
   }
+
   .fabric-listing ul {
     row-gap: 10px;
   }
+
   .Sweater-page {
     padding: 0 0 64px;
   }
+
   .thumbnail-slider .slick-slide {
     margin: 0 4px;
   }
@@ -984,6 +1177,7 @@
   .thumbnail-slider .slick-list {
     margin: 0 -4px;
   }
+
   .slider-block .slider-for {
     max-width: 345px;
     padding: 0 0 20px;
@@ -992,12 +1186,15 @@
   .slider-image-box-big {
     min-height: 345px;
   }
+
   .Sweater-left-inner {
     padding: 40px 0 80px;
   }
+
   .thumbnail-slider .thumbnail {
     min-height: 79px;
   }
+
   .thumbnail-slider .thumbnail img {
     max-height: 79px;
   }
