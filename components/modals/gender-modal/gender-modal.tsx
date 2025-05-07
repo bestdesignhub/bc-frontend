@@ -2,7 +2,6 @@
 
 import { URL_SLUG, USER_ROUTES } from '@/constants';
 import { DropDownOptionType } from '@/types';
-import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import React from 'react';
@@ -17,15 +16,14 @@ const GenderModal = (props: {
   handleSelect?: (value: string) => void;
   message?: string;
 }) => {
-  const t = useTranslations();
+  // const t = useTranslations();
   const {
     show,
     handleClose,
     genders,
     urlQueryString,
     redirectRoute = USER_ROUTES.measurements,
-    handleSelect,
-    message = t('COMMON.SELECT_WHO_YOURE_BUYING_FOR'),
+    handleSelect
   } = props;
   const searchParams = useSearchParams();
   const queryString = urlQueryString || new URLSearchParams(searchParams).toString();
