@@ -43,14 +43,14 @@ const GenderModal = (props: {
           <div className="d-flex" style={{ justifyContent: 'center', userSelect: 'none' }}>
             <div className="d-flex gap-3">
               {genders.map((gender) => {
-                const backgroundImage = `url(${domain}/images/${gender.label === 'Men' ? 'product-5.webp' : 'product-2.webp'})`;
+                const backgroundImage = `url(${domain}/images/${gender.label === 'Men' ? 'men-img.jpg' : 'women-img.jpg'})`;
                 if (handleSelect) {
                   return (
                     <div
                       key={gender.value}
                       style={{
-                        width: '140px',
-                        height: '180px',
+                        width: '225px',
+                        height: '300px',
                         backgroundImage: backgroundImage,
                         backgroundSize: 'cover',
                         backgroundPosition: 'center',
@@ -62,7 +62,7 @@ const GenderModal = (props: {
                       }}
                     >
                       <div className="title">
-                        <h6 style={{ color: '#fff' }}>{gender.label}</h6>
+                        <h6 className='genderLable'>{gender.label}</h6>
                       </div>
                     </div>
                   );
