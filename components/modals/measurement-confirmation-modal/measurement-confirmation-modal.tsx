@@ -43,11 +43,11 @@ const MeasurementConfirmationModal = (props: {
         stepCard: searchParamsValues[step.slug],
       }));
 
-      if (!props.productId) {
-        alert("Hi");
-        console.log();
+      // if (!props.productId) {
+      //   // alert("Hi");
+      //   console.log();
 
-      }
+      // }
 
       const payload = {
         yarn: searchParamsValues.yarn,

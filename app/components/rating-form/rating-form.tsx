@@ -7,7 +7,7 @@ export default function RatingForm() {
   const [comment, setComment] = useState('');
   const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    alert(`You rated ${rating} star(s) and commented: "${comment}"`);
+    // alert(`You rated ${rating} star(s) and commented: "${comment}"`);
     setRating(0); // Reset the rating
     setComment(''); // Clear the textarea
   };
