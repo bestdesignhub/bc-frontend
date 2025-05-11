@@ -29,6 +29,10 @@ export default async function Measurementspage({
     fittingStepDetailsResult.status === 'fulfilled' ? fittingStepDetailsResult.value : [];
   const measurementProfiles =
     measurementProfileResult.status === 'fulfilled' ? measurementProfileResult.value : [];
+  console.log("fittingStepDetails", fittingStepDetails);
+  console.log("steps", steps);
+  console.log("availableSizes", availableSizes);
+  console.log("measurementProfiles", measurementProfiles);
 
   return (
     <>
@@ -36,6 +40,8 @@ export default async function Measurementspage({
         fittingName={fittingStepDetails?.title}
         productTypeId={productType?._id}
         steps={steps}
+        productId={resolvedSearchParams[URL_SLUG.PRODUCT]}
+        fittingId={fittingStepDetails?._id}
         availableSizes={availableSizes}
         measurementProfiles={measurementProfiles}
       />

@@ -100,7 +100,7 @@ export const formatPrice = (
 };
 
 export const generateProductName = (cartItem: any) => {
-  const { yarn, steps, size } = cartItem;
+  const { yarn, steps, size, product } = cartItem;
 
   // Find step titles based on stepTypeSlug
   const gauge = steps.find((step: any) => step.stepTypeSlug === 'gauge')?.stepCardTitle || '';
@@ -109,5 +109,5 @@ export const generateProductName = (cartItem: any) => {
   const fitting = steps.find((step: any) => step.stepTypeSlug === 'fitting')?.stepCardTitle || '';
 
   // Construct the name
-  return `${yarn.name} - ${gauge} - ${pattern} - ${style} - ${fitting} - ${size}`;
+  return `${product.title.en} - ${gauge} - ${pattern} - ${style} - ${fitting} - ${size.toUpperCase()}`;
 };

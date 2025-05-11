@@ -39,8 +39,13 @@ export default function ProdutDetail({
   const token = Cookies.get(COOKIES.userToken);
   const t = useTranslations();
   const [price, setPrice] = useState(details?.basePriceXs ?? 0);
+  const [size, setSize] = useState("");
   const [slug, setSizeSlug] = useState(availableSizes?.at(0)?.slug);
   const [isWishlisted, setIsWishlisted] = useState(!!details?.isWishlisted);
+  console.log('size', slug);
+  console.log('availableSizes', availableSizes);
+  console.log('details', details);
+
   const handleChangeSize = (event: ChangeEvent<HTMLInputElement>) => {
     setSizeSlug(event.target.id);
     dispatch(setLoading(true));
@@ -51,6 +56,7 @@ export default function ProdutDetail({
       })
       .then((response) => {
         setPrice(response.data.data.price);
+        // setSize(event.target.id);
       })
       .catch((error) => {
         console.error(error);
@@ -65,6 +71,7 @@ export default function ProdutDetail({
     params.append(URL_SLUG.YARN, details.yarn);
     params.append(URL_SLUG.PRODUCT, details._id);
     details?.steps?.forEach(({ key, value }: any) => params.append(key, value));
+    // params.append(URL_SLUG.FITTING_SIZE, slug);
     return `${params.toString()}`;
   }, [details]);
 
@@ -131,7 +138,7 @@ export default function ProdutDetail({
                       )}
                     </div>
                   )}
-                  {}
+                  { }
                 </div>
 
                 <div className="pr-price">
@@ -169,7 +176,7 @@ export default function ProdutDetail({
                   />
                 </div>
                 <div style={{ marginBottom: '10px' }}>
-                  <AddToCartButton genders={genders} queryString={urlQueryString} />
+                  <AddToCartButton genders={genders} queryString={urlQueryString} productId={details._id} price={price.toString()} size={size} />
                 </div>
                 <Link href={`${USER_ROUTES.sweater}${USER_ROUTES.lastStep}?${urlQueryString}`}>
                   <button className="cartbtn">{t('COMMON.CUSTOMISE_A_SWEATER')}</button>

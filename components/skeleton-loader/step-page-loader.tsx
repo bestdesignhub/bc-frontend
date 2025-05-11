@@ -30,7 +30,7 @@ const StepPageSkeletonLoader = () => {
         speed={2}
         width="100%"
         height={60}
-        viewBox="0 0 100% 60"
+        viewBox="0 0 1000 60"
         backgroundColor="#f3f3f3"
         foregroundColor="#ecebeb"
       >

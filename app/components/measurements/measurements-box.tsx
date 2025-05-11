@@ -15,12 +15,16 @@ export default function MeasurementsBox({
   fittingName,
   availableSizes,
   steps,
+  productId,
+  fittingId,
   productTypeId,
   measurementProfiles,
 }: {
   fittingName: string;
   availableSizes: any[];
   steps: any[];
+  productId: string;
+  fittingId: string;
   productTypeId: string;
   measurementProfiles: DropDownOptionType[];
 }) {
@@ -29,13 +33,14 @@ export default function MeasurementsBox({
   const fittingSize = searchParams.get(URL_SLUG.FITTING_SIZE);
   const queryString = useMemo(() => new URLSearchParams(searchParams).toString(), [searchParams]);
   const measurementProfile = searchParams.get(URL_SLUG.MEASUREMENT_PROFILE);
-
+  console.log('measurementProfile', fittingSize);
   const selectedFittingSize = useMemo(() => {
     if (fittingSize) {
       return availableSizes.find((size) => size._id === fittingSize)?.name;
     }
     return availableSizes?.at(0)?.name ?? 'XS';
   }, [fittingSize, availableSizes]);
+  console.log('selectedFittingSize', selectedFittingSize);
 
   const userToken = Cookies.get(COOKIES.userToken);
 
@@ -53,7 +58,7 @@ export default function MeasurementsBox({
   return (
     <>
       <div className="measurements-right-sub">
-        <h4>{t('COMMON.CHOOSE_YOUR_SWEATER_SIZE')}</h4>
+        {/* <h4>{t('COMMON.CHOOSE_YOUR_SWEATER_SIZE')}</h4>
         <p>{t('COMMON.CHOOSE_YOUR_SWEATER_SIZE_DESCRIPTION')}</p>
         <div className="add-btn-set">
           <div
@@ -61,10 +66,10 @@ export default function MeasurementsBox({
             style={
               !userToken
                 ? {
-                    pointerEvents: 'none',
-                    userSelect: 'none',
-                    backgroundColor: 'var(--bsp-black-20)',
-                  }
+                  pointerEvents: 'none',
+                  userSelect: 'none',
+                  backgroundColor: 'var(--bsp-black-20)',
+                }
                 : {}
             }
           >
@@ -99,12 +104,14 @@ export default function MeasurementsBox({
             fittingName={fittingName}
             selectedFittingSize={selectedFittingSize}
           />
-        </div>
+        </div> */}
 
         <div className="measurements-login-link">
           {userToken ? (
             <MeasurementAddToCartButton
               steps={steps}
+              productId={productId}
+              fittingId={fittingId}
               productTypeId={productTypeId}
               defaultFittingSize={availableSizes?.at(0)?._id}
             />

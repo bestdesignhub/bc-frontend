@@ -14,6 +14,8 @@ const MeasurementConfirmationModal = (props: {
   productTypeId: string;
   show: boolean;
   steps: any[];
+  productId: string;
+  fittingId: string;
   defaultFittingSize: string;
   handleClose: () => void;
 }) => {
@@ -40,15 +42,26 @@ const MeasurementConfirmationModal = (props: {
         slug: step.slug,
         stepCard: searchParamsValues[step.slug],
       }));
+
+      if (!props.productId) {
+        alert("Hi");
+        console.log();
+
+      }
+
       const payload = {
         yarn: searchParamsValues.yarn,
         steps: stepsData,
+        productId: props.productId,
+        fittingId: props.fittingId,
         genderId: searchParamsValues.gender,
-        fittingSizeId: searchParamsValues[URL_SLUG.FITTING_SIZE],
+        fittingSizeId: searchParamsValues[URL_SLUG.FITTING],
         productTypeId,
         quantity: 1,
       };
       dispatch(setLoading(true));
+      console.log('payload', payload);
+      return false;
       userAxiosInstance
         .post(ADD_TO_CART_URL, payload)
         .then((response) => {

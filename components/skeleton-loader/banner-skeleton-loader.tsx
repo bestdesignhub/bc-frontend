@@ -6,7 +6,7 @@ const BannerTitleLoader = () => (
     speed={2}
     width="100%"
     height={150}
-    viewBox="0 0 100% 150"
+    viewBox="0 0 1000 150"
     backgroundColor="#f3f3f3"
     foregroundColor="#ecebeb"
   >

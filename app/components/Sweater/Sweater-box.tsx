@@ -20,7 +20,7 @@ export default function SweaterBox({ stepData }: SweaterBoxProps) {
   const pattern = searchParams.get('pattern');
   const style = searchParams.get('style');
   const fitting = searchParams.get('fitting');
-  const color = stepData.yarn.colourId;
+  const color = stepData?.yarn?.colourId;
 
   const [imageSrc, setImageSrc] = useState<string | StaticImageData>(Sweaterimg1);
   const [loading, setLoading] = useState(false);

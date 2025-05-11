@@ -294,6 +294,8 @@ export const getHomeProductList = async () => {
     filter: {},
   });
   if (res.code === 200) {
+    console.log(res?.data?.data, 'res?.data?.data kanha====>>>>>>>>>');
+
     return res?.data?.data;
   } else {
     return [];

@@ -28,6 +28,8 @@ const SweaterStep = async ({
   }
 
   const stepData = steps[step - FIXED_STEPS_COUNT];
+  console.log("stepData===>>>>", stepData);
+
   const genders = genderResult;
   const genderSlug = resolvedSearchParams[URL_SLUG.GENDER];
 

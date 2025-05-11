@@ -13,6 +13,8 @@ export const PROFILE_API_URL = '/profile';
 export const PRODUCT_LISTING = '/product-listing/list';
 export const PRODUCT_DETAILS_URL = '/product-details';
 export const PRODUCT_PRICE_BY_SIZE = '/product-price-by-size';
+export const PRODUCT_PRICE_BY_SIZE_YARN_ID = '/yarn-module/price/list';
+export const PRODUCT_UPDATE_PRICE_BY_SIZE = '/product-update-price-by-size';
 
 //Home
 export const GET_HOME_DATA = '/fetch-home';

@@ -29,6 +29,7 @@ import { MeasurementProfileComponent } from '@/app/components/measurements-profi
 import MeasurementProfileSelector from '@/components/MeasurementProfileSelector';
 import AvailableSizeSelector from '@/components/AvailableSizeSelector';
 import MeasurementsBox from '@/app/components/measurements/measurements-box';
+import CreateProduct from './CreateProduct';
 
 const LastStepPage = async ({
   searchParams,
@@ -43,12 +44,11 @@ const LastStepPage = async ({
     getDefaultProductType(),
     getDropdownList(PRODUCT_TYPE_DROPDOWN_URL),
   ]);
+  console.log("productTypeData", productTypeData, productType);
 
   const productTypeId = productTypeData?.[0]?.value;
 
-  // Fetch main step data
-  const stepData = await getStepFullViewDetails({ productTypeId, steps: resolvedSearchParams });
-  const fittingName = stepData?.fitting?.stepCard?.title;
+
 
   // Conditionally fetch userMeasurementBySlug only if needed
   const measurementProfileId = resolvedSearchParams[URL_SLUG.MEASUREMENT_PROFILE];
@@ -74,6 +74,7 @@ const LastStepPage = async ({
   const steps = stepsResult.status === 'fulfilled' ? stepsResult.value : [];
   const availableSizes =
     availableSizesResult.status === 'fulfilled' ? availableSizesResult.value : [];
+  console.log("availableSizes", availableSizes);
   const measurementProfiles =
     measurementProfileResult.status === 'fulfilled' ? measurementProfileResult.value : [];
   const userMeasurementActive =
@@ -82,6 +83,44 @@ const LastStepPage = async ({
     userMeasurementBySlugResult.status === 'fulfilled' ? userMeasurementBySlugResult.value : null;
 
   const measurementProfile = measurementProfileId && userMeasurementBySlug;
+  // Define the size categories
+  const SLIM_SIZES = ['XS', 'S', 'M', 'L', 'XL'];
+  const REGULAR_SIZES = ['M', 'L', 'XL', '2XL', '3XL', '4XL', '5XL'];
+
+  // Fetch main step data
+  const stepData = await getStepFullViewDetails({ productTypeId, steps: resolvedSearchParams });
+  const fittingName = stepData?.fitting?.stepCard?.title;
+
+  console.log("======>>>>", stepData);
+  console.log("======>>>>", stepData.fitting);
+
+  // Now filter the available sizes based on the step type and slug
+  const filteredAvailableSizes = availableSizes.filter((size: any) =>
+    stepData.fitting?.stepType?.name === 'Fitting' && stepData.fitting?.stepCard.slug === 'slim-fitting'
+      ? SLIM_SIZES.includes(size?.name)
+      : REGULAR_SIZES.includes(size?.name)
+  );
+  // Output the filtered sizes
+  console.log("filteredAvailableSizes", filteredAvailableSizes);
+
+  function handlePriceChange(price: number): void {
+    throw new Error('Function not implemented.');
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const formData = new FormData(e.target as HTMLFormElement);
+    const title = formData.get('title');
+    const image = formData.get('image');
+
+    if (title && image) {
+      console.log('Title:', title);
+      console.log('Image:', image);
+      alert('Form submitted successfully');
+    } else {
+      alert('Please fill out all fields.');
+    }
+  };
 
   return (
     <>
@@ -109,7 +148,8 @@ const LastStepPage = async ({
                     {resolvedSearchParams.hasOwnProperty(URL_SLUG.ADD_TO_CART) ? (
                       <SaveAndGoToCart steps={stepData.steps} />
                     ) : (
-                      <ProceedToSizeMeasurement />
+                      // <ProceedToSizeMeasurement />
+                      ''
                     )}
                   </div>
                 </div>
@@ -197,7 +237,7 @@ const LastStepPage = async ({
                       {stepData?.steps?.map((stepObj: any, index: number) => {
                         const currentStepData = stepData?.[stepObj?.slug] || {};
 
-                        console.log('steppp1111', stepObj?.name);
+                        console.log('steppp1111', stepObj?.name, currentStepData);
                         if (stepObj?.name === 'Price Module') return null;
 
                         return (
@@ -213,7 +253,16 @@ const LastStepPage = async ({
                     </div>
 
                     <div>
-                      <AvailableSizeSelector sizes={availableSizes} />
+                      {/* <AvailableSizeSelector sizes={availableSizes} /> */}
+                      <AvailableSizeSelector sizes={filteredAvailableSizes}
+                        yarn={resolvedSearchParams["yarn"]}
+                        gauge={resolvedSearchParams["gauge"]}
+                        pattern={resolvedSearchParams["pattern"]}
+                        style={resolvedSearchParams["style"]}
+                      // onPriceChange={handlePriceChange}
+
+
+                      />
                     </div>
 
                     {/* custom form */}
@@ -221,45 +270,45 @@ const LastStepPage = async ({
                     <div className="measurements">
                       <div className="measure-row">
                         <div className="measure-label">BODY LENGTH - HSP</div>
-                        <input className="measure-input" type="number" value="65" />
+                        <input className="measure-input" type="number" value="65" readOnly />
                         <span className="tolerance">+/- 5</span>
                       </div>
                       <div className="measure-row">
                         <div className="measure-label">HEM WIDTH</div>
-                        <input className="measure-input" type="number" value="36" />
+                        <input className="measure-input" type="number" value="36" readOnly />
                         <span className="tolerance">+/- 3</span>
                       </div>
 
                       <div className="measure-row">
                         <div className="measure-label">CHEST WIDTH</div>
-                        <input className="measure-input" type="number" value="46" />
+                        <input className="measure-input" type="number" value="46" readOnly />
                         <span className="tolerance">+/- 2</span>
                       </div>
                       <div className="measure-row">
                         <div className="measure-label">ARMHOLE STRAIGHT</div>
-                        <input className="measure-input" type="number" value="22" />
+                        <input className="measure-input" type="number" value="22" readOnly />
                         <span className="tolerance">+/- 2</span>
                       </div>
 
                       <div className="measure-row">
                         <div className="measure-label">SHOULDER WIDTH</div>
-                        <input className="measure-input" type="number" value="37" />
+                        <input className="measure-input" type="number" value="37" readOnly />
                         <span className="tolerance">+/- 2</span>
                       </div>
                       <div className="measure-row">
                         <div className="measure-label">SLEEVE LENGTH - HSP</div>
-                        <input className="measure-input" type="number" value="64" />
+                        <input className="measure-input" type="number" value="64" readOnly />
                         <span className="tolerance">+/- 2</span>
                       </div>
 
                       <div className="measure-row">
                         <div className="measure-label">NECK WIDTH</div>
-                        <input className="measure-input" type="number" value="15.5" />
+                        <input className="measure-input" type="number" value="15.5" readOnly />
                         <span className="tolerance">+/- 2</span>
                       </div>
                       <div className="measure-row">
                         <div className="measure-label">SLEEVE WIDTH</div>
-                        <input className="measure-input" type="number" value="17" />
+                        <input className="measure-input" type="number" value="17" readOnly />
                         <span className="tolerance">+/- 2</span>
                       </div>
                     </div>
@@ -281,17 +330,44 @@ const LastStepPage = async ({
                   {/* Fit, Sizes, Measurements (can move to client-side if editable) */}
                   {/* ...fit radio, size buttons, and input fields remain same... */}
 
-                  <MeasurementProfileComponent
+                  {/* <MeasurementProfileComponent
                     userMeasurementBySlug={userMeasurementBySlug}
                     userMeasurementActiveList={userMeasurementActive}
                     measurementProfile={measurementProfile}
                   />
-                  <MeasurementProfileSelector profiles={measurementProfiles} />
+                  <MeasurementProfileSelector profiles={measurementProfiles} /> */}
+
+
+                  <div className="container mx-auto p-4">
+                    <h6 className="text-2xl font-bold mb-4">Add New Item</h6>
+                    <CreateProduct data={{
+                      stepData,
+                      // currentStepData,
+                      filteredAvailableSizes,
+                      yarn: resolvedSearchParams["yarn"],
+                      gauge: resolvedSearchParams["gauge"],
+                      pattern: resolvedSearchParams["pattern"],
+                      style: resolvedSearchParams["style"],
+                      userMeasurementBySlug,
+                      userMeasurementActiveList: userMeasurementActive,
+                      measurementProfile,
+                      productTypeId,
+                      fittingName,
+                      steps,
+                      productId: resolvedSearchParams["product"],
+                      fittingId: resolvedSearchParams["fitting"],
+                      availableSizes,
+                      measurementProfiles
+                    }} />
+                  </div>
+
 
                   <MeasurementsBox
                     productTypeId={productTypeId}
                     fittingName={fittingName}
                     steps={steps}
+                    productId={resolvedSearchParams["product"]}
+                    fittingId={resolvedSearchParams["fitting"]}
                     availableSizes={availableSizes}
                     measurementProfiles={measurementProfiles}
                   />

@@ -1,5 +1,6 @@
-'use client';
-import { useEffect, useLayoutEffect, useMemo, useState } from 'react';
+'use client'
+
+import { useEffect, useMemo, useState } from 'react';
 //import '@/app/styles/header.css';
 import Cookies from 'js-cookie';
 import userAxiosInstance from '@/config/userAxiosInstance';
@@ -18,7 +19,7 @@ export default function Header() {
   const [searchQuery, setSearchQuery] = useState('');
   const router = useRouter();
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const fetchUserSettings = async () => {
       try {
         const response = await userAxiosInstance.get(GENERAL_USER_SETTINGS_URL);
@@ -108,7 +109,7 @@ export default function Header() {
               {/* <a className="my-account" href="#" title="My Account">
                 My Account
               </a> */}
-              <Link href={USER_ROUTES[token ? 'myAccount' : 'signin']}>My Account</Link>
+              <Link href={token ? '/my-account' : '/login'}>My Account</Link>
             </li>
           </ul>
           <div className="my-cart">{token && <CartWishlist />}</div>
@@ -139,7 +140,7 @@ export default function Header() {
           </div> */}
         </div>
       </header>
-      <nav className="nav-row">
+      <div className="nav-row">
         <div className="f-container">
           <nav className="navigation-menu">
             <ul className="category-list">
@@ -193,7 +194,9 @@ export default function Header() {
             </li>
           </ul>
         </div>
-      </nav>
+      </div>
     </>
   );
 }
+
+// }

@@ -26,6 +26,7 @@ export default function CartContent({ initialCartData }: { initialCartData: any[
       dispatch(setLoading(true));
       const response = await userAxiosInstance.get(ADD_TO_CART_LIST_URL);
       if (response?.data?.success) {
+        console.log("reponse===>", response?.data)
         setCartData(response.data.data);
       }
     } catch (error) {
@@ -34,6 +35,7 @@ export default function CartContent({ initialCartData }: { initialCartData: any[
       dispatch(setLoading(false));
     }
   }, []);
+  console.log("fetch====>>>", fetchCartData);
 
   return (
     <>

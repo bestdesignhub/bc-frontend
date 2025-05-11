@@ -42,7 +42,8 @@ const USER_ROUTES = {
 } as const;
 
 const SITE_SETTINGS = {
-  CURRENCY: '$',
+  // CURRENCY: '$',
+  CURRENCY: '€',
 };
 
 const URL_SLUG = {

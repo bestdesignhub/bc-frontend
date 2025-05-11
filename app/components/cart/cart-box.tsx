@@ -17,6 +17,8 @@ import { useTranslations } from 'next-intl';
 
 export default function Cartbox({ cart, fetchCartData }: { cart: any; fetchCartData: () => void }) {
   const t = useTranslations();
+  console.log("cart ==>", cart);
+
   const name = useMemo(() => generateProductName(cart), [cart]);
   const urlQueryString = useMemo(() => {
     const params = new URLSearchParams();
@@ -25,8 +27,9 @@ export default function Cartbox({ cart, fetchCartData }: { cart: any; fetchCartD
       params.append(stepTypeSlug, stepCardId)
     );
     //params.append(URL_SLUG.GENDER, cart?.gender);
-    params.append(URL_SLUG.FITTING_SIZE, cart?.fittingSizeid);
+    params.append(URL_SLUG.FITTING_SIZE, cart?.fittingSizeid?._id);
     params.append(URL_SLUG.ADD_TO_CART, cart?._id);
+    params.append(URL_SLUG.PRODUCT, cart?.product._id);
     return `${params.toString()}`;
   }, [cart]);
 
@@ -75,7 +78,7 @@ export default function Cartbox({ cart, fetchCartData }: { cart: any; fetchCartD
           <h5>{name}</h5>
           <div className="cart-box-right">
             <div className="size">
-              <span>size</span>L
+              <span>size</span>{cart?.size.toUpperCase()}
             </div>
             <div className="qty">
               <span>{t('COMMON.QUANTITY_TEXT')}</span>
@@ -122,7 +125,7 @@ export default function Cartbox({ cart, fetchCartData }: { cart: any; fetchCartD
           <div className="cart-img-big">
             <Image
               loading="lazy"
-              src={getAWSImageUrl(cart?.yarn?.image)}
+              src={getAWSImageUrl(cart?.product?.images[0])}
               alt="image"
               width={327}
               height={328}

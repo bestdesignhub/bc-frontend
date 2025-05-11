@@ -57,26 +57,26 @@ interface IAccessoriesProps {
 export default function Accessories({ homeProductList }: IAccessoriesProps) {
   return (
     <div className="accessories-wrapper">
-<div className='latest-products'>
-      <div className='container'>
-      <h2>Our Latest Products</h2>
-      <Slider {...settings}>
-        {homeProductList?.map((accessories, index) => (
-          <Fragment key={index}>
-            <AccessoriesItem
-              key={accessories._id}
-              href={`${USER_ROUTES.men}/${accessories._id}`}
-              title={accessories?.title}
-              image={accessories?.image}
-              price={accessories?.price}
-            />
-          </Fragment>
-        ))}
-      </Slider>
-      <Link className='viewbtn' href={`${USER_ROUTES.shop}`}>
-          View All
-        </Link>
-    </div>
+      <div className="latest-products">
+        <div className="container">
+          <h2>Our Latest Products</h2>
+          <Slider {...settings}>
+            {homeProductList?.map((accessories, index) => (
+              <Fragment key={index}>
+                <AccessoriesItem
+                  key={accessories._id}
+                  href={`${USER_ROUTES.men}/${accessories._id}`}
+                  title={accessories?.title}
+                  image={accessories?.image}
+                  price={accessories?.price}
+                />
+              </Fragment>
+            ))}
+          </Slider>
+          <Link className="viewbtn" href={`${USER_ROUTES.shop}`}>
+            View All
+          </Link>
+        </div>
       </div>
     </div>
   );

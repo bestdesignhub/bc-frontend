@@ -12,12 +12,16 @@ export default function Measurementspage({
   fittingName,
   availableSizes,
   steps,
+  productId,
+  fittingId,
   productTypeId,
   measurementProfiles,
 }: {
   fittingName: string;
   availableSizes: any[];
   steps: any[];
+  productId: string;
+  fittingId: string;
   productTypeId: string;
   measurementProfiles: DropDownOptionType[];
 }) {
@@ -51,6 +55,8 @@ export default function Measurementspage({
                 productTypeId={productTypeId}
                 fittingName={fittingName}
                 steps={steps}
+                productId={productId}
+                fittingId={fittingId}
                 availableSizes={availableSizes}
                 measurementProfiles={measurementProfiles}
               />

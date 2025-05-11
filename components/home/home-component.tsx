@@ -22,7 +22,7 @@ const HomeComponent = ({ homepageData, homeProductList }: IHomePageProps) => {
   // const favouriteData = homepageData?.section6;
   const lookGoodData = homepageData?.section8;
   return (
-    <>
+    <div>
       <main className="main-page">
         <Hero heroData={heroData} />
         {/* <Accessories accessoriesData={accessoriesData} homeProductList={homeProductList} />
@@ -94,7 +94,7 @@ const HomeComponent = ({ homepageData, homeProductList }: IHomePageProps) => {
           </div>
         </section>
         <ZeeZap lookGoodData={lookGoodData} />
-          {/* <div className="women-sweater">
+        {/* <div className="women-sweater">
             <img src="/images/ww.webp" />
           </div>
           <div className="men-sweater">
@@ -285,7 +285,7 @@ const HomeComponent = ({ homepageData, homeProductList }: IHomePageProps) => {
           </div>
         </section>
       </main>
-    </>
+    </div>
   );
 };
 

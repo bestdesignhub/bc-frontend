@@ -17,7 +17,7 @@ const CurrentStepBox: FC<{ currentStepData: any; stepNumber: any }> = ({
   const searchParams = useSearchParams();
   const handlePrevStepClick = () => {
     const params = new URLSearchParams(searchParams.toString());
-    params.delete(URL_SLUG.PRODUCT);
+    // params.delete(URL_SLUG.PRODUCT);
     router.push(
       `${USER_ROUTES.sweater}/${stepNumber}?${params.toString()}&${URL_SLUG.CHANGE}=true`
     );

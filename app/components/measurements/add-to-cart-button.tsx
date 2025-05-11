@@ -7,10 +7,14 @@ import { MeasurementConfirmationModal } from '@/components/modals/measurement-co
 
 const MeasurementAddToCartButton = ({
   steps,
+  productId,
+  fittingId,
   productTypeId,
   defaultFittingSize,
 }: {
   steps: any[];
+  productId: string;
+  fittingId: string;
   productTypeId: string;
   defaultFittingSize: string;
 }) => {
@@ -32,6 +36,8 @@ const MeasurementAddToCartButton = ({
       <MeasurementConfirmationModal
         productTypeId={productTypeId}
         steps={filteredSteps}
+        productId={productId}
+        fittingId={fittingId}
         defaultFittingSize={defaultFittingSize}
         handleClose={handleModalClose}
         show={showModal}

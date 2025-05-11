@@ -7,6 +7,7 @@ import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 
 const OrderData = ({ cartData }: { cartData: any[] }) => {
   const t = useTranslations();
+  console.log("{cart.name}", cartData);
 
   const orderData = useMemo(() => {
     let total = 0;
@@ -17,6 +18,7 @@ const OrderData = ({ cartData }: { cartData: any[] }) => {
         name: generateProductName(cart),
         quantity: cart.quantity,
         price: formatPrice(price),
+        size: cart.size
       };
     });
     return {
@@ -41,7 +43,7 @@ const OrderData = ({ cartData }: { cartData: any[] }) => {
             <div className="price">
               {/* <span className="old-price">$60.00</span> */}
               <span>
-                Size <b>L</b>
+                Size <b>{cart.size.toUpperCase()}</b>
               </span>
               <span>
                 Qty <b>{cart.quantity}</b>
