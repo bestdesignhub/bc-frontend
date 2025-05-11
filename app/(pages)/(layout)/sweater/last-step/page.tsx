@@ -29,7 +29,7 @@ import { MeasurementProfileComponent } from '@/app/components/measurements-profi
 import MeasurementProfileSelector from '@/components/MeasurementProfileSelector';
 import AvailableSizeSelector from '@/components/AvailableSizeSelector';
 import MeasurementsBox from '@/app/components/measurements/measurements-box';
-import CreateProduct from './CreateProduct';
+import CreateProduct from './createProduct';
 
 const LastStepPage = async ({
   searchParams,
@@ -91,36 +91,22 @@ const LastStepPage = async ({
   const stepData = await getStepFullViewDetails({ productTypeId, steps: resolvedSearchParams });
   const fittingName = stepData?.fitting?.stepCard?.title;
 
-  console.log("======>>>>", stepData);
-  console.log("======>>>>", stepData.fitting);
+  console.log("stepData======>>>>", stepData);
+  console.log("steps======>>>>", steps);
 
   // Now filter the available sizes based on the step type and slug
-  const filteredAvailableSizes = availableSizes.filter((size: any) =>
+  const filteredAvailableSizes = availableSizes?.filter((size: any) =>
     stepData.fitting?.stepType?.name === 'Fitting' && stepData.fitting?.stepCard.slug === 'slim-fitting'
       ? SLIM_SIZES.includes(size?.name)
       : REGULAR_SIZES.includes(size?.name)
   );
   // Output the filtered sizes
-  console.log("filteredAvailableSizes", filteredAvailableSizes);
+  // console.log("filteredAvailableSizes", filteredAvailableSizes);
 
   function handlePriceChange(price: number): void {
     throw new Error('Function not implemented.');
   }
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    const formData = new FormData(e.target as HTMLFormElement);
-    const title = formData.get('title');
-    const image = formData.get('image');
-
-    if (title && image) {
-      console.log('Title:', title);
-      console.log('Image:', image);
-      alert('Form submitted successfully');
-    } else {
-      alert('Please fill out all fields.');
-    }
-  };
 
   return (
     <>
@@ -146,7 +132,7 @@ const LastStepPage = async ({
                       <span className="new-price">{formatPrice(stepData?.yarn?.price)}</span>
                     </div>
                     {resolvedSearchParams.hasOwnProperty(URL_SLUG.ADD_TO_CART) ? (
-                      <SaveAndGoToCart steps={stepData.steps} />
+                      <SaveAndGoToCart steps={stepData?.steps} />
                     ) : (
                       // <ProceedToSizeMeasurement />
                       ''
@@ -337,29 +323,33 @@ const LastStepPage = async ({
                   />
                   <MeasurementProfileSelector profiles={measurementProfiles} /> */}
 
+                  {(resolvedSearchParams["product"] === undefined || resolvedSearchParams["product"] === null || resolvedSearchParams["product"] === "") && (
 
-                  <div className="container mx-auto p-4">
-                    <h6 className="text-2xl font-bold mb-4">Add New Item</h6>
-                    <CreateProduct data={{
-                      stepData,
-                      // currentStepData,
-                      filteredAvailableSizes,
-                      yarn: resolvedSearchParams["yarn"],
-                      gauge: resolvedSearchParams["gauge"],
-                      pattern: resolvedSearchParams["pattern"],
-                      style: resolvedSearchParams["style"],
-                      userMeasurementBySlug,
-                      userMeasurementActiveList: userMeasurementActive,
-                      measurementProfile,
-                      productTypeId,
-                      fittingName,
-                      steps,
-                      productId: resolvedSearchParams["product"],
-                      fittingId: resolvedSearchParams["fitting"],
-                      availableSizes,
-                      measurementProfiles
-                    }} />
-                  </div>
+                    <div className="container mx-auto p-4">
+                      {/* <h6 className="text-2xl font-bold mb-4">Add New Item</h6>/ */}
+                      <CreateProduct data={{
+                        stepData,
+                        // currentStepData,
+                        filteredAvailableSizes,
+                        yarn: resolvedSearchParams["yarn"],
+                        gauge: resolvedSearchParams["gauge"],
+                        pattern: resolvedSearchParams["pattern"],
+                        style: resolvedSearchParams["style"],
+                        userMeasurementBySlug,
+                        userMeasurementActiveList: userMeasurementActive,
+                        measurementProfile,
+                        productTypeId,
+                        fittingName,
+                        steps,
+                        productId: resolvedSearchParams["product"],
+                        fittingId: resolvedSearchParams["fitting"],
+                        availableSizes,
+                        measurementProfiles
+                      }} />
+                    </div>
+                  )}
+
+
 
 
                   <MeasurementsBox

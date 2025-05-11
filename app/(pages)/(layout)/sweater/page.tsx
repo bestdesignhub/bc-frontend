@@ -43,44 +43,43 @@ const SweaterPage = async ({
     : yarnList?.data;
 
   return (
-    <>
-      <ViewProvider>
-        <div className="sweater-inner-step">
-          <StepBanner step="1" stepData={{ label: t('COMMON.YARN_TEXT') }} />
-          <div className="container">
-            <div className="sweater-inner-container">
-              <div className="woman-product-wrappe bgsweater">
-                <Row Row className="g-4 no-horizontal-padding">
-                  <Col xs={12} lg={2}>
-                    <StepNavigate genders={genders} genderSlug={genderSlug} />
-                  </Col>
-
-                  <Col xs={12} lg={10}>
-                    <div className="sweater-bg-step">
-                      <YarnListingSidebar
-                        genders={genders}
-                        colours={colours}
-                        materials={materials}
-                      />
-                      {!genderSlug && <GenderModalWrapper genders={genders} />}
-                      <ProductTopbar
-                        text={t('COMMON.YARN_TEXT')}
-                        total={filteredYarnList?.length}
-                      />
-                      <ProductListing list={filteredYarnList} genderSlug={genderSlug} />
-                      <CustomPagination
-                        currentPage={yarnList?.currentPage}
-                        totalPage={yarnList?.totalPage}
-                      />
-                    </div>
-                  </Col>
-                </Row>
-              </div>
+    // <div tabIndex={0}>
+    <ViewProvider>
+      <div className="sweater-inner-step">
+        <StepBanner step="1" stepData={{ label: t('COMMON.YARN_TEXT') }} />
+        <div className="container">
+          <div className="sweater-inner-container">
+            <div className="woman-product-wrappe bgsweater">
+              <Row className="g-4 no-horizontal-padding">
+                <Col xs={12} lg={2}>
+                  <StepNavigate genders={genders} genderSlug={genderSlug} />
+                </Col>
+                <Col xs={12} lg={10}>
+                  <div className="sweater-bg-step">
+                    <YarnListingSidebar
+                      genders={genders}
+                      colours={colours}
+                      materials={materials}
+                    />
+                    {!genderSlug && <GenderModalWrapper genders={genders} />}
+                    <ProductTopbar
+                      text={t('COMMON.YARN_TEXT')}
+                      total={filteredYarnList?.length}
+                    />
+                    <ProductListing list={filteredYarnList} genderSlug={genderSlug} />
+                    <CustomPagination
+                      currentPage={yarnList?.currentPage}
+                      totalPage={yarnList?.totalPage}
+                    />
+                  </div>
+                </Col>
+              </Row>
             </div>
           </div>
         </div>
-      </ViewProvider>
-    </>
+      </div>
+    </ViewProvider>
+    // </div>
   );
 };
 

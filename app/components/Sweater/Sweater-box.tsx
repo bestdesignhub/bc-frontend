@@ -24,6 +24,20 @@ export default function SweaterBox({ stepData }: SweaterBoxProps) {
 
   const [imageSrc, setImageSrc] = useState<string | StaticImageData>(Sweaterimg1);
   const [loading, setLoading] = useState(false);
+  const [title, setTitle] = useState('');
+
+  useEffect(() => {
+    stepData?.steps?.map((e: any) => {
+      console.log(e.slug);
+      const currentStepData = stepData?.[e?.slug] || {};
+      if (e?.slug == 'style') {
+        setTitle(currentStepData?.stepCard?.title)
+      }
+
+      console.log('steppp1111', e?.name, currentStepData)
+
+    })
+  }, [title])
 
   useEffect(() => {
     if (!slug || !pattern || !style || !fitting) return;
@@ -57,7 +71,8 @@ export default function SweaterBox({ stepData }: SweaterBoxProps) {
   return (
     <div className="defult-block">
       <div className="Sweater-top-data">
-        <h3>Your Final Sweater</h3>
+        {/* <h3>Your Final Sweater</h3> */}
+        <h3>{title}</h3>
         <p>Whatevert you select in previous all styles, color, patterns as per final result</p>
       </div>
       <div className="Sweater-img">

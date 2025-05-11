@@ -61,7 +61,6 @@ const MeasurementConfirmationModal = (props: {
       };
       dispatch(setLoading(true));
       console.log('payload', payload);
-      return false;
       userAxiosInstance
         .post(ADD_TO_CART_URL, payload)
         .then((response) => {
