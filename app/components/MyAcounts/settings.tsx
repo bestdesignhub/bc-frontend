@@ -12,7 +12,7 @@ const LOCALES = [
   { code: 'da', name: 'Danish' },
 ] as const;
 
-const Settings = React.forwardRef((_, ref) => {
+const Settings = (() => {
   const defaultLocale = useLocale();
 
   const handleChange = async (event: React.ChangeEvent<HTMLSelectElement>) => {

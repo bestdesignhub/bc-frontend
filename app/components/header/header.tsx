@@ -10,7 +10,7 @@ import { setAllUserSettingsValues } from '@/lib/redux/slices/userSettingSlice';
 import Logo from './logo';
 import Settings from '../MyAcounts/settings';
 import Link from 'next/link';
-import { USER_ROUTES } from '@/constants';
+// import { USER_ROUTES } from '@/constants';
 import CartWishlist from './cart-wishlist';
 import { useRouter } from 'next/navigation'; // Import router for navigation
 

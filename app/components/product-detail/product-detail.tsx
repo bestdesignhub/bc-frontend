@@ -39,7 +39,7 @@ export default function ProdutDetail({
   const token = Cookies.get(COOKIES.userToken);
   const t = useTranslations();
   const [price, setPrice] = useState(details?.basePriceXs ?? 0);
-  const [size, setSize] = useState("");
+  const [size, setSize] = useState(availableSizes?.at(0)?.slug);
   const [slug, setSizeSlug] = useState(availableSizes?.at(0)?.slug);
   const [isWishlisted, setIsWishlisted] = useState(!!details?.isWishlisted);
   console.log('size', slug);
@@ -49,6 +49,7 @@ export default function ProdutDetail({
   const handleChangeSize = (event: ChangeEvent<HTMLInputElement>) => {
     setSizeSlug(event.target.id);
     dispatch(setLoading(true));
+    setSize("");
     userAxiosInstance
       .post(PRODUCT_PRICE_BY_SIZE, {
         _id: details._id,

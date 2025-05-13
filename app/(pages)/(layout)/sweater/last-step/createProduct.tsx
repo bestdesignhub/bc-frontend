@@ -188,6 +188,7 @@ const CreateProduct = (props: any) => {
             // status: "active", // Example status (you can use `statusJoiValidation` to define this)
             genderId: stepData?.yarn?.genderId, // Optional genderId
             basePriceXs: stepData?.yarn?.price, // Required price for the product
+            updatedPrice: stepData?.yarn?.price, // Required price for the product
             colourId: stepData?.yarn?.colourId, // Required, 24-character hex string
             materialId: stepData?.yarn?.materialId, // Required, 24-character hex string
             patternId: pattern, // Required, 24-character hex string
@@ -199,6 +200,7 @@ const CreateProduct = (props: any) => {
             const currentStepData = stepData?.[e?.slug] || {};
             if (e?.slug === 'style') {
                 payload.title = JSON.stringify({ en: currentStepData?.stepCard?.title, da: currentStepData?.stepCard?.title });
+                payload.images = currentStepData?.stepCard?.realImage;
                 // const stepTypeId = stepData[e?.slug]?.stepType?._id;
                 // const stepCardId = stepData[e?.slug]?.stepCard?._id;
 
