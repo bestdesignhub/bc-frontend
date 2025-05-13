@@ -246,8 +246,6 @@ const LastStepPage = async ({
                         pattern={resolvedSearchParams["pattern"]}
                         style={resolvedSearchParams["style"]}
                       // onPriceChange={handlePriceChange}
-
-
                       />
                     </div>
 
@@ -352,7 +350,7 @@ const LastStepPage = async ({
 
 
 
-                  <MeasurementsBox
+                  {(resolvedSearchParams["product"] && <MeasurementsBox
                     productTypeId={productTypeId}
                     fittingName={fittingName}
                     steps={steps}
@@ -360,7 +358,7 @@ const LastStepPage = async ({
                     fittingId={resolvedSearchParams["fitting"]}
                     availableSizes={availableSizes}
                     measurementProfiles={measurementProfiles}
-                  />
+                  />)}
                 </div>
               </div>
             </div>

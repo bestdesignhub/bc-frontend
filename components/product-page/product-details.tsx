@@ -19,6 +19,8 @@ export default async function ProductDetailPage({ params }: ProductDetailProps) 
 
   const productDetailsData =
     productDetailsResult.status === 'fulfilled' ? productDetailsResult.value : {};
+  // console.log("ProductDetails==>", productDetailsData);
+
   const availableSizeData =
     availableSizeResult.status === 'fulfilled' ? availableSizeResult.value : [];
   const gendersData = gendersResult.status === 'fulfilled' ? gendersResult.value : [];

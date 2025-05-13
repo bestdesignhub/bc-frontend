@@ -8,11 +8,11 @@ import { COOKIES, URL_SLUG, USER_ROUTES } from '@/constants';
 import Cookies from 'js-cookie';
 import MeasurementAddToCartButton from './add-to-cart-button';
 import { DropDownOptionType } from '@/types';
-import SelectRegularSize from './select-regular-size';
-import SelectYourMeasurementProfile from './select-your-measurement-profile';
+// import SelectRegularSize from './select-regular-size';
+// import SelectYourMeasurementProfile from './select-your-measurement-profile';
 
 export default function MeasurementsBox({
-  fittingName,
+  // fittingName,
   availableSizes,
   steps,
   productId,
@@ -47,7 +47,7 @@ export default function MeasurementsBox({
   const selectedMeasurementProfile = useMemo(() => {
     return measurementProfiles?.find((profile: any) => profile.value === measurementProfile)?.label;
   }, [measurementProfile, measurementProfiles]);
-  const addMeasurementQueryString = useMemo(() => {
+  useMemo(() => {
     const params = new URLSearchParams(searchParams);
     if (params.has(URL_SLUG.MEASUREMENT_PROFILE)) {
       params.delete(URL_SLUG.MEASUREMENT_PROFILE);

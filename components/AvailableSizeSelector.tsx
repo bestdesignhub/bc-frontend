@@ -13,8 +13,8 @@ type Size = {
   name: string;
 };
 
-const SLIM_SIZES = ['XS', 'S', 'M', 'L', 'XL'];
-const REGULAR_SIZES = ['M', 'L', 'XL', '2XL', '3XL', '4XL', '5XL'];
+// const SLIM_SIZES = ['XS', 'S', 'M', 'L', 'XL'];
+// const REGULAR_SIZES = ['M', 'L', 'XL', '2XL', '3XL', '4XL', '5XL'];
 
 type Props = {
   sizes: Size[];
