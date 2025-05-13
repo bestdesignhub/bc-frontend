@@ -66,21 +66,11 @@ const GenderModal = (props: {
                   );
                 }
                 return (
-                  <Link
+                  <Link className='gender-img'
                     key={gender.label}
                     href={`${redirectRoute}?${queryString}${!!queryString.length ? `&` : ``}${URL_SLUG.GENDER}=${gender.value}`}
                   >
-                    <div
-                      style={{
-                        border: '1px solid var(--bsp-black)',
-                        padding: '12px 14px',
-                        cursor: 'pointer',
-                      }}
-                    >
-                      <div className="title">
-                        <h6 style={{ color: 'var(--bsp-black)' }}>{gender.label}</h6>
-                      </div>
-                    </div>
+                    <h6 className='genderLable'>{gender.label}</h6>
                   </Link>
                 );
               })}

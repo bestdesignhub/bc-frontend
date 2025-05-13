@@ -1283,3 +1283,15 @@ body {
   width: 20px;
   margin-right: 8px;
 }
+
+.gender-img {
+  position: relative;
+  background: url(../public/images/women-img.jpg) center top no-repeat;
+  width: 224px;
+  height: 300px;
+}
+
+.gender-img:last-child {
+  position: relative;
+  background: url(../public/images/men-img.jpg) center top no-repeat;
+}
