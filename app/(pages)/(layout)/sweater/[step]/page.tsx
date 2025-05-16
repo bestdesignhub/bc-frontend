@@ -28,10 +28,17 @@ const SweaterStep = async ({
   }
 
   const stepData = steps[step - FIXED_STEPS_COUNT];
-  console.log("stepData===>>>>", stepData);
+
 
   const genders = genderResult;
   const genderSlug = resolvedSearchParams[URL_SLUG.GENDER];
+
+  if (stepData?.slug === 'pattern' || stepData?.slug === 'style') {
+    const hasGenderField = stepPageData.list.some((item: any) => item.gender !== undefined);
+    const matchingItems = hasGenderField ? stepPageData.list.filter((item: any) => item.gender === genderSlug) : stepPageData.list;
+    stepPageData.list = matchingItems;
+  }
+  console.log("stepPageData===>>>>2222", stepPageData);
 
   return (
     <>
