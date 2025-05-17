@@ -26,6 +26,7 @@ import {
 } from '@/lib/redux/slices/userSettingSlice';
 import ProductImageGallery from './product-gallery';
 import Image from 'next/image';
+import MeasurementsForm from '../measurements/measurementsForm';
 
 export default function ProdutDetail({
   details,
@@ -118,6 +119,17 @@ export default function ProdutDetail({
     }
   }, [details._id, t]);
 
+  const measurementsData = [
+    { label: "BODY LENGTH - HSP", value: 65, tolerance: 5 },
+    { label: "HEM WIDTH", value: 36, tolerance: 3 },
+    { label: "CHEST WIDTH", value: 46, tolerance: 2 },
+    { label: "ARMHOLE STRAIGHT", value: 22, tolerance: 2 },
+    { label: "SHOULDER WIDTH", value: 37, tolerance: 2 },
+    { label: "SLEEVE LENGTH - HSP", value: 64, tolerance: 2 },
+    { label: "NECK WIDTH", value: 15.5, tolerance: 2 },
+    { label: "SLEEVE WIDTH", value: 17, tolerance: 2 },
+  ];
+
   return (
     <>
       <div className="product-detail-wrapper">
@@ -168,13 +180,14 @@ export default function ProdutDetail({
                   <br />
                   <br />
                   <br />
-                  <Image
+                  {/* <Image
                     src={'/images/sizes.jpg'}
                     alt={'size'}
                     width={417}
                     height={272}
                     loading="lazy"
-                  />
+                  /> */}
+                  <MeasurementsForm measurements={measurementsData} />
                 </div>
                 <div style={{ marginBottom: '10px' }}>
                   <AddToCartButton genders={genders} queryString={urlQueryString} productId={details._id} price={price.toString()} size={size} />
