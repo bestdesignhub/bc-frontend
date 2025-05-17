@@ -2,7 +2,6 @@
 'use client'
 import userAxiosInstance from '@/config/userAxiosInstance';
 import { MESSAGES } from '@/constants';
-import { MY_ADDRESS_LIST_URL } from '@/constants/apis';
 import { setLoading } from '@/lib/redux/slices/loaderSlice';
 import { dispatch } from '@/lib/redux/store';
 import { useRouter, useSearchParams } from "next/navigation";
@@ -17,26 +16,29 @@ const CreateProduct = (props: any) => {
     const {
         stepData,
         // currentStepData,
-        filteredAvailableSizes,
-        yarn,
+        // filteredAvailableSizes,
+        // yarn,
         gauge,
         pattern,
         style,
-        userMeasurementBySlug,
-        userMeasurementActiveList,
-        measurementProfile,
+        // userMeasurementBySlug,
+        // userMeasurementActiveList,
+        // measurementProfile,
         productTypeId,
-        fittingName,
-        steps,
-        productId,
-        fittingId,
-        availableSizes,
-        measurementProfiles
+        // fittingName,
+        // steps,
+        // productId,
+        // fittingId,
+        // availableSizes,
+        // measurementProfiles
     } = props?.data;
 
     // To print all the data
     console.log("📝 Full Data Passed from Parent Component (LastStepPage):", props?.data);
     const [isSubmitting, setIsSubmitting] = useState(true);
+
+    console.log(isSubmitting);
+
 
 
 
@@ -44,6 +46,7 @@ const CreateProduct = (props: any) => {
 
     const handleSubmit = async (event?: React.FormEvent) => {
 
+        console.log(event);
 
         // const formData = new FormData();
 
@@ -197,6 +200,8 @@ const CreateProduct = (props: any) => {
         };
 
         stepData?.steps?.map((e: any, index: number) => {
+            console.log(index);
+
             const currentStepData = stepData?.[e?.slug] || {};
             if (e?.slug === 'style') {
                 payload.title = JSON.stringify({ en: currentStepData?.stepCard?.title, da: currentStepData?.stepCard?.title });

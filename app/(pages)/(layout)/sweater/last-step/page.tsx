@@ -2,7 +2,7 @@ import '@/app/styles/Sweater-product.css';
 import SweaterBox from '@/app/components/Sweater/Sweater-box';
 import {
   ChangeYarnButton,
-  ProceedToSizeMeasurement,
+  // ProceedToSizeMeasurement,
   SaveAndGoToCart,
   StepBanner,
 } from '@/components';
@@ -25,8 +25,8 @@ import { formatPrice, getAWSImageUrl } from '@/utils/common.utils';
 import { getTranslations } from 'next-intl/server';
 import CurrentStepBox from '@/components/step-components/current-step-box';
 import SweaterSlider from '@/components/step-components/sweater-slider';
-import { MeasurementProfileComponent } from '@/app/components/measurements-profile';
-import MeasurementProfileSelector from '@/components/MeasurementProfileSelector';
+// import { MeasurementProfileComponent } from '@/app/components/measurements-profile';
+// import MeasurementProfileSelector from '@/components/MeasurementProfileSelector';
 import AvailableSizeSelector from '@/components/AvailableSizeSelector';
 import MeasurementsBox from '@/app/components/measurements/measurements-box';
 import CreateProduct from './createProduct';
@@ -103,9 +103,9 @@ const LastStepPage = async ({
   // Output the filtered sizes
   // console.log("filteredAvailableSizes", filteredAvailableSizes);
 
-  function handlePriceChange(price: number): void {
-    throw new Error('Function not implemented.');
-  }
+  // function handlePriceChange(price: number): void {
+  //   throw new Error('Function not implemented.');
+  // }
 
 
   return (

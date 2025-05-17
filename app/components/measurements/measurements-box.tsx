@@ -44,7 +44,8 @@ export default function MeasurementsBox({
 
   const userToken = Cookies.get(COOKIES.userToken);
 
-  const selectedMeasurementProfile = useMemo(() => {
+  // const selectedMeasurementProfile = 
+  useMemo(() => {
     return measurementProfiles?.find((profile: any) => profile.value === measurementProfile)?.label;
   }, [measurementProfile, measurementProfiles]);
   useMemo(() => {

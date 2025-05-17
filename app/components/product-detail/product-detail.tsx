@@ -25,7 +25,7 @@ import {
   setUserSettingIncreaseWishlistCount,
 } from '@/lib/redux/slices/userSettingSlice';
 import ProductImageGallery from './product-gallery';
-import Image from 'next/image';
+// import Image from 'next/image';
 import MeasurementsForm from '../measurements/measurementsForm';
 
 export default function ProdutDetail({
