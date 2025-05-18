@@ -37,7 +37,7 @@ const CreateProduct = (props: any) => {
     // console.log("📝 Full Data Passed from Parent Component (LastStepPage):", props?.data);
     const [isSubmitting, setIsSubmitting] = useState(true);
 
-    // console.log(isSubmitting);
+    console.log(isSubmitting);
 
 
 
@@ -46,7 +46,7 @@ const CreateProduct = (props: any) => {
 
     const handleSubmit = async (event?: React.FormEvent) => {
 
-
+        event?.preventDefault();
 
         // const formData = new FormData();
 
@@ -207,6 +207,7 @@ const CreateProduct = (props: any) => {
                 payload.images = currentStepData?.stepCard?.realImage;
                 // const stepTypeId = stepData[e?.slug]?.stepType?._id;
                 // const stepCardId = stepData[e?.slug]?.stepCard?._id;
+                console.log(index);
 
                 // Ensure stepTypeId and stepCardId exist before adding to steps
                 // if (stepTypeId && stepCardId) {
@@ -223,7 +224,7 @@ const CreateProduct = (props: any) => {
 
 
         // Convert the payload to JSON
-        const jsonPayload = JSON.stringify(payload);
+        // const jsonPayload = JSON.stringify(payload);
 
 
         setIsSubmitting(true);

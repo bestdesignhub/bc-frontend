@@ -49,8 +49,8 @@ const MeasurementConfirmationModal = (props: {
 
       // }
       // console.log('stepsData', stepsData);
-      let measurementData = sessionStorage.getItem('measurements');
-      let payload = {
+      const measurementData = sessionStorage.getItem('measurements');
+      const payload = {
         yarn: searchParamsValues.yarn,
         steps: stepsData,
         productId: props.productId,

@@ -18,25 +18,27 @@ const MeasurementsForm: React.FC<MeasurementsFormProps> = ({ measurements }) => 
     const [measurement, setMeasurements] = useState(measurements);
 
     const handleChange = (index: number, newValue: number) => {
+        console.log(measurement);
 
         const updatedValues = [...values];
         updatedValues[index].value = newValue;
         setValues(updatedValues);
+        setMeasurements(updatedValues);
         sessionStorage.setItem("measurements", JSON.stringify(updatedValues));
     };
 
-    const handleAdjust = (index: any, delta: any) => {
-        setMeasurements((prev) =>
-            prev.map((item, i) =>
-                i === index
-                    ? {
-                        ...item,
-                        value: Math.max(0, item.value + (delta > 0 ? 5 : -5))
-                    }
-                    : item
-            )
-        );
-    };
+    // const handleAdjust = (index: any, delta: any) => {
+    //     setMeasurements((prev) =>
+    //         prev.map((item, i) =>
+    //             i === index
+    //                 ? {
+    //                     ...item,
+    //                     value: Math.max(0, item.value + (delta > 0 ? 5 : -5))
+    //                 }
+    //                 : item
+    //         )
+    //     );
+    // };
 
     return (
         <div className="measurements">

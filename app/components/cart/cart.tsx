@@ -21,7 +21,7 @@ export default function CartContent({ initialCartData }: { initialCartData: any[
   useEffect(() => {
     setCartData(initialCartData);
   }, [initialCartData]);
-  let fetchCartData = useCallback(async () => {
+  const fetchCartData = useCallback(async () => {
     try {
       dispatch(setLoading(true));
       const response = await userAxiosInstance.get(ADD_TO_CART_LIST_URL);

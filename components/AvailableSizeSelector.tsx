@@ -39,14 +39,14 @@ const sizeMapping: any = {
   '5xl': "sizeFXL5",
 };
 
-const AvailableSizeSelector = ({ sizes, basePrice = 0, yarn, gauge, pattern, style, onPriceChange }: Props) => {
+const AvailableSizeSelector = ({ sizes, basePrice = 0, yarn, gauge, pattern, style }: Props) => {
   const dispatch = useDispatch();
   const [selectedFit, setSelectedFit] = useState<'slim' | 'regular'>('slim');
   const [selectedSizeSlug, setSelectedSizeSlug] = useState<string | null>(null);
   const [price, setPrice] = useState<number>(basePrice);
   const router = useRouter();
 
-
+  setSelectedFit('slim')
   // console.log(setSelectedFit('slim'));
 
   // const filteredSizes = sizes.filter((size) =>
