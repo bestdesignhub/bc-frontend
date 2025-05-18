@@ -46,7 +46,7 @@ const AvailableSizeSelector = ({ sizes, basePrice = 0, yarn, gauge, pattern, sty
   const [price, setPrice] = useState<number>(basePrice);
   const router = useRouter();
 
-  setSelectedFit('slim')
+
   // console.log(setSelectedFit('slim'));
 
   // const filteredSizes = sizes.filter((size) =>
@@ -125,6 +125,7 @@ const AvailableSizeSelector = ({ sizes, basePrice = 0, yarn, gauge, pattern, sty
     if (sizes.length && !selectedSizeSlug) {
       const firstSizeSlug = sizes[0].slug;
       setSelectedSizeSlug(firstSizeSlug);
+      setSelectedFit('slim')
       // if (productId) handleSizeChange(firstSizeSlug);
       handleSizeChange(firstSizeSlug);
     }
