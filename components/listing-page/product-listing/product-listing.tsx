@@ -13,8 +13,6 @@ type ProductListingProps = {
 const ProductListing: FC<ProductListingProps> = ({ list, genderSlug }) => {
   const { view } = useView();
 
-  console.log(list, '.....list')
-
   return (
     <Row className={`product-container g-4 ${view}`}>
 

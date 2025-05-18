@@ -34,10 +34,10 @@ const CreateProduct = (props: any) => {
     } = props?.data;
 
     // To print all the data
-    console.log("📝 Full Data Passed from Parent Component (LastStepPage):", props?.data);
+    // console.log("📝 Full Data Passed from Parent Component (LastStepPage):", props?.data);
     const [isSubmitting, setIsSubmitting] = useState(true);
 
-    console.log(isSubmitting);
+    // console.log(isSubmitting);
 
 
 
@@ -46,7 +46,7 @@ const CreateProduct = (props: any) => {
 
     const handleSubmit = async (event?: React.FormEvent) => {
 
-        console.log(event);
+
 
         // const formData = new FormData();
 
@@ -200,7 +200,6 @@ const CreateProduct = (props: any) => {
         };
 
         stepData?.steps?.map((e: any, index: number) => {
-            console.log(index);
 
             const currentStepData = stepData?.[e?.slug] || {};
             if (e?.slug === 'style') {
@@ -221,14 +220,10 @@ const CreateProduct = (props: any) => {
             }
         });
         // Ensure the payload is correctly formed before sending
-        console.log(JSON.stringify(payload, null, 2));
 
 
         // Convert the payload to JSON
         const jsonPayload = JSON.stringify(payload);
-        console.log(jsonPayload);
-
-
 
 
         setIsSubmitting(true);

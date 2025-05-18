@@ -109,5 +109,5 @@ export const generateProductName = (cartItem: any) => {
   const fitting = steps.find((step: any) => step.stepTypeSlug === 'fitting')?.stepCardTitle || '';
 
   // Construct the name
-  return `${product.title.en} - ${gauge} - ${pattern} - ${style} - ${fitting} - ${size.toUpperCase()}`;
+  return `${product?.title?.en} - ${gauge} - ${pattern} - ${style} - ${fitting} - ${size.toUpperCase()}`;
 };

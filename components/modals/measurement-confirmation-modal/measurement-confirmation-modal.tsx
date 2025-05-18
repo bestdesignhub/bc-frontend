@@ -48,8 +48,9 @@ const MeasurementConfirmationModal = (props: {
       //   console.log();
 
       // }
-
-      const payload = {
+      // console.log('stepsData', stepsData);
+      let measurementData = sessionStorage.getItem('measurements');
+      let payload = {
         yarn: searchParamsValues.yarn,
         steps: stepsData,
         productId: props.productId,
@@ -58,7 +59,13 @@ const MeasurementConfirmationModal = (props: {
         fittingSizeId: searchParamsValues[URL_SLUG.FITTING],
         productTypeId,
         quantity: 1,
+        measurements: measurementData,
       };
+      // let measurementData =  sessionStorage.getItem('measurementData');
+      // if (measurementData) {
+      //   // measurementData = JSON.parse(measurementData);
+      //   payload.measurementData = measurementData
+      // }
       dispatch(setLoading(true));
       console.log('payload', payload);
       userAxiosInstance

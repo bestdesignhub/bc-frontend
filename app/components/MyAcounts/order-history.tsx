@@ -16,10 +16,11 @@ const OrderHistory = async ({ orders }: { orders: any[] }) => {
                 <div className="text-2">{t('COMMON.PRODUCTS')}</div>
                 <div className="text-3">{t('COMMON.SHIPPING_ADDRESS')}</div>
                 <div className="text-4">{t('COMMON.TOTAL_PRICE')}</div>
+                <div className="text-4">{'Measurements'}</div>
               </li>
             </ul>
             <ul className="tbody">
-              {orders.map((order) => (
+              {orders?.map((order) => (
                 <li
                   key={order.orderId}
                   style={{ marginBottom: '10px', display: 'flex', borderBottom: '1px solid' }}
@@ -33,6 +34,15 @@ const OrderHistory = async ({ orders }: { orders: any[] }) => {
                         </p>
                         <p>
                           <strong>{t('COMMON.QUANTITY_TEXT')}:</strong> {product.quantity}
+                        </p>
+                        <p>
+                          <ul className="list-disc pl-5">
+                            {product.measurements && product.measurements?.map((measurement: any, index: number) => (
+                              <li key={index}>
+                                <strong>{measurement.label}:</strong> {measurement.value} cm (±{measurement.tolerance} cm)
+                              </li>
+                            ))}
+                          </ul>
                         </p>
                         {/* <p>
                         <strong>{t("COMMON.VIEW")}:</strong>{' '}

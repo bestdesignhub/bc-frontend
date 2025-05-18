@@ -22,7 +22,7 @@ export default function StepNavigate({
   genderSlug?: any;
 }) {
 
-  console.log(genderSlug, '....genderSlug StepNavigate')
+  // console.log(genderSlug, '....genderSlug StepNavigate')
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const t = useTranslations();
   const router = useRouter();

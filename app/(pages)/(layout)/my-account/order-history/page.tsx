@@ -9,6 +9,18 @@ export default async function MyAcountspage({
 }) {
   const resolvedSearchParams = await searchParams;
   const orders = await getUserOrders(resolvedSearchParams);
+  orders?.data?.forEach((order: any) => {
+    order.products.forEach((product: any) => {
+      if (typeof product.measurements === 'string') {
+        try {
+          product.measurements = JSON.parse(product.measurements);
+        } catch (e) {
+          console.error("Failed to parse measurements for product:", product._id, e);
+        }
+      }
+    });
+  });
+
   return (
     <>
       <OrderHistory orders={orders?.data} />

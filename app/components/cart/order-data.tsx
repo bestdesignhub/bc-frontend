@@ -7,7 +7,6 @@ import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 
 const OrderData = ({ cartData }: { cartData: any[] }) => {
   const t = useTranslations();
-  console.log("{cart.name}", cartData);
 
   const orderData = useMemo(() => {
     let total = 0;

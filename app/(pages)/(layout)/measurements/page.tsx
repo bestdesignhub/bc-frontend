@@ -29,10 +29,6 @@ export default async function Measurementspage({
     fittingStepDetailsResult.status === 'fulfilled' ? fittingStepDetailsResult.value : [];
   const measurementProfiles =
     measurementProfileResult.status === 'fulfilled' ? measurementProfileResult.value : [];
-  console.log("fittingStepDetails", fittingStepDetails);
-  console.log("steps", steps);
-  console.log("availableSizes", availableSizes);
-  console.log("measurementProfiles", measurementProfiles);
 
   return (
     <>

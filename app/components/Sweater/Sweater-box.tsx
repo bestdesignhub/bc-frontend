@@ -28,13 +28,11 @@ export default function SweaterBox({ stepData }: SweaterBoxProps) {
 
   useEffect(() => {
     stepData?.steps?.map((e: any) => {
-      console.log(e.slug);
       const currentStepData = stepData?.[e?.slug] || {};
       if (e?.slug == 'style') {
         setTitle(currentStepData?.stepCard?.title)
       }
 
-      console.log('steppp1111', e?.name, currentStepData)
 
     })
   }, [title])
@@ -55,7 +53,7 @@ export default function SweaterBox({ stepData }: SweaterBoxProps) {
 
         if (response.data.success && response.data.data.bg_image) {
           const fullImageUrl = `${BUCKET_DOMAIN}${response.data.data.bg_image}`;
-          console.log('Full Image:', fullImageUrl);
+          // console.log('Full Image:', fullImageUrl);
           setImageSrc(fullImageUrl);
         }
       } catch (error) {

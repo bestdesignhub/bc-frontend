@@ -17,19 +17,20 @@ import { useTranslations } from 'next-intl';
 
 export default function Cartbox({ cart, fetchCartData }: { cart: any; fetchCartData: () => void }) {
   const t = useTranslations();
-  console.log("cart ==>", cart);
+  console.log('cart', cart);
 
   const name = useMemo(() => generateProductName(cart), [cart]);
   const urlQueryString = useMemo(() => {
     const params = new URLSearchParams();
     params.append(URL_SLUG.YARN, cart?.yarn?._id);
+    params.append(URL_SLUG.GENDER, cart?.gender);
     cart?.steps?.forEach(({ stepTypeSlug, stepCardId }: any) =>
       params.append(stepTypeSlug, stepCardId)
     );
     //params.append(URL_SLUG.GENDER, cart?.gender);
     params.append(URL_SLUG.FITTING_SIZE, cart?.steps[3]?.stepCardId);
     params.append(URL_SLUG.ADD_TO_CART, cart?._id);
-    params.append(URL_SLUG.PRODUCT, cart?.product._id);
+    params.append(URL_SLUG.PRODUCT, cart?.product?._id);
     return `${params.toString()}`;
   }, [cart]);
 

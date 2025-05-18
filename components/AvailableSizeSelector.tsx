@@ -6,7 +6,7 @@ import { formatPrice } from '@/utils/common.utils';
 import userAxiosInstance from '@/config/userAxiosInstance';
 import { useDispatch } from 'react-redux';
 import { setLoading } from '@/lib/redux/slices/loaderSlice';
-
+import { useRouter } from 'next/navigation';
 type Size = {
   _id: string;
   slug: string;
@@ -39,14 +39,15 @@ const sizeMapping: any = {
   '5xl': "sizeFXL5",
 };
 
-const AvailableSizeSelector = ({ sizes, basePrice = 0, yarn, gauge, pattern, style }: Props) => {
+const AvailableSizeSelector = ({ sizes, basePrice = 0, yarn, gauge, pattern, style, onPriceChange }: Props) => {
   const dispatch = useDispatch();
   const [selectedFit, setSelectedFit] = useState<'slim' | 'regular'>('slim');
   const [selectedSizeSlug, setSelectedSizeSlug] = useState<string | null>(null);
   const [price, setPrice] = useState<number>(basePrice);
+  const router = useRouter();
 
 
-  console.log(setSelectedFit('slim'));
+  // console.log(setSelectedFit('slim'));
 
   // const filteredSizes = sizes.filter((size) =>
   //   selectedFit === 'slim' ? SLIM_SIZES.includes(size.name) : REGULAR_SIZES.includes(size.name)
@@ -106,6 +107,12 @@ const AvailableSizeSelector = ({ sizes, basePrice = 0, yarn, gauge, pattern, sty
 
       if (fetchedPrice) {
         setPrice(fetchedPrice);
+        // onPriceChange && onPriceChange(fetchedPrice);
+        // Update the URL parameters with the new price
+        const currentUrl = new URL(window.location.href);
+        currentUrl.searchParams.set('price', fetchedPrice);
+        router.push(currentUrl.toString());
+
       }
     } catch (err) {
       console.error('Error fetching price by size:', err);

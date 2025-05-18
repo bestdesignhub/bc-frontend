@@ -30,6 +30,17 @@ import SweaterSlider from '@/components/step-components/sweater-slider';
 import AvailableSizeSelector from '@/components/AvailableSizeSelector';
 import MeasurementsBox from '@/app/components/measurements/measurements-box';
 import CreateProduct from './createProduct';
+import MeasurementsForm from '@/app/components/measurements/measurementsForm';
+const measurementsData = [
+  { label: "BODY LENGTH - HSP", value: 65, tolerance: 5 },
+  { label: "HEM WIDTH", value: 36, tolerance: 3 },
+  { label: "CHEST WIDTH", value: 46, tolerance: 2 },
+  { label: "ARMHOLE STRAIGHT", value: 22, tolerance: 2 },
+  { label: "SHOULDER WIDTH", value: 37, tolerance: 2 },
+  { label: "SLEEVE LENGTH - HSP", value: 64, tolerance: 2 },
+  { label: "NECK WIDTH", value: 15.5, tolerance: 2 },
+  { label: "SLEEVE WIDTH", value: 17, tolerance: 2 },
+];
 
 const LastStepPage = async ({
   searchParams,
@@ -39,12 +50,18 @@ const LastStepPage = async ({
   const resolvedSearchParams = await searchParams;
   const t = await getTranslations();
 
+  // Get the price from the query
+  const priceFromQuery = resolvedSearchParams["price"];
+  console.log("Price:", priceFromQuery);
+
+  // Remove the price parameter
+  delete resolvedSearchParams["price"];
+
   // Cached/static data (revalidated)
   const [productType, productTypeData] = await Promise.all([
     getDefaultProductType(),
     getDropdownList(PRODUCT_TYPE_DROPDOWN_URL),
   ]);
-  console.log("productTypeData", productTypeData, productType);
 
   const productTypeId = productTypeData?.[0]?.value;
 
@@ -74,7 +91,6 @@ const LastStepPage = async ({
   const steps = stepsResult.status === 'fulfilled' ? stepsResult.value : [];
   const availableSizes =
     availableSizesResult.status === 'fulfilled' ? availableSizesResult.value : [];
-  console.log("availableSizes", availableSizes);
   const measurementProfiles =
     measurementProfileResult.status === 'fulfilled' ? measurementProfileResult.value : [];
   const userMeasurementActive =
@@ -91,9 +107,6 @@ const LastStepPage = async ({
   const stepData = await getStepFullViewDetails({ productTypeId, steps: resolvedSearchParams });
   const fittingName = stepData?.fitting?.stepCard?.title;
 
-  console.log("stepData======>>>>", stepData);
-  console.log("steps======>>>>", steps);
-
   // Now filter the available sizes based on the step type and slug
   const filteredAvailableSizes = availableSizes?.filter((size: any) =>
     stepData.fitting?.stepType?.name === 'Fitting' && stepData.fitting?.stepCard.slug === 'slim-fitting'
@@ -104,8 +117,22 @@ const LastStepPage = async ({
   // console.log("filteredAvailableSizes", filteredAvailableSizes);
 
   // function handlePriceChange(price: number): void {
-  //   throw new Error('Function not implemented.');
+  //   // throw new Error('Function not implemented.')
+
   // }
+
+  if (
+    priceFromQuery !== undefined &&
+    priceFromQuery !== null &&
+    priceFromQuery !== "" &&
+    stepData &&
+    stepData.yarn
+  ) {
+
+    stepData.yarn.price = Number(priceFromQuery);
+  }
+
+
 
 
   return (
@@ -222,8 +249,6 @@ const LastStepPage = async ({
                     <div className="d-flex flex-wrap">
                       {stepData?.steps?.map((stepObj: any, index: number) => {
                         const currentStepData = stepData?.[stepObj?.slug] || {};
-
-                        console.log('steppp1111', stepObj?.name, currentStepData);
                         if (stepObj?.name === 'Price Module') return null;
 
                         return (
@@ -241,17 +266,19 @@ const LastStepPage = async ({
                     <div>
                       {/* <AvailableSizeSelector sizes={availableSizes} /> */}
                       <AvailableSizeSelector sizes={filteredAvailableSizes}
+                        basePrice={Number(priceFromQuery) || 0}
                         yarn={resolvedSearchParams["yarn"]}
                         gauge={resolvedSearchParams["gauge"]}
                         pattern={resolvedSearchParams["pattern"]}
                         style={resolvedSearchParams["style"]}
+
                       // onPriceChange={handlePriceChange}
                       />
                     </div>
 
                     {/* custom form */}
 
-                    <div className="measurements">
+                    {/* <div className="measurements">
                       <div className="measure-row">
                         <div className="measure-label">BODY LENGTH - HSP</div>
                         <input className="measure-input" type="number" value="65" readOnly />
@@ -295,7 +322,9 @@ const LastStepPage = async ({
                         <input className="measure-input" type="number" value="17" readOnly />
                         <span className="tolerance">+/- 2</span>
                       </div>
-                    </div>
+                    </div> */}
+
+                    <MeasurementsForm measurements={measurementsData} />
 
                     <p className="note">
                       Above measurement boxes please insert in the right box if you need to change

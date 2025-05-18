@@ -214,8 +214,8 @@ export const getProductList = async (
     _material: material,
     _pattern: pattern,
     _page: page = 1,
-    [URL_SLUG.MIN_PRICE]: minPrice,
-    [URL_SLUG.MAX_PRICE]: maxPrice,
+    [URL_SLUG.MIN_PRICE]: minPrice = 0,
+    [URL_SLUG.MAX_PRICE]: maxPrice = 5000,
   } = searchParams;
 
   const filterObj: Record<string, string> = {};
@@ -240,13 +240,13 @@ export const getProductList = async (
     filterObj['genderSlug'] = genderSlug;
   }
 
-  if (minPrice) {
-    filterObj['minPrice'] = minPrice;
-  }
+  // if (minPrice) {
+  //   filterObj['minPrice'] = minPrice;
+  // }
 
-  if (maxPrice) {
-    filterObj['maxPrice'] = maxPrice;
-  }
+  // if (maxPrice) {
+  //   filterObj['maxPrice'] = maxPrice;
+  // }
 
   const res: any = await handleApiCall(PRODUCT_LISTING, 'POST', {
     page: parseInt(page.toString()),
@@ -294,8 +294,6 @@ export const getHomeProductList = async () => {
     filter: {},
   });
   if (res.code === 200) {
-    console.log(res?.data?.data, 'res?.data?.data kanha====>>>>>>>>>');
-
     return res?.data?.data;
   } else {
     return [];

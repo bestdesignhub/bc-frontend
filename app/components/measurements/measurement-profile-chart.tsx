@@ -39,7 +39,6 @@ export default function MeasurementProfileChart({
     router.push(`${USER_ROUTES.measurements}?${params.toString()}`, { scroll: false });
   };
 
-  console.log('profiles', profiles);
 
   return (
     <>

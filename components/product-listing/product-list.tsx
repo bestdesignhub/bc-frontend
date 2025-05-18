@@ -35,34 +35,34 @@ export default function ProductList({
     <ViewProvider>
       <div className="woman-product-wrapper">
         <div className='container'>
-        <Row className="g-4">
-          <Col xs={12} lg={2}>
-            <ProductListFilters
-              colours={colours}
-              genders={genders}
-              materials={materials}
-              patterns={patterns}
-              priceRange={{
-                maxPrice: productList?.maxPrice ?? 0,
-                minPrice: productList?.minPrice ?? 0,
-              }}
-              filtersOptions={filtersOptions}
-            />
-          </Col>
-          <Col xs={12} lg={10}>
+          <Row className="g-4">
+            <Col xs={12} lg={2}>
+              <ProductListFilters
+                colours={colours}
+                genders={genders}
+                materials={materials}
+                patterns={patterns}
+                priceRange={{
+                  maxPrice: productList?.maxPrice ?? 0,
+                  minPrice: productList?.minPrice ?? 0,
+                }}
+                filtersOptions={filtersOptions}
+              />
+            </Col>
+            <Col xs={12} lg={10}>
               <div className='listing-rightside'>
-            <ProductTopbar text={t('COMMON.PRODUCT_TEXT')} total={productList?.totalCount} />
-            <ProductCardContainer
-              productList={productList?.data ?? []}
-              productDetailsURl={productDetailsURl}
-            />
-            <CustomPagination
-              currentPage={productList?.currentPage ?? 0}
-              totalPage={productList?.totalPage ?? 0}
-            />
-                          </div>
-          </Col>
-        </Row>
+                <ProductTopbar text={t('COMMON.PRODUCT_TEXT')} total={productList?.totalCount} />
+                <ProductCardContainer
+                  productList={productList?.data ?? []}
+                  productDetailsURl={productDetailsURl}
+                />
+                <CustomPagination
+                  currentPage={productList?.currentPage ?? 0}
+                  totalPage={productList?.totalPage ?? 0}
+                />
+              </div>
+            </Col>
+          </Row>
         </div>
       </div>
     </ViewProvider>

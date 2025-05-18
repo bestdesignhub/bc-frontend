@@ -30,7 +30,7 @@ const StepListing: FC<{ stepList: any[]; steps: any[]; step: string; nextStepSlu
     const parseStep = parseInt(step);
     if (steps.length + 1 > parseStep && parseStep != 5) {
       params.set(nextStepSlug, id);
-      console.log(steps.length, parseStep);
+      // console.log(steps.length, parseStep);
       router.push(`${USER_ROUTES.sweater}/${parseStep + 1}?${params.toString()}`);
     } else {
       params.set(nextStepSlug, id);
@@ -40,7 +40,7 @@ const StepListing: FC<{ stepList: any[]; steps: any[]; step: string; nextStepSlu
 
   const nextSlugId = searchParams.get(nextStepSlug);
 
-  console.log('nextSlugId', nextSlugId);
+  // console.log('nextSlugId', nextSlugId);
   return (
     <div className="gauge-wrapper">
       <div className="gauge-row">

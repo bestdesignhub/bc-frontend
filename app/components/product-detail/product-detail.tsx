@@ -43,8 +43,6 @@ export default function ProdutDetail({
   const [size, setSize] = useState(availableSizes?.at(0)?.slug);
   const [slug, setSizeSlug] = useState(availableSizes?.at(0)?.slug);
   const [isWishlisted, setIsWishlisted] = useState(!!details?.isWishlisted);
-  console.log('size', slug);
-  console.log('availableSizes', availableSizes);
   console.log('details', details);
 
   const handleChangeSize = (event: ChangeEvent<HTMLInputElement>) => {
@@ -58,7 +56,7 @@ export default function ProdutDetail({
       })
       .then((response) => {
         setPrice(response.data.data.price);
-        // setSize(event.target.id);
+        setSize(event.target.id);
       })
       .catch((error) => {
         console.error(error);
@@ -76,6 +74,8 @@ export default function ProdutDetail({
     // params.append(URL_SLUG.FITTING_SIZE, slug);
     return `${params.toString()}`;
   }, [details]);
+
+  // console.log('urlQueryString....', urlQueryString);
 
   const handleEmptyHeart = useCallback(async () => {
     try {

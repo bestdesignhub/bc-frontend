@@ -26,11 +26,11 @@ export default function Measurementspage({
   measurementProfiles: DropDownOptionType[];
 }) {
   const t = useTranslations();
-  console.log('productTypeId', productTypeId);
-  console.log('fittingName', fittingName);
-  console.log('steps', steps);
-  console.log('availableSizes', availableSizes);
-  console.log('measurementProfiles', measurementProfiles);
+  // console.log('productTypeId', productTypeId);
+  // console.log('fittingName', fittingName);
+  // console.log('steps', steps);
+  // console.log('availableSizes', availableSizes);
+  // console.log('measurementProfiles', measurementProfiles);
   return (
     <BannerWrapper>
       <div className="measurements-page">

@@ -21,6 +21,8 @@ const AddToCartButton: FC<{ genders: DropDownOptionType[]; queryString: string; 
 }) => {
   const t = useTranslations();
   const [showModal, setShowModal] = useState(false);
+  // console.log('productId...', queryString);
+
   const handleModalOpen = async () => {
 
     try {

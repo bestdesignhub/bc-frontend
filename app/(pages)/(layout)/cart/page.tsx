@@ -4,8 +4,6 @@ import { getCartDetails } from '@/utils/server-api.utils';
 
 export default async function CartPage() {
   const cartData = await getCartDetails();
-  console.log('cartData', cartData);
-
   return (
     <BannerWrapper>
       <CartContent initialCartData={cartData} />

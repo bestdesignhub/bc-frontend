@@ -9,7 +9,7 @@ const MeasurementProfileSelector = ({
 }) => {
   const [selectedProfile, setSelectedProfile] = useState('');
 
-  console.log('profiles', profiles);
+  // console.log('profiles', profiles);
 
   return (
     <div>

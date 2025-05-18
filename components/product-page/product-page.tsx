@@ -53,6 +53,7 @@ export default async function ProductPage({
 
   // Execute all dropdown requests
   const results = await Promise.allSettled(dropdownRequests);
+  console.log('results ==>', results);
 
   // Extract results safely
   const colours = results[0].status === 'fulfilled' ? results[0].value : [];
