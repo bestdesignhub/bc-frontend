@@ -7,7 +7,7 @@ import {
   YarnListingSidebar,
 } from '@/components';
 import GenderModalWrapper from '@/components/modals/gender-modal/gender-modal-wrapper';
-import { URL_SLUG } from '@/constants';
+import { URL_SLUG, USER_ROUTES } from '@/constants';
 import { COLOUR_DROPDOWN_URL, GENDER_DROPDOWN_URL, MATERIAL_DROPDOWN_URL } from '@/constants/apis';
 import { ViewProvider } from '@/context';
 import { getDropdownList, getYarnCardList } from '@/utils/server-api.utils';
@@ -22,7 +22,6 @@ const SweaterPage = async ({
 }) => {
   const resolvedSearchParams = await searchParams;
   const t = await getTranslations();
-
   const [genderResult, coloursResult, materialResult, yarnListResult] = await Promise.allSettled([
     getDropdownList(GENDER_DROPDOWN_URL),
     getDropdownList(COLOUR_DROPDOWN_URL),
@@ -34,13 +33,13 @@ const SweaterPage = async ({
   const genders = genderResult.status === 'fulfilled' ? genderResult.value : [];
   const materials = materialResult.status === 'fulfilled' ? materialResult.value : [];
   const yarnList = yarnListResult.status === 'fulfilled' ? yarnListResult.value : {};
-
   const genderSlug = resolvedSearchParams[URL_SLUG.GENDER];
-
+  const materialId = resolvedSearchParams["material"];
   // Filter by genderId
-  const filteredYarnList = genderSlug
-    ? yarnList?.data?.filter((item: any) => item.genderId === genderSlug)
+  const filteredYarnList = materials
+    ? yarnList?.data?.filter((item: any) => item.materialId === materialId)
     : yarnList?.data;
+
 
   return (
     // <div tabIndex={0}>
@@ -61,15 +60,15 @@ const SweaterPage = async ({
                       colours={colours}
                       materials={materials}
                     />
-                    {!genderSlug && <GenderModalWrapper genders={genders} />}
+                    {!genderSlug && <GenderModalWrapper genders={genders} material={materials[1]?.value} />}
                     <ProductTopbar
                       text={t('COMMON.YARN_TEXT')}
                       total={filteredYarnList?.length}
                     />
-                    <ProductListing list={yarnList?.data} genderSlug={genderSlug} />
+                    <ProductListing list={filteredYarnList} genderSlug={genderSlug} />
                     <CustomPagination
-                      currentPage={yarnList?.currentPage}
-                      totalPage={yarnList?.totalPage}
+                      currentPage={filteredYarnList?.currentPage}
+                      totalPage={filteredYarnList?.totalPage}
                     />
                   </div>
                 </Col>

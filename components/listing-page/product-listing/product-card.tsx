@@ -22,6 +22,8 @@ const ProductCard: FC<{ product: any; genderSlug: string }> = ({ product, gender
   // const [showModal, setShowModal] = useState(false);
   // const [yarnDetails, setYarnDetails] = useState<any>(null);
   const router = useRouter();
+  const material = searchParams.get('material');
+
 
   const handleShow = () => {
     dispatch(setLoading(false));
@@ -55,9 +57,8 @@ const ProductCard: FC<{ product: any; genderSlug: string }> = ({ product, gender
               return;
             } else {
               router.push(
-                `${USER_ROUTES.sweater}/2?${URL_SLUG.YARN}=${result?.data?._id}${
-                  edit ? `&${URL_SLUG.EDIT}=${edit}` : ''
-                }&gender=${genderSlug}`
+                `${USER_ROUTES.sweater}/2?${URL_SLUG.YARN}=${result?.data?._id}${edit ? `&${URL_SLUG.EDIT}=${edit}` : ''
+                }&gender=${genderSlug}&material=${material}`
               );
             }
           }
@@ -91,8 +92,8 @@ const ProductCard: FC<{ product: any; genderSlug: string }> = ({ product, gender
           style={
             yarnId === product?._id
               ? {
-                  border: '3px solid',
-                }
+                border: '3px solid',
+              }
               : {}
           }
         >

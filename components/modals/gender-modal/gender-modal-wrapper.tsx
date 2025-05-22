@@ -9,7 +9,7 @@ import { dispatch } from '@/lib/redux/store';
 import { setIsPageSwitchLoading } from '@/lib/redux/slices/loaderSlice';
 import { useTranslations } from 'next-intl';
 
-const GenderModalWrapper: FC<{ genders: DropDownOptionType[] }> = ({ genders }) => {
+const GenderModalWrapper: FC<{ genders: DropDownOptionType[], material: string }> = ({ genders, material }) => {
   const router = useRouter();
   const t = useTranslations();
   const searchParams = useSearchParams();
@@ -17,7 +17,7 @@ const GenderModalWrapper: FC<{ genders: DropDownOptionType[] }> = ({ genders }) 
   const handleSelect = (value: string) => {
     dispatch(setIsPageSwitchLoading(true));
     router.push(
-      `${USER_ROUTES.sweater}?${queryString}${!!queryString.length ? `&` : ``}${URL_SLUG.GENDER}=${value}`
+      `${USER_ROUTES.sweater}?${queryString}${!!queryString.length ? `&` : ``}${URL_SLUG.GENDER}=${value}&material=${material}`
     );
   };
   return (
@@ -26,7 +26,7 @@ const GenderModalWrapper: FC<{ genders: DropDownOptionType[] }> = ({ genders }) 
       handleSelect={handleSelect}
       redirectRoute={USER_ROUTES.sweater}
       show={true}
-      handleClose={() => {}}
+      handleClose={() => { }}
       message={t('COMMON.SELECT_WHO_YOURE_BUYING_FOR')}
     />
   );

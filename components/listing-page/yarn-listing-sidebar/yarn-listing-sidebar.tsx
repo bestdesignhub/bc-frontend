@@ -31,6 +31,7 @@ const YarnListingSidebar: FC<Props> = ({ colours, genders, materials }) => {
 
     const params = new URLSearchParams(searchParams.toString());
 
+
     if (params.get(key) === value) {
       params.delete(key);
     } else {

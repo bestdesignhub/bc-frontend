@@ -62,7 +62,7 @@ export default function StepNavigate({
       );
       return;
     }
-    router.push(`${USER_ROUTES.sweater}${edit ? `?${URL_SLUG.EDIT}=${edit}` : ''}`);
+    router.push(`${USER_ROUTES.sweater}?${params.toString()}${edit ? `?${URL_SLUG.EDIT}=${edit}` : ''}`);
   }, [searchParams, edit, router]);
 
   return (

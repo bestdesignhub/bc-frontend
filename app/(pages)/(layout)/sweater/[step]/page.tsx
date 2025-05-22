@@ -33,6 +33,7 @@ const SweaterStep = async ({
   const genders = genderResult;
   const genderSlug = resolvedSearchParams[URL_SLUG.GENDER];
   const patternSlug = resolvedSearchParams["pattern"];
+  const materialSlug = resolvedSearchParams["material"];
 
   if (stepData?.slug === 'pattern' || stepData?.slug === 'style' || stepData?.slug === 'fitting') {
     const hasGenderField = stepPageData.list.some((item: any) => item.gender !== undefined);
@@ -46,6 +47,17 @@ const SweaterStep = async ({
     stepPageData.list = matchingItems;
 
   }
+
+  if (stepData?.slug === 'gauge') {
+    if (materialSlug === '678077a88c6968b4bb6fc291') {
+      const matchingItems = stepPageData?.list
+        ? stepPageData.list.filter((item: any) => item?.slug !== '16gg')
+        : stepPageData.list;
+
+      stepPageData.list = matchingItems;
+    }
+  }
+
 
 
   return (
