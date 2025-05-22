@@ -144,7 +144,6 @@
 
 .Sweater-right .Sweater-block-top {
   padding: 10px 0 10px 80px;
-  border-bottom: var(--bsp-gray7) solid 1px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -208,14 +207,17 @@
 .Sweater-right-middle {
   display: flex;
   align-items: flex-start;
-  padding: 20px;
+  padding: 10px;
   justify-content: space-between;
+  border: 1px solid #c7c4bd;
 }
 
 .Sweater-right-middle .products-box-sub {
   display: flex;
   align-items: flex-start;
   gap: 20px;
+  padding: 2px 20px;
+  width: calc(100% - 150px);
 }
 
 .Sweater-right-middle .products-box-sub .img {
@@ -279,7 +281,7 @@
 }
 
 .Sweater-right-bottom {
-  padding: 20px;
+  padding: 0;
 }
 
 .Sweater-right-bottom h4 {
@@ -417,6 +419,12 @@
   min-width: 30px;
   min-height: 30px;
   background: url(../../public/images/arrow-right.svg) no-repeat center center;
+}
+
+.available-size-selector {
+  margin: 10px 0;
+  border: 1px solid var(--bsp-black);
+  padding: 10px 0;
 }
 
 @media (min-width: 1601px) and (max-width: 1750px) {
@@ -874,6 +882,7 @@
     width: 50%;
     flex: 0 0 50%;
     padding: 10px 10px;
+    border: 1px solid #c7c4bd;
   }
 
   .gauge-row {

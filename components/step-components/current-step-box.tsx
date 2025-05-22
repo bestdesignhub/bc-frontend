@@ -24,8 +24,8 @@ const CurrentStepBox: FC<{ currentStepData: any; stepNumber: any }> = ({
   };
 
   return (
-    <div className="navigatebox" onClick={handlePrevStepClick}>
-      <div className="image">
+    <div className="navigatebox yarn-section" onClick={handlePrevStepClick}>
+      <div className="img">
         <Image
           src={getAWSImageUrl(currentStepData?.stepCard?.realImage)}
           width={300}

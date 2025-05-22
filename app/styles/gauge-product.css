@@ -160,7 +160,7 @@
 }
 
 .gauge-navigate .d-flex {
-  margin: 0 -20px;
+  margin: 0;
 }
 
 .gauge-navigate.smallbx {
@@ -176,7 +176,7 @@
 
 .gauge-navigate .navigate-item {
   flex: auto;
-  padding: 0 20px;
+  padding: 0;
 }
 
 .navigatebox {
@@ -188,10 +188,10 @@
   cursor: pointer;
 }
 
-.navigatebox:hover {
+/* .navigatebox:hover {
   background: #7f7262;
   color: white;
-}
+} */
 
 .navigatebox .image {
   max-width: 64px;
@@ -216,14 +216,14 @@
   object-fit: contain;
 }
 
-.navigatebox .info {
+/* .navigatebox .info {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   height: 100%;
   align-items: center;
   width: 100%;
-}
+} */
 
 .navigatebox .info h6 {
   font-size: var(--bsp-body-14);
@@ -380,7 +380,7 @@
   }
 
   .gauge-navigate .d-flex {
-    margin: 0 -10px;
+    margin: 0;
   }
 
   .gauge-navigate .navigate-item {
@@ -443,7 +443,7 @@
   }
 
   .gauge-navigate .d-flex {
-    margin: 0 -10px;
+    margin: 0;
   }
 
   .gauge-navigate .navigate-item {
@@ -518,6 +518,7 @@
 
   .gauge-navigate .d-flex {
     margin: 0;
+    gap: 10px;
   }
 
   .gauge-navigate .navigate-item {

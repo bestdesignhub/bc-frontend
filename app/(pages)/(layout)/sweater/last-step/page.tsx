@@ -167,9 +167,11 @@ const LastStepPage = async ({
                   </div>
                 </div>
 
+
+
                 {/* Yarn Info */}
                 <div className="Sweater-right-middle">
-                  <div className="products-box-sub">
+                  <div className='yarn-section'>
                     <div className="img">
                       <Image
                         src={getAWSImageUrl(stepData?.yarn?.image)}
@@ -178,82 +180,105 @@ const LastStepPage = async ({
                         height={170}
                         loading="lazy"
                       />
+                      <ChangeYarnButton searchParams={resolvedSearchParams} />
                     </div>
+                  </div>
+                  <div className="products-box-sub">
                     <div className="products-box-sub-inner">
-                      <h5>{stepData?.yarn?.name}</h5>
+                      <h5>Yarn Details</h5>
+                      {/* <h5>{stepData?.yarn?.name}</h5> */}
                       <div className="name">
-                        {t('COMMON.NAME')}:{' '}
+                        {t('COMMON.NAME')}: {' '}
                         <span>
                           {stepData?.yarn?.name} - {stepData?.yarn?.yarnId}
                         </span>
                       </div>
+                      <div className="name">
+                        {t('COMMON.GENDER')}: {' '}
+                        <span>
+                          {stepData?.yarn?.gender}
+                        </span>
+                      </div>
+                      <div className="name">
+                        {t('COMMON.MATERIAL')}: {' '}
+                        <span>
+                          {stepData?.yarn?.material}
+                        </span>
+                      </div>
+                      <div className="name">
+                        {t('COMMON.COLOUR')}: {' '}
+                        <span>
+                          {stepData?.yarn?.colour}
+                        </span>
+                      </div>
+                      <div className="name">
+                        {t('COMMON.SEASONALITY')}: {' '}
+                        <span>
+                          {stepData?.yarn?.seasonality}
+                        </span>
+                      </div>
                     </div>
+
+                    {/* <div className="Sweater-right-bottom">
+                      <div className="fabric-listing">
+                        <ul>
+                          <li>
+                            <span>{t('COMMON.')}:</span>{' '}
+                            <div className="bg-text">{stepData?.yarn?.gender}</div>
+                          </li>
+                          <li>
+                            <span>{t('COMMON.MATERIAL')}:</span>{' '}
+                            <div className="bg-text">{stepData?.yarn?.material}</div>
+                          </li>
+                          <li>
+                            <span>{t('COMMON.COLOUR')}:</span>{' '}
+                            <div className="bg-text">{stepData?.yarn?.colour}</div>
+                          </li>
+                          <li>
+                            <span>{t('COMMON.SEASONALITY')}:</span>{' '}
+                            <div className="bg-text">{stepData?.yarn?.seasonality}</div>
+                          </li>
+                          <li>
+                            <span>{t('COMMON.PERCEIVED_WEIGHT')}:</span>{' '}
+                            <div className="bg-text">{stepData?.yarn?.perceivedWeight}</div>
+                          </li>
+                          {stepData?.yarn?.yarns?.map((yarn: any, index: number) => (
+                            <li key={index}>
+                              <div className="icon-text">
+                                {yarn.image && (
+                                  <i>
+                                    <Image
+                                      src={getAWSImageUrl(yarn?.image)}
+                                      alt=""
+                                      width={24}
+                                      height={24}
+                                      loading="lazy"
+                                    />
+                                  </i>
+                                )}
+                                <span>{yarn.name}</span>
+                              </div>
+                              <div className="bg-text">{yarn.value}</div>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div> */}
                   </div>
-                  <ChangeYarnButton searchParams={resolvedSearchParams} />
                 </div>
 
                 {/* Yarn Characteristics */}
-                <div className="Sweater-right-bottom">
-                  <h4>{t('COMMON.YARN_CHARACTERISTICS')}</h4>
-                  <div className="fabric-listing">
-                    <ul>
-                      <li>
-                        <span>{t('COMMON.GENDER')}:</span>{' '}
-                        <div className="bg-text">{stepData?.yarn?.gender}</div>
-                      </li>
-                      <li>
-                        <span>{t('COMMON.MATERIAL')}:</span>{' '}
-                        <div className="bg-text">{stepData?.yarn?.material}</div>
-                      </li>
-                      <li>
-                        <span>{t('COMMON.COLOUR')}:</span>{' '}
-                        <div className="bg-text">{stepData?.yarn?.colour}</div>
-                      </li>
-                      <li>
-                        <span>{t('COMMON.SEASONALITY')}:</span>{' '}
-                        <div className="bg-text">{stepData?.yarn?.seasonality}</div>
-                      </li>
-                      <li>
-                        <span>{t('COMMON.PERCEIVED_WEIGHT')}:</span>{' '}
-                        <div className="bg-text">{stepData?.yarn?.perceivedWeight}</div>
-                      </li>
-                      {stepData?.yarn?.yarns?.map((yarn: any, index: number) => (
-                        <li key={index}>
-                          <div className="icon-text">
-                            {yarn.image && (
-                              <i>
-                                <Image
-                                  src={getAWSImageUrl(yarn?.image)}
-                                  alt=""
-                                  width={24}
-                                  height={24}
-                                  loading="lazy"
-                                />
-                              </i>
-                            )}
-                            <span>{yarn.name}</span>
-                          </div>
-                          <div className="bg-text">{yarn.value}</div>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-
-                <div></div>
 
                 {/* Sweater Steps + Size + Measurements */}
                 <div className="Sweater-right-bottom sweater-type">
-                  <h4>{t('COMMON.SWEATER_CHARACTERISTICS')}</h4>
                   <div className="gauge-navigate">
                     <div className="d-flex flex-wrap">
                       {stepData?.steps?.map((stepObj: any, index: number) => {
                         const currentStepData = stepData?.[stepObj?.slug] || {};
                         if (stepObj?.name === 'Price Module') return null;
-
                         return (
                           <div className="navigate-item" key={index}>
-                            <h6>{stepObj?.name}</h6>
+                            <h6 className='step-title-custom'>{stepObj?.name}</h6>
                             <CurrentStepBox
                               currentStepData={currentStepData}
                               stepNumber={`${index + FIXED_STEPS_COUNT}`}
@@ -263,92 +288,34 @@ const LastStepPage = async ({
                       })}
                     </div>
 
-                    <div>
-                      {/* <AvailableSizeSelector sizes={availableSizes} /> */}
-                      <AvailableSizeSelector sizes={filteredAvailableSizes}
-                        basePrice={Number(priceFromQuery) || 0}
-                        yarn={resolvedSearchParams["yarn"]}
-                        gauge={resolvedSearchParams["gauge"]}
-                        pattern={resolvedSearchParams["pattern"]}
-                        style={resolvedSearchParams["style"]}
+                    <div className='availableSizesBox'>
 
-                      // onPriceChange={handlePriceChange}
-                      />
-                    </div>
-
-                    {/* custom form */}
-
-                    {/* <div className="measurements">
-                      <div className="measure-row">
-                        <div className="measure-label">BODY LENGTH - HSP</div>
-                        <input className="measure-input" type="number" value="65" readOnly />
-                        <span className="tolerance">+/- 5</span>
-                      </div>
-                      <div className="measure-row">
-                        <div className="measure-label">HEM WIDTH</div>
-                        <input className="measure-input" type="number" value="36" readOnly />
-                        <span className="tolerance">+/- 3</span>
+                      <div>
+                        <AvailableSizeSelector sizes={filteredAvailableSizes}
+                          basePrice={Number(priceFromQuery) || 0}
+                          yarn={resolvedSearchParams["yarn"]}
+                          gauge={resolvedSearchParams["gauge"]}
+                          pattern={resolvedSearchParams["pattern"]}
+                          style={resolvedSearchParams["style"]}
+                        />
                       </div>
 
-                      <div className="measure-row">
-                        <div className="measure-label">CHEST WIDTH</div>
-                        <input className="measure-input" type="number" value="46" readOnly />
-                        <span className="tolerance">+/- 2</span>
-                      </div>
-                      <div className="measure-row">
-                        <div className="measure-label">ARMHOLE STRAIGHT</div>
-                        <input className="measure-input" type="number" value="22" readOnly />
-                        <span className="tolerance">+/- 2</span>
-                      </div>
+                      <MeasurementsForm measurements={measurementsData} />
 
-                      <div className="measure-row">
-                        <div className="measure-label">SHOULDER WIDTH</div>
-                        <input className="measure-input" type="number" value="37" readOnly />
-                        <span className="tolerance">+/- 2</span>
-                      </div>
-                      <div className="measure-row">
-                        <div className="measure-label">SLEEVE LENGTH - HSP</div>
-                        <input className="measure-input" type="number" value="64" readOnly />
-                        <span className="tolerance">+/- 2</span>
-                      </div>
+                      <p className="note-mesurment">
+                        Above measurement boxes please insert in the right box if you need to change
+                        the measurement
+                      </p>
 
-                      <div className="measure-row">
-                        <div className="measure-label">NECK WIDTH</div>
-                        <input className="measure-input" type="number" value="15.5" readOnly />
-                        <span className="tolerance">+/- 2</span>
+                      <div className="how-to">
+                        <img
+                          src="https://cdn-icons-png.flaticon.com/512/709/709496.png"
+                          alt="measure-icon"
+                        />
+                        How to Measure?
                       </div>
-                      <div className="measure-row">
-                        <div className="measure-label">SLEEVE WIDTH</div>
-                        <input className="measure-input" type="number" value="17" readOnly />
-                        <span className="tolerance">+/- 2</span>
-                      </div>
-                    </div> */}
-
-                    <MeasurementsForm measurements={measurementsData} />
-
-                    <p className="note">
-                      Above measurement boxes please insert in the right box if you need to change
-                      the measurement
-                    </p>
-
-                    <div className="how-to">
-                      <img
-                        src="https://cdn-icons-png.flaticon.com/512/709/709496.png"
-                        alt="measure-icon"
-                      />
-                      How to Measure?
                     </div>
                   </div>
-
-                  {/* Fit, Sizes, Measurements (can move to client-side if editable) */}
-                  {/* ...fit radio, size buttons, and input fields remain same... */}
-
-                  {/* <MeasurementProfileComponent
-                    userMeasurementBySlug={userMeasurementBySlug}
-                    userMeasurementActiveList={userMeasurementActive}
-                    measurementProfile={measurementProfile}
-                  />
-                  <MeasurementProfileSelector profiles={measurementProfiles} /> */}
 
                   {(resolvedSearchParams["product"] === undefined || resolvedSearchParams["product"] === null || resolvedSearchParams["product"] === "") && (
 

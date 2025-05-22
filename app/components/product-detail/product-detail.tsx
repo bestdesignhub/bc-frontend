@@ -192,9 +192,9 @@ export default function ProdutDetail({
                 <div style={{ marginBottom: '10px' }}>
                   <AddToCartButton genders={genders} queryString={urlQueryString} productId={details._id} price={price.toString()} size={size} />
                 </div>
-                <Link href={`${USER_ROUTES.sweater}${USER_ROUTES.lastStep}?${urlQueryString}`}>
+                {/* <Link href={`${USER_ROUTES.sweater}${USER_ROUTES.lastStep}?${urlQueryString}`}>
                   <button className="cartbtn">{t('COMMON.CUSTOMISE_A_SWEATER')}</button>
-                </Link>
+                </Link> */}
                 <div className="info">
                   {details?.contents?.map((content: any, index: number) => {
                     return (

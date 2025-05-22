@@ -165,10 +165,9 @@ const AvailableSizeSelector = ({ sizes, basePrice = 0, yarn, gauge, pattern, sty
           </button>
         ))}
       </div>
-
-      <div className="price-display">
+      {/* <div className="price-display">
         <strong>Price: {formatPrice(price)}</strong>
-      </div>
+      </div> */}
     </div>
   );
 };
