@@ -25,19 +25,22 @@ export default async function ProductDetailPage({ params }: ProductDetailProps) 
     availableSizeResult.status === 'fulfilled' ? availableSizeResult.value : [];
   const gendersData = gendersResult.status === 'fulfilled' ? gendersResult.value : [];
 
+  const sizeOrder = ['xs', 's', 'm', 'l', 'xl', '2xl', '3xl', '4xl', '5xl'];
+
+  const sortedSizes = availableSizeData.sort((a: any, b: any) => {
+    return sizeOrder.indexOf(a.slug.toLowerCase()) - sizeOrder.indexOf(b.slug.toLowerCase());
+  });
+
   return (
     <BannerWrapper>
       <ProdutDetail
         details={productDetailsData}
-        availableSizes={availableSizeData}
+        availableSizes={sortedSizes}
         genders={gendersData}
       />
-      {/* <DiscoverMore /> */}
-      {/* <Rating /> */}
       {!!productDetailsData?.relatedProducts?.length && (
         <AlsoLike products={productDetailsData?.relatedProducts} />
       )}
-      {/* <ZeeZap /> */}
     </BannerWrapper>
   );
 }

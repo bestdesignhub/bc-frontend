@@ -7,7 +7,7 @@ import {
   YarnListingSidebar,
 } from '@/components';
 import GenderModalWrapper from '@/components/modals/gender-modal/gender-modal-wrapper';
-import { URL_SLUG, USER_ROUTES } from '@/constants';
+import { URL_SLUG } from '@/constants';
 import { COLOUR_DROPDOWN_URL, GENDER_DROPDOWN_URL, MATERIAL_DROPDOWN_URL } from '@/constants/apis';
 import { ViewProvider } from '@/context';
 import { getDropdownList, getYarnCardList } from '@/utils/server-api.utils';
