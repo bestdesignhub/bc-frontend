@@ -12,6 +12,7 @@ import { URL_SLUG } from '@/constants';
 const PriceRangeSlider = ({ min = 0, max = 1000, step = 10 }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
+  // const MIN_MARGIN = 10;
 
   // Get initial values from URL or fallback to defaults
   const initialMin = Number(searchParams.get(URL_SLUG.MIN_PRICE)) || min;
@@ -37,6 +38,19 @@ const PriceRangeSlider = ({ min = 0, max = 1000, step = 10 }) => {
 
     dispatch(setLoading(false));
   }, [searchParams]);
+
+  // const handleChange = (values: [number, number]) => {
+  //   const [newMin, newMax] = values;
+
+  //   if (newMax - newMin < MIN_MARGIN) {
+  //     const midpoint = (newMin + newMax) / 2;
+  //     const adjustedMin = Math.max(min, Math.floor(midpoint - MIN_MARGIN / 2));
+  //     const adjustedMax = Math.min(max, adjustedMin + MIN_MARGIN);
+  //     setPriceRange([adjustedMin, adjustedMax]);
+  //   } else {
+  //     setPriceRange(values);
+  //   }
+  // };
 
   return (
     <div className="py-4">

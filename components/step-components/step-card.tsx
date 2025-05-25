@@ -10,6 +10,7 @@ const StepCard: FC<{
   onChange: (id: string) => void;
   stepData: any;
   nextSlugId: string | null;
+  price: number;
 }> = ({ onChange, stepData, nextSlugId }) => {
   const t = useTranslations();
   const [isHovered, setIsHovered] = useState(false);
@@ -21,8 +22,8 @@ const StepCard: FC<{
         style={
           nextSlugId === stepData?._id
             ? {
-                border: '3px solid',
-              }
+              border: '3px solid',
+            }
             : {}
         }
         onMouseEnter={() => setIsHovered(true)}

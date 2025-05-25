@@ -4,21 +4,30 @@ import { URL_SLUG, USER_ROUTES } from '@/constants';
 import { DropDownOptionType } from '@/types';
 import React, { FC } from 'react';
 import GenderModal from './gender-modal';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { dispatch } from '@/lib/redux/store';
 import { setIsPageSwitchLoading } from '@/lib/redux/slices/loaderSlice';
 import { useTranslations } from 'next-intl';
 
 const GenderModalWrapper: FC<{ genders: DropDownOptionType[], material: string }> = ({ genders, material }) => {
   const router = useRouter();
+  const pathname = usePathname();
+  console.log("pathname", pathname);
+
   const t = useTranslations();
   const searchParams = useSearchParams();
   const queryString = new URLSearchParams(searchParams).toString();
   const handleSelect = (value: string) => {
     dispatch(setIsPageSwitchLoading(true));
-    router.push(
-      `${USER_ROUTES.sweater}?${queryString}${!!queryString.length ? `&` : ``}${URL_SLUG.GENDER}=${value}&material=${material}`
-    );
+    if (pathname === USER_ROUTES.shop) {
+      router.push(
+        `${USER_ROUTES.shop}?${queryString}${!!queryString.length ? `&` : ``}${URL_SLUG.GENDER}=${value}`
+      )
+    } else {
+      router.push(
+        `${USER_ROUTES.sweater}?${queryString}${!!queryString.length ? `&` : ``}${URL_SLUG.GENDER}=${value}&material=${material}`
+      );
+    }
   };
   return (
     <GenderModal

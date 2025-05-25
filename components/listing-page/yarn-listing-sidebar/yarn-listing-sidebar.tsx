@@ -11,6 +11,7 @@ interface Props {
   genders: DropDownOptionType[];
   colours: DropDownOptionType[];
   materials: DropDownOptionType[];
+  price: number
 }
 
 const FILTERS = [
@@ -19,10 +20,13 @@ const FILTERS = [
   { key: 'material', label: 'Material', field: 'materials' },
 ];
 
-const YarnListingSidebar: FC<Props> = ({ colours, genders, materials }) => {
+const YarnListingSidebar: FC<Props> = ({ colours, genders, materials, price }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const dispatch = useDispatch();
+  console.log(price);
+
+
 
   const optionsMap: Record<string, DropDownOptionType[]> = { genders, colours, materials };
 

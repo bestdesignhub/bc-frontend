@@ -35,6 +35,21 @@ const ProductListFilters: FC<Props> = ({
   const router = useRouter();
   const searchParams = useSearchParams();
   const dispatch = useDispatch();
+  // const [selectedValues, setSelectedValues] = useState<Record<string, string[]>>({});
+
+  // // Initialize selectedValues based on searchParams
+  // useEffect(() => {
+  //   const newSelectedValues: Record<string, string[]> = {};
+  //   filtersOptions.forEach(({ key }) => {
+  //     const values = searchParams.getAll(key);
+  //     newSelectedValues[key] = values.length > 0 ? values : [];
+  //   });
+  //   setSelectedValues(newSelectedValues);
+  // }, [searchParams, filtersOptions]);
+
+  const genderId = searchParams.get("gender")
+  const params = new URLSearchParams(searchParams.toString());
+  params.delete("gender");
 
   const optionsMap: Record<string, DropDownOptionType[]> = {
     genders,
@@ -47,6 +62,9 @@ const ProductListFilters: FC<Props> = ({
     dispatch(setLoading(true)); // Start loader
 
     const params = new URLSearchParams(searchParams.toString());
+    // console.log('params', params.get("gender"));
+    // console.log('genders', genders);
+
 
     // If the selected option is already in the URL, unselect it by deleting the parameter
     if (params.get(key) === value) {
@@ -55,6 +73,16 @@ const ProductListFilters: FC<Props> = ({
       // Set the parameter to the selected value
       params.set(key, value);
     }
+
+    // const values = params.getAll(key);
+
+    // if (values.includes(value)) {
+    //   const updatedValues = values.filter((v) => v !== value);
+    //   params.delete(key);
+    //   updatedValues.forEach((v) => params.append(key, v));
+    // } else {
+    //   params.append(key, value);
+    // }
 
     router.push(`?${params.toString()}`);
   };
@@ -80,7 +108,10 @@ const ProductListFilters: FC<Props> = ({
                     name={key}
                     type="checkbox" // Using checkbox for toggling behavior
                     id={option.value}
-                    checked={searchParams.get(key) === option.value} // Check if this option is selected
+                    // checked={selectedValues[key]?.includes(option.value) || false}
+                    // defaultChecked={searchParams.get(key) === option.value}
+                    // checked={searchParams.getAll(key).includes(option.value)}
+                    checked={genderId === option.value} // Check if this option is selected
                     onChange={() => updateParams(key, option.value)} // Toggle the selection
                   />
                 ))}

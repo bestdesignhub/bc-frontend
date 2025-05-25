@@ -5,7 +5,7 @@ import { PRODUCT_PRICE_BY_SIZE_YARN_ID } from '@/constants/apis';
 import userAxiosInstance from '@/config/userAxiosInstance';
 import { useDispatch } from 'react-redux';
 import { setLoading } from '@/lib/redux/slices/loaderSlice';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 type Size = {
   _id: string;
   slug: string;
@@ -39,8 +39,11 @@ const AvailableSizeSelector = ({ sizes, basePrice = 0, yarn, gauge, pattern, sty
   const dispatch = useDispatch();
   const [selectedFit, setSelectedFit] = useState<'slim' | 'regular'>('slim');
   const [selectedSizeSlug, setSelectedSizeSlug] = useState<string | null>(null);
-  const [, setPrice] = useState<number>(basePrice);
+  // const [price, setPrice] = useState<number>(basePrice);
   const router = useRouter();
+  // const params = useParams();
+  const searchParams = useSearchParams();
+  console.log(searchParams, basePrice, 'params');
 
   const handleSizeChange = async (slug: string) => {
     setSelectedSizeSlug(slug);
@@ -51,6 +54,7 @@ const AvailableSizeSelector = ({ sizes, basePrice = 0, yarn, gauge, pattern, sty
         gaugeId: gauge,
         patternId: pattern,
         styleId: style,
+        genderId: searchParams.get('gender'),
         size: slug,
       });
 
@@ -58,11 +62,12 @@ const AvailableSizeSelector = ({ sizes, basePrice = 0, yarn, gauge, pattern, sty
       const fetchedPrice = res.data?.data[mappedSizeKey];
 
       if (fetchedPrice) {
-        setPrice(fetchedPrice);
+        // setPrice(fetchedPrice);
         // onPriceChange && onPriceChange(fetchedPrice);
         // Update the URL parameters with the new price
-        const currentUrl = new URL(window.location.href);
-        currentUrl.searchParams.set('price', fetchedPrice);
+        const currentUrl = new URLSearchParams(searchParams.toString());
+        // const currentUrl = searchParams;
+        currentUrl.set('price', fetchedPrice);
         router.push(currentUrl.toString());
 
       }

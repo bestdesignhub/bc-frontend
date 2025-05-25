@@ -8,11 +8,12 @@ import { URL_SLUG, USER_ROUTES } from '@/constants';
 import { dispatch } from '@/lib/redux/store';
 import { setIsPageSwitchLoading } from '@/lib/redux/slices/loaderSlice';
 
-const StepListing: FC<{ stepList: any[]; steps: any[]; step: string; nextStepSlug: string }> = ({
+const StepListing: FC<{ stepList: any[]; steps: any[]; step: string; nextStepSlug: string, price: number }> = ({
   stepList = [],
   steps = [],
   step,
   nextStepSlug,
+  price
 }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -50,6 +51,7 @@ const StepListing: FC<{ stepList: any[]; steps: any[]; step: string; nextStepSlu
               onChange={handleSelection}
               stepData={gauge}
               nextSlugId={nextSlugId}
+              price={price}
             />
           ))}
         </Row>

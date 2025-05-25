@@ -31,6 +31,11 @@ export default function ProductList({
   productDetailsURl: string;
 }) {
   const t = useTranslations();
+  console.log('productList ==>', productList);
+  const prices = productList.data.map((product: any) => product.price);
+  const minPrice = Math.min(...prices);
+  const maxPrice = Math.max(...prices)
+
   return (
     <ViewProvider>
       <div className="woman-product-wrapper">
@@ -43,8 +48,8 @@ export default function ProductList({
                 materials={materials}
                 patterns={patterns}
                 priceRange={{
-                  maxPrice: productList?.maxPrice ?? 0,
-                  minPrice: productList?.minPrice ?? 0,
+                  maxPrice: maxPrice ?? 0,
+                  minPrice: minPrice ?? 0,
                 }}
                 filtersOptions={filtersOptions}
               />
