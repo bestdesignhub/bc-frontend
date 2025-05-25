@@ -106,6 +106,8 @@ const LastStepPage = async ({
   // Fetch main step data
   const stepData = await getStepFullViewDetails({ productTypeId, steps: resolvedSearchParams });
   const fittingName = stepData?.fitting?.stepCard?.title;
+  console.log("stepData", stepData);
+
 
   // Now filter the available sizes based on the step type and slug
   const filteredAvailableSizes = availableSizes?.filter((size: any) =>
@@ -196,7 +198,8 @@ const LastStepPage = async ({
                       <div className="name">
                         {t('COMMON.GENDER')}: {' '}
                         <span>
-                          {stepData?.yarn?.gender}
+                          {/* {stepData?.yarn?.gender} */}
+                          {stepData?.genderData?.name?.en}
                         </span>
                       </div>
                       <div className="name">

@@ -15,6 +15,9 @@ interface IProductCardProps {
 const ProductCard = ({ productData, view, productDetailsURl }: IProductCardProps) => {
 
   const router = useRouter();
+  const searchParams = new URLSearchParams(window.location.search);
+  const genderId = searchParams.get('gender');
+  console.log('genderId===>>>>', genderId);
   // return (
   //   <Col
   //     key={productData?._id}
@@ -73,7 +76,7 @@ const ProductCard = ({ productData, view, productDetailsURl }: IProductCardProps
           </div>
           <button
             className="w-view-details-btn"
-            onClick={() => router.push(`${productDetailsURl}/${productData?._id}`)}
+            onClick={() => router.push(`${productDetailsURl}/${productData?._id}?gender=${genderId}`)}
           >
             View Details
           </button>

@@ -6,7 +6,7 @@ import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 export default function StepNavigate({
   steps,
@@ -14,12 +14,14 @@ export default function StepNavigate({
   edit,
   genders,
   genderSlug,
+  price
 }: {
   steps?: any[];
   stepPageData?: any;
   edit?: string;
   genders?: any[];
   genderSlug?: any;
+  price: number;
 }) {
 
   // console.log(genderSlug, '....genderSlug StepNavigate')
@@ -27,6 +29,26 @@ export default function StepNavigate({
   const t = useTranslations();
   const router = useRouter();
   const searchParams = useSearchParams();
+  const style = searchParams.get('style');
+  console.log("===========>", style);
+
+  const keys: string[] = [];
+
+  useEffect(() => {
+    for (const [key] of searchParams.entries()) {
+      keys.push(key);
+    }
+    if (activeIndex === null && steps?.length) {
+      steps.forEach((step, index) => {
+        if (searchParams.has(step.slug)) {
+          setActiveIndex(index);
+        }
+      });
+    }
+
+    console.log('All keys:', keys); // ['yarn', 'gender', 'material', 'gauge', 'pattern', 'style']
+  }, [steps, searchParams, activeIndex]);
+
 
   // Usage
 
@@ -48,6 +70,8 @@ export default function StepNavigate({
           params.delete(step.slug);
         }
       });
+      console.log("activeIndex : ", activeIndex);
+
       router.push(`${USER_ROUTES.sweater}/${stepNumber}?${params.toString()}`);
     },
     [steps, searchParams, router]
@@ -112,9 +136,10 @@ export default function StepNavigate({
                       {t('COMMON.COLOUR')}: <strong>{stepPageData?.yarn?.colour}</strong>
                     </p>
                   </div>
-                  <div className="price">
-                    <strong>{formatPrice(stepPageData.yarn.price)}</strong>
-                  </div>
+                  {activeIndex === null && <div className="price">
+                    {/* <strong>{formatPrice(stepPageData.yarn.price)}</strong> */}
+                    <strong>{formatPrice(price)}</strong>
+                  </div>}
                 </div>
               </div>
             )}
@@ -122,9 +147,23 @@ export default function StepNavigate({
         )}
         {searchParams.size !== 0 &&
           steps?.map((step: any, index: number) => {
+            console.log(step.slug, steps);
+            // console.log(searchParams.get(step.slug));
+            const keys1 = ['yarn', 'gender', 'material', 'gauge', 'pattern', 'style'];
+            const existingKeys = keys1.filter((key) => searchParams.has(key));
+            console.log(existingKeys, "existingKeys");
+
+            // Show price if this step's slug exists in searchParams
+            // const shouldShowPrice = searchParams.has(step.slug);
+
+
+
+
             if (index + 2 === 6) return null; // Skip rendering if index + 2 equals 6
             const isDataExists = stepPageData.hasOwnProperty(step.slug);
             const stepLabels = ['Gauge', 'Pattern', 'Styles', 'Measurement'];
+            console.log("stepLabels", stepLabels[index]);
+
             return (
               <div
                 className="navigate-item"
@@ -178,9 +217,15 @@ export default function StepNavigate({
                             </Link>
                           </button>
                         </div>
-                        <div className="price">
-                          <strong>{formatPrice(stepPageData?.yarn?.price)}</strong>
-                        </div>
+                        {/* <div className="price">
+                          <strong>{formatPrice(stepPageData?.yarn?.price)}</strong> 
+                          <strong>{formatPrice(price)}</strong> 
+                        </div> */}
+                        {activeIndex === index && (
+                          <div className="price">
+                            <strong>{formatPrice(price)}</strong>
+                          </div>
+                        )}
                       </div>
                     </>
                   ) : (

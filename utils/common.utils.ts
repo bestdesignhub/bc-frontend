@@ -87,17 +87,44 @@ export const getAWSImageUrl = (imageKey?: string): string => {
   return `${CONFIG.bucketDomain}${imageKey}`;
 };
 
+// export const formatPrice = (
+//   amount: number,
+//   currency: string = 'USD',
+//   locale: string = 'en-US'
+// ): string => {
+//   return new Intl.NumberFormat(locale, {
+//     style: 'currency',
+//     currency,
+//     minimumFractionDigits: 2,
+//   }).format(amount);
+// };
+
+// export const formatPrice = (
+//   amount: number,
+//   currency: string = 'EUR',
+//   locale: string = 'de-DE'  // common Euro locale, can be changed as needed
+// ): string => {
+//   return new Intl.NumberFormat(locale, {
+//     style: 'currency',
+//     currency,
+//     minimumFractionDigits: 2,
+//   }).format(amount);
+// };
+
 export const formatPrice = (
   amount: number,
-  currency: string = 'USD',
-  locale: string = 'en-US'
+  currencySymbol: string = '€',
+  locale: string = 'en-US' // or any locale for number formatting
 ): string => {
-  return new Intl.NumberFormat(locale, {
-    style: 'currency',
-    currency,
-    minimumFractionDigits: 2,
+  // Format number without decimals
+  const formattedNumber = new Intl.NumberFormat(locale, {
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
   }).format(amount);
+
+  return `${currencySymbol} ${formattedNumber}`;
 };
+
 
 export const generateProductName = (cartItem: any) => {
   const { yarn, steps, size, product } = cartItem;

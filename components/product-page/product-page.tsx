@@ -53,7 +53,7 @@ export default async function ProductPage({
 
   // Execute all dropdown requests
   const results = await Promise.allSettled(dropdownRequests);
-  console.log('results ==>', results);
+  // console.log('results ==>', results);
 
   // Extract results safely
   const colours = results[0].status === 'fulfilled' ? results[0].value : [];
@@ -63,6 +63,8 @@ export default async function ProductPage({
   const faqData = results[4].status === 'fulfilled' ? results[4].value : [];
   const bannerData = results[5].status === 'fulfilled' ? results[5].value : {};
   const genders = showGenders && results[6]?.status === 'fulfilled' ? results[6].value : [];
+  console.log(productList, "productList");
+
   return (
     <>
       <BannerComponent bannerData={bannerData} />

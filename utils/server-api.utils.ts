@@ -20,6 +20,7 @@ import {
   MY_ADDRESS_LIST_URL,
   PRODUCT_DETAILS_URL,
   PRODUCT_LISTING,
+  PRODUCT_PRICE_BY_SIZE_,
   PROFILE_API_URL,
   STEP_CARD_DETAILS,
   STEP_TYPE_DETAILS_URL,
@@ -34,6 +35,8 @@ import {
 } from '@/constants/apis';
 import { handleApiCall } from './common.utils';
 import { getUserData, getUserToken } from '@/config/locale';
+import axios from 'axios';
+import CONFIG from '@/config';
 
 export const getCountryList = async () => {
   const res: any = await handleApiCall(COUNTRY_LIST_API, 'GET', null);
@@ -210,7 +213,7 @@ export const getProductList = async (
     _order: sortOrder,
     _search: search = '',
     _colour: colour,
-    _gender: gender,
+    gender: gender,
     _material: material,
     _pattern: pattern,
     _page: page = 1,
@@ -240,13 +243,13 @@ export const getProductList = async (
     filterObj['genderSlug'] = genderSlug;
   }
 
-  // if (minPrice) {
-  //   filterObj['minPrice'] = minPrice;
-  // }
+  if (minPrice) {
+    filterObj['minPrice'] = minPrice;
+  }
 
-  // if (maxPrice) {
-  //   filterObj['maxPrice'] = maxPrice;
-  // }
+  if (maxPrice) {
+    filterObj['maxPrice'] = maxPrice.toString();
+  }
 
   const res: any = await handleApiCall(PRODUCT_LISTING, 'POST', {
     page: parseInt(page.toString()),
@@ -512,4 +515,76 @@ export const getUserMeasurementBySlug = async () => {
   } else {
     return {};
   }
+};
+
+// export const getPriceListByIds = async (
+//   styleId: string,
+//   gaugeId: string,
+//   patternId: string,
+//   materialId: string,
+//   genderId: string,
+// ) => {
+//   console.log({ styleId, gaugeId, patternId, materialId, genderId });
+
+//   const res: any = await handleApiCall(PRODUCT_PRICE_BY_SIZE_, 'POST', {
+//     styleId,
+//     gaugeId,
+//     patternId,
+//     materialId,
+//     genderId,
+//     size: "l",
+//   });
+//   console.log("Price List Response:", res);
+
+//   if (res.code === 200) {
+//     console.log("Price List Data:", res?.data);
+
+//     return res;
+//   } else {
+//     return {};
+//   }
+
+
+// };
+
+
+export const getPriceListByIds = async (
+  styleId: string,
+  gaugeId: string,
+  patternId: string,
+  materialId: string,
+  genderId: string
+) => {
+  console.log({ styleId, gaugeId, patternId, materialId, genderId });
+
+  const res: any = await handleApiCall(
+    PRODUCT_PRICE_BY_SIZE_,
+    'POST',
+    {
+      styleId,
+      gaugeId,
+      patternId,
+      materialId,
+      genderId,
+      size: 'l',
+    },
+    { timeout: '20000' }
+  );
+
+  console.log("Price List Response:", res);
+
+  if (res.code === 200) {
+    console.log("Price List Data:", res?.data);
+    return res;
+  } else {
+    return {};
+  }
+};
+
+
+export const fetchPriceList = async (payload: any) => {
+  console.log(`${CONFIG.apiUrl}/apis${PRODUCT_PRICE_BY_SIZE_}`);
+
+  const res = await axios.post(`${CONFIG.apiUrl}${PRODUCT_PRICE_BY_SIZE_}`, payload);
+  return res.data.data;
 };

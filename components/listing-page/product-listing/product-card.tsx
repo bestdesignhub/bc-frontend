@@ -15,7 +15,7 @@ import { Col } from 'react-bootstrap';
 import toast from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
 
-const ProductCard: FC<{ product: any; genderSlug: string }> = ({ product, genderSlug }) => {
+const ProductCard: FC<{ product: any; genderSlug: string, price: string }> = ({ product, genderSlug, price }) => {
   const { view } = useView();
   const t = useTranslations();
   const searchParams = useSearchParams();
@@ -109,7 +109,7 @@ const ProductCard: FC<{ product: any; genderSlug: string }> = ({ product, gender
           <div className="info">
             <h6>{product.name}</h6>
             <div className="pr-price">
-              <ins>{formatPrice(product?.price)}</ins>
+              <ins>{formatPrice(Number(price))}</ins>
             </div>
           </div>
           <button
