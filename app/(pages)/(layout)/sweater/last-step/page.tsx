@@ -6,7 +6,7 @@ import {
   SaveAndGoToCart,
   StepBanner,
 } from '@/components';
-import { FIXED_STEPS_COUNT, URL_SLUG } from '@/constants';
+import { FIXED_STEPS_COUNT, URL_SLUG, USER_ROUTES } from '@/constants';
 import { PRODUCT_TYPE_DROPDOWN_URL } from '@/constants/apis';
 import {
   getDropdownList,
@@ -28,9 +28,13 @@ import SweaterSlider from '@/components/step-components/sweater-slider';
 // import { MeasurementProfileComponent } from '@/app/components/measurements-profile';
 // import MeasurementProfileSelector from '@/components/MeasurementProfileSelector';
 import AvailableSizeSelector from '@/components/AvailableSizeSelector';
-import MeasurementsBox from '@/app/components/measurements/measurements-box';
+// import MeasurementsBox from '@/app/components/measurements/measurements-box';
 import CreateProduct from './createProduct';
 import MeasurementsForm from '@/app/components/measurements/measurementsForm';
+import Link from 'next/link';
+// import { useSearchParams } from 'next/navigation';
+import MeasurementAddToCartButton from '@/app/components/measurements/add-to-cart-button';
+import { cookies } from 'next/headers';
 const measurementsData = [
   { label: "BODY LENGTH - HSP", value: 65, tolerance: 5 },
   { label: "HEM WIDTH", value: 36, tolerance: 3 },
@@ -49,6 +53,16 @@ const LastStepPage = async ({
 }) => {
   const resolvedSearchParams = await searchParams;
   const t = await getTranslations();
+  // const searchParams1 = useSearchParams();
+  // const queryString = useMemo(() => new URLSearchParams(searchParams1).toString(), [searchParams1]);
+  const queryString = new URLSearchParams(await searchParams).toString();
+  // const userToken = Cookies.get(COOKIES.userToken);
+  const cookieStore = cookies();
+  const userToken = (await cookieStore).get('userToken')?.value;
+
+  // const token = sessionStorage.getItem('token');
+  // console.log("userToken", userToken);
+
 
   // Get the price from the query
   const priceFromQuery = resolvedSearchParams["price"];
@@ -106,15 +120,17 @@ const LastStepPage = async ({
   // Fetch main step data
   const stepData = await getStepFullViewDetails({ productTypeId, steps: resolvedSearchParams });
   const fittingName = stepData?.fitting?.stepCard?.title;
-  console.log("stepData", stepData);
+  console.log("stepData", availableSizes);
 
-
+  const SIZE_ORDER = ['XS', 'S', 'M', 'L', 'XL', '2XL', '3XL', '4XL', '5XL'];
   // Now filter the available sizes based on the step type and slug
   const filteredAvailableSizes = availableSizes?.filter((size: any) =>
     stepData.fitting?.stepType?.name === 'Fitting' && stepData.fitting?.stepCard.slug === 'slim-fitting'
       ? SLIM_SIZES.includes(size?.name)
       : REGULAR_SIZES.includes(size?.name)
-  );
+  )?.sort((a: any, b: any) => {
+    return SIZE_ORDER.indexOf(a.name.toUpperCase()) - SIZE_ORDER.indexOf(b.name.toUpperCase());
+  });;
   // Output the filtered sizes
   // console.log("filteredAvailableSizes", filteredAvailableSizes);
 
@@ -122,6 +138,9 @@ const LastStepPage = async ({
   //   // throw new Error('Function not implemented.')
 
   // }
+
+
+
 
   if (
     priceFromQuery !== undefined &&
@@ -324,7 +343,7 @@ const LastStepPage = async ({
 
                     <div className="container mx-auto p-4">
                       {/* <h6 className="text-2xl font-bold mb-4">Add New Item</h6>/ */}
-                      <CreateProduct data={{
+                      {(userToken) ? <CreateProduct data={{
                         stepData,
                         // currentStepData,
                         filteredAvailableSizes,
@@ -342,14 +361,62 @@ const LastStepPage = async ({
                         fittingId: resolvedSearchParams["fitting"],
                         availableSizes,
                         measurementProfiles
-                      }} />
+                      }} /> : (<>
+                        <span>{t('COMMON.ALREADY_A_CUSTOMER')}?</span>
+                        <div className="login-link-sub">
+                          <Link
+                            href={`${USER_ROUTES.signin}?${queryString}&${URL_SLUG.REDIRECT}=sweater/last-step`}
+                          >
+                            {t('COMMON.LOG_IN')}
+                          </Link>
+                        </div>
+                        <span>
+                          {t('COMMON.DONT_HAVE_AN_ACCOUNT')}?{' '}
+                          <Link
+                            href={`${USER_ROUTES.signup}?${queryString}&${URL_SLUG.REDIRECT}=sweater/last-step`}
+                          >
+                            {t('COMMON.REGISTER')}
+                          </Link>
+                        </span>
+                      </>)}
                     </div>
                   )}
 
+                  {resolvedSearchParams["product"] && <div className="measurements-login-link">
+                    {(userToken) ? (
+                      <MeasurementAddToCartButton
+                        steps={steps}
+                        productId={resolvedSearchParams["product"]}
+                        fittingId={resolvedSearchParams["fitting"]}
+                        productTypeId={productTypeId}
+                        defaultFittingSize={availableSizes?.at(0)?._id}
+                      />
+                    ) : (
+                      <>
+                        <span>{t('COMMON.ALREADY_A_CUSTOMER')}?</span>
+                        <div className="login-link-sub">
+                          <Link
+                            href={`${USER_ROUTES.signin}?${queryString}&${URL_SLUG.REDIRECT}=measurements`}
+                          >
+                            {t('COMMON.LOG_IN')}
+                          </Link>
+                        </div>
+                        <span>
+                          {t('COMMON.DONT_HAVE_AN_ACCOUNT')}?{' '}
+                          <Link
+                            href={`${USER_ROUTES.signup}?${queryString}&${URL_SLUG.REDIRECT}=measurements`}
+                          >
+                            {t('COMMON.REGISTER')}
+                          </Link>
+                        </span>
+                      </>
+                    )}
+                  </div>}
 
 
 
-                  {(resolvedSearchParams["product"] && <MeasurementsBox
+
+                  {/* {(resolvedSearchParams["product"] && <MeasurementsBox
                     productTypeId={productTypeId}
                     fittingName={fittingName}
                     steps={steps}
@@ -357,7 +424,7 @@ const LastStepPage = async ({
                     fittingId={resolvedSearchParams["fitting"]}
                     availableSizes={availableSizes}
                     measurementProfiles={measurementProfiles}
-                  />)}
+                  />)} */}
                 </div>
               </div>
             </div>

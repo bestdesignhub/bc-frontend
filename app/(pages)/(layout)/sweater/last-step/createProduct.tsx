@@ -262,7 +262,7 @@ const CreateProduct = (props: any) => {
             });
 
             if (response.data.success) {
-                toast.success(MESSAGES.SUCCESS);
+                toast.success('SUCCESS');
 
                 // ✅ Get the new productId from the response
                 const newProductId = response.data.data._id;

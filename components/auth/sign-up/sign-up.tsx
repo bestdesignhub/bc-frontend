@@ -85,8 +85,12 @@ export default function SignUp({ countries, genderList }: ISignUpForm) {
         Cookies.set(COOKIES['user'], JSON.stringify(userData));
         if (searchParams.has(URL_SLUG.REDIRECT)) {
           const params = new URLSearchParams(searchParams);
+          // params.delete(URL_SLUG.REDIRECT);
+          const redirect = params.get(URL_SLUG.REDIRECT);
+
           params.delete(URL_SLUG.REDIRECT);
-          router.push(`${USER_ROUTES.measurements}?${params.toString()}`);
+          // router.push(`${params.get(URL_SLUG.REDIRECT)}?${params.toString()}`);
+          router.push(`${redirect}?${params.toString()}`);
         } else {
           router.replace(`/`);
         }

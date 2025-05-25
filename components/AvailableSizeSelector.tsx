@@ -1,11 +1,12 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { PRODUCT_PRICE_BY_SIZE_YARN_ID } from '@/constants/apis';
-import userAxiosInstance from '@/config/userAxiosInstance';
+// import { PRODUCT_PRICE_BY_SIZE_YARN_ID } from '@/constants/apis';
+// import userAxiosInstance from '@/config/userAxiosInstance';
 import { useDispatch } from 'react-redux';
 import { setLoading } from '@/lib/redux/slices/loaderSlice';
 import { useRouter, useSearchParams } from 'next/navigation';
+import { fetchPriceList } from '@/utils/server-api.utils';
 type Size = {
   _id: string;
   slug: string;
@@ -43,23 +44,35 @@ const AvailableSizeSelector = ({ sizes, basePrice = 0, yarn, gauge, pattern, sty
   const router = useRouter();
   // const params = useParams();
   const searchParams = useSearchParams();
-  console.log(searchParams, basePrice, 'params');
+  console.log(searchParams, basePrice, 'params', yarn);
 
   const handleSizeChange = async (slug: string) => {
     setSelectedSizeSlug(slug);
     dispatch(setLoading(true));
     try {
-      const res = await userAxiosInstance.post(PRODUCT_PRICE_BY_SIZE_YARN_ID, {
-        yarnId: yarn,
+      // const res = await userAxiosInstance.post(PRODUCT_PRICE_BY_SIZE_YARN_ID, {
+      //   yarnId: yarn,
+      //   gaugeId: gauge,
+      //   patternId: pattern,
+      //   styleId: style,
+      //   genderId: searchParams.get('gender'),
+      //   size: slug,
+      // });
+
+      const requestBody = {
+        styleId: style,
         gaugeId: gauge,
         patternId: pattern,
-        styleId: style,
+        materialId: searchParams.get('material'),
         genderId: searchParams.get('gender'),
-        size: slug,
-      });
+        size: 'l',
+      };
+
+      const priceData = await fetchPriceList(requestBody);
+      console.log(priceData, "priceData");
 
       const mappedSizeKey = sizeMapping[slug.toLowerCase()];
-      const fetchedPrice = res.data?.data[mappedSizeKey];
+      const fetchedPrice = priceData?.[`${mappedSizeKey}`];
 
       if (fetchedPrice) {
         // setPrice(fetchedPrice);
@@ -68,7 +81,8 @@ const AvailableSizeSelector = ({ sizes, basePrice = 0, yarn, gauge, pattern, sty
         const currentUrl = new URLSearchParams(searchParams.toString());
         // const currentUrl = searchParams;
         currentUrl.set('price', fetchedPrice);
-        router.push(currentUrl.toString());
+        // router.push(currentUrl.toString());
+        router.push(`?${currentUrl.toString()}`);
 
       }
     } catch (err) {
@@ -80,11 +94,17 @@ const AvailableSizeSelector = ({ sizes, basePrice = 0, yarn, gauge, pattern, sty
 
   useEffect(() => {
     if (sizes.length && !selectedSizeSlug) {
-      const firstSizeSlug = sizes[0].slug;
-      setSelectedSizeSlug(firstSizeSlug);
+      // if (details?.gender) {
+      console.log("jdd", sizes);
+
+      const defaultSize = searchParams.get('gender') === '6798793f705aedfe39db13b1' ? 'l' : 'm';
+      // setSelectedSize(defaultSize);
+      // }
+      // const firstSizeSlug = sizes[0].slug;
+      setSelectedSizeSlug(defaultSize);
       setSelectedFit('slim')
       // if (productId) handleSizeChange(firstSizeSlug);
-      handleSizeChange(firstSizeSlug);
+      handleSizeChange(defaultSize);
     }
   }, [selectedFit]);
 

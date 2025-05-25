@@ -3,7 +3,7 @@ import { ViewLayoutType } from '@/types';
 import { formatPrice, getAWSImageUrl } from '@/utils/common.utils';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { useSearchParams, useRouter } from 'next/navigation';
 import { Col } from 'react-bootstrap';
 
 interface IProductCardProps {
@@ -15,9 +15,9 @@ interface IProductCardProps {
 const ProductCard = ({ productData, view, productDetailsURl }: IProductCardProps) => {
 
   const router = useRouter();
-  const searchParams = new URLSearchParams(window.location.search);
+  const searchParams = useSearchParams();
   const genderId = searchParams.get('gender');
-  console.log('genderId===>>>>', genderId);
+  // console.log('genderId===>>>>', genderId);
   // return (
   //   <Col
   //     key={productData?._id}

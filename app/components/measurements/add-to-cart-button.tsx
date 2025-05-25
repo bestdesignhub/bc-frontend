@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import React, { useState } from 'react';
 import { MeasurementConfirmationModal } from '@/components/modals/measurement-confirmation-modal';
+import { useRouter } from 'next/navigation';
 
 const MeasurementAddToCartButton = ({
   steps,
@@ -11,16 +12,32 @@ const MeasurementAddToCartButton = ({
   fittingId,
   productTypeId,
   defaultFittingSize,
+  queryParams,
+  gender
 }: {
   steps: any[];
   productId: string;
   fittingId: string;
   productTypeId: string;
   defaultFittingSize: string;
+  queryParams?: any;
+  gender?: any;
 }) => {
   const t = useTranslations();
   const [showModal, setShowModal] = useState(false);
+  const router = useRouter();
   const handleModalOpen = () => {
+    if (queryParams) {
+      if (typeof queryParams === 'string') {
+        router.push(`?${queryParams}&gender=${gender}`);
+      } else {
+        const sp = new URLSearchParams();
+        for (const [k, v] of Object.entries(queryParams)) {
+          sp.set(k, String(v));
+        }
+        router.push(`?${sp.toString()}`);
+      }
+    }
     setShowModal(true);
   };
   const handleModalClose = () => {

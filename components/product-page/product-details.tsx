@@ -24,18 +24,20 @@ export default async function ProductDetailPage({ params }: ProductDetailProps) 
   const availableSizeData =
     availableSizeResult.status === 'fulfilled' ? availableSizeResult.value : [];
   const gendersData = gendersResult.status === 'fulfilled' ? gendersResult.value : [];
+  // console.log("genderId", resolvedParams['gender']);
 
-  const sizeOrder = ['xs', 's', 'm', 'l', 'xl', '2xl', '3xl', '4xl', '5xl'];
 
-  const sortedSizes = availableSizeData.sort((a: any, b: any) => {
-    return sizeOrder.indexOf(a.slug.toLowerCase()) - sizeOrder.indexOf(b.slug.toLowerCase());
-  });
+  // const sizeOrder = ['xs', 's', 'm', 'l', 'xl', '2xl', '3xl', '4xl', '5xl'];
+
+  // const sortedSizes = availableSizeData?.sort((a: any, b: any) => {
+  //   return sizeOrder.indexOf(a.slug.toLowerCase()) - sizeOrder.indexOf(b.slug.toLowerCase());
+  // });
 
   return (
     <BannerWrapper>
       <ProdutDetail
         details={productDetailsData}
-        availableSizes={sortedSizes}
+        availableSizes={availableSizeData}
         genders={gendersData}
       />
       {!!productDetailsData?.relatedProducts?.length && (

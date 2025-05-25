@@ -38,7 +38,7 @@ const MeasurementConfirmationModal = (props: {
         ...Object.fromEntries(searchParams.entries()),
       };
       const stepsData = steps?.map((step) => ({
-        stepType: step.value,
+        stepType: step.value ?? step.stepType,
         slug: step.slug,
         stepCard: searchParamsValues[step.slug],
       }));
@@ -55,12 +55,13 @@ const MeasurementConfirmationModal = (props: {
         steps: stepsData,
         productId: props.productId,
         fittingId: props.fittingId,
-        genderId: searchParamsValues.gender,
+        genderId: searchParamsValues.gender ?? searchParamsValues['gender'],
         fittingSizeId: searchParamsValues[URL_SLUG.FITTING],
         productTypeId,
         quantity: 1,
         measurements: measurementData,
       };
+
       // let measurementData =  sessionStorage.getItem('measurementData');
       // if (measurementData) {
       //   // measurementData = JSON.parse(measurementData);

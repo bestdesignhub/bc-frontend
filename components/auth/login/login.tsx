@@ -49,6 +49,7 @@ export default function Login() {
       if (loginResponse.data.success) {
         toast.success(loginResponse.data.message || t(MESSAGES.SUCCESS));
         const result = loginResponse?.data?.data;
+
         const userData = pickProperties(result, [
           '_id',
           'first_name',
@@ -62,10 +63,13 @@ export default function Login() {
         ]);
         Cookies.set(COOKIES['userToken'], result?.token);
         Cookies.set(COOKIES['user'], JSON.stringify(userData));
+        // sessionStorage.setItem('token', result?.token);
         if (searchParams.has(URL_SLUG.REDIRECT)) {
           const params = new URLSearchParams(searchParams);
+          const redirect = params.get(URL_SLUG.REDIRECT);
+
           params.delete(URL_SLUG.REDIRECT);
-          router.push(`${USER_ROUTES.measurements}?${params.toString()}`);
+          router.push(`${redirect}?${params.toString()}`);
         } else {
           router.replace(`/`);
         }

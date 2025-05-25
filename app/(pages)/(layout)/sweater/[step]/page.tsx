@@ -1,5 +1,5 @@
 import React from 'react';
-import { redirect } from 'next/navigation';
+// import { redirect } from 'next/navigation';
 import { StepBanner, StepListing, StepNavigate } from '@/components';
 import { FIXED_STEPS_COUNT, URL_SLUG } from '@/constants';
 import { GENDER_DROPDOWN_URL, PRODUCT_PRICE_BY_SIZE_, PRODUCT_TYPE_DROPDOWN_URL } from '@/constants/apis';
@@ -43,9 +43,9 @@ const SweaterStep = async ({
     getStepTypesList(productTypeId),
     getCurrentStepDetails({ steps: resolvedSearchParams, productTypeId, nextStepSlug: step }),
   ]);
-  if (!(steps.length + 1 >= step)) {
-    redirect('/');
-  }
+  // if (!(steps.length + 1 >= step)) {
+  //   redirect('/');
+  // }
 
   const stepData = steps[step - FIXED_STEPS_COUNT];
 

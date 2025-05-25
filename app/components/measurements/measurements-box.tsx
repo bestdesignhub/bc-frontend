@@ -43,6 +43,7 @@ export default function MeasurementsBox({
   console.log('selectedFittingSize', selectedFittingSize);
 
   const userToken = Cookies.get(COOKIES.userToken);
+  // const token = sessionStorage.getItem('token');
 
   // const selectedMeasurementProfile = 
   useMemo(() => {

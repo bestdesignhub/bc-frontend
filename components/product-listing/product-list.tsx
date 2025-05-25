@@ -32,7 +32,7 @@ export default function ProductList({
 }) {
   const t = useTranslations();
   console.log('productList ==>', productList);
-  const prices = productList.data.map((product: any) => product.price);
+  const prices = productList.data?.map((product: any) => product.price);
   const minPrice = Math.min(...prices);
   const maxPrice = Math.max(...prices)
 
