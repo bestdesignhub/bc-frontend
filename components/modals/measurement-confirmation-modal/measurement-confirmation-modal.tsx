@@ -92,7 +92,7 @@ const MeasurementConfirmationModal = (props: {
 
   return (
     <Modal show={show} onHide={handleClose} animation={false} centered>
-      <div className="modal-block-main" style={{ paddingBottom: 0 }}>
+      <div className="modal-block-main confirmbox" style={{ paddingBottom: 0 }}>
         <div className="modal-block-top">
           <div className="modal-left-top">
             <h5>{t('COMMON.CONFIRM_MEASUREMENT')}</h5>

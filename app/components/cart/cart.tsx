@@ -58,12 +58,6 @@ export default function CartContent({ initialCartData }: { initialCartData: any[
                   <div className="checkout-btn">
                     <Link href={USER_ROUTES.checkout}>{t('COMMON.PROCEED_TO_CHECKOUT')}</Link>
                   </div>
-                  <div className="note-text">
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean quis viverra
-                      dui. Sed porta risus ligula.
-                    </p>
-                  </div>
                 </div>
               </div>
             </div>

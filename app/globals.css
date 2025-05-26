@@ -269,6 +269,10 @@ ul.slick-dots li button:before {
   display: none;
 }
 
+.pagination {
+  border-radius: 0 !important;
+}
+
 .pagination .active>.page-link,
 .pagination .page-link.active {
   background-color: #000000;

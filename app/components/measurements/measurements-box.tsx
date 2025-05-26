@@ -121,7 +121,7 @@ export default function MeasurementsBox({
             <>
               <span>{t('COMMON.ALREADY_A_CUSTOMER')}?</span>
               <div className="login-link-sub">
-                <Link
+                <Link className='addto-cart-laststep'
                   href={`${USER_ROUTES.signin}?${queryString}&${URL_SLUG.REDIRECT}=measurements`}
                 >
                   {t('COMMON.LOG_IN')}

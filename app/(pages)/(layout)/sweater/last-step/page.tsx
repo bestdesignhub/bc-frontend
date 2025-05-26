@@ -179,12 +179,12 @@ const LastStepPage = async ({
                     <div className="price">
                       <span className="new-price">{formatPrice(stepData?.yarn?.price)}</span>
                     </div>
-                    {resolvedSearchParams.hasOwnProperty(URL_SLUG.ADD_TO_CART) ? (
+                    {/* {resolvedSearchParams.hasOwnProperty(URL_SLUG.ADD_TO_CART) ? (
                       <SaveAndGoToCart steps={stepData?.steps} />
                     ) : (
-                      // <ProceedToSizeMeasurement />
+                       <ProceedToSizeMeasurement />
                       ''
-                    )}
+                    )} */}
                   </div>
                 </div>
 
@@ -341,7 +341,7 @@ const LastStepPage = async ({
 
                   {(resolvedSearchParams["product"] === undefined || resolvedSearchParams["product"] === null || resolvedSearchParams["product"] === "") && (
 
-                    <div className="container mx-auto p-4">
+                    <div className="container mx-auto p-0 mt-3">
                       {/* <h6 className="text-2xl font-bold mb-4">Add New Item</h6>/ */}
                       {(userToken) ? <CreateProduct data={{
                         stepData,
@@ -395,7 +395,7 @@ const LastStepPage = async ({
                       <>
                         <span>{t('COMMON.ALREADY_A_CUSTOMER')}?</span>
                         <div className="login-link-sub">
-                          <Link
+                          <Link className='addto-cart-laststep'
                             href={`${USER_ROUTES.signin}?${queryString}&${URL_SLUG.REDIRECT}=measurements`}
                           >
                             {t('COMMON.LOG_IN')}
@@ -403,7 +403,7 @@ const LastStepPage = async ({
                         </div>
                         <span>
                           {t('COMMON.DONT_HAVE_AN_ACCOUNT')}?{' '}
-                          <Link
+                          <Link className='addto-cart-laststep'
                             href={`${USER_ROUTES.signup}?${queryString}&${URL_SLUG.REDIRECT}=measurements`}
                           >
                             {t('COMMON.REGISTER')}

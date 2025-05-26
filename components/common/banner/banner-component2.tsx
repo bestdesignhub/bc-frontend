@@ -11,15 +11,7 @@ const BannerComponent2 = ({ bannerData }: { bannerData: IBannerData }) => {
         <link rel="preload" as="image" href={bannerData.bg_image} />
       </Head>
       <div className="image banner-img">
-      <img src="images/mesurment-banner.jpg" alt="Mesurment" /> 
-        {/* <Image
-                src={bannerData.bg_image}
-                alt="Bespoke"
-                width={1080}
-                height={651}
-                className="object-cover"
-                loading="lazy"
-              /> */}
+        <img src="images/mesurment-banner.jpg" alt="Mesurment" />
       </div>
     </div>
   );

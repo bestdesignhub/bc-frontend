@@ -19,27 +19,12 @@ const MeasurementsForm: React.FC<MeasurementsFormProps> = ({ measurements }) => 
 
     const handleChange = (index: number, newValue: number) => {
         console.log(measurement);
-
         const updatedValues = [...values];
         updatedValues[index].value = newValue;
         setValues(updatedValues);
         setMeasurements(updatedValues);
         sessionStorage.setItem("measurements", JSON.stringify(updatedValues));
     };
-
-    // const handleAdjust = (index: any, delta: any) => {
-    //     setMeasurements((prev) =>
-    //         prev.map((item, i) =>
-    //             i === index
-    //                 ? {
-    //                     ...item,
-    //                     value: Math.max(0, item.value + (delta > 0 ? 5 : -5))
-    //                 }
-    //                 : item
-    //         )
-    //     );
-    // };
-
     return (
         <div className="measurements">
             {values.map((measure, index) => (
@@ -49,7 +34,6 @@ const MeasurementsForm: React.FC<MeasurementsFormProps> = ({ measurements }) => 
                     value={measure.value}
                     tolerance={measure.tolerance}
                     onChange={(newValue) => handleChange(index, newValue)}
-                // onChange={(newValue) => handleAdjust(index, newValue - measure.value)}
                 />
             ))}
         </div>

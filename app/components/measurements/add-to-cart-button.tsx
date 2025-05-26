@@ -48,7 +48,7 @@ const MeasurementAddToCartButton = ({
   return (
     <>
       <div className="login-link-sub" onClick={handleModalOpen}>
-        <Link href="#">{t('COMMON.ADD_TO_CART')}</Link>
+        <Link className="cartbtn" href="#">{t('COMMON.ADD_TO_CART')}</Link>
       </div>
       <MeasurementConfirmationModal
         productTypeId={productTypeId}

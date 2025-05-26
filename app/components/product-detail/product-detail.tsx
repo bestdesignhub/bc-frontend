@@ -141,14 +141,14 @@ export default function ProdutDetail({
   }, [details._id, t]);
 
   const measurementsData = [
-    { label: "BODY LENGTH - HSP", value: 65, tolerance: 5 },
-    { label: "HEM WIDTH", value: 36, tolerance: 3 },
-    { label: "CHEST WIDTH", value: 46, tolerance: 2 },
-    { label: "ARMHOLE STRAIGHT", value: 22, tolerance: 2 },
-    { label: "SHOULDER WIDTH", value: 37, tolerance: 2 },
-    { label: "SLEEVE LENGTH - HSP", value: 64, tolerance: 2 },
-    { label: "NECK WIDTH", value: 15.5, tolerance: 2 },
-    { label: "SLEEVE WIDTH", value: 17, tolerance: 2 },
+    { label: "Body Length - HSP", value: 65, tolerance: 5 },
+    { label: "Hem Width", value: 36, tolerance: 3 },
+    { label: "Chest Width", value: 46, tolerance: 2 },
+    { label: "Armhole Straight", value: 22, tolerance: 2 },
+    { label: "Shoulder Width", value: 37, tolerance: 2 },
+    { label: "Sleeve Length - HSP", value: 64, tolerance: 2 },
+    { label: "Neck Width", value: 15.5, tolerance: 2 },
+    { label: "Sleeve Width", value: 17, tolerance: 2 },
   ];
 
   useEffect(() => {
@@ -176,154 +176,138 @@ export default function ProdutDetail({
       <div className="product-detail-wrapper">
         <div className="container">
           <Row>
-            <Col xs={12} lg={6} xl={7}>
+            <Col xs={12} lg={6} xl={4}>
               <ProductImageGallery details={details} />
             </Col>
-            <Col xs={12} lg={6} xl={4}>
-              {/* <div className="detail-content">
-                <div className="d-flex" style={{ justifyContent: 'space-between' }}>
-                  <h1>{details?.title}</h1>
-                  <p>Gender : {details?.gender.toUpperCase()}</p>
-                  <p>Yarn : {details?.yarnData?.title}</p>
-                  <p>Colour : {details?.yarnData?.colour}</p>
-                  <p>Cable : {details?.gender.toUpperCase()}</p>
-                  <p>Gauge : {details?.gender.toUpperCase()}</p>
-                  <p>Seasonality : {details?.gender.toUpperCase()}</p> */}
-              <div className="detail-content">
-                <div className="d-flex" style={{ justifyContent: 'space-between', flexWrap: 'wrap' }}>
-                  <h1>{details?.title}</h1>
-                  <p>Gender: {details?.gender?.toUpperCase()}</p>
-                  <p>Yarn: {details?.yarnData?.title}</p>
-                  <p>Colour: {details?.yarnData?.colour}</p>
-                  <p>Cable: {
-                    details?.steps?.find((step: { key: string; }) => step.key === 'pattern') &&
-                    details?.stepCards?.find((card: any) => card._id === details.steps.find((step: any) => step.key === 'pattern')?.value)?.title
-                  }</p>
-                  <p>Gauge: {
-                    details?.steps?.find((step: any) => step.key === 'gauge') &&
-                    details?.stepCards?.find((card: any) => card._id === details.steps.find((step: any) => step.key === 'gauge')?.value)?.title
-                  }</p>
-                  {/* <p>Pattern: {
-                    details?.steps?.find((step: any) => step.key === 'pattern') &&
-                    details?.stepCards?.find((card: any) => card._id === details.steps.find((step: any) => step.key === 'pattern')?.value)?.title
-                  }</p> */}
-                  <p>Fitting: {
-                    details?.steps?.find((step: any) => step.key === 'fitting') &&
-                    details?.stepCards?.find((card: any) => card._id === details.steps.find((step: any) => step.key === 'fitting')?.value)?.title
-                  }</p>
-                  <p>Seasonality: {details?.yarnData?.seasonality}</p>
-
-
-                  {token && (
-                    <div style={{ cursor: 'pointer' }}>
-                      {isWishlisted ? (
-                        <FilledHeartIcon onClick={handleFilledHeart} />
-                      ) : (
-                        <EmptyHeartIcon onClick={handleEmptyHeart} />
+            <Col xs={12} lg={6} xl={8}>
+              <Row>
+                <Col xs={12} lg={6} xl={8}>
+                  <div className="detail-content">
+                    <div className="d-flex product-title-name" style={{ justifyContent: 'space-between', flexWrap: 'wrap' }}>
+                      <h1>{details?.title}</h1>
+                      {token && (
+                        <div style={{ cursor: 'pointer' }}>
+                          {isWishlisted ? (
+                            <FilledHeartIcon onClick={handleFilledHeart} />
+                          ) : (
+                            <EmptyHeartIcon onClick={handleEmptyHeart} />
+                          )}
+                        </div>
                       )}
                     </div>
-                  )}
-                  { }
-                </div>
-
-                <div className="pr-price">
-                  <ins>Final Price : {formatPrice(price)}</ins>
-                  {/* <del>$60.00</del> */}
-                </div>
-                <div className="pr-size d-flex flex-wrap">
-                  <div className="size-item">
-                    <h6>{t('COMMON.SIZE_TEXT')}:</h6>
-                    <InputGroup className="size-radiobuttons d-flex flex-wrap gap-2">
-                      {availableSizes?.map((size) => (
-                        <Form.Check
-                          inline
-                          key={size.slug}
-                          label={size.name}
-                          name="size"
-                          type="radio"
-                          id={size.slug}
-                          checked={slug === size.slug}
-                          onChange={handleChangeSize}
-                        />
-                      ))}
-                    </InputGroup>
-                    {/* <InputGroup className="size-radiobuttons d-flex flex-wrap gap-2">
-                      {availableSizes?.map((size) => (
-                        <Form.Check
-                          inline
-                          key={size.slug}
-                          label={size.name}
-                          name="size"
-                          type="radio"
-                          id={`size-${size.slug}`}
-                          value={size.slug}
-                          checked={selectedSize === size.slug}
-                          onChange={handleChangeSize}
-                        />
-                      ))}
-                    </InputGroup> */}
-
+                    {/* <div className="info">
+                      {details?.contents?.map((content: any, index: number) => {
+                        return (
+                          <Fragment key={index}>
+                            <h6>{content?.title}</h6>
+                            <p>{content?.description}</p>
+                          </Fragment>
+                        );
+                      })}
+                    </div> */}
+                    <div className='statics-sweater'>
+                      <Row>
+                        <Col xs={12} lg={6} xl={6}>
+                          <p className='w-full fullpcontent'><span>Gender:</span> <strong>{details?.gender?.toUpperCase()}</strong></p>
+                        </Col>
+                        <Col xs={12} lg={6} xl={6}>
+                          <p className='w-full fullpcontent'><span>Yarn:</span> <strong>{details?.yarnData?.title}</strong></p>
+                        </Col>
+                      </Row>
+                      <Row>
+                        <Col xs={12} lg={6} xl={6}>
+                          <p className='w-full fullpcontent'><span>Colour:</span> <strong>{details?.yarnData?.colour}</strong></p>
+                        </Col>
+                        <Col xs={12} lg={6} xl={6}>
+                          <p className='w-full fullpcontent'><span>Cable:</span> <strong>{
+                            details?.steps?.find((step: { key: string; }) => step.key === 'pattern') &&
+                            details?.stepCards?.find((card: any) => card._id === details.steps.find((step: any) => step.key === 'pattern')?.value)?.title
+                          }</strong></p>
+                        </Col>
+                      </Row>
+                      <Row>
+                        <Col xs={12} lg={6} xl={6}>
+                          <p className='w-full fullpcontent'><span>Gauge:</span> <strong>{
+                            details?.steps?.find((step: any) => step.key === 'gauge') &&
+                            details?.stepCards?.find((card: any) => card._id === details.steps.find((step: any) => step.key === 'gauge')?.value)?.title
+                          }</strong></p>
+                        </Col>
+                        <Col xs={12} lg={6} xl={6}>
+                          <p className='w-full fullpcontent'><span>Fitting:</span> <strong>{
+                            details?.steps?.find((step: any) => step.key === 'fitting') &&
+                            details?.stepCards?.find((card: any) => card._id === details.steps.find((step: any) => step.key === 'fitting')?.value)?.title
+                          }</strong></p>
+                        </Col>
+                      </Row>
+                      <Row>
+                        <Col xs={12} lg={6} xl={6}>
+                          <p className='w-full fullpcontent'><span>Seasonality:</span> <strong>{details?.yarnData?.seasonality}</strong></p>
+                        </Col>
+                        <Col xs={12} lg={6} xl={6} />
+                      </Row>
+                    </div>
+                    <div className="pr-size d-flex flex-wrap">
+                      <MeasurementsForm measurements={measurementsData} />
+                    </div>
+                    <div className='addcomment'>
+                      <p>Any special instructions or request for us?</p>
+                      <textarea>
+                        Enter Special Details
+                      </textarea>
+                    </div>
                   </div>
-                  <br />
-                  <br />
-                  <br />
-                  <br />
-                  {/* <Image
-                    src={'/images/sizes.jpg'}
-                    alt={'size'}
-                    width={417}
-                    height={272}
-                    loading="lazy"
-                  /> */}
-                  <MeasurementsForm measurements={measurementsData} />
-                </div>
-                <div style={{ marginBottom: '10px' }}>
-                  <AddToCartButton genders={genders} queryString={urlQueryString} productId={details._id} price={price.toString()} size={size} />
-                  {(token) ? (
-                    <MeasurementAddToCartButton
-                      steps={details?.stepDetails}
-                      productId={details._id}
-                      fittingId={details?.stepCards?.find((card: any) => card._id === details.steps.find((step: any) => step.key === 'fitting')?.value)?._id}
-                      productTypeId={details?.productTypeId}
-                      defaultFittingSize={selectedSize}
-                      queryParams={urlQueryString}
-                      gender={searchParams.get('gender')}
-                    />
-                  ) : (
-                    <>
-                      <span>{t('COMMON.ALREADY_A_CUSTOMER')}?</span>
-                      <div className="login-link-sub">
-                        <Link
-                          href={`${USER_ROUTES.signin}?${queryString}&${URL_SLUG.REDIRECT}=measurements`}
-                        >
-                          {t('COMMON.LOG_IN')}
-                        </Link>
-                      </div>
-                      <span>
-                        {t('COMMON.DONT_HAVE_AN_ACCOUNT')}?{' '}
-                        <Link
-                          href={`${USER_ROUTES.signup}?${queryString}&${URL_SLUG.REDIRECT}=measurements`}
-                        >
-                          {t('COMMON.REGISTER')}
-                        </Link>
-                      </span>
-                    </>
-                  )}
-                </div>
-                {/* <Link href={`${USER_ROUTES.sweater}${USER_ROUTES.lastStep}?${urlQueryString}`}>
-                  <button className="cartbtn">{t('COMMON.CUSTOMISE_A_SWEATER')}</button>
-                </Link> */}
-                <div className="info">
-                  {details?.contents?.map((content: any, index: number) => {
-                    return (
-                      <Fragment key={index}>
-                        <h6>{content?.title}</h6>
-                        <p>{content?.description}</p>
-                      </Fragment>
-                    );
-                  })}
-                </div>
-              </div>
+                </Col>
+                <Col xs={12} lg={6} xl={4}>
+                  <div className='w-full fullpcontent price-section'>
+                    <strong className='price-color'>{formatPrice(price)}</strong>
+                    <div className="size-item">
+                      <InputGroup className="size-radiobuttons d-flex flex-wrap gap-2">
+                        {availableSizes?.map((size) => (
+                          <Form.Check
+                            inline
+                            key={size.slug}
+                            label={size.name}
+                            name="size"
+                            type="radio"
+                            id={size.slug}
+                            checked={slug === size.slug}
+                            onChange={handleChangeSize}
+                          />
+                        ))}
+                      </InputGroup>
+                    </div>
+                    <div className='price-section-bottom' style={{ marginBottom: '10px' }}>
+                      {/* <AddToCartButton genders={genders} queryString={urlQueryString} productId={details._id} price={price.toString()} size={size} /> */}
+                      {(token) ? (
+                        <MeasurementAddToCartButton
+                          steps={details?.stepDetails}
+                          productId={details._id}
+                          fittingId={details?.stepCards?.find((card: any) => card._id === details.steps.find((step: any) => step.key === 'fitting')?.value)?._id}
+                          productTypeId={details?.productTypeId}
+                          defaultFittingSize={selectedSize}
+                          queryParams={urlQueryString}
+                          gender={searchParams.get('gender')}
+                        />
+                      ) : (
+                        <><span>{t('COMMON.ALREADY_A_CUSTOMER')}?</span>
+                          <div className="login-link-sub">
+                            <Link className='addto-cart-laststep'
+                              href={`${USER_ROUTES.signin}?${queryString}&${URL_SLUG.REDIRECT}=measurements`}
+                            >
+                              {t('COMMON.LOG_IN')}
+                            </Link> <span>/</span> &nbsp;
+                            <Link
+                              href={`${USER_ROUTES.signup}?${queryString}&${URL_SLUG.REDIRECT}=measurements`}
+                            >
+                              {t('COMMON.REGISTER')}
+                            </Link>
+                          </div>
+                        </>
+                      )}
+                    </div>
+                  </div>
+                </Col>
+              </Row>
             </Col>
           </Row>
         </div>

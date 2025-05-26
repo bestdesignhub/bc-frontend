@@ -244,19 +244,15 @@
   margin: 0 0 0 auto;
 }
 
-.navigatebox .info button {
-  background: transparent;
-  border: 0;
-  outline: none;
-  box-shadow: none;
+.navigatebox .info button a {
+  color: #fff;
 }
 
 .navigatebox .info button a {
-  background: transparent;
   padding: 0;
   font-size: var(--bsp-body-12);
   font-weight: 500;
-  color: var(--bsp-gray2);
+  color: #fff;
   display: flex;
   align-items: center;
 }

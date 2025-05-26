@@ -28,7 +28,7 @@ const ListingFaq = ({ faqData }: IListingFaqProps) => {
           <h2>Frequently Asked Questions</h2>
         </div>
         <Row>
-          <Col xs={12} lg={7}>
+          <Col xs={12} lg={12}>
             <Accordion>
               {faqData?.faqs?.map((faq: FAQ) => (
                 <Accordion.Item key={faq?.question} eventKey={faq?.question}>
@@ -39,7 +39,7 @@ const ListingFaq = ({ faqData }: IListingFaqProps) => {
             </Accordion>
           </Col>
         </Row>
-        </div>
+      </div>
     </div>
   );
 };
