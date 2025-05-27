@@ -31,6 +31,7 @@ export default function Cartbox({ cart, fetchCartData }: { cart: any; fetchCartD
     params.append(URL_SLUG.FITTING_SIZE, cart?.steps[3]?.stepCardId);
     params.append(URL_SLUG.ADD_TO_CART, cart?._id);
     params.append(URL_SLUG.PRODUCT, cart?.product?._id);
+    params.append("material", cart?.product?.materialId);
     return `${params.toString()}`;
   }, [cart]);
 

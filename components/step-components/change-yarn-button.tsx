@@ -10,8 +10,11 @@ const ChangeYarnButton = ({ searchParams }: { searchParams: { [key: string]: str
   const queryString = useMemo(() => {
     const params = new URLSearchParams(searchParams);
     params.delete(URL_SLUG.PRODUCT);
+    params.delete('price');
     return params.toString();
   }, [searchParams]);
+  console.log('ChangeYarnButton queryString:', queryString);
+
   return (
     <div className="change-link-2">
       <Link href={`${USER_ROUTES.sweater}?${queryString}&${URL_SLUG.CHANGE}=true`}>

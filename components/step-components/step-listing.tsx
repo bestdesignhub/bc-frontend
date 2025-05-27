@@ -1,6 +1,6 @@
 'use client';
 
-import React, { FC } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { Row } from 'react-bootstrap';
 import StepCard from './step-card';
 import { useRouter, useSearchParams } from 'next/navigation';
@@ -17,10 +17,18 @@ const StepListing: FC<{ stepList: any[]; steps: any[]; step: string; nextStepSlu
 }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const [currentParams, setCurrentParams] = useState<string>('');
+
+  useEffect(() => {
+    setCurrentParams(searchParams.toString());
+  }, [searchParams]);
+
 
   const handleSelection = (id: any) => {
     dispatch(setIsPageSwitchLoading(true));
     const params = new URLSearchParams(searchParams?.toString() || '');
+    // const params = new URLSearchParams(currentParams?.toString() || '');
+
     if (searchParams.has(URL_SLUG.CHANGE)) {
       params.delete(URL_SLUG.CHANGE);
       params.set(nextStepSlug, id);

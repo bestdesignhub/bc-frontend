@@ -46,6 +46,7 @@ const SweaterStep = async ({
   // if (!(steps.length + 1 >= step)) {
   //   redirect('/');
   // }
+  console.log('resolvedSearchParams priceData', priceData);
 
   const stepData = steps[step - FIXED_STEPS_COUNT];
 
@@ -91,9 +92,11 @@ const SweaterStep = async ({
       size: 'l',
     };
 
+    console.log('requestBody', requestBody);
+
     try {
       const response = await userAxiosInstance.post(PRODUCT_PRICE_BY_SIZE_, requestBody);
-      console.log('response', response.data?.data?.SIZEL);
+      console.log('response', response.data?.data);
       // setPriceData(response.data?.data?.SIZEL);
       priceData = response.data.data || {};
     } catch (error) {

@@ -5,7 +5,7 @@ import { formatPrice, getAWSImageUrl } from '@/utils/common.utils';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
 
 export default function StepNavigate({
@@ -31,6 +31,11 @@ export default function StepNavigate({
   const searchParams = useSearchParams();
   const style = searchParams.get('style');
   console.log("===========>", style);
+  const pathname = usePathname();
+  const currentStep = Number(pathname.split('/').pop()); // e.g. 3
+  const isChange = searchParams.get('change') === 'true';
+  const isLastStep = steps && currentStep === steps.length + FIXED_STEPS_COUNT;
+
 
   const keys: string[] = [];
 
@@ -48,7 +53,7 @@ export default function StepNavigate({
 
     console.log('All keys:', keys); // ['yarn', 'gender', 'material', 'gauge', 'pattern', 'style']
   }, [steps, searchParams, activeIndex]);
-
+  const stepLabels = ['Gauge', 'Pattern', 'Styles', 'Measurement'];
 
   // Usage
 
@@ -140,6 +145,10 @@ export default function StepNavigate({
                     {/* <strong>{formatPrice(stepPageData.yarn.price)}</strong> */}
                     <strong>{formatPrice(price)}</strong>
                   </div>}
+                  {isChange && stepLabels[0] && <div className="price">
+                    {/* <strong>{formatPrice(stepPageData.yarn.price)}</strong> */}
+                    <strong>{formatPrice(price)}</strong>
+                  </div>}
                 </div>
               </div>
             )}
@@ -161,7 +170,7 @@ export default function StepNavigate({
 
             if (index + 2 === 6) return null; // Skip rendering if index + 2 equals 6
             const isDataExists = stepPageData.hasOwnProperty(step.slug);
-            const stepLabels = ['Gauge', 'Pattern', 'Styles', 'Measurement'];
+
             console.log("stepLabels", stepLabels[index]);
 
             return (
@@ -221,7 +230,13 @@ export default function StepNavigate({
                           <strong>{formatPrice(stepPageData?.yarn?.price)}</strong> 
                           <strong>{formatPrice(price)}</strong> 
                         </div> */}
-                        {activeIndex === index && (
+                        {(
+                          (isChange && index === currentStep - FIXED_STEPS_COUNT - 1)) && (
+                            <div className="price">
+                              <strong>{formatPrice(price)}</strong>
+                            </div>
+                          )}
+                        {!isChange && (activeIndex === index) && (
                           <div className="price">
                             <strong>{formatPrice(price)}</strong>
                           </div>
