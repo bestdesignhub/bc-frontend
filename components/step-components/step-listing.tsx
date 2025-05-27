@@ -18,6 +18,7 @@ const StepListing: FC<{ stepList: any[]; steps: any[]; step: string; nextStepSlu
   const router = useRouter();
   const searchParams = useSearchParams();
   const [currentParams, setCurrentParams] = useState<string>('');
+  console.log(currentParams);
 
   useEffect(() => {
     setCurrentParams(searchParams.toString());

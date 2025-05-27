@@ -2,8 +2,6 @@ import '@/app/styles/Sweater-product.css';
 import SweaterBox from '@/app/components/Sweater/Sweater-box';
 import {
   ChangeYarnButton,
-  // ProceedToSizeMeasurement,
-  SaveAndGoToCart,
   StepBanner,
 } from '@/components';
 import { FIXED_STEPS_COUNT, URL_SLUG, USER_ROUTES } from '@/constants';

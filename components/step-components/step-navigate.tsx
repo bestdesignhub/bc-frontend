@@ -34,7 +34,7 @@ export default function StepNavigate({
   const pathname = usePathname();
   const currentStep = Number(pathname.split('/').pop()); // e.g. 3
   const isChange = searchParams.get('change') === 'true';
-  const isLastStep = steps && currentStep === steps.length + FIXED_STEPS_COUNT;
+  // const isLastStep = steps && currentStep === steps.length + FIXED_STEPS_COUNT;
 
 
   const keys: string[] = [];

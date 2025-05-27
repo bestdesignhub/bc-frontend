@@ -2,7 +2,7 @@
 
 import { Row, Col, InputGroup, Form } from 'react-bootstrap';
 import { formatPrice } from '@/utils/common.utils';
-import { ChangeEvent, Fragment, useCallback, useEffect, useMemo, useState } from 'react';
+import { ChangeEvent, useCallback, useEffect, useMemo, useState } from 'react';
 import userAxiosInstance from '@/config/userAxiosInstance';
 import {
   PRODUCT_PRICE_BY_SIZE,
@@ -11,7 +11,6 @@ import {
 } from '@/constants/apis';
 import { dispatch } from '@/lib/redux/store';
 import { setLoading } from '@/lib/redux/slices/loaderSlice';
-import { AddToCartButton } from '@/components';
 import { DropDownOptionType } from '@/types';
 // import Link from 'next/link';
 import { COOKIES, MESSAGES, URL_SLUG, USER_ROUTES } from '@/constants';
@@ -65,6 +64,8 @@ export default function ProdutDetail({
   const [isWishlisted, setIsWishlisted] = useState(!!details?.isWishlisted);
   console.log('details', details);
   console.log('details', availableSizes);
+  console.log(size);
+  console.log(genders);
 
   const handleChangeSize = (event: ChangeEvent<HTMLInputElement>) => {
     setSizeSlug(event.target.id);
