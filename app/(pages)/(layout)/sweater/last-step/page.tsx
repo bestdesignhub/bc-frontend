@@ -1,8 +1,7 @@
 import '@/app/styles/Sweater-product.css';
 import SweaterBox from '@/app/components/Sweater/Sweater-box';
 import {
-  ChangeYarnButton,
-  StepBanner,
+  ChangeYarnButton
 } from '@/components';
 import { FIXED_STEPS_COUNT, URL_SLUG, USER_ROUTES } from '@/constants';
 import { PRODUCT_TYPE_DROPDOWN_URL } from '@/constants/apis';
