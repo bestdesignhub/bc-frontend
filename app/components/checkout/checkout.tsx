@@ -5,12 +5,11 @@ import '@/app/styles/checkout.css';
 import Checkoutproducts from './checkout-products';
 
 import Image from 'next/image';
-import Link from 'next/link';
+
 // import Paymentimg1 from '@/public/images/payment-img-1.svg';
 import Paymentimg2 from '@/public/images/payment-img-2.svg';
 import PriceDetails from './price-details';
-import { AngleCircleLeftIcon } from '@/components';
-import { PAYMENT_OPTIONS, USER_ROUTES } from '@/constants';
+import { PAYMENT_OPTIONS } from '@/constants';
 import { useMemo, useState } from 'react';
 import { DropDownOptionType, PaymentOption } from '@/types';
 import AddressManagement from './address-management';
