@@ -71,7 +71,6 @@ export default function SweaterBox({ stepData }: SweaterBoxProps) {
       <div className="Sweater-top-data">
         {/* <h3>Your Final Sweater</h3> */}
         <h3>{title}</h3>
-        <p>Whatevert you select in previous all styles, color, patterns as per final result</p>
       </div>
       <div className="Sweater-img">
         {loading ? (

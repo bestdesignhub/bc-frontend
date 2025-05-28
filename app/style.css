@@ -456,6 +456,8 @@ body {
 /* Navigation Start */
 .nav-row {
   background-color: #fff;
+  border-top: 1px solid #eaeaea;
+  border-bottom: 1px solid #eaeaea;
 }
 
 .nav-row .f-container {

@@ -3,8 +3,8 @@
 import React, { useRef, useState, useEffect } from 'react';
 import Slider from 'react-slick';
 import Image from 'next/image';
-import 'slick-carousel/slick/slick-theme.css';
-import 'slick-carousel/slick/slick.css';
+import '@/app/styles/slick-theme.css';
+import '@/app/styles/slick.css';
 import '@/app/styles/Sweater-product.css';
 import { getAWSImageUrl } from '@/utils/common.utils';
 
@@ -78,19 +78,7 @@ export default function SweaterSlider({ images = [] }: { images: string[] }) {
               />
             </div>
           ))}
-          {/*           
-          <div className="slider-image-box-big">
-            <Image src={Sweaterimg1} alt="image" width={508} height={486} />
-          </div>
-          <div className="slider-image-box-big">
-            <Image src={Sweaterimg1} alt="image" width={508} height={486} />
-          </div>
-          <div className="slider-image-box-big">
-            <Image src={Sweaterimg1} alt="image" width={508} height={486} />
-          </div>
-          <div className="slider-image-box-big">
-            <Image src={Sweaterimg1} alt="image" width={508} height={486} />
-          </div> */}
+
         </Slider>
 
         <Slider

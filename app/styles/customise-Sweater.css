@@ -69,6 +69,7 @@
 .Sweater-block-main {
   display: flex;
   align-items: stretch;
+  background: #f6f4e7;
 }
 
 .Sweater-block-main .Sweater-left,
@@ -78,7 +79,6 @@
 }
 
 .Sweater-page {
-  background: #f6f4e7;
   width: 100%;
   display: block;
   position: relative;
@@ -109,7 +109,7 @@
 }
 
 .Sweater-top-data {
-  text-align: center;
+  text-align: left;
   width: 100%;
   display: block;
   max-width: 418px;

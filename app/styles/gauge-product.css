@@ -163,8 +163,8 @@
   margin: 0;
 }
 
-.gauge-navigate.smallbx {
-  padding: 0;
+.stepBackground .gauge-navigate.smallbx {
+  margin-right: -24px;
 }
 
 

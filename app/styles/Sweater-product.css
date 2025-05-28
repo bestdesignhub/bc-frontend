@@ -61,16 +61,28 @@
 .Sweater-block-main {
   display: flex;
   align-items: stretch;
+  background: #f6f4e7;
 }
 
-.Sweater-block-main .Sweater-left,
+.Sweater-block-main .Sweater-left {
+  width: 30%;
+  position: relative;
+}
+
 .Sweater-block-main .Sweater-right {
-  width: 50%;
+  width: 70%;
+  position: relative;
+  display: flex;
+  gap: 10px;
+}
+
+.Sweater-block-main .Sweater-right .right-price-product {
+  width: 75%;
+  margin-top: 90px;
   position: relative;
 }
 
 .Sweater-page {
-  background: #f6f4e7;
   width: 100%;
   display: block;
   position: relative;
@@ -90,12 +102,14 @@
 } */
 
 .final-step-sweaterbg {
-  background: #fff;
   display: flex;
   position: relative;
   z-index: 2;
-  margin-top: -21px;
-  padding: 20px;
+  padding: 10px;
+  border: 1px solid #eaeaea;
+  margin-top: 25px;
+  background: #fff;
+  gap: 10px;
 }
 
 .Sweater-block-main .Sweater-left>* {
@@ -106,23 +120,27 @@
 .Sweater-left-inner {
   width: 100%;
   display: block;
-  padding: 43px 0 80px;
+  padding: 0;
 }
 
 .Sweater-top-data {
-  text-align: center;
-  width: 100%;
+  width: 633px;
   display: block;
-  max-width: 418px;
   margin: 0 auto;
-  padding: 0 0 40px;
+  padding: 0;
+  position: absolute;
+  left: 410px;
+  text-align: left;
+  height: 82px;
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
 }
 
 .Sweater-top-data h3 {
-  font-size: 32px;
-  text-transform: uppercase;
+  font-size: 30px;
   padding: 0 0 10px;
-  font-weight: 500;
+  font-weight: 400;
+  font-family: 'Poppins', sans-serif;
 }
 
 .Sweater-top-data p {
@@ -135,6 +153,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 1px solid #c7c4bd;
 }
 
 .Sweater-left-inner .Sweater-img img {
@@ -144,11 +163,15 @@
 }
 
 .Sweater-right .Sweater-block-top {
-  padding: 10px 0 10px 80px;
-  border-bottom: var(--bsp-gray7) solid 1px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  min-height: 546px;
+  padding: 20px;
+  margin: 0;
+  font-size: 25px;
+  background: #f9fafb;
+  text-align: center;
+  position: relative;
+  width: 25%;
+  font-family: 'Poppins', sans-serif;
 }
 
 .Sweater-right .Sweater-block-top .short-text {
@@ -163,8 +186,7 @@
 }
 
 .Sweater-block-top-right {
-  display: flex;
-  align-items: center;
+  text-align: left;
 }
 
 .Sweater-block-top-right button a {
@@ -195,9 +217,8 @@
   font-weight: 500;
   color: var(--bsp-black);
   font-size: var(--bsp-body-24);
-  display: flex;
   gap: 13px;
-  align-items: center;
+  text-align: center;
   padding: 0;
 }
 
@@ -209,10 +230,12 @@
 .Sweater-right-middle {
   display: flex;
   align-items: flex-start;
-  padding: 10px;
+  padding: 5px;
   justify-content: space-between;
   border: 1px solid #c7c4bd;
   margin-top: 20px;
+  max-width: 66%;
+  width: 66%;
 }
 
 .yarn-section .change-link-2 {
@@ -232,13 +255,17 @@
   color: #fff;
   padding: 0;
   text-align: center;
+  font-size: 10px;
+  letter-spacing: 1px;
+  height: 24px;
 }
 
 .yarn-section .img {
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
   overflow: hidden;
   position: relative;
+  margin-right: 10px;
 }
 
 .stepNavigationPadding {
@@ -247,8 +274,8 @@
 }
 
 .Sweater-right-middle .products-box-sub {
-  padding: 2px 20px;
-  width: calc(100% - 150px);
+  padding: 0;
+  width: calc(100% - 100px);
 }
 
 .Sweater-right-middle .Sweater-right-bottom {
@@ -280,17 +307,17 @@
 }
 
 .products-box-sub-inner h5 {
-  padding: 0 0 10px;
-  font-size: 20px;
+  padding: 0;
+  font-size: 14px;
   font-weight: 500;
-  line-height: 20px;
+  line-height: 18px;
   font-family: var(--bsp-font-poppins);
 }
 
 .products-box-sub-inner .name {
-  padding: 1px 0;
+  padding: 0;
   font-family: var(--bsp-font-poppins);
-  font-size: var(--bsp-body-14);
+  font-size: 12px;
   font-weight: 500;
   color: var(--bsp-black);
 }
@@ -299,7 +326,7 @@
   color: var(--bsp-gray2);
   font-weight: 500;
   letter-spacing: 0.5px;
-  padding-left: 10px;
+  padding-left: 0;
 }
 
 .change-link-2 {
@@ -407,8 +434,8 @@
   overflow: hidden;
 }
 
-.gauge-navigate.smallbx {
-  padding: 0;
+.stepBackground .gauge-navigate.smallbx {
+  margin-right: -24px;
 }
 
 .gauge-navigate.smallbx .navigatebox {
@@ -427,12 +454,19 @@
   gap: 10px;
 }
 
-.gauge-navigate .navigate-item {
-  flex: 0 0 49.20%;
+.Sweater-right-bottom .gauge-navigate .navigate-item {
   gap: 10px;
   border: 1px solid #c7c4bd;
   position: relative;
+  width: 200px;
   /* padding: 20px 20px; */
+}
+
+.Sweater-right-bottom .gauge-navigate .navigate-item:first-child {
+  position: absolute;
+  top: 20px;
+  right: 0;
+  width: 212px;
 }
 
 .gauge-navigate .navigate-item h6 {
@@ -444,23 +478,22 @@
 
 .gauge-navigate .navigate-item h6.step-title-custom {
   position: absolute;
-  left: 58%;
+  left: 55%;
   top: 14px;
   z-index: 999;
-  font-size: 20px;
+  font-size: 15px;
 }
 
 .navigatebox {
   display: flex;
   padding: 10px;
-  height: auto;
   width: 100%;
   cursor: pointer;
   position: relative;
 }
 
 .yarn-section .info {
-  padding: 40px 18px;
+  padding: 30px 0 0;
   width: 47%;
 }
 
@@ -500,7 +533,7 @@
   font-size: var(--bsp-body-14);
   font-family: var(--bsp-font-poppins);
   padding: 0;
-  white-space: nowrap;
+  text-wrap: auto;
 }
 
 .navigatebox .info p {
@@ -524,7 +557,7 @@
   bottom: 10px;
   background: #af986d;
   padding: 10px;
-  width: 49%;
+  width: 46%;
 }
 
 .gauge-navigate.smallbx .info button {
@@ -559,7 +592,7 @@
   color: #fff;
   display: flex;
   align-items: center;
-  font-size: 16px;
+  font-size: 10px;
   text-transform: uppercase;
 }
 
@@ -576,6 +609,7 @@
   align-self: center;
   text-transform: uppercase;
 }
+
 
 @media (min-width: 1601px) and (max-width: 1750px) {
   .Sweater-block-main {

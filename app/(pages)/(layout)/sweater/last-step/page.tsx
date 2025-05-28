@@ -156,7 +156,7 @@ const LastStepPage = async ({
 
   return (
     <>
-      <StepBanner step={stepData?.steps?.length + FIXED_STEPS_COUNT} />
+      {/* <StepBanner step={stepData?.steps?.length + FIXED_STEPS_COUNT} /> */}
       <div className="Sweater-page">
         <div className="Sweater-block-main">
           <div className="container">
@@ -171,75 +171,59 @@ const LastStepPage = async ({
                 </div>
               </div>
               <div className="Sweater-right">
-                <div className="Sweater-block-top">
-                  <div className="short-text" />
-                  <div className="Sweater-block-top-right">
-                    <div className="price">
-                      <span className="new-price">{formatPrice(stepData?.yarn?.price)}</span>
-                    </div>
-                    {/* {resolvedSearchParams.hasOwnProperty(URL_SLUG.ADD_TO_CART) ? (
-                      <SaveAndGoToCart steps={stepData?.steps} />
-                    ) : (
-                       <ProceedToSizeMeasurement />
-                      ''
-                    )} */}
-                  </div>
-                </div>
-
-
-
                 {/* Yarn Info */}
-                <div className="Sweater-right-middle">
-                  <div className='yarn-section'>
-                    <div className="img">
-                      <Image
-                        src={getAWSImageUrl(stepData?.yarn?.image)}
-                        alt="yarn img"
-                        width={170}
-                        height={170}
-                        loading="lazy"
-                      />
-                      <ChangeYarnButton searchParams={resolvedSearchParams} />
-                    </div>
-                  </div>
-                  <div className="products-box-sub">
-                    <div className="products-box-sub-inner">
-                      <h5>Yarn Details</h5>
-                      {/* <h5>{stepData?.yarn?.name}</h5> */}
-                      <div className="name">
-                        {t('COMMON.NAME')}: {' '}
-                        <span>
-                          {stepData?.yarn?.name} - {stepData?.yarn?.yarnId}
-                        </span>
-                      </div>
-                      <div className="name">
-                        {t('COMMON.GENDER')}: {' '}
-                        <span>
-                          {/* {stepData?.yarn?.gender} */}
-                          {stepData?.genderData?.name?.en}
-                        </span>
-                      </div>
-                      <div className="name">
-                        {t('COMMON.MATERIAL')}: {' '}
-                        <span>
-                          {stepData?.yarn?.material}
-                        </span>
-                      </div>
-                      <div className="name">
-                        {t('COMMON.COLOUR')}: {' '}
-                        <span>
-                          {stepData?.yarn?.colour}
-                        </span>
-                      </div>
-                      <div className="name">
-                        {t('COMMON.SEASONALITY')}: {' '}
-                        <span>
-                          {stepData?.yarn?.seasonality}
-                        </span>
+                <div className='right-price-product'>
+                  <div className="Sweater-right-middle">
+                    <div className='yarn-section'>
+                      <div className="img">
+                        <Image
+                          src={getAWSImageUrl(stepData?.yarn?.image)}
+                          alt="yarn img"
+                          width={170}
+                          height={170}
+                          loading="lazy"
+                        />
+                        <ChangeYarnButton searchParams={resolvedSearchParams} />
                       </div>
                     </div>
+                    <div className="products-box-sub">
+                      <div className="products-box-sub-inner">
+                        <h5>Yarn Details</h5>
+                        {/* <h5>{stepData?.yarn?.name}</h5> */}
+                        <div className="name">
+                          {t('COMMON.NAME')}: {' '}
+                          <span>
+                            {stepData?.yarn?.name} - {stepData?.yarn?.yarnId}
+                          </span>
+                        </div>
+                        <div className="name">
+                          {t('COMMON.GENDER')}: {' '}
+                          <span>
+                            {/* {stepData?.yarn?.gender} */}
+                            {stepData?.genderData?.name?.en}
+                          </span>
+                        </div>
+                        <div className="name">
+                          {t('COMMON.MATERIAL')}: {' '}
+                          <span>
+                            {stepData?.yarn?.material}
+                          </span>
+                        </div>
+                        <div className="name">
+                          {t('COMMON.COLOUR')}: {' '}
+                          <span>
+                            {stepData?.yarn?.colour}
+                          </span>
+                        </div>
+                        <div className="name">
+                          {t('COMMON.SEASONALITY')}: {' '}
+                          <span>
+                            {stepData?.yarn?.seasonality}
+                          </span>
+                        </div>
+                      </div>
 
-                    {/* <div className="Sweater-right-bottom">
+                      {/* <div className="Sweater-right-bottom">
                       <div className="fabric-listing">
                         <ul>
                           <li>
@@ -284,137 +268,129 @@ const LastStepPage = async ({
                         </ul>
                       </div>
                     </div> */}
+                    </div>
                   </div>
-                </div>
 
-                {/* Yarn Characteristics */}
+                  {/* Yarn Characteristics */}
 
-                {/* Sweater Steps + Size + Measurements */}
-                <div className="Sweater-right-bottom sweater-type">
-                  <div className="gauge-navigate">
-                    <div className="d-flex flex-wrap">
-                      {stepData?.steps?.map((stepObj: any, index: number) => {
-                        const currentStepData = stepData?.[stepObj?.slug] || {};
-                        if (stepObj?.name === 'Price Module') return null;
-                        return (
-                          <div className="navigate-item" key={index}>
-                            <h6 className='step-title-custom'>{stepObj?.name}</h6>
-                            <CurrentStepBox
-                              currentStepData={currentStepData}
-                              stepNumber={`${index + FIXED_STEPS_COUNT}`}
-                            />
+                  {/* Sweater Steps + Size + Measurements */}
+                  <div className="Sweater-right-bottom sweater-type">
+                    <div className="gauge-navigate">
+                      <div className="d-flex flex-wrap">
+                        {stepData?.steps?.map((stepObj: any, index: number) => {
+                          const currentStepData = stepData?.[stepObj?.slug] || {};
+                          if (stepObj?.name === 'Price Module') return null;
+                          return (
+                            <div className="navigate-item" key={index}>
+                              <h6 className='step-title-custom'>{stepObj?.name}</h6>
+                              <CurrentStepBox
+                                currentStepData={currentStepData}
+                                stepNumber={`${index + FIXED_STEPS_COUNT}`}
+                              />
+                            </div>
+                          );
+                        })}
+                      </div>
+                      <div className='availableSizesBox'>
+                        <div>
+                          <AvailableSizeSelector sizes={filteredAvailableSizes}
+                            basePrice={Number(priceFromQuery) || 0}
+                            yarn={resolvedSearchParams["yarn"]}
+                            gauge={resolvedSearchParams["gauge"]}
+                            pattern={resolvedSearchParams["pattern"]}
+                            style={resolvedSearchParams["style"]}
+                          />
+                        </div>
+                        <MeasurementsForm measurements={measurementsData} />
+                        <p className="note-mesurment">
+                          Above measurement boxes please insert in the right box if you need to change
+                          the measurement
+                        </p>
+
+                        <div className="how-to">
+                          <img
+                            src="https://cdn-icons-png.flaticon.com/512/709/709496.png"
+                            alt="measure-icon"
+                          />
+                          How to Measure?
+                        </div>
+                      </div>
+                    </div>
+
+                    {(resolvedSearchParams["product"] === undefined || resolvedSearchParams["product"] === null || resolvedSearchParams["product"] === "") && (
+
+                      <div className="container mx-auto p-0 mt-3">
+                        {/* <h6 className="text-2xl font-bold mb-4">Add New Item</h6>/ */}
+                        {(userToken) ? <CreateProduct data={{
+                          stepData,
+                          // currentStepData,
+                          filteredAvailableSizes,
+                          yarn: resolvedSearchParams["yarn"],
+                          gauge: resolvedSearchParams["gauge"],
+                          pattern: resolvedSearchParams["pattern"],
+                          style: resolvedSearchParams["style"],
+                          userMeasurementBySlug,
+                          userMeasurementActiveList: userMeasurementActive,
+                          measurementProfile,
+                          productTypeId,
+                          fittingName,
+                          steps,
+                          productId: resolvedSearchParams["product"],
+                          fittingId: resolvedSearchParams["fitting"],
+                          availableSizes,
+                          measurementProfiles
+                        }} /> : (<>
+                          <span>{t('COMMON.ALREADY_A_CUSTOMER')}?</span>
+                          <div className="login-link-sub">
+                            <Link
+                              href={`${USER_ROUTES.signin}?${queryString}&${URL_SLUG.REDIRECT}=sweater/last-step`}
+                            >
+                              {t('COMMON.LOG_IN')}
+                            </Link>
                           </div>
-                        );
-                      })}
-                    </div>
-
-                    <div className='availableSizesBox'>
-
-                      <div>
-                        <AvailableSizeSelector sizes={filteredAvailableSizes}
-                          basePrice={Number(priceFromQuery) || 0}
-                          yarn={resolvedSearchParams["yarn"]}
-                          gauge={resolvedSearchParams["gauge"]}
-                          pattern={resolvedSearchParams["pattern"]}
-                          style={resolvedSearchParams["style"]}
-                        />
+                          <span>
+                            {t('COMMON.DONT_HAVE_AN_ACCOUNT')}?{' '}
+                            <Link
+                              href={`${USER_ROUTES.signup}?${queryString}&${URL_SLUG.REDIRECT}=sweater/last-step`}
+                            >
+                              {t('COMMON.REGISTER')}
+                            </Link>
+                          </span>
+                        </>)}
                       </div>
-
-                      <MeasurementsForm measurements={measurementsData} />
-
-                      <p className="note-mesurment">
-                        Above measurement boxes please insert in the right box if you need to change
-                        the measurement
-                      </p>
-
-                      <div className="how-to">
-                        <img
-                          src="https://cdn-icons-png.flaticon.com/512/709/709496.png"
-                          alt="measure-icon"
-                        />
-                        How to Measure?
-                      </div>
-                    </div>
-                  </div>
-
-                  {(resolvedSearchParams["product"] === undefined || resolvedSearchParams["product"] === null || resolvedSearchParams["product"] === "") && (
-
-                    <div className="container mx-auto p-0 mt-3">
-                      {/* <h6 className="text-2xl font-bold mb-4">Add New Item</h6>/ */}
-                      {(userToken) ? <CreateProduct data={{
-                        stepData,
-                        // currentStepData,
-                        filteredAvailableSizes,
-                        yarn: resolvedSearchParams["yarn"],
-                        gauge: resolvedSearchParams["gauge"],
-                        pattern: resolvedSearchParams["pattern"],
-                        style: resolvedSearchParams["style"],
-                        userMeasurementBySlug,
-                        userMeasurementActiveList: userMeasurementActive,
-                        measurementProfile,
-                        productTypeId,
-                        fittingName,
-                        steps,
-                        productId: resolvedSearchParams["product"],
-                        fittingId: resolvedSearchParams["fitting"],
-                        availableSizes,
-                        measurementProfiles
-                      }} /> : (<>
-                        <span>{t('COMMON.ALREADY_A_CUSTOMER')}?</span>
-                        <div className="login-link-sub">
-                          <Link
-                            href={`${USER_ROUTES.signin}?${queryString}&${URL_SLUG.REDIRECT}=sweater/last-step`}
-                          >
-                            {t('COMMON.LOG_IN')}
-                          </Link>
-                        </div>
-                        <span>
-                          {t('COMMON.DONT_HAVE_AN_ACCOUNT')}?{' '}
-                          <Link
-                            href={`${USER_ROUTES.signup}?${queryString}&${URL_SLUG.REDIRECT}=sweater/last-step`}
-                          >
-                            {t('COMMON.REGISTER')}
-                          </Link>
-                        </span>
-                      </>)}
-                    </div>
-                  )}
-
-                  {resolvedSearchParams["product"] && <div className="measurements-login-link">
-                    {(userToken) ? (
-                      <MeasurementAddToCartButton
-                        steps={steps}
-                        productId={resolvedSearchParams["product"]}
-                        fittingId={resolvedSearchParams["fitting"]}
-                        productTypeId={productTypeId}
-                        defaultFittingSize={availableSizes?.at(0)?._id}
-                      />
-                    ) : (
-                      <>
-                        <span>{t('COMMON.ALREADY_A_CUSTOMER')}?</span>
-                        <div className="login-link-sub">
-                          <Link className='addto-cart-laststep'
-                            href={`${USER_ROUTES.signin}?${queryString}&${URL_SLUG.REDIRECT}=measurements`}
-                          >
-                            {t('COMMON.LOG_IN')}
-                          </Link>
-                        </div>
-                        <span>
-                          {t('COMMON.DONT_HAVE_AN_ACCOUNT')}?{' '}
-                          <Link className='addto-cart-laststep'
-                            href={`${USER_ROUTES.signup}?${queryString}&${URL_SLUG.REDIRECT}=measurements`}
-                          >
-                            {t('COMMON.REGISTER')}
-                          </Link>
-                        </span>
-                      </>
                     )}
-                  </div>}
 
-
-
-
-                  {/* {(resolvedSearchParams["product"] && <MeasurementsBox
+                    {resolvedSearchParams["product"] && <div className="measurements-login-link">
+                      {(userToken) ? (
+                        <MeasurementAddToCartButton
+                          steps={steps}
+                          productId={resolvedSearchParams["product"]}
+                          fittingId={resolvedSearchParams["fitting"]}
+                          productTypeId={productTypeId}
+                          defaultFittingSize={availableSizes?.at(0)?._id}
+                        />
+                      ) : (
+                        <>
+                          <span>{t('COMMON.ALREADY_A_CUSTOMER')}?</span>
+                          <div className="login-link-sub">
+                            <Link className='addto-cart-laststep'
+                              href={`${USER_ROUTES.signin}?${queryString}&${URL_SLUG.REDIRECT}=measurements`}
+                            >
+                              {t('COMMON.LOG_IN')}
+                            </Link>
+                          </div>
+                          <span>
+                            {t('COMMON.DONT_HAVE_AN_ACCOUNT')}?{' '}
+                            <Link className='addto-cart-laststep'
+                              href={`${USER_ROUTES.signup}?${queryString}&${URL_SLUG.REDIRECT}=measurements`}
+                            >
+                              {t('COMMON.REGISTER')}
+                            </Link>
+                          </span>
+                        </>
+                      )}
+                    </div>}
+                    {/* {(resolvedSearchParams["product"] && <MeasurementsBox
                     productTypeId={productTypeId}
                     fittingName={fittingName}
                     steps={steps}
@@ -423,7 +399,23 @@ const LastStepPage = async ({
                     availableSizes={availableSizes}
                     measurementProfiles={measurementProfiles}
                   />)} */}
+                  </div>
                 </div>
+                <div className="Sweater-block-top">
+                  <div className="short-text" />
+                  <div className="Sweater-block-top-right">
+                    <div className="price">
+                      <span className="new-price">{formatPrice(stepData?.yarn?.price)}</span>
+                    </div>
+                    {/* {resolvedSearchParams.hasOwnProperty(URL_SLUG.ADD_TO_CART) ? (
+                      <SaveAndGoToCart steps={stepData?.steps} />
+                    ) : (
+                       <ProceedToSizeMeasurement />
+                      ''
+                    )} */}
+                  </div>
+                </div>
+
               </div>
             </div>
           </div>
