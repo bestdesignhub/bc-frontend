@@ -133,15 +133,15 @@
 }
 
 .gauge-row .gaugebox .info p {
-  font-size: var(--bsp-body-22);
+  font-size: 18px;
   color: var(--bsp-gray2);
   padding: 20px 0 0;
 }
 
 .gauge-row .gaugebox button {
   background: var(--bsp-black);
-  height: 80px;
-  font-size: var(--bsp-heading4);
+  height: 50px;
+  font-size: 18px;
   text-transform: uppercase;
   color: var(--bsp-white);
   font-weight: 500;

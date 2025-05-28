@@ -11,23 +11,21 @@ const OrderHistory = async ({ orders }: { orders: any[] }) => {
         <h3>{t('COMMON.ORDER_HISTROY')}</h3>
         <div className="order-table-main">
           <div className="order-table">
-            <ul className="thead">
+            {/* <ul className="thead">
               <li>
                 <div className="text-2">{t('COMMON.PRODUCTS')}</div>
                 <div className="text-3">{t('COMMON.SHIPPING_ADDRESS')}</div>
                 <div className="text-4">{t('COMMON.TOTAL_PRICE')}</div>
                 <div className="text-4">{'Measurements'}</div>
               </li>
-            </ul>
-            <ul className="tbody">
+            </ul> */}
+            <ul className="tbody accounlist-order">
               {orders?.map((order) => (
-                <li
-                  key={order.orderId}
-                  style={{ marginBottom: '10px', display: 'flex', borderBottom: '1px solid' }}
-                >
+                <li key={order.orderId}>
                   <div data-title={t('COMMON.PRODUCTS')} className="text-2">
+                    <strong>Order Details:</strong>
                     {order.products.map((product: any) => (
-                      <div key={product._id} className="product-item border p-2 mb-2 rounded flex">
+                      <div key={product._id} className="product-item p-2 mb-2">
                         <p className="font-bold">{product.name}</p>
                         <p>
                           <strong>{t('COMMON.PRICE')}:</strong> {formatPrice(product?.price)}
@@ -35,7 +33,7 @@ const OrderHistory = async ({ orders }: { orders: any[] }) => {
                         <p>
                           <strong>{t('COMMON.QUANTITY_TEXT')}:</strong> {product.quantity}
                         </p>
-                        <p>
+                        <div className='mesurment-size'>
                           <ul className="list-disc pl-5">
                             {product.measurements && product.measurements?.map((measurement: any, index: number) => (
                               <li key={index}>
@@ -43,7 +41,7 @@ const OrderHistory = async ({ orders }: { orders: any[] }) => {
                               </li>
                             ))}
                           </ul>
-                        </p>
+                        </div>
                         {/* <p>
                         <strong>{t("COMMON.VIEW")}:</strong>{' '}
                           <Link href={`${USER_ROUTES.shop}/${product._id}`}>
@@ -53,7 +51,8 @@ const OrderHistory = async ({ orders }: { orders: any[] }) => {
                       </div>
                     ))}
                   </div>
-                  <div data-title={t('COMMON.SHIPPING_ADDRESS')} className="text-3">
+                  <div data-title={t('COMMON.SHIPPING_ADDRESS')} className="text-3 shipping-block">
+                    <strong>Shipping Address:</strong>
                     <p>{order.shippingAddress.name}</p>
                     <p>{order.shippingAddress.company}</p>
                     <p>
@@ -65,7 +64,8 @@ const OrderHistory = async ({ orders }: { orders: any[] }) => {
                     <p>{order.shippingAddress.country}</p>
                     <p>{order.shippingAddress.phoneNumber}</p>
                   </div>
-                  <div data-title={t('COMMON.TOTAL_PRICE')} className="text-4">
+                  <div data-title={t('COMMON.TOTAL_PRICE')} className="text-4 price-block">
+                    <p><strong>Total Orders Price:</strong></p>
                     {formatPrice(order.totalPrice)}
                   </div>
                 </li>
@@ -74,7 +74,7 @@ const OrderHistory = async ({ orders }: { orders: any[] }) => {
           </div>
         </div>
       </div>
-    </div>
+    </div >
   );
 };
 

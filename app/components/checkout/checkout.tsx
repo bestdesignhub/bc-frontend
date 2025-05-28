@@ -41,49 +41,50 @@ export default function Checkout({
   return (
     <>
       <div className="checkout-page">
-        <div className="checkout-block-main">
-          <div className="checkout-left">
-            <div style={{ marginBottom: '20px' }}>
-              <Link href={USER_ROUTES.cart}>
-                <AngleCircleLeftIcon />
-              </Link>
-            </div>
+        <div className='container'>
+          <div className="checkout-block-main">
+            <div className="checkout-left">
+              {/* <div style={{ marginBottom: '20px' }}>
+                <Link href={USER_ROUTES.cart}>
+                  <AngleCircleLeftIcon />
+                </Link>
+              </div> */}
 
-            <div className="checkout-block-inner">
-              <div className="checkout-black-head">
-                <h6>
-                  <i>1</i> <span>{t('COMMON.ORDER_SUMMERY')}</span>
-                </h6>
-              </div>
-              <div className="checkout-block-inner-sub">
-                <div className="checkout-create-list">
-                  {cartData?.map((cart) => <Checkoutproducts cart={cart} key={cart?._id} />)}
+              <div className="checkout-block-inner">
+                <div className="checkout-black-head">
+                  <h6>
+                    <i>1</i> <span>{t('COMMON.ORDER_SUMMERY')}</span>
+                  </h6>
+                </div>
+                <div className="checkout-block-inner-sub">
+                  <div className="checkout-create-list">
+                    {cartData?.map((cart) => <Checkoutproducts cart={cart} key={cart?._id} />)}
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="checkout-block-inner">
-              <div className="checkout-black-head">
-                <h6>
-                  <i>2</i> <span>{t('COMMON.DELIVERY_ADDRESS')}</span>
-                </h6>
+              <div className="checkout-block-inner">
+                <div className="checkout-black-head">
+                  <h6>
+                    <i>2</i> <span>{t('COMMON.DELIVERY_ADDRESS')}</span>
+                  </h6>
+                </div>
+                <AddressManagement
+                  selectedAddress={selectAddress}
+                  onSelect={setSelectAddress}
+                  myAddresses={myAddresses}
+                  countries={countries}
+                  countriesName={countriesName}
+                />
               </div>
-              <AddressManagement
-                selectedAddress={selectAddress}
-                onSelect={setSelectAddress}
-                myAddresses={myAddresses}
-                countries={countries}
-                countriesName={countriesName}
-              />
-            </div>
-            <div className="checkout-block-inner">
-              <div className="checkout-black-head">
-                <h6>
-                  <i>3</i> <span>{t('COMMON.PAYMENT_OPTIONS')}</span>
-                </h6>
-              </div>
-              <div className="checkout-block-inner-sub">
-                <div className="payment-block">
-                  {/* <div className="paymant-box">
+              <div className="checkout-block-inner">
+                <div className="checkout-black-head">
+                  <h6>
+                    <i>3</i> <span>{t('COMMON.PAYMENT_OPTIONS')}</span>
+                  </h6>
+                </div>
+                <div className="checkout-block-inner-sub">
+                  <div className="payment-block">
+                    {/* <div className="paymant-box">
                     <input
                       type="radio"
                       name="payment"
@@ -97,41 +98,42 @@ export default function Checkout({
                       </span>
                     </label>
                   </div> */}
-                  <div className="paymant-box">
-                    <input
-                      type="radio"
-                      name="payment"
-                      id={PAYMENT_OPTIONS.STRIPE}
-                      checked={selectedPayment === PAYMENT_OPTIONS.STRIPE}
-                      onChange={() => setSelectedPayment(PAYMENT_OPTIONS.STRIPE)}
-                    />
-                    <label htmlFor={PAYMENT_OPTIONS.STRIPE}>
-                      <span>
-                        <Image
-                          loading="lazy"
-                          src={Paymentimg2}
-                          alt="image"
-                          width={86}
-                          height={36}
-                        />
-                      </span>
-                    </label>
+                    <div className="paymant-box">
+                      <input
+                        type="radio"
+                        name="payment"
+                        id={PAYMENT_OPTIONS.STRIPE}
+                        checked={selectedPayment === PAYMENT_OPTIONS.STRIPE}
+                        onChange={() => setSelectedPayment(PAYMENT_OPTIONS.STRIPE)}
+                      />
+                      <label htmlFor={PAYMENT_OPTIONS.STRIPE}>
+                        <span>
+                          <Image
+                            loading="lazy"
+                            src={Paymentimg2}
+                            alt="image"
+                            width={86}
+                            height={36}
+                          />
+                        </span>
+                      </label>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div className="checkout-right">
-            <div className="checkout-right-inner">
-              <h5>{t('COMMON.PRICE_DETAILS_TEXT')}</h5>
-              <PriceDetails totalPrice={totalPrice} />
+            <div className="checkout-right">
+              <div className="checkout-right-inner">
+                <h5>{t('COMMON.PRICE_DETAILS_TEXT')}</h5>
+                <PriceDetails totalPrice={totalPrice} />
+              </div>
+              <PaymentButton
+                cartData={cartData}
+                address={selectAddress}
+                totalPrice={totalPrice}
+                paymentOption={selectedPayment}
+              />
             </div>
-            <PaymentButton
-              cartData={cartData}
-              address={selectAddress}
-              totalPrice={totalPrice}
-              paymentOption={selectedPayment}
-            />
           </div>
         </div>
       </div>

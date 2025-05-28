@@ -68,14 +68,14 @@ export default function MyAccountLayout({ children }: { children: React.ReactNod
                     {t('COMMON.ORDER_HISTORY')}
                   </Link>
                 </div>
-                <div className="nav-item">
+                {/* <div className="nav-item">
                   <Link
                     href={`${USER_ROUTES.myAccount}${USER_ROUTES.settings}`}
                     className={`nav-item nav-link ${pathname === `${USER_ROUTES.myAccount}${USER_ROUTES.settings}` ? 'active' : ''}`}
                   >
                     {t('COMMON.SETTINGS')}
                   </Link>
-                </div>
+                </div> */}
                 <div className="nav-item">
                   <Link className="nav-item nav-link " href="#" onClick={handleLogout}>
                     {t('COMMON.LOGOUT')}

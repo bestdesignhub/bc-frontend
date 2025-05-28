@@ -22,7 +22,7 @@ const StepCard: FC<{
         style={
           nextSlugId === stepData?._id
             ? {
-              border: '3px solid',
+              border: '1px solid #7f7263',
             }
             : {}
         }

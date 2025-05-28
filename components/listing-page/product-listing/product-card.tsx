@@ -92,7 +92,7 @@ const ProductCard: FC<{ product: any; genderSlug: string, price: string }> = ({ 
           style={
             yarnId === product?._id
               ? {
-                border: '3px solid',
+                border: '1px solid #7f7263',
               }
               : {}
           }
