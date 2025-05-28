@@ -13,12 +13,12 @@ const genderBasedConfig: Record<string, {
   patternId: string;
 }> = {
   '6798793f705aedfe39db13b1': {
-    styleId: '683115e829bba4f61c928489', // Men
+    styleId: '6835601871b93cf4de274515', // Men
     gaugeId: '678e68649b451d2d5b771b26',
     patternId: '682632f11df3ffe9dcf68a9b',
   },
   '67987972705aedfe39db13b8': {
-    styleId: '6831168629bba4f61c9284d1',
+    styleId: '683560f971b93cf4de274543',
     gaugeId: '678e68649b451d2d5b771b26',
     patternId: '682553c4fbba7d5cd661eadf',
   },
