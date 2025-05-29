@@ -13,7 +13,7 @@ const MeasurementAddToCartButton = ({
   productTypeId,
   defaultFittingSize,
   queryParams,
-  gender
+  gender, price, size
 }: {
   steps: any[];
   productId: string;
@@ -22,6 +22,8 @@ const MeasurementAddToCartButton = ({
   defaultFittingSize: string;
   queryParams?: any;
   gender?: any;
+  price?: any;
+  size?: any;
 }) => {
   const t = useTranslations();
   const [showModal, setShowModal] = useState(false);
@@ -57,7 +59,10 @@ const MeasurementAddToCartButton = ({
         fittingId={fittingId}
         defaultFittingSize={defaultFittingSize}
         handleClose={handleModalClose}
+        price={price}
+        size={size}
         show={showModal}
+
       />
     </>
   );

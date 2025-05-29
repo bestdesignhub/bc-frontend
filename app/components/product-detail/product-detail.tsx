@@ -172,6 +172,33 @@ export default function ProdutDetail({
     availableSizes = allSizes.filter(size => ['xs', 's', 'm', 'l', 'xl'].includes(size.slug));
   }
 
+  // useEffect(() => {
+  //   const updatePriceAndSize = async () => {
+  //     try {
+  //       dispatch(setLoading(true));
+  //       const response = await userAxiosInstance.patch("/product-template/updatePriceAndSize", {
+  //         productId: details?._id,
+  //         updatedPrice: price,
+  //         updatedSize: size
+  //       });
+  //       if (response.data.success) {
+  //         // setIsWishlisted(false);
+  //         // dispatch(setUserSettingDecreaseWishlistCount());
+  //       } else {
+  //         console.error(response?.data?.message);
+  //         toast.error(t(MESSAGES.SOMETHING_WENT_WRONG));
+  //       }
+  //     } catch (error) {
+  //       console.error(error);
+  //       toast.error(t(MESSAGES.SOMETHING_WENT_WRONG));
+  //     } finally {
+  //       dispatch(setLoading(false));
+  //     }
+  //   };
+  //   updatePriceAndSize();
+  // }, []);
+
+
   return (
     <>
       <div className="product-detail-wrapper">
@@ -288,6 +315,8 @@ export default function ProdutDetail({
                           defaultFittingSize={selectedSize}
                           queryParams={urlQueryString}
                           gender={searchParams.get('gender')}
+                          price={price}
+                          size={size}
                         />
                       ) : (
                         <><span>{t('COMMON.ALREADY_A_CUSTOMER')}?</span>

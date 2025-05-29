@@ -17,9 +17,11 @@ const MeasurementConfirmationModal = (props: {
   productId: string;
   fittingId: string;
   defaultFittingSize: string;
+  price?: any;
+  size?: any;
   handleClose: () => void;
 }) => {
-  const { show, handleClose, steps, defaultFittingSize, productTypeId } = props;
+  const { show, handleClose, steps, defaultFittingSize, productTypeId, price, size } = props;
   const router = useRouter();
   const t = useTranslations();
   const searchParams = useSearchParams();
@@ -60,6 +62,8 @@ const MeasurementConfirmationModal = (props: {
         productTypeId,
         quantity: 1,
         measurements: measurementData,
+        price: price,
+        size: size
       };
 
       // let measurementData =  sessionStorage.getItem('measurementData');

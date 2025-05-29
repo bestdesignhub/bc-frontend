@@ -63,10 +63,12 @@ const LastStepPage = async ({
 
   // Get the price from the query
   const priceFromQuery = resolvedSearchParams["price"];
-  console.log("Price:", priceFromQuery);
+  const sizeFromQuery = resolvedSearchParams["size"];
+  console.log("Price: Size", priceFromQuery, sizeFromQuery);
 
   // Remove the price parameter
   delete resolvedSearchParams["price"];
+  delete resolvedSearchParams["size"];
 
   // Cached/static data (revalidated)
   const [productType, productTypeData] = await Promise.all([
@@ -367,6 +369,8 @@ const LastStepPage = async ({
                           fittingId={resolvedSearchParams["fitting"]}
                           productTypeId={productTypeId}
                           defaultFittingSize={availableSizes?.at(0)?._id}
+                          price={priceFromQuery}
+                          size={sizeFromQuery}
                         />
                       ) : (
                         <>

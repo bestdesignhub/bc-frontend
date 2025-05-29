@@ -81,6 +81,7 @@ const AvailableSizeSelector = ({ sizes, basePrice = 0, yarn, gauge, pattern, sty
         const currentUrl = new URLSearchParams(searchParams.toString());
         // const currentUrl = searchParams;
         currentUrl.set('price', fetchedPrice);
+        currentUrl.set('size', selectedSizeSlug ?? 'l');
         // router.push(currentUrl.toString());
         router.push(`?${currentUrl.toString()}`);
 

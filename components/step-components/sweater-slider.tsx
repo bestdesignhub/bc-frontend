@@ -3,8 +3,8 @@
 import React, { useRef, useState, useEffect } from 'react';
 import Slider from 'react-slick';
 import Image from 'next/image';
-import '@/app/styles/slick-theme.css';
-import '@/app/styles/slick.css';
+// import '@app/styles/slick-theme.css';
+// import '@/app/styles/slick.css';
 import '@/app/styles/Sweater-product.css';
 import { getAWSImageUrl } from '@/utils/common.utils';
 
