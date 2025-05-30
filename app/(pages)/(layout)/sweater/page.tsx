@@ -63,6 +63,10 @@ const SweaterPage = async ({
     console.log(priceData, "priceData");
   }
 
+  const rawPrice = priceData && Object.keys(priceData).length > 0 ? Number(priceData.sizeL || 0) : 0;
+  const formattedPrice = rawPrice.toLocaleString('en-US', { minimumIntegerDigits: 5, useGrouping: false });
+
+
 
   // console.log("requestBody", requestBody);
 
@@ -132,7 +136,7 @@ const SweaterPage = async ({
             <div className="woman-product-wrappe bgsweater">
               <Row className="g-4 no-horizontal-padding">
                 <Col xs={12} lg={2}>
-                  <StepNavigate genders={genders} genderSlug={genderSlug} price={Number(priceData?.sizeL)} />
+                  <StepNavigate genders={genders} genderSlug={genderSlug} price={Number(formattedPrice)} />
                 </Col>
                 <Col xs={12} lg={10}>
                   <div className="sweater-bg-step">
@@ -140,14 +144,14 @@ const SweaterPage = async ({
                       genders={genders}
                       colours={colours}
                       materials={materials}
-                      price={Number(priceData?.sizeL)}
+                      price={Number(formattedPrice)}
                     />
                     {!genderSlug && <GenderModalWrapper genders={genders} material={materials[1]?.value} />}
                     <ProductTopbar
                       text={t('COMMON.YARN_TEXT')}
                       total={filteredYarnList?.length}
                     />
-                    <ProductListing list={filteredYarnList} genderSlug={genderSlug} price={Number(priceData?.sizeL)} />
+                    <ProductListing list={filteredYarnList} genderSlug={genderSlug} price={Number(formattedPrice)} />
                     <CustomPagination
                       currentPage={filteredYarnList?.currentPage}
                       totalPage={filteredYarnList?.totalPage}

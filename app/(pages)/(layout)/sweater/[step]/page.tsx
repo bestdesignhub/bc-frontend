@@ -57,12 +57,23 @@ const SweaterStep = async ({
   const materialSlug = resolvedSearchParams["material"];
 
   if (stepData?.slug === 'pattern' || stepData?.slug === 'style' || stepData?.slug === 'fitting') {
-    const hasGenderField = stepPageData.list.some((item: any) => item.gender !== undefined);
-    const matchingItems = hasGenderField ? stepPageData.list.filter((item: any) => item.gender === genderSlug) : stepPageData.list;
+    // const hasGenderField = stepPageData.list.some((item: any) => item.gender !== undefined);
+    // const matchingItems = hasGenderField ? stepPageData.list.filter((item: any) => item.gender === genderSlug) : stepPageData.list;
+    // stepPageData.list = matchingItems;
+    const hasGenderField = Array.isArray(stepPageData?.list) &&
+      stepPageData.list.some((item: any) => item.gender !== undefined);
+
+    const matchingItems = hasGenderField
+      ? stepPageData.list.filter((item: any) => item.gender === genderSlug)
+      : stepPageData.list || [];
+
     stepPageData.list = matchingItems;
   }
   if (stepData?.slug === 'style') {
-    const hasGenderField = stepPageData.list.some((item: any) => item?.pattern !== undefined);
+    // const hasGenderField = stepPageData.list.some((item: any) => item?.pattern !== undefined);
+    const hasGenderField = Array.isArray(stepPageData?.list) &&
+      stepPageData.list.some((item: any) => item?.pattern !== undefined);
+
 
     const matchingItems = hasGenderField ? stepPageData.list.filter((item: any) => item?.pattern === patternSlug) : stepPageData.list;
     stepPageData.list = matchingItems;

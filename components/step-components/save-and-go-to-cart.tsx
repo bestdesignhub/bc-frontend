@@ -11,7 +11,7 @@ import { UPDATE_TO_CART_URL } from '@/constants/apis';
 import { MESSAGES, URL_SLUG, USER_ROUTES } from '@/constants';
 import toast from 'react-hot-toast';
 
-const SaveAndGoToCart = ({ steps }: { steps: any[] }) => {
+const SaveAndGoToCart = ({ steps, productId, fittingId, price, size }: { steps: any[], productId: String, fittingId: string, price?: any, size?: any }) => {
   const t = useTranslations();
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -22,12 +22,28 @@ const SaveAndGoToCart = ({ steps }: { steps: any[] }) => {
       slug: step.slug,
       stepCard: searchParamsValues[step.slug],
     }));
+    // const payload = {
+    //   yarn: searchParamsValues[URL_SLUG.YARN],
+    //   steps: stepsData,
+    //   fittingSizeId: searchParamsValues[URL_SLUG.FITTING_SIZE],
+    //   _id: searchParamsValues[URL_SLUG.ADD_TO_CART],
+    // };
+    const measurementData = sessionStorage.getItem('measurements');
     const payload = {
-      yarn: searchParamsValues[URL_SLUG.YARN],
+      yarn: searchParamsValues.yarn,
       steps: stepsData,
-      fittingSizeId: searchParamsValues[URL_SLUG.FITTING_SIZE],
-      _id: searchParamsValues[URL_SLUG.ADD_TO_CART],
+      productId: productId,
+      fittingId: fittingId,
+      genderId: searchParamsValues.gender ?? searchParamsValues['gender'],
+      fittingSizeId: searchParamsValues[URL_SLUG.FITTING],
+      // productTypeId,
+      quantity: 1,
+      measurements: measurementData,
+      price: price,
+      size: size
     };
+    console.log("Payload-=========", payload);
+
     dispatch(setLoading(true));
     userAxiosInstance
       .patch(UPDATE_TO_CART_URL, payload)

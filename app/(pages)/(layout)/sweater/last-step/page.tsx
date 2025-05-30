@@ -1,7 +1,9 @@
 import '@/app/styles/Sweater-product.css';
 import SweaterBox from '@/app/components/Sweater/Sweater-box';
 import {
-  ChangeYarnButton
+  ChangeYarnButton,
+  ProceedToSizeMeasurement,
+  SaveAndGoToCart
 } from '@/components';
 import { FIXED_STEPS_COUNT, URL_SLUG, USER_ROUTES } from '@/constants';
 import { PRODUCT_TYPE_DROPDOWN_URL } from '@/constants/apis';
@@ -32,6 +34,7 @@ import Link from 'next/link';
 // import { useSearchParams } from 'next/navigation';
 import MeasurementAddToCartButton from '@/app/components/measurements/add-to-cart-button';
 import { cookies } from 'next/headers';
+import { title } from 'process';
 const measurementsData = [
   { label: "BODY LENGTH - HSP", value: 65, tolerance: 5 },
   { label: "HEM WIDTH", value: 36, tolerance: 3 },
@@ -119,7 +122,7 @@ const LastStepPage = async ({
   // Fetch main step data
   const stepData = await getStepFullViewDetails({ productTypeId, steps: resolvedSearchParams });
   const fittingName = stepData?.fitting?.stepCard?.title;
-  console.log("stepData", availableSizes);
+  console.log("stepData====>>>>>>>>>>", stepData);
 
   const SIZE_ORDER = ['XS', 'S', 'M', 'L', 'XL', '2XL', '3XL', '4XL', '5XL'];
   // Now filter the available sizes based on the step type and slug
@@ -171,6 +174,7 @@ const LastStepPage = async ({
                   )}
                 </div>
               </div>
+              <div>{stepData?.productData?.title?.en}</div>
               <div className="Sweater-right">
                 {/* Yarn Info */}
                 <div className='right-price-product'>
@@ -411,10 +415,16 @@ const LastStepPage = async ({
                       <span className="new-price">{formatPrice(stepData?.yarn?.price)}</span>
                     </div>
                     {/* {resolvedSearchParams.hasOwnProperty(URL_SLUG.ADD_TO_CART) ? (
-                      <SaveAndGoToCart steps={stepData?.steps} />
+                      <SaveAndGoToCart steps={stepData?.steps}
+                        productId={resolvedSearchParams["product"]}
+                        fittingId={resolvedSearchParams["fitting"]}
+                        // productTypeId={productTypeId}
+                        // defaultFittingSize={availableSizes?.at(0)?._id}
+                        price={priceFromQuery}
+                        size={sizeFromQuery}
+                      />
                     ) : (
-                       <ProceedToSizeMeasurement />
-                      ''
+                      <ProceedToSizeMeasurement />
                     )} */}
                   </div>
                 </div>

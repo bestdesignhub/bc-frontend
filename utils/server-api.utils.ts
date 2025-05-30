@@ -586,5 +586,5 @@ export const fetchPriceList = async (payload: any) => {
   console.log(`${CONFIG.apiUrl}/apis${PRODUCT_PRICE_BY_SIZE_}`);
 
   const res = await axios.post(`${CONFIG.apiUrl}${PRODUCT_PRICE_BY_SIZE_}`, payload);
-  return res.data.data;
+  return res?.data?.data;
 };
