@@ -50,6 +50,7 @@ const ProductListFilters: FC<Props> = ({
   const genderId = searchParams.get("gender")
   const params = new URLSearchParams(searchParams.toString());
   params.delete("gender");
+  const selectedValues = (key: string): string[] => searchParams.getAll(key);
 
   const optionsMap: Record<string, DropDownOptionType[]> = {
     genders,
@@ -67,12 +68,12 @@ const ProductListFilters: FC<Props> = ({
 
 
     // If the selected option is already in the URL, unselect it by deleting the parameter
-    if (params.get(key) === value) {
-      params.delete(key);
-    } else {
-      // Set the parameter to the selected value
-      params.set(key, value);
-    }
+    // if (params.get(key) === value) {
+    //   params.delete(key);
+    // } else {
+    //   // Set the parameter to the selected value
+    //   params.set(key, value);
+    // }
 
     // const values = params.getAll(key);
 
@@ -84,6 +85,20 @@ const ProductListFilters: FC<Props> = ({
     //   params.append(key, value);
     // }
 
+    const currentValues = params.getAll(key);
+
+    if (currentValues.includes(value)) {
+      // Remove the value
+      const newValues = currentValues.filter((v) => v !== value);
+      params.delete(key);
+      newValues.forEach((v) => params.append(key, v));
+    } else {
+      // Add the new value
+      params.append(key, value);
+    }
+
+
+
     router.push(`?${params.toString()}`);
   };
 
@@ -91,6 +106,12 @@ const ProductListFilters: FC<Props> = ({
   useEffect(() => {
     dispatch(setLoading(false));
   }, [searchParamsString, dispatch]);
+
+
+
+
+
+
 
   return (
     <div className="sidebar">
@@ -101,19 +122,34 @@ const ProductListFilters: FC<Props> = ({
             <Accordion.Body>
               <InputGroup className="gender-checkbox">
                 {optionsMap[field].map((option) => (
+                  // <Form.Check
+                  //   inline
+                  //   key={option.value}
+                  //   label={option.label}
+                  //   name={key}
+                  //   type="checkbox" // Using checkbox for toggling behavior
+                  //   id={option.value}
+                  //   // checked={selectedValues[key]?.includes(option.value) || false}
+                  //   // defaultChecked={searchParams.get(key) === option.value}
+                  //   // checked={searchParams.getAll(key).includes(option.value)}
+                  //   checked={genderId === option.value} // Check if this option is selected
+                  //   onChange={() => updateParams(key, option.value)} // Toggle the selection
+                  // />
+
+
                   <Form.Check
                     inline
                     key={option.value}
                     label={option.label}
                     name={key}
-                    type="checkbox" // Using checkbox for toggling behavior
-                    id={option.value}
-                    // checked={selectedValues[key]?.includes(option.value) || false}
-                    // defaultChecked={searchParams.get(key) === option.value}
-                    // checked={searchParams.getAll(key).includes(option.value)}
-                    checked={genderId === option.value} // Check if this option is selected
-                    onChange={() => updateParams(key, option.value)} // Toggle the selection
+                    type="checkbox"
+                    id={`${key}-${option.value}`}
+                    checked={searchParams.getAll(key).includes(option.value)}
+                    onChange={() => updateParams(key, option.value)}
                   />
+
+
+
                 ))}
               </InputGroup>
             </Accordion.Body>

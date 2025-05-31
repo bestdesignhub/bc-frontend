@@ -74,17 +74,32 @@ const AvailableSizeSelector = ({ sizes, basePrice = 0, yarn, gauge, pattern, sty
       const mappedSizeKey = sizeMapping[slug.toLowerCase()];
       const fetchedPrice = priceData?.[`${mappedSizeKey}`];
 
-      if (fetchedPrice) {
-        // setPrice(fetchedPrice);
-        // onPriceChange && onPriceChange(fetchedPrice);
-        // Update the URL parameters with the new price
-        const currentUrl = new URLSearchParams(searchParams.toString());
-        // const currentUrl = searchParams;
-        currentUrl.set('price', fetchedPrice);
-        currentUrl.set('size', selectedSizeSlug ?? 'l');
-        // router.push(currentUrl.toString());
-        router.push(`?${currentUrl.toString()}`);
+      // if (fetchedPrice) {
+      //   // setPrice(fetchedPrice);
+      //   // onPriceChange && onPriceChange(fetchedPrice);
+      //   // Update the URL parameters with the new price
+      //   const currentUrl = new URLSearchParams(searchParams.toString());
+      //   // const currentUrl = searchParams;
+      //   currentUrl.set('price', fetchedPrice);
+      //   currentUrl.set('size', selectedSizeSlug ?? 'l');
+      //   // router.push(currentUrl.toString());
+      //   router.push(`?${currentUrl.toString()}`);
 
+      // }
+
+      if (fetchedPrice) {
+        // 🆕 Send size and price to API route
+        await fetch('/api/save-selection', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            size: slug,
+            price: fetchedPrice
+          })
+        });
+
+        // 🔁 Refresh to re-render server components (which can now read cookies)
+        router.refresh();
       }
     } catch (err) {
       console.error('Error fetching price by size:', err);

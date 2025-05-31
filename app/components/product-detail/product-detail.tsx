@@ -28,7 +28,7 @@ import ProductImageGallery from './product-gallery';
 import MeasurementsForm from '../measurements/measurementsForm';
 import Link from 'next/link';
 import MeasurementAddToCartButton from '../measurements/add-to-cart-button';
-import { useSearchParams } from 'next/navigation';
+import { usePathname, useSearchParams } from 'next/navigation';
 
 const allSizes = [
   { slug: 'xs', name: 'XS' },
@@ -54,18 +54,27 @@ export default function ProdutDetail({
   const token = Cookies.get(COOKIES.userToken);
   const t = useTranslations();
   const [price, setPrice] = useState(details?.basePriceXs ?? 0);
-  const [size, setSize] = useState(availableSizes?.at(0)?.slug);
-  const [slug, setSizeSlug] = useState(availableSizes?.at(0)?.slug);
+  const [size, setSize] = useState(availableSizes?.at(7)?.slug || '');
+  const [slug, setSizeSlug] = useState(availableSizes?.at(7)?.slug || '');
   const [selectedSize, setSelectedSize] = useState('');
   const searchParams = useSearchParams();
+  const pathname = usePathname();
   const queryString = useMemo(() => new URLSearchParams(searchParams).toString(), [searchParams]);
   // const queryString = new URLSearchParams(await searchParams).toString();
+
 
   const [isWishlisted, setIsWishlisted] = useState(!!details?.isWishlisted);
   console.log('details', details);
   console.log('details', availableSizes);
   console.log(size);
   console.log(genders);
+  console.log(pathname);
+  const [comment, setComment] = useState('');
+
+  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setComment(e.target.value);
+  }
+
 
   const handleChangeSize = (event: ChangeEvent<HTMLInputElement>) => {
     setSizeSlug(event.target.id);
@@ -156,6 +165,7 @@ export default function ProdutDetail({
     if (details?.gender) {
       const defaultSize = details.gender === 'men' ? 'l' : 'm'; // use lowercase if your slugs are lowercase
       setSelectedSize(defaultSize);
+      setSizeSlug(defaultSize)
     }
   }, [details?.gender]);
 
@@ -279,9 +289,11 @@ export default function ProdutDetail({
                     </div>
                     <div className='addcomment'>
                       <p>Any special instructions or request for us?</p>
-                      <textarea>
-                        Enter Special Details
-                      </textarea>
+                      <textarea
+                        value={comment}
+                        onChange={handleChange}
+                        placeholder="Enter Special Details"
+                      />
                     </div>
                   </div>
                 </Col>
@@ -298,7 +310,7 @@ export default function ProdutDetail({
                             name="size"
                             type="radio"
                             id={size.slug}
-                            checked={slug === size.slug}
+                            // checked={slug === size.slug}
                             onChange={handleChangeSize}
                           />
                         ))}
@@ -317,17 +329,19 @@ export default function ProdutDetail({
                           gender={searchParams.get('gender')}
                           price={price}
                           size={size}
+                          createdBy='shop'
+                          instructions={comment}
                         />
                       ) : (
                         <><span>{t('COMMON.ALREADY_A_CUSTOMER')}?</span>
                           <div className="login-link-sub">
                             <Link className='addto-cart-laststep'
-                              href={`${USER_ROUTES.signin}?${queryString}&${URL_SLUG.REDIRECT}=measurements`}
+                              href={`${USER_ROUTES.signin}?${queryString}&${URL_SLUG.REDIRECT}=${pathname}`}
                             >
                               {t('COMMON.LOG_IN')}
                             </Link> <span>/</span> &nbsp;
                             <Link
-                              href={`${USER_ROUTES.signup}?${queryString}&${URL_SLUG.REDIRECT}=measurements`}
+                              href={`${USER_ROUTES.signup}?${queryString}&${URL_SLUG.REDIRECT}=${pathname}`}
                             >
                               {t('COMMON.REGISTER')}
                             </Link>

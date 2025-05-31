@@ -3,13 +3,15 @@ import Image from 'next/image';
 import { formatPrice, generateProductName, getAWSImageUrl } from '@/utils/common.utils';
 
 export default function Checkoutproducts({ cart }: { cart: any }) {
+  console.log(cart);
+
   return (
     <>
       <div className="products-checkout-row">
         <div className="img">
           <Image
             loading="lazy"
-            src={getAWSImageUrl(cart?.yarn?.image)}
+            src={getAWSImageUrl(cart?.steps[2]?.stepCardRealImage)}
             alt="yarn img"
             width={150}
             height={150}

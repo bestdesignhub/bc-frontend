@@ -18,7 +18,7 @@ import {
   getStepTypesList,
 } from '@/utils/server-api.utils';
 import Image from 'next/image';
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 
 import { formatPrice, getAWSImageUrl } from '@/utils/common.utils';
 import { getTranslations } from 'next-intl/server';
@@ -35,6 +35,7 @@ import Link from 'next/link';
 import MeasurementAddToCartButton from '@/app/components/measurements/add-to-cart-button';
 import { cookies } from 'next/headers';
 import { title } from 'process';
+import { Form, InputGroup } from 'react-bootstrap';
 const measurementsData = [
   { label: "BODY LENGTH - HSP", value: 65, tolerance: 5 },
   { label: "HEM WIDTH", value: 36, tolerance: 3 },
@@ -144,17 +145,20 @@ const LastStepPage = async ({
 
 
 
-  if (
-    priceFromQuery !== undefined &&
-    priceFromQuery !== null &&
-    priceFromQuery !== "" &&
-    stepData &&
-    stepData.yarn
-  ) {
+  // if (
+  //   priceFromQuery !== undefined &&
+  //   priceFromQuery !== null &&
+  //   priceFromQuery !== "" &&
+  //   stepData &&
+  //   stepData.yarn
+  // ) {
 
-    stepData.yarn.price = Number(priceFromQuery);
-  }
+  //   stepData.yarn.price = Number(priceFromQuery);
+  // }
 
+  const selectedSize = (await cookieStore).get('selectedSize')?.value ?? 'm';
+  const selectedPrice = parseFloat((await cookieStore).get('selectedPrice')?.value ?? '0');
+  stepData.yarn.price = Number(selectedPrice);
 
 
 
@@ -373,8 +377,8 @@ const LastStepPage = async ({
                           fittingId={resolvedSearchParams["fitting"]}
                           productTypeId={productTypeId}
                           defaultFittingSize={availableSizes?.at(0)?._id}
-                          price={priceFromQuery}
-                          size={sizeFromQuery}
+                          price={selectedPrice}
+                          size={selectedSize}
                         />
                       ) : (
                         <>
@@ -428,7 +432,6 @@ const LastStepPage = async ({
                     )} */}
                   </div>
                 </div>
-
               </div>
             </div>
           </div>
