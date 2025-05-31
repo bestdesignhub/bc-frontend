@@ -196,7 +196,8 @@ const CreateProduct = (props: any) => {
             materialId: stepData?.yarn?.materialId, // Required, 24-character hex string
             patternId: pattern, // Required, 24-character hex string
             gaugeId: gauge, // Required, 24-character hex string
-            styleId: style // Required, 24-character hex string
+            styleId: style,// Required, 24-character hex string
+            createdBy: "user"
         };
 
         stepData?.steps?.map((e: any, index: number) => {

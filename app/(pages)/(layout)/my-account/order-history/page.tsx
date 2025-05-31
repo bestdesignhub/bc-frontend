@@ -20,6 +20,7 @@ export default async function MyAcountspage({
       }
     });
   });
+  console.log("orderData===>>>", orders?.data[0]);
 
   return (
     <>

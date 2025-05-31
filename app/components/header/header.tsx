@@ -62,7 +62,7 @@ export default function Header() {
     <>
       <div className="header-top">
         <div className="f-container">
-          <span className="f-shipping">Free Shipping on all orders over $500</span>
+          <span className="f-shipping">Free Shipping on all orders over €500</span>
           <ul className="h-top-btn">
             <li>
               <Link href="/sweater" title="Create My SWEATER">

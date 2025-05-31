@@ -1,4 +1,4 @@
-import { formatPrice } from '@/utils/common.utils';
+import { formatPrice, getAWSImageUrl } from '@/utils/common.utils';
 import { getTranslations } from 'next-intl/server';
 import React from 'react';
 
@@ -24,14 +24,39 @@ const OrderHistory = async ({ orders }: { orders: any[] }) => {
                 <li key={order.orderId}>
                   <div data-title={t('COMMON.PRODUCTS')} className="text-2">
                     <strong>Order Details:</strong>
+                    <p>
+                      <strong>Order Date:</strong>{' '}
+                      {order?.createdAt
+                        ? new Date(order.createdAt).toLocaleString('en-US', {
+                          year: 'numeric',
+                          month: 'long',
+                          day: 'numeric',
+                          hour: 'numeric',
+                          minute: '2-digit',
+                          hour12: true,
+                        })
+                        : 'N/A'}
+                    </p>
+                    <p>
+                      <strong>{'Status'}:</strong> {order?.paymentStatus}
+                    </p>
                     {order.products.map((product: any) => (
                       <div key={product._id} className="product-item p-2 mb-2">
                         <p className="font-bold">{product.name}</p>
                         <p>
                           <strong>{t('COMMON.PRICE')}:</strong> {formatPrice(product?.price)}
                         </p>
+
                         <p>
                           <strong>{t('COMMON.QUANTITY_TEXT')}:</strong> {product.quantity}
+                        </p>
+                        <p>
+                          <strong>{'Style'}:</strong> {product?.steps[2]?.stepCard?.title?.en}
+                        </p>
+                        <p>
+                          <strong>{'ProductImage'}:</strong> <div key={product?.steps[2]} className="thumbnail">
+                            <img src={getAWSImageUrl(product?.steps[2]?.stepCard?.realImage)} alt="image" width={80} height={80} />
+                          </div>
                         </p>
                         <div className='mesurment-size'>
                           <ul className="list-disc pl-5">
@@ -49,6 +74,7 @@ const OrderHistory = async ({ orders }: { orders: any[] }) => {
                           </Link>
                         </p> */}
                       </div>
+
                     ))}
                   </div>
                   <div data-title={t('COMMON.SHIPPING_ADDRESS')} className="text-3 shipping-block">
@@ -68,6 +94,26 @@ const OrderHistory = async ({ orders }: { orders: any[] }) => {
                     <p><strong>Total Orders Price:</strong></p>
                     {formatPrice(order.totalPrice)}
                   </div>
+
+                  <div className="order-actions mt-3">
+                    <button className="btn btn-primary me-2">
+                      Details
+                    </button>
+                    <button className="btn btn-secondary me-2">
+                      Review
+                    </button>
+                    <button className="btn btn-success me-2">
+                      Reorder
+                    </button>
+                    <button className="btn btn-secondary me-2">
+                      Make As PDF
+                    </button>
+                    <button className="btn btn-success">
+                      Exports
+                    </button>
+                  </div>
+
+
                 </li>
               ))}
             </ul>

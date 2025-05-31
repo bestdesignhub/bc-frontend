@@ -97,7 +97,7 @@ export const getYarnCardList = async (searchParams: { [key: string]: string }) =
     _order: sortOrder,
     _search: search = '',
     _colour: colour,
-    _gender: gender,
+    // _gender: gender,
     _material: material,
     _page: page = 1,
   } = searchParams;
@@ -108,9 +108,9 @@ export const getYarnCardList = async (searchParams: { [key: string]: string }) =
     filterObj['colourId'] = colour;
   }
 
-  if (gender && gender.length) {
-    filterObj['genderId'] = gender;
-  }
+  // if (gender && gender.length) {
+  //   filterObj['genderId'] = gender;
+  // }
 
   if (material && material.length) {
     filterObj['materialId'] = material;

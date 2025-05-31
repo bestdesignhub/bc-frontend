@@ -17,7 +17,7 @@ export default function AccessoriesItem({ href = '', image, title, price }: Acce
         <div className="info">
           <h6>{title}</h6>
           <div className="pr-price">
-            <span>Start from <strong>${price}</strong></span>
+            <span>Start from <strong> €{price}</strong></span>
           </div>
           <div className="pr-color d-none">
             <div className="color-item">

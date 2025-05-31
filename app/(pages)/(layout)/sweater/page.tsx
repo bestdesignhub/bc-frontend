@@ -66,7 +66,7 @@ const SweaterPage = async ({
   const rawPrice = priceData && Object.keys(priceData).length > 0 ? Number(priceData.sizeL || 0) : 0;
   const formattedPrice = rawPrice.toLocaleString('en-US', { minimumIntegerDigits: 5, useGrouping: false });
 
-
+  const colourId = resolvedSearchParams['colour'];
 
   // console.log("requestBody", requestBody);
 
@@ -85,12 +85,18 @@ const SweaterPage = async ({
   const yarnList = yarnListResult.status === 'fulfilled' ? yarnListResult.value : {};
   // const priceList = await getPriceListByIds(requestBody?.styleId, requestBody?.gaugeId, requestBody?.patternId, requestBody?.materialId, requestBody?.genderId)
   // const priceListData = priceList.success === 'true' ? priceList.data : [];
-  // console.log("priceListData", priceList);
+  console.log("priceListData", yarnList);
 
   // Filter by genderId
-  const filteredYarnList = materials
-    ? yarnList?.data?.filter((item: any) => item.materialId === materialId)
-    : yarnList?.data;
+  // const filteredYarnList = materials
+  //   ? yarnList?.data?.filter((item: any) => item.materialId === materialId)
+  //   : yarnList?.data;
+
+  const filteredYarnList = yarnList?.data?.filter((item: any) => {
+    const matchMaterial = materialId ? item.materialId === materialId : true;
+    const matchColour = colourId ? item.colourId === colourId : true;
+    return matchMaterial && matchColour;
+  });
 
 
 
@@ -153,8 +159,8 @@ const SweaterPage = async ({
                     />
                     <ProductListing list={filteredYarnList} genderSlug={genderSlug} price={Number(formattedPrice)} />
                     <CustomPagination
-                      currentPage={filteredYarnList?.currentPage}
-                      totalPage={filteredYarnList?.totalPage}
+                      currentPage={yarnList?.currentPage}
+                      totalPage={yarnList?.totalPage}
                     />
                   </div>
                 </Col>
