@@ -2,7 +2,6 @@ import '@/app/styles/Sweater-product.css';
 import SweaterBox from '@/app/components/Sweater/Sweater-box';
 import {
   ChangeYarnButton,
-  ProceedToSizeMeasurement,
   SaveAndGoToCart
 } from '@/components';
 import { FIXED_STEPS_COUNT, URL_SLUG, USER_ROUTES } from '@/constants';
@@ -18,7 +17,7 @@ import {
   getStepTypesList,
 } from '@/utils/server-api.utils';
 import Image from 'next/image';
-import React, { ChangeEvent } from 'react';
+import React from 'react';
 
 import { formatPrice, getAWSImageUrl } from '@/utils/common.utils';
 import { getTranslations } from 'next-intl/server';
@@ -34,8 +33,6 @@ import Link from 'next/link';
 // import { useSearchParams } from 'next/navigation';
 import MeasurementAddToCartButton from '@/app/components/measurements/add-to-cart-button';
 import { cookies } from 'next/headers';
-import { title } from 'process';
-import { Form, InputGroup } from 'react-bootstrap';
 const measurementsData = [
   { label: "BODY LENGTH - HSP", value: 65, tolerance: 5 },
   { label: "HEM WIDTH", value: 36, tolerance: 3 },

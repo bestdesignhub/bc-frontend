@@ -11,7 +11,7 @@ import { UPDATE_TO_CART_URL } from '@/constants/apis';
 import { MESSAGES, URL_SLUG, USER_ROUTES } from '@/constants';
 import toast from 'react-hot-toast';
 
-const SaveAndGoToCart = ({ steps, productId, fittingId, productTypeId, price, size }: { steps: any[], productId: String, fittingId: string, productTypeId?: string, price?: any, size?: any }) => {
+const SaveAndGoToCart = ({ steps, productId, fittingId, productTypeId, price, size }: { steps: any[], productId: string, fittingId: string, productTypeId?: string, price?: any, size?: any }) => {
   const t = useTranslations();
   const searchParams = useSearchParams();
   const router = useRouter();
