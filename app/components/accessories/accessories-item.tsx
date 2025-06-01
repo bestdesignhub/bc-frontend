@@ -8,6 +8,8 @@ type AccessoriesItemProps = {
   price: number;
 };
 export default function AccessoriesItem({ href = '', image, title, price }: AccessoriesItemProps) {
+  console.log("href===>>>", href);
+
   return (
     <div className="accessoriesbox">
       <Link href={href}>
