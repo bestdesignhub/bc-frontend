@@ -47,7 +47,7 @@ const MeasurementAddToCartButton = ({
   const handleModalClose = () => {
     setShowModal(false);
   };
-  const filteredSteps = steps.filter((step) => step.slug !== 'price_module');
+  const filteredSteps = steps?.filter((step) => step.slug !== 'price_module');
 
   return (
     <>

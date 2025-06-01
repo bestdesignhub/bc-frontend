@@ -67,6 +67,7 @@ export default function ProdutDetail({
   console.log('details', details);
   console.log('details', availableSizes);
   console.log(size);
+  console.log(slug);
   console.log(genders);
   console.log(pathname);
   const [comment, setComment] = useState('');
@@ -76,18 +77,39 @@ export default function ProdutDetail({
   }
 
 
-  const handleChangeSize = (event: ChangeEvent<HTMLInputElement>) => {
-    setSizeSlug(event.target.id);
+  // const handleChangeSize = (event: ChangeEvent<HTMLInputElement>) => {
+  //   setSizeSlug(event.target.id);
+  //   dispatch(setLoading(true));
+  //   setSize("");
+  //   userAxiosInstance
+  //     .post(PRODUCT_PRICE_BY_SIZE, {
+  //       _id: details._id,
+  //       size: event.target.id,
+  //     })
+  //     .then((response) => {
+  //       setPrice(response.data.data.price);
+  //       setSize(event.target.id);
+  //     })
+  //     .catch((error) => {
+  //       console.error(error);
+  //     })
+  //     .finally(() => {
+  //       dispatch(setLoading(false));
+  //     });
+  // };
+  const fetchPriceBySize = (sizeId: string) => {
     dispatch(setLoading(true));
-    setSize("");
+    setSize('');
+    setSizeSlug(sizeId);
+
     userAxiosInstance
       .post(PRODUCT_PRICE_BY_SIZE, {
         _id: details._id,
-        size: event.target.id,
+        size: sizeId,
       })
       .then((response) => {
         setPrice(response.data.data.price);
-        setSize(event.target.id);
+        setSize(sizeId);
       })
       .catch((error) => {
         console.error(error);
@@ -96,6 +118,18 @@ export default function ProdutDetail({
         dispatch(setLoading(false));
       });
   };
+
+  const handleChangeSize = (event: ChangeEvent<HTMLInputElement>) => {
+    fetchPriceBySize(event.target.id);
+  };
+
+  // Auto-call on page load if you have an initial size slug
+  useEffect(() => {
+    if (slug) {
+      fetchPriceBySize(slug);
+    }
+  }, [slug]);
+
 
   const urlQueryString = useMemo(() => {
     const params = new URLSearchParams();
@@ -310,7 +344,7 @@ export default function ProdutDetail({
                             name="size"
                             type="radio"
                             id={size.slug}
-                            // checked={slug === size.slug}
+                            checked={slug === size.slug}
                             onChange={handleChangeSize}
                           />
                         ))}
