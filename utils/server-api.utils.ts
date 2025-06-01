@@ -101,20 +101,22 @@ export const getYarnCardList = async (searchParams: { [key: string]: string }) =
     _material: material,
     _page: page = 1,
   } = searchParams;
+  console.log("searchParams", searchParams);
 
   const filterObj: Record<string, string> = {};
 
-  if (colour && colour.length) {
-    filterObj['colourId'] = colour;
+  if (searchParams?.colour) {
+    filterObj['colourId'] = searchParams?.colour;
   }
 
   // if (gender && gender.length) {
   //   filterObj['genderId'] = gender;
   // }
 
-  if (material && material.length) {
-    filterObj['materialId'] = material;
+  if (searchParams?.material) {
+    filterObj['materialId'] = searchParams?.material;
   }
+  console.log("filterObj", filterObj);
 
   const res: any = await handleApiCall(YARN_CARD_LIST_URL, 'POST', {
     page: parseInt(page.toString()),

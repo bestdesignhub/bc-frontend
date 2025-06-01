@@ -18,6 +18,7 @@ import { useTranslations } from 'next-intl';
 export default function Cartbox({ cart, fetchCartData }: { cart: any; fetchCartData: () => void }) {
   const t = useTranslations();
   console.log('cart', cart.cretedBy == 'shop');
+  console.log('cart', cart.steps);
 
   const name = useMemo(() => generateProductName(cart), [cart]);
   const urlQueryString = useMemo(() => {

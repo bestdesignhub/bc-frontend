@@ -71,8 +71,10 @@ const LastStepPage = async ({
   console.log("Price: Size", priceFromQuery, sizeFromQuery);
 
   // Remove the price parameter
-  delete resolvedSearchParams["price"];
-  delete resolvedSearchParams["size"];
+  const cleanedParams = { ...resolvedSearchParams };
+  delete cleanedParams["price"];
+  delete cleanedParams["size"];
+
 
   // Cached/static data (revalidated)
   const [productType, productTypeData] = await Promise.all([
@@ -123,7 +125,7 @@ const LastStepPage = async ({
   // Fetch main step data
   const stepData = await getStepFullViewDetails({ productTypeId, steps: resolvedSearchParams });
   const fittingName = stepData?.fitting?.stepCard?.title;
-  console.log("stepData====>>>>>>>>>>", stepData);
+  console.log("stepData====>>>>>>>>>><<<<<<<<<<", steps);
 
   const SIZE_ORDER = ['XS', 'S', 'M', 'L', 'XL', '2XL', '3XL', '4XL', '5XL'];
   // Now filter the available sizes based on the step type and slug
@@ -158,6 +160,8 @@ const LastStepPage = async ({
 
   const selectedSize = (await cookieStore).get('selectedSize')?.value ?? 'm';
   const selectedPrice = parseFloat((await cookieStore).get('selectedPrice')?.value ?? '0');
+  console.log(selectedPrice, selectedSize);
+
   stepData.yarn.price = Number(selectedPrice);
 
 
@@ -369,8 +373,8 @@ const LastStepPage = async ({
                       </div>
                     )}
 
-                    {resolvedSearchParams["product"] && <div className="measurements-login-link">
-                      {(userToken) ? (
+                    {resolvedSearchParams["product"] && !resolvedSearchParams.hasOwnProperty(URL_SLUG.ADD_TO_CART) && <div className="measurements-login-link">
+                      {((userToken)) ? (
                         <MeasurementAddToCartButton
                           steps={steps}
                           productId={resolvedSearchParams["product"]}
@@ -418,18 +422,27 @@ const LastStepPage = async ({
                     <div className="price">
                       <span className="new-price">{formatPrice(stepData?.yarn?.price)}</span>
                     </div>
-                    {/* {resolvedSearchParams.hasOwnProperty(URL_SLUG.ADD_TO_CART) ? (
-                      <SaveAndGoToCart steps={stepData?.steps}
-                        productId={resolvedSearchParams["product"]}
-                        fittingId={resolvedSearchParams["fitting"]}
+                    {resolvedSearchParams.hasOwnProperty(URL_SLUG.ADD_TO_CART) ? (
+                      <SaveAndGoToCart
+                        // steps={stepData?.steps}
+                        // productId={resolvedSearchParams["product"]}
+                        // fittingId={resolvedSearchParams["fitting"]}
                         // productTypeId={productTypeId}
                         // defaultFittingSize={availableSizes?.at(0)?._id}
-                        price={priceFromQuery}
-                        size={sizeFromQuery}
+                        // price={priceFromQuery}
+                        // size={sizeFromQuery}
+                        steps={steps}
+                        productId={resolvedSearchParams["product"]}
+                        fittingId={resolvedSearchParams["fitting"]}
+                        productTypeId={productTypeId}
+                        // defaultFittingSize={availableSizes?.at(0)?._id}
+                        price={selectedPrice}
+                        size={selectedSize}
                       />
                     ) : (
-                      <ProceedToSizeMeasurement />
-                    )} */}
+                      ""
+                      // <ProceedToSizeMeasurement />
+                    )}
                   </div>
                 </div>
               </div>

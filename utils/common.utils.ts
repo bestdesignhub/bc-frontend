@@ -127,14 +127,15 @@ export const formatPrice = (
 
 
 export const generateProductName = (cartItem: any) => {
-  const { yarn, steps, size, product } = cartItem;
+  // const { yarn, steps, size, product } = cartItem;
 
   // Find step titles based on stepTypeSlug
-  const gauge = steps.find((step: any) => step.stepTypeSlug === 'gauge')?.stepCardTitle || '';
-  const pattern = steps.find((step: any) => step.stepTypeSlug === 'pattern')?.stepCardTitle || '';
-  const style = steps.find((step: any) => step.stepTypeSlug === 'style')?.stepCardTitle || '';
-  const fitting = steps.find((step: any) => step.stepTypeSlug === 'fitting')?.stepCardTitle || '';
+  // const gauge = steps.find((step: any) => step.stepTypeSlug === 'gauge')?.stepCardTitle || '';
+  // const pattern = steps.find((step: any) => step.stepTypeSlug === 'pattern')?.stepCardTitle || '';
+  // const style = steps.find((step: any) => step.stepTypeSlug === 'style')?.stepCardTitle || '';
+  // const fitting = steps.find((step: any) => step.stepTypeSlug === 'fitting')?.stepCardTitle || '';
 
   // Construct the name
-  return `${product?.title?.en} - ${gauge} - ${pattern} - ${style} - ${fitting} - ${size.toUpperCase()}`;
+  // return `${product?.title?.en} - ${gauge} - ${pattern} - ${style} - ${fitting} - ${size.toUpperCase()}`;
+  return `${cartItem?.product?.title?.en}  `;
 };

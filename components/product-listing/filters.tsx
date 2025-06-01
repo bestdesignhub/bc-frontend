@@ -94,6 +94,7 @@ const ProductListFilters: FC<Props> = ({
       newValues.forEach((v) => params.append(key, v));
     } else {
       // Add the new value
+      params.delete(key);
       params.append(key, value);
     }
 

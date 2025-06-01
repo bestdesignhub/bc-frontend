@@ -52,7 +52,7 @@ const MeasurementConfirmationModal = (props: {
       //   console.log();
 
       // }
-      // console.log('stepsData', stepsData);
+      console.log('stepsData', stepsData);
       const measurementData = sessionStorage.getItem('measurements');
       const payload = {
         yarn: searchParamsValues.yarn,
