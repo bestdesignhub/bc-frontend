@@ -43,7 +43,7 @@
   border: 1px solid #eaeaea;
   padding: 10px;
   font-size: 12px;
-  color: #eaeaea;
+  color: #000;
   width: 100%;
 }
 
@@ -190,14 +190,15 @@
 
 .cartbtn {
   background: #ff5555 !important;
-  font-size: var(--bsp-body-20) !important;
+  font-size: 15px !important;
   color: var(--bsp-white) !important;
-  font-weight: bold !important;
+  font-weight: 600 !important;
   text-transform: uppercase !important;
-  height: 60px !important;
+  height: 50px !important;
   width: 100% !important;
   display: block;
-  line-height: 60px;
+  line-height: 50px;
+  text-align: center;
 }
 
 .cartbtn:hover {
@@ -743,6 +744,20 @@
   color: var(--bsp-gray);
   line-height: 1.857;
   padding: 30px 152px 0 0;
+}
+
+.size-buttons button.save-button {
+  font-size: 16px;
+  width: 100%;
+  background: #af986d;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 0;
+}
+
+.size-buttons button.save-button:hover {
+  background: #7f7263;
 }
 
 @media (min-width: 1200px) and (max-width: 1399px) {

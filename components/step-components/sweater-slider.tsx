@@ -1,99 +1,98 @@
 'use client';
-
 import React, { useRef, useState, useEffect } from 'react';
 import Slider from 'react-slick';
 import Image from 'next/image';
-// import '@app/styles/slick-theme.css';
-// import '@/app/styles/slick.css';
-import '@/app/styles/Sweater-product.css';
+import '../../app/styles/slick.css';
+import '../../app/styles/slick-theme.css';
+import '@/app/styles/Sweater-product.css'; // Your custom styles
 import { getAWSImageUrl } from '@/utils/common.utils';
 
 const mainSliderSettings = {
   dots: false,
-  arrows: true,
-  infinite: true,
-  speed: 500,
-  autoplay: true,
-  autoplaySpeed: 2000,
-  slidesToShow: 1,
-  slidesToScroll: 1,
-};
-
-const thumbnailSliderSettings = {
-  dots: false,
   arrows: false,
   infinite: true,
   speed: 500,
-  slidesToShow: 4, // Number of thumbnails visible at once
+  autoplay: true,
+  autoplaySpeed: 3000,
+  slidesToShow: 1,
   slidesToScroll: 1,
-  focusOnSelect: true, // Allows clicking on thumbnails to sync with the main slider
-
-  centerPadding: '0px',
-  responsive: [
-    {
-      breakpoint: 768,
-      settings: {
-        slidesToShow: 4,
-      },
-    },
-    {
-      breakpoint: 480,
-      settings: {
-        slidesToShow: 3,
-      },
-    },
-  ],
+  fade: true,
 };
 
-export default function SweaterSlider({ images = [] }: { images: string[] }) {
-  const mainSlider = useRef(null);
-  const thumbnailSlider = useRef(null);
+// const thumbnailSliderSettings = {
+//   dots: false,
+//   arrows: false,
+//   infinite: true,
+//   speed: 500,
+//   slidesToShow: 4,
+//   slidesToScroll: 1,
+//   focusOnSelect: true,
+//   centerPadding: '0px',
+//   responsive: [
+//     {
+//       breakpoint: 768,
+//       settings: { slidesToShow: 3 },
+//     },
+//     {
+//       breakpoint: 480,
+//       settings: { slidesToShow: 2 },
+//     },
+//   ],
+// };
 
-  const [nav1, setNav1] = useState(null);
-  const [nav2, setNav2] = useState(null);
+
+export default function SweaterSlider({ images = [] }: { images: string[] }) {
+  const mainSlider = useRef<Slider | null>(null);
+  const thumbnailSlider = useRef<Slider | null>(null);
+
+  const [nav1, setNav1] = useState<Slider | null>(null);
+  const [nav2, setNav2] = useState<Slider | null>(null);
+
+  console.log(nav1)
 
   useEffect(() => {
-    // Set slider references once components are mounted
     setNav1(mainSlider.current);
     setNav2(thumbnailSlider.current);
   }, []);
 
   return (
-    <>
-      <div className="slider-block">
-        <Slider
-          className="slider-for"
-          {...mainSliderSettings}
-          asNavFor={nav2 || undefined} // Sync with thumbnail slider
-          ref={mainSlider}
-        >
-          {images?.map((image) => (
-            <div key={image} className="slider-image-box-big">
-              <Image
-                src={getAWSImageUrl(image)}
-                alt="image"
-                loading="lazy"
-                width={508}
-                height={486}
-              />
-            </div>
-          ))}
+    <div className="slider-block">
+      <Slider
+        {...mainSliderSettings}
+        asNavFor={nav2 ?? undefined}
+        ref={(slider: any) => (mainSlider.current = slider)}
+        className="slider-for"
+      >
+        {images.map((img, i) => (
+          <div key={i} className="slider-image-box-big">
+            <Image
+              src={getAWSImageUrl(img)}
+              alt={`Product image ${i + 1}`}
+              width={508}
+              height={486}
+              loading="lazy"
+            />
+          </div>
+        ))}
+      </Slider>
 
-        </Slider>
-
-        <Slider
-          {...thumbnailSliderSettings}
-          asNavFor={nav1 || undefined} // Sync with main slider
-          ref={thumbnailSlider}
-          className="thumbnail-slider"
-        >
-          {images?.map((image) => (
-            <div key={image} className="thumbnail">
-              <Image src={getAWSImageUrl(image)} alt="image" width={80} height={80} />
-            </div>
-          ))}
-        </Slider>
-      </div>
-    </>
+      {/* <Slider
+        {...thumbnailSliderSettings}
+        asNavFor={nav1 ?? undefined}
+        ref={(slider: any) => (thumbnailSlider.current = slider)}
+        className="thumbnail-slider"
+      >
+        {images.map((img, i) => (
+          <div key={i} className="thumbnail">
+            <Image
+              src={getAWSImageUrl(img)}
+              alt={`Thumbnail ${i + 1}`}
+              width={80}
+              height={80}
+            />
+          </div>
+        ))}
+      </Slider> */}
+    </div>
   );
 }

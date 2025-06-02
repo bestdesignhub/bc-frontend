@@ -179,7 +179,7 @@ const LastStepPage = async ({
                   )}
                 </div>
               </div>
-              <div>{stepData?.productData?.title?.en}</div>
+              <div className='Sweater-top-data'><h3>{stepData?.productData?.title?.en}</h3></div>
               <div className="Sweater-right">
                 {/* Yarn Info */}
                 <div className='right-price-product'>
@@ -327,81 +327,6 @@ const LastStepPage = async ({
                       </div>
                     </div>
 
-                    {(resolvedSearchParams["product"] === undefined || resolvedSearchParams["product"] === null || resolvedSearchParams["product"] === "") && (
-
-                      <div className="container mx-auto p-0 mt-3">
-                        {/* <h6 className="text-2xl font-bold mb-4">Add New Item</h6>/ */}
-                        {(userToken) ? <CreateProduct data={{
-                          stepData,
-                          // currentStepData,
-                          filteredAvailableSizes,
-                          yarn: resolvedSearchParams["yarn"],
-                          gauge: resolvedSearchParams["gauge"],
-                          pattern: resolvedSearchParams["pattern"],
-                          style: resolvedSearchParams["style"],
-                          userMeasurementBySlug,
-                          userMeasurementActiveList: userMeasurementActive,
-                          measurementProfile,
-                          productTypeId,
-                          fittingName,
-                          steps,
-                          productId: resolvedSearchParams["product"],
-                          fittingId: resolvedSearchParams["fitting"],
-                          availableSizes,
-                          measurementProfiles
-                        }} /> : (<>
-                          <span>{t('COMMON.ALREADY_A_CUSTOMER')}?</span>
-                          <div className="login-link-sub">
-                            <Link
-                              href={`${USER_ROUTES.signin}?${queryString}&${URL_SLUG.REDIRECT}=sweater/last-step`}
-                            >
-                              {t('COMMON.LOG_IN')}
-                            </Link>
-                          </div>
-                          <span>
-                            {t('COMMON.DONT_HAVE_AN_ACCOUNT')}?{' '}
-                            <Link
-                              href={`${USER_ROUTES.signup}?${queryString}&${URL_SLUG.REDIRECT}=sweater/last-step`}
-                            >
-                              {t('COMMON.REGISTER')}
-                            </Link>
-                          </span>
-                        </>)}
-                      </div>
-                    )}
-
-                    {resolvedSearchParams["product"] && !resolvedSearchParams.hasOwnProperty(URL_SLUG.ADD_TO_CART) && <div className="measurements-login-link">
-                      {((userToken)) ? (
-                        <MeasurementAddToCartButton
-                          steps={steps}
-                          productId={resolvedSearchParams["product"]}
-                          fittingId={resolvedSearchParams["fitting"]}
-                          productTypeId={productTypeId}
-                          defaultFittingSize={availableSizes?.at(0)?._id}
-                          price={selectedPrice}
-                          size={selectedSize}
-                        />
-                      ) : (
-                        <>
-                          <span>{t('COMMON.ALREADY_A_CUSTOMER')}?</span>
-                          <div className="login-link-sub">
-                            <Link className='addto-cart-laststep'
-                              href={`${USER_ROUTES.signin}?${queryString}&${URL_SLUG.REDIRECT}=measurements`}
-                            >
-                              {t('COMMON.LOG_IN')}
-                            </Link>
-                          </div>
-                          <span>
-                            {t('COMMON.DONT_HAVE_AN_ACCOUNT')}?{' '}
-                            <Link className='addto-cart-laststep'
-                              href={`${USER_ROUTES.signup}?${queryString}&${URL_SLUG.REDIRECT}=measurements`}
-                            >
-                              {t('COMMON.REGISTER')}
-                            </Link>
-                          </span>
-                        </>
-                      )}
-                    </div>}
                     {/* {(resolvedSearchParams["product"] && <MeasurementsBox
                     productTypeId={productTypeId}
                     fittingName={fittingName}
@@ -440,7 +365,82 @@ const LastStepPage = async ({
                       ""
                       // <ProceedToSizeMeasurement />
                     )}
+
+                    {resolvedSearchParams["product"] && !resolvedSearchParams.hasOwnProperty(URL_SLUG.ADD_TO_CART) && <div className="measurements-login-link">
+                      {((userToken)) ? (
+                        <MeasurementAddToCartButton
+                          steps={steps}
+                          productId={resolvedSearchParams["product"]}
+                          fittingId={resolvedSearchParams["fitting"]}
+                          productTypeId={productTypeId}
+                          defaultFittingSize={availableSizes?.at(0)?._id}
+                          price={selectedPrice}
+                          size={selectedSize}
+                        />
+                      ) : (
+                        <>
+                          <span>{t('COMMON.ALREADY_A_CUSTOMER')}?</span>
+                          <div className="login-link-sub">
+                            <Link className='addto-cart-laststep'
+                              href={`${USER_ROUTES.signin}?${queryString}&${URL_SLUG.REDIRECT}=measurements`}
+                            >
+                              {t('COMMON.LOG_IN')}
+                            </Link>
+                          </div>
+                          <span>
+                            {t('COMMON.DONT_HAVE_AN_ACCOUNT')}?{' '}
+                            <Link className='addto-cart-laststep'
+                              href={`${USER_ROUTES.signup}?${queryString}&${URL_SLUG.REDIRECT}=measurements`}
+                            >
+                              {t('COMMON.REGISTER')}
+                            </Link>
+                          </span>
+                        </>
+                      )}
+                    </div>}
                   </div>
+
+                  {(resolvedSearchParams["product"] === undefined || resolvedSearchParams["product"] === null || resolvedSearchParams["product"] === "") && (
+                    <div className="container mx-auto p-0 mt-3">
+                      {/* <h6 className="text-2xl font-bold mb-4">Add New Item</h6>/ */}
+                      {(userToken) ? <CreateProduct data={{
+                        stepData,
+                        // currentStepData,
+                        filteredAvailableSizes,
+                        yarn: resolvedSearchParams["yarn"],
+                        gauge: resolvedSearchParams["gauge"],
+                        pattern: resolvedSearchParams["pattern"],
+                        style: resolvedSearchParams["style"],
+                        userMeasurementBySlug,
+                        userMeasurementActiveList: userMeasurementActive,
+                        measurementProfile,
+                        productTypeId,
+                        fittingName,
+                        steps,
+                        productId: resolvedSearchParams["product"],
+                        fittingId: resolvedSearchParams["fitting"],
+                        availableSizes,
+                        measurementProfiles
+                      }} /> : (<>
+                        <span>{t('COMMON.ALREADY_A_CUSTOMER')}?</span>
+                        <div className="login-link-sub">
+                          <Link
+                            href={`${USER_ROUTES.signin}?${queryString}&${URL_SLUG.REDIRECT}=sweater/last-step`}
+                          >
+                            {t('COMMON.LOG_IN')}
+                          </Link>
+                        </div>
+                        <span>
+                          {t('COMMON.DONT_HAVE_AN_ACCOUNT')}?{' '}
+                          <Link
+                            href={`${USER_ROUTES.signup}?${queryString}&${URL_SLUG.REDIRECT}=sweater/last-step`}
+                          >
+                            {t('COMMON.REGISTER')}
+                          </Link>
+                        </span>
+                      </>)}
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
