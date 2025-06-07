@@ -589,7 +589,7 @@ export const getMeasurementData = async (
   // console.log({ genderId, style });
 
   const res: any = await handleApiCall(
-    "measurement-data/get",
+    "measurement-data/fetchData",
     'POST',
     {
       genderId,

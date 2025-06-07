@@ -166,7 +166,7 @@ export default function ProdutDetail({
           const style = styleStep?.stepCard;
 
           const response = await userAxiosInstance({
-            url: "measurement-data/get",
+            url: "measurement-data/fetchData",
             method: "POST",
             data: { genderId, style },
           });

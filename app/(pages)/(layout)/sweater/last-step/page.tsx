@@ -174,7 +174,7 @@ const LastStepPage = async ({
 
 
   if (selectedSize) {
-    const selectedMeasurement = measurementFinalData?.find((e: any) => e.size === selectedSize.toLocaleUpperCase())?.measurements;
+    const selectedMeasurement = measurementFinalData.find((e: any) => e.size === selectedSize.toLocaleUpperCase())?.measurements;
     if (selectedMeasurement) {
       measurementsData = selectedMeasurement;
       console.log(`Measurements for size ${selectedSize}:`, measurementsData);
