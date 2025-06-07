@@ -2,7 +2,6 @@ import '@/app/styles/Sweater-product.css';
 import SweaterBox from '@/app/components/Sweater/Sweater-box';
 import {
   ChangeYarnButton,
-  ProceedToSizeMeasurement,
   SaveAndGoToCart
 } from '@/components';
 import { FIXED_STEPS_COUNT, URL_SLUG, USER_ROUTES } from '@/constants';
@@ -19,7 +18,7 @@ import {
   getMeasurementData,
 } from '@/utils/server-api.utils';
 import Image from 'next/image';
-import React, { ChangeEvent } from 'react';
+import React from 'react';
 
 import { formatPrice, getAWSImageUrl } from '@/utils/common.utils';
 import { getTranslations } from 'next-intl/server';
@@ -35,9 +34,10 @@ import Link from 'next/link';
 // import { useSearchParams } from 'next/navigation';
 import MeasurementAddToCartButton from '@/app/components/measurements/add-to-cart-button';
 import { cookies } from 'next/headers';
-import { title } from 'process';
-import { Form, InputGroup } from 'react-bootstrap';
+// import { title } from 'process';
+// import { Form, InputGroup } from 'react-bootstrap';
 let measurementsData = [
+  // const measurementsData = [
   { label: "BODY LENGTH - HSP", value: 65, tolerance: 5 },
   { label: "HEM WIDTH", value: 36, tolerance: 3 },
   { label: "CHEST WIDTH", value: 46, tolerance: 2 },
@@ -205,7 +205,7 @@ const LastStepPage = async ({
                   )}
                 </div>
               </div>
-              <div>{stepData?.productData?.title?.en}</div>
+              <div className='Sweater-top-data'><h3>{stepData?.productData?.title?.en}</h3></div>
               <div className="Sweater-right">
                 {/* Yarn Info */}
                 <div className='right-price-product'>
@@ -353,81 +353,6 @@ const LastStepPage = async ({
                       </div>
                     </div>
 
-                    {(resolvedSearchParams["product"] === undefined || resolvedSearchParams["product"] === null || resolvedSearchParams["product"] === "") && (
-
-                      <div className="container mx-auto p-0 mt-3">
-                        {/* <h6 className="text-2xl font-bold mb-4">Add New Item</h6>/ */}
-                        {(userToken) ? <CreateProduct data={{
-                          stepData,
-                          // currentStepData,
-                          filteredAvailableSizes,
-                          yarn: resolvedSearchParams["yarn"],
-                          gauge: resolvedSearchParams["gauge"],
-                          pattern: resolvedSearchParams["pattern"],
-                          style: resolvedSearchParams["style"],
-                          userMeasurementBySlug,
-                          userMeasurementActiveList: userMeasurementActive,
-                          measurementProfile,
-                          productTypeId,
-                          fittingName,
-                          steps,
-                          productId: resolvedSearchParams["product"],
-                          fittingId: resolvedSearchParams["fitting"],
-                          availableSizes,
-                          measurementProfiles
-                        }} /> : (<>
-                          <span>{t('COMMON.ALREADY_A_CUSTOMER')}?</span>
-                          <div className="login-link-sub">
-                            <Link
-                              href={`${USER_ROUTES.signin}?${queryString}&${URL_SLUG.REDIRECT}=sweater/last-step`}
-                            >
-                              {t('COMMON.LOG_IN')}
-                            </Link>
-                          </div>
-                          <span>
-                            {t('COMMON.DONT_HAVE_AN_ACCOUNT')}?{' '}
-                            <Link
-                              href={`${USER_ROUTES.signup}?${queryString}&${URL_SLUG.REDIRECT}=sweater/last-step`}
-                            >
-                              {t('COMMON.REGISTER')}
-                            </Link>
-                          </span>
-                        </>)}
-                      </div>
-                    )}
-
-                    {resolvedSearchParams["product"] && !resolvedSearchParams.hasOwnProperty(URL_SLUG.ADD_TO_CART) && <div className="measurements-login-link">
-                      {((userToken)) ? (
-                        <MeasurementAddToCartButton
-                          steps={steps}
-                          productId={resolvedSearchParams["product"]}
-                          fittingId={resolvedSearchParams["fitting"]}
-                          productTypeId={productTypeId}
-                          defaultFittingSize={availableSizes?.at(0)?._id}
-                          price={selectedPrice}
-                          size={selectedSize}
-                        />
-                      ) : (
-                        <>
-                          <span>{t('COMMON.ALREADY_A_CUSTOMER')}?</span>
-                          <div className="login-link-sub">
-                            <Link className='addto-cart-laststep'
-                              href={`${USER_ROUTES.signin}?${queryString}&${URL_SLUG.REDIRECT}=measurements`}
-                            >
-                              {t('COMMON.LOG_IN')}
-                            </Link>
-                          </div>
-                          <span>
-                            {t('COMMON.DONT_HAVE_AN_ACCOUNT')}?{' '}
-                            <Link className='addto-cart-laststep'
-                              href={`${USER_ROUTES.signup}?${queryString}&${URL_SLUG.REDIRECT}=measurements`}
-                            >
-                              {t('COMMON.REGISTER')}
-                            </Link>
-                          </span>
-                        </>
-                      )}
-                    </div>}
                     {/* {(resolvedSearchParams["product"] && <MeasurementsBox
                     productTypeId={productTypeId}
                     fittingName={fittingName}
@@ -466,7 +391,82 @@ const LastStepPage = async ({
                       ""
                       // <ProceedToSizeMeasurement />
                     )}
+
+                    {resolvedSearchParams["product"] && !resolvedSearchParams.hasOwnProperty(URL_SLUG.ADD_TO_CART) && <div className="measurements-login-link">
+                      {((userToken)) ? (
+                        <MeasurementAddToCartButton
+                          steps={steps}
+                          productId={resolvedSearchParams["product"]}
+                          fittingId={resolvedSearchParams["fitting"]}
+                          productTypeId={productTypeId}
+                          defaultFittingSize={availableSizes?.at(0)?._id}
+                          price={selectedPrice}
+                          size={selectedSize}
+                        />
+                      ) : (
+                        <>
+                          <span>{t('COMMON.ALREADY_A_CUSTOMER')}?</span>
+                          <div className="login-link-sub">
+                            <Link className='addto-cart-laststep'
+                              href={`${USER_ROUTES.signin}?${queryString}&${URL_SLUG.REDIRECT}=measurements`}
+                            >
+                              {t('COMMON.LOG_IN')}
+                            </Link>
+                          </div>
+                          <span>
+                            {t('COMMON.DONT_HAVE_AN_ACCOUNT')}?{' '}
+                            <Link className='addto-cart-laststep'
+                              href={`${USER_ROUTES.signup}?${queryString}&${URL_SLUG.REDIRECT}=measurements`}
+                            >
+                              {t('COMMON.REGISTER')}
+                            </Link>
+                          </span>
+                        </>
+                      )}
+                    </div>}
                   </div>
+
+                  {(resolvedSearchParams["product"] === undefined || resolvedSearchParams["product"] === null || resolvedSearchParams["product"] === "") && (
+                    <div className="container mx-auto p-0 mt-3">
+                      {/* <h6 className="text-2xl font-bold mb-4">Add New Item</h6>/ */}
+                      {(userToken) ? <CreateProduct data={{
+                        stepData,
+                        // currentStepData,
+                        filteredAvailableSizes,
+                        yarn: resolvedSearchParams["yarn"],
+                        gauge: resolvedSearchParams["gauge"],
+                        pattern: resolvedSearchParams["pattern"],
+                        style: resolvedSearchParams["style"],
+                        userMeasurementBySlug,
+                        userMeasurementActiveList: userMeasurementActive,
+                        measurementProfile,
+                        productTypeId,
+                        fittingName,
+                        steps,
+                        productId: resolvedSearchParams["product"],
+                        fittingId: resolvedSearchParams["fitting"],
+                        availableSizes,
+                        measurementProfiles
+                      }} /> : (<>
+                        <span>{t('COMMON.ALREADY_A_CUSTOMER')}?</span>
+                        <div className="login-link-sub">
+                          <Link
+                            href={`${USER_ROUTES.signin}?${queryString}&${URL_SLUG.REDIRECT}=sweater/last-step`}
+                          >
+                            {t('COMMON.LOG_IN')}
+                          </Link>
+                        </div>
+                        <span>
+                          {t('COMMON.DONT_HAVE_AN_ACCOUNT')}?{' '}
+                          <Link
+                            href={`${USER_ROUTES.signup}?${queryString}&${URL_SLUG.REDIRECT}=sweater/last-step`}
+                          >
+                            {t('COMMON.REGISTER')}
+                          </Link>
+                        </span>
+                      </>)}
+                    </div>
+                  )}
                 </div>
               </div>
             </div>

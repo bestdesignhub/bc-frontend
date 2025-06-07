@@ -47,10 +47,10 @@ const ProductListFilters: FC<Props> = ({
   //   setSelectedValues(newSelectedValues);
   // }, [searchParams, filtersOptions]);
 
-  const genderId = searchParams.get("gender")
+  // const genderId = searchParams.get("gender")
   const params = new URLSearchParams(searchParams.toString());
   params.delete("gender");
-  const selectedValues = (key: string): string[] => searchParams.getAll(key);
+  // const selectedValues = (key: string): string[] => searchParams.getAll(key);
 
   const optionsMap: Record<string, DropDownOptionType[]> = {
     genders,

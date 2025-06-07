@@ -1246,7 +1246,7 @@ body {
 
 .note-mesurment {
   padding: 20px 0 10px;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .modal-content {
@@ -1327,6 +1327,9 @@ body {
   font-size: 13px;
   display: flex;
   align-items: center;
+  position: absolute;
+  right: 13px;
+  bottom: 20px;
 }
 
 .how-to img {
@@ -1348,4 +1351,22 @@ body {
 
 .price-color {
   color: #7f7263 !important;
+}
+
+.new-price {
+  font-size: 18px;
+}
+
+.saveandcartbtn {
+  width: 100%;
+  padding: 10px;
+  background: #af986d;
+}
+
+.saveandcartbtn a {
+  background: none;
+}
+
+.saveandcartbtn:hover {
+  background: #7f7263;
 }

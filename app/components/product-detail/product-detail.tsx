@@ -81,6 +81,8 @@ export default function ProdutDetail({
 
   const [isWishlisted, setIsWishlisted] = useState(!!details?.isWishlisted);
   console.log('details', details.stepDetails);
+  console.log(slug);
+  console.log('details', details);
   console.log('details', availableSizes);
   console.log(size);
   console.log(slug);

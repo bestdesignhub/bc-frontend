@@ -298,10 +298,9 @@ const CreateProduct = (props: any) => {
 
         // </form>
         <div className="size-buttons">
-
             <button
                 key={1}
-                className={'active'}
+                className="save-button"
                 onClick={(e) => handleSubmit(e)}
             >
                 Save
