@@ -101,7 +101,7 @@ export const getYarnCardList = async (searchParams: { [key: string]: string }) =
     _material: material,
     _page: page = 1,
   } = searchParams;
-  console.log("searchParams", searchParams);
+  // console.log("searchParams", searchParams);
 
   const filterObj: Record<string, string> = {};
 
@@ -116,7 +116,7 @@ export const getYarnCardList = async (searchParams: { [key: string]: string }) =
   if (searchParams?.material) {
     filterObj['materialId'] = searchParams?.material;
   }
-  console.log("filterObj", filterObj);
+  // console.log("filterObj", filterObj);
 
   const res: any = await handleApiCall(YARN_CARD_LIST_URL, 'POST', {
     page: parseInt(page.toString()),
@@ -557,7 +557,7 @@ export const getPriceListByIds = async (
   materialId: string,
   genderId: string
 ) => {
-  console.log({ styleId, gaugeId, patternId, materialId, genderId });
+  // console.log({ styleId, gaugeId, patternId, materialId, genderId });
 
   const res: any = await handleApiCall(
     PRODUCT_PRICE_BY_SIZE_,
@@ -573,11 +573,36 @@ export const getPriceListByIds = async (
     { timeout: '20000' }
   );
 
-  console.log("Price List Response:", res);
+  // console.log("Price List Response:", res);
 
   if (res.code === 200) {
-    console.log("Price List Data:", res?.data);
+    // console.log("Price List Data:", res?.data);
     return res;
+  } else {
+    return {};
+  }
+};
+export const getMeasurementData = async (
+  genderId: string,
+  style: string,
+) => {
+  // console.log({ genderId, style });
+
+  const res: any = await handleApiCall(
+    "measurement-data/get",
+    'POST',
+    {
+      genderId,
+      style
+    },
+    { timeout: '20000' }
+  );
+
+  // console.log("Price List Response:", res);
+
+  if (res.code === 200) {
+    // console.log("Price List Data:", res?.data);
+    return JSON.parse(res?.data?.measurementData);
   } else {
     return {};
   }
@@ -585,7 +610,7 @@ export const getPriceListByIds = async (
 
 
 export const fetchPriceList = async (payload: any) => {
-  console.log(`${CONFIG.apiUrl}/apis${PRODUCT_PRICE_BY_SIZE_}`);
+  // console.log(`${CONFIG.apiUrl}/apis${PRODUCT_PRICE_BY_SIZE_}`);
 
   const res = await axios.post(`${CONFIG.apiUrl}${PRODUCT_PRICE_BY_SIZE_}`, payload);
   return res?.data?.data;
