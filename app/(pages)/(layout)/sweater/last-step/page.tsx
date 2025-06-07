@@ -401,7 +401,7 @@ const LastStepPage = async ({
                   </div>
 
                   {(resolvedSearchParams["product"] === undefined || resolvedSearchParams["product"] === null || resolvedSearchParams["product"] === "") && (
-                    <div className="container mx-auto p-0 mt-3">
+                    <div className="container mx-auto p-0 mt-3 price-rightside-details">
                       {/* <h6 className="text-2xl font-bold mb-4">Add New Item</h6>/ */}
                       {(userToken) ? <CreateProduct data={{
                         stepData,

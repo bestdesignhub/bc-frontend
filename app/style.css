@@ -1370,3 +1370,14 @@ body {
 .saveandcartbtn:hover {
   background: #7f7263;
 }
+
+.price-rightside-details {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.price-rightside-details a {
+  color: #7f7263;
+  margin: 5px 0;
+  display: inline-block;
+}
