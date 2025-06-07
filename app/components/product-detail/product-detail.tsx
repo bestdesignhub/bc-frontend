@@ -42,6 +42,16 @@ const allSizes = [
   { slug: '5xl', name: '5XL' }
 ];
 
+const measurementsData = [
+  { label: "Body Length - HSP", value: 65, tolerance: 5 },
+  { label: "Hem Width", value: 36, tolerance: 3 },
+  { label: "Chest Width", value: 46, tolerance: 2 },
+  { label: "Armhole Straight", value: 22, tolerance: 2 },
+  { label: "Shoulder Width", value: 37, tolerance: 2 },
+  { label: "Sleeve Length - HSP", value: 64, tolerance: 2 },
+  { label: "Neck Width", value: 15.5, tolerance: 2 },
+  { label: "Sleeve Width", value: 17, tolerance: 2 },
+];
 export default function ProdutDetail({
   details,
   availableSizes = [],
@@ -61,9 +71,16 @@ export default function ProdutDetail({
   const pathname = usePathname();
   const queryString = useMemo(() => new URLSearchParams(searchParams).toString(), [searchParams]);
   // const queryString = new URLSearchParams(await searchParams).toString();
+  const gender = searchParams.get('gender');
+  type Measurement = { label: string; value: number; tolerance: number };
+  type MeasurementDataItem = { size: string; measurements: Measurement[] };
+
+  const [measurementData, setMeasurementData] = useState<Measurement[]>(measurementsData);
+  const [allMeasurementData, setAllMeasurementData] = useState<MeasurementDataItem[]>([]);
 
 
   const [isWishlisted, setIsWishlisted] = useState(!!details?.isWishlisted);
+  console.log('details', details.stepDetails);
   console.log(slug);
   console.log('details', details);
   console.log('details', availableSizes);
@@ -71,6 +88,7 @@ export default function ProdutDetail({
   console.log(slug);
   console.log(genders);
   console.log(pathname);
+  const styleStep = details?.stepDetails?.find((step: any) => step.slug === 'style');
   const [comment, setComment] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -121,7 +139,16 @@ export default function ProdutDetail({
   };
 
   const handleChangeSize = (event: ChangeEvent<HTMLInputElement>) => {
+    event.preventDefault();
+
+    console.log("event.target.id===>>>>", event.target.id);
+    console.log("event.target.id===>>>>", allMeasurementData);
+    console.log(allMeasurementData.find((e: any) => e.size == event.target.id.toLocaleUpperCase())?.measurements || []);
+
+    setMeasurementData(allMeasurementData.find((e: any) => e.size == event.target.id.toLocaleUpperCase())?.measurements || [])
+    // const [allMeasurementData, setAllMeasurementData] = useState(measurementsData);
     fetchPriceBySize(event.target.id);
+
   };
 
   // Auto-call on page load if you have an initial size slug
@@ -131,6 +158,37 @@ export default function ProdutDetail({
     }
   }, [slug]);
 
+  useEffect(() => {
+    const fetchMeasurementData = async () => {
+      try {
+        if (gender && styleStep) {
+          const genderId = gender;
+          const style = styleStep?.stepCard;
+
+          const response = await userAxiosInstance({
+            url: "measurement-data/get",
+            method: "POST",
+            data: { genderId, style },
+          });
+
+          const fetchedData = response?.data?.data?.measurementData || null;
+          console.log("Fetched Measurement Data:", fetchedData);
+          setAllMeasurementData(JSON.parse(fetchedData));
+          setMeasurementData(JSON.parse(fetchedData).find((e: any) => e.size == 'L').measurements)
+
+          // setMeasurementData(JSON.parse(fetchedData));
+          // isFetched.current = true;
+        }
+      } catch (error) {
+        console.error("Failed to fetch measurement data:", error);
+        toast.error("Failed to load measurement data.");
+      }
+    };
+
+    fetchMeasurementData();
+  }, [gender, styleStep?.stepCard]);
+
+  console.log("setMeasurementData===>>>", measurementData);
 
   const urlQueryString = useMemo(() => {
     const params = new URLSearchParams();
@@ -184,17 +242,6 @@ export default function ProdutDetail({
       dispatch(setLoading(false));
     }
   }, [details._id, t]);
-
-  const measurementsData = [
-    { label: "Body Length - HSP", value: 65, tolerance: 5 },
-    { label: "Hem Width", value: 36, tolerance: 3 },
-    { label: "Chest Width", value: 46, tolerance: 2 },
-    { label: "Armhole Straight", value: 22, tolerance: 2 },
-    { label: "Shoulder Width", value: 37, tolerance: 2 },
-    { label: "Sleeve Length - HSP", value: 64, tolerance: 2 },
-    { label: "Neck Width", value: 15.5, tolerance: 2 },
-    { label: "Sleeve Width", value: 17, tolerance: 2 },
-  ];
 
   useEffect(() => {
     if (details?.gender) {
@@ -320,7 +367,7 @@ export default function ProdutDetail({
                       </Row>
                     </div>
                     <div className="pr-size d-flex flex-wrap">
-                      <MeasurementsForm measurements={measurementsData} />
+                      <MeasurementsForm measurements={measurementData} />
                     </div>
                     <div className='addcomment'>
                       <p>Any special instructions or request for us?</p>

@@ -16,8 +16,11 @@ const ProductCard = ({ productData, view, productDetailsURl }: IProductCardProps
 
   const router = useRouter();
   const searchParams = useSearchParams();
-  const genderId = searchParams.get('gender');
-  // console.log('genderId===>>>>', genderId);
+  let genderId = searchParams.get('gender');
+  if (!genderId) {
+    genderId = productData.genderId
+
+  }
   // return (
   //   <Col
   //     key={productData?._id}

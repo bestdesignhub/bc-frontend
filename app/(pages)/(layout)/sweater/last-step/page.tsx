@@ -15,6 +15,7 @@ import {
   getDefaultProductType,
   getMeasurementProfiles,
   getStepTypesList,
+  getMeasurementData,
 } from '@/utils/server-api.utils';
 import Image from 'next/image';
 import React from 'react';
@@ -33,7 +34,10 @@ import Link from 'next/link';
 // import { useSearchParams } from 'next/navigation';
 import MeasurementAddToCartButton from '@/app/components/measurements/add-to-cart-button';
 import { cookies } from 'next/headers';
-const measurementsData = [
+// import { title } from 'process';
+// import { Form, InputGroup } from 'react-bootstrap';
+let measurementsData = [
+  // const measurementsData = [
   { label: "BODY LENGTH - HSP", value: 65, tolerance: 5 },
   { label: "HEM WIDTH", value: 36, tolerance: 3 },
   { label: "CHEST WIDTH", value: 46, tolerance: 2 },
@@ -96,13 +100,17 @@ const LastStepPage = async ({
     measurementProfileResult,
     userMeasurementActiveResult,
     userMeasurementBySlugResult,
+    measurementData
   ] = await Promise.allSettled([
     getStepTypesList(productType?._id),
     getAvailableSizes(),
     getMeasurementProfiles(),
     getUserMeasurementActive(),
     userMeasurementBySlugPromise,
+    getMeasurementData(resolvedSearchParams["gender"], resolvedSearchParams["style"])
   ]);
+
+  console.log("measurement-data/get", measurementData);
 
   const steps = stepsResult.status === 'fulfilled' ? stepsResult.value : [];
   const availableSizes =
@@ -113,6 +121,8 @@ const LastStepPage = async ({
     userMeasurementActiveResult.status === 'fulfilled' ? userMeasurementActiveResult.value : [];
   const userMeasurementBySlug =
     userMeasurementBySlugResult.status === 'fulfilled' ? userMeasurementBySlugResult.value : null;
+  const measurementFinalData =
+    measurementData.status === 'fulfilled' ? measurementData.value : null;
 
   const measurementProfile = measurementProfileId && userMeasurementBySlug;
   // Define the size categories
@@ -160,6 +170,22 @@ const LastStepPage = async ({
   console.log(selectedPrice, selectedSize);
 
   stepData.yarn.price = Number(selectedPrice);
+
+
+  if (selectedSize) {
+    const selectedMeasurement = measurementFinalData.find((e: any) => e.size === selectedSize.toLocaleUpperCase())?.measurements;
+    if (selectedMeasurement) {
+      measurementsData = selectedMeasurement;
+      console.log(`Measurements for size ${selectedSize}:`, measurementsData);
+    } else {
+      console.log(`No measurements found for size ${selectedSize}, defaulting to 'L'`);
+
+    }
+  } else {
+    console.log("else", selectedSize);
+
+    measurementsData = measurementFinalData.find((e: any) => e.size === 'L')?.measurements || measurementsData;
+  }
 
 
 
