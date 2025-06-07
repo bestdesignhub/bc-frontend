@@ -100,7 +100,7 @@ const LastStepPage = async ({
     measurementProfileResult,
     userMeasurementActiveResult,
     userMeasurementBySlugResult,
-    measurementData
+    measurementDataResult
   ] = await Promise.allSettled([
     getStepTypesList(productType?._id),
     getAvailableSizes(),
@@ -110,7 +110,7 @@ const LastStepPage = async ({
     getMeasurementData(resolvedSearchParams["gender"], resolvedSearchParams["style"])
   ]);
 
-  console.log("measurement-data/get", measurementData);
+  // console.log("measurement-data/get", measurementData);
 
   const steps = stepsResult.status === 'fulfilled' ? stepsResult.value : [];
   const availableSizes =
@@ -121,8 +121,9 @@ const LastStepPage = async ({
     userMeasurementActiveResult.status === 'fulfilled' ? userMeasurementActiveResult.value : [];
   const userMeasurementBySlug =
     userMeasurementBySlugResult.status === 'fulfilled' ? userMeasurementBySlugResult.value : null;
-  const measurementFinalData =
-    measurementData.status === 'fulfilled' ? measurementData.value : null;
+  // const measurementFinalData =
+  //   measurementData.status === 'fulfilled' ? measurementData.value : [];
+  const measurementFinalData = measurementDataResult.status === 'fulfilled' ? measurementDataResult.value : [];
 
   const measurementProfile = measurementProfileId && userMeasurementBySlug;
   // Define the size categories
@@ -173,7 +174,7 @@ const LastStepPage = async ({
 
 
   if (selectedSize) {
-    const selectedMeasurement = measurementFinalData.find((e: any) => e.size === selectedSize.toLocaleUpperCase())?.measurements;
+    const selectedMeasurement = measurementFinalData?.find((e: any) => e.size === selectedSize.toLocaleUpperCase())?.measurements;
     if (selectedMeasurement) {
       measurementsData = selectedMeasurement;
       console.log(`Measurements for size ${selectedSize}:`, measurementsData);
