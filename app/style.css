@@ -1381,3 +1381,978 @@ body {
   margin: 5px 0;
   display: inline-block;
 }
+
+/* Responsive Css Start */
+@media only screen and (max-width:1740px) {
+  .order-steps li {
+    height: 156px;
+    max-width: 158px;
+  }
+
+  .order-steps .step-number {
+    font-size: 40px;
+  }
+
+  .step-icon img {
+    max-width: 60px;
+  }
+}
+
+@media only screen and (max-width:1600px) {
+  .four-steps {
+    padding: 20px;
+  }
+
+  .four-steps h4 {
+    font-size: 35px;
+  }
+
+  .four-steps p {
+    margin-bottom: 30px;
+  }
+
+  .order-steps li {
+    height: 126px;
+    max-width: 128px;
+  }
+
+  .four-steps h4 {
+    font-size: 30px;
+  }
+
+  .step-text {
+    font-size: 14px;
+  }
+
+  .four-steps p {
+    font-size: 18px;
+  }
+
+  .sweater-img-content img {
+    max-width: 300px;
+  }
+
+  .sweater-content h3 {
+    font-size: 40px;
+  }
+
+  .sweater-content p {
+    font-size: 16px;
+  }
+
+  .sweater-content .shop-button a {
+    font-size: 18px;
+    padding: 8px 50px;
+  }
+}
+
+@media only screen and (max-width:1365px) {
+  .category-list>li>a {
+    font-size: 15px;
+    padding: 17px 20px;
+  }
+
+  .usefull-links li a.wholeseller {
+    font-size: 15px;
+  }
+
+  .country-selecter,
+  .my-cart {
+    margin-left: 10px;
+  }
+
+  .all-sweater-style h3 {
+    margin-bottom: 30px;
+  }
+
+  .all-sweater-list {
+    margin-bottom: 15px;
+  }
+
+  .sweater-style-name {
+    font-size: 18px;
+  }
+
+  .index-banner .banner-title {
+    font-size: 45px;
+    margin-bottom: 10px;
+  }
+
+  .banner-buttons a {
+    font-size: 18px;
+  }
+
+  .create-custom {
+    margin-bottom: 60px;
+  }
+
+  .women-men-sweater {
+    margin-bottom: 50px;
+  }
+
+  .index-banner,
+  .latest-product.f-container {
+    margin-bottom: 20px;
+  }
+
+  .latest-product h2,
+  .all-sweater-style h3 {
+    font-size: 30px;
+  }
+
+  .latest-product h2 {
+    margin-bottom: 20px;
+  }
+
+  .latest-product .product-name {
+    font-size: 17px;
+  }
+
+  .sweater-content h3 {
+    font-size: 30px;
+    margin-bottom: 10px;
+  }
+
+  .sweater-content p {
+    margin-bottom: 15px;
+  }
+
+  .custom-sweater h3 {
+    font-size: 25px;
+    margin-bottom: 10px;
+  }
+
+  .custom-sweater-name {
+    font-size: 20px;
+    margin: 10px 0;
+  }
+
+  .your-style h3 {
+    font-size: 25px;
+  }
+
+  .your-style h4 {
+    font-size: 20px;
+    margin-bottom: 0;
+  }
+
+  .your-style {
+    padding-top: 10px;
+  }
+}
+
+@media only screen and (max-width:1199px) {
+  .search-box .search-input {
+    width: 270px;
+  }
+
+  .header-links {
+    margin-left: 15px;
+  }
+
+  .header-links a,
+  .my-cart .minicart .cart-text {
+    font-size: 0;
+  }
+
+  .search-box {
+    margin-left: auto;
+  }
+
+  .category-list>li>a {
+    font-size: 14px;
+    padding: 15px;
+  }
+
+  .usefull-links li a.wholeseller {
+    font-size: 14px;
+    margin-right: 15px;
+  }
+
+  .sweater-style-name {
+    font-size: 15px;
+  }
+
+  .latest-product .price-box,
+  .latest-product .product-name {
+    font-size: 15px;
+  }
+
+  .sweater-img-content {
+    display: block;
+    padding: 0 15px 15px;
+    text-align: center;
+  }
+
+  .sweater-img-content img {
+    margin: 0 auto 10px;
+    max-width: 100%;
+  }
+
+  .women-sweater .sweater-content {
+    text-align: center;
+  }
+
+  .ordering-steps-img,
+  .four-steps {
+    width: 100%;
+  }
+
+  .four-steps h4 {
+    font-size: 30px;
+  }
+
+  .ordering-steps {
+    margin-bottom: 30px;
+  }
+
+  .collection-content h3 {
+    font-size: 30px;
+    margin-bottom: 10px;
+  }
+
+  .collection-content .download-book {
+    font-size: 16px;
+    padding: 8px 30px;
+  }
+
+  .about-bespoke h3,
+  .about-bespoke h3 span {
+    font-size: 35px;
+    margin-bottom: 30px;
+  }
+
+  .bespoke-list .service-name {
+    font-size: 20px;
+  }
+
+  .about-content {
+    padding-top: 50px;
+    padding-bottom: 30px;
+  }
+
+  .f-links-box .f-link li a,
+  .f-links-box .f-link li span {
+    font-size: 16px;
+  }
+}
+
+@media only screen and (max-width:1024px) {
+  .category-list>li>a {
+    padding: 12px;
+  }
+
+  .women-men-sweater {
+    margin-bottom: 30px;
+  }
+
+  .all-sweater-style h3 {
+    margin-bottom: 20px;
+  }
+
+  .all-sweater-list {
+    justify-content: normal;
+    margin-bottom: 0;
+  }
+
+  .all-sweater-style.f-container {
+    margin-bottom: 40px;
+  }
+
+  .view-all-style a {
+    font-size: 20px;
+  }
+
+  .all-sweater-list li {
+    width: calc(100% / 3 - 14px);
+    margin-bottom: 20px;
+  }
+
+  .latest-product-list li {
+    max-width: calc(100% / 3);
+  }
+
+  .h-top-btn a {
+    padding: 4px 10px;
+  }
+
+  .index-banner .banner-title {
+    max-width: 400px;
+    font-size: 30px;
+  }
+
+  .banner-buttons a {
+    padding: 3px 10px;
+    font-size: 15px;
+  }
+
+  .custom-sweater {
+    width: calc(68% - 10px);
+    padding: 15px 10px 0;
+  }
+
+  .custom-sweater-list {
+    margin-bottom: 0;
+  }
+
+  .custom-sweater-list li {
+    margin: 0 5px;
+    width: calc(100% / 3 - 5px);
+  }
+
+  .custom-sweater-btn li a {
+    font-size: 14px;
+    padding: 6px 20px;
+  }
+
+  .custom-sweater-name {
+    font-size: 16px;
+  }
+
+  .custom-sweater-img {
+    padding: 2px;
+  }
+
+  .create-custom {
+    margin-bottom: 40px;
+  }
+
+  .collection-content h3 {
+    font-size: 25px;
+  }
+
+  .collection-content {
+    padding: 0 10px;
+  }
+
+  .bespoke-list .service-name {
+    font-size: 16px;
+  }
+
+  .about-bespoke {
+    padding: 25px 0 20px 0;
+  }
+
+  .bespoke-list li .a-icon {
+    margin-bottom: 15px;
+  }
+
+  .about-content p {
+    font-size: 20px;
+    line-height: normal;
+    margin-bottom: 20px;
+  }
+
+  .about-detail a {
+    font-size: 20px;
+  }
+
+  .copyright-row {
+    padding: 20px 0;
+  }
+
+  .copyright-text {
+    font-size: 14px;
+  }
+
+  .footer {
+    padding: 40px 0;
+  }
+
+  .f-logo-section {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .company-registration,
+  .payment-method {
+    margin-left: auto;
+  }
+
+  .social-persence,
+  .payment-method {
+    margin-bottom: 40px;
+  }
+
+  .f-logo,
+  .social-persence {
+    width: 50%;
+    padding-right: 20px;
+  }
+
+  .f-links-box:not(:last-child) {
+    width: 24%;
+  }
+
+  .f-links-box:last-child {
+    width: 28%;
+  }
+
+  .f-links-box .f-link li {
+    margin-top: 20px;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .logo {
+    margin-right: 0;
+  }
+
+  .logo img {
+    max-width: 150px;
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+
+  .open-nav .nav-toggle::after {
+    background: rgba(0, 0, 0, 0.7);
+    content: '';
+    display: block;
+    height: 100%;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+  }
+
+  .open-nav {
+    height: 100%;
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  .open-nav body {
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+  }
+
+  .page-wrapper {
+    -webkit-transition: .3s ease;
+    -moz-transition: .3s ease;
+    -ms-transition: .3s ease;
+    transition: .3s ease;
+    left: 0;
+  }
+
+  .open-nav .page-wrapper {
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-height: 100vh;
+    left: calc(100% - 54px);
+  }
+
+  .open-nav .nav-row {
+    -webkit-box-shadow: 0 0 5px 0 rgba(50, 50, 50, 0.75);
+    -moz-box-shadow: 0 0 5px 0 rgba(50, 50, 50, 0.75);
+    -ms-box-shadow: 0 0 5px 0 rgba(50, 50, 50, 0.75);
+    box-shadow: 0 0 5px 0 rgba(50, 50, 50, 0.75);
+    left: 0;
+    z-index: 99;
+  }
+
+  .nav-row {
+    -webkit-overflow-scrolling: touch;
+    -webkit-transition: left .3s;
+    -moz-transition: left .3s;
+    -ms-transition: left .3s;
+    transition: left .3s;
+    height: 100%;
+    left: calc(-1 * (100% - 54px));
+    overflow: auto;
+    /* position: fixed; */
+    top: 0;
+    width: calc(100% - 54px);
+  }
+
+  .nav-row .f-container,
+  .category-list,
+  .usefull-links {
+    display: block;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .usefull-links li:not(:first-child) {
+    margin-left: 0;
+  }
+
+  .category-list>li>a,
+  .usefull-links li a.wholeseller {
+    padding: 10px;
+    border-bottom: 1px solid #877263;
+    margin-right: 0;
+    display: block;
+    text-transform: uppercase;
+  }
+
+  .usefull-links li a:not(.wholeseller) {
+    border-width: 0 0 1px 0;
+  }
+
+  .category-list>li .level-first {
+    min-width: 100%;
+    position: static;
+    transition: 0.3s ease-out;
+    box-shadow: none;
+    border-width: 0 0 1px 0;
+  }
+
+  .category-list>li .level-first>li>a {
+    padding: 8px 10px;
+  }
+
+  .category-list>li.parent {
+    position: relative;
+  }
+
+  .category-list>li.parent:hover .level-first {
+    display: block;
+  }
+
+  .category-list>li.parent>a:before {
+    content: "";
+    display: block;
+    /* background: url(../images/down-arrow.svg) no-repeat center; */
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 15px;
+    top: 10px;
+  }
+}
+
+@media only screen and (max-width:767px) {
+  .header-main {
+    padding: 10px 0;
+  }
+
+  .header-links {
+    margin-left: auto;
+  }
+
+  .header-main .f-container {
+    flex-wrap: wrap;
+  }
+
+  .search-box {
+    order: inherit;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .search-box .search-input {
+    width: 100%;
+  }
+
+  .view-all-style a {
+    font-size: 15px;
+  }
+
+  .latest-product.f-container {
+    margin-bottom: 0;
+  }
+
+  .all-sweater-style.f-container {
+    margin-bottom: 30px;
+  }
+
+  .women-men-sweater,
+  .explore-collection,
+  .ordering-steps,
+  .create-custom {
+    margin-bottom: 20px;
+  }
+
+  .latest-product h2,
+  .all-sweater-style h3 {
+    font-size: 25px;
+  }
+
+  .index-banner .banner-title {
+    font-size: 25px;
+    max-width: 300px;
+  }
+
+  .banner-buttons {
+    display: none;
+  }
+
+  .header-top .f-container {
+    display: block;
+    text-align: center;
+  }
+
+  .f-shipping {
+    margin-bottom: 7px;
+    display: block;
+    font-size: 14px;
+  }
+
+  .banner-buttons a {
+    display: inline-block;
+  }
+
+  .banner-buttons li:last-child {
+    margin-left: 0;
+    margin-top: 10px;
+  }
+
+  .h-top-btn {
+    justify-content: center;
+  }
+
+  .h-top-btn a {
+    padding: 2px 5px;
+    max-width: 200px;
+    margin: 0 auto;
+    font-size: 13px;
+  }
+
+  .sweater-content h3 {
+    font-size: 22px;
+  }
+
+  .sweater-content .shop-button a {
+    font-size: 15px;
+    padding: 5px 30px;
+  }
+
+  .sweater-content p {
+    font-size: 14px;
+  }
+
+  .custom-sweater,
+  .your-style {
+    width: 100%;
+  }
+
+  .custom-sweater {
+    margin-bottom: 20px;
+  }
+
+  .custom-sweater-list {
+    display: block;
+  }
+
+  .custom-sweater-list li {
+    width: 100%;
+    margin: 0 auto 20px;
+    max-width: 240px;
+  }
+
+  .custom-sweater-btn {
+    margin-bottom: 20px;
+  }
+
+  .your-style h4 {
+    margin-bottom: 20px;
+  }
+
+  .your-style img {
+    width: 100%;
+  }
+
+  .four-steps h4 {
+    font-size: 25px;
+  }
+
+  .four-steps {
+    padding-bottom: 0;
+  }
+
+  .collection-img img {
+    margin: 0 auto 20px;
+  }
+
+  .collection-content,
+  .collection-img {
+    width: 100%;
+    padding: 0;
+    text-align: center;
+  }
+
+  .explore-collection {
+    flex-direction: column-reverse;
+  }
+
+  .bespoke-list {
+    display: block;
+  }
+
+  .bespoke-list li {
+    max-width: 100%;
+    margin-bottom: 30px;
+  }
+
+  .about-bespoke h3,
+  .about-bespoke h3 span {
+    font-size: 30px;
+  }
+
+  .bespoke-list li .a-icon {
+    margin-bottom: 10px;
+  }
+
+  .about-content {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .f-links-box .f-link li {
+    margin-top: 15px;
+  }
+
+  .f-links-box:not(:last-child),
+  .f-links-box:last-child,
+  .company-registration,
+  .payment-method {
+    width: 50%;
+  }
+
+  .f-links-box {
+    margin-bottom: 20px;
+  }
+
+  .footer {
+    padding-bottom: 0;
+    padding-top: 20px;
+  }
+
+}
+
+@media only screen and (max-width:640px) {
+  .all-sweater-list li {
+    width: calc(100% / 2 - 14px);
+  }
+
+  .latest-product-list li {
+    max-width: 50%;
+  }
+
+  .h-top-btn a {
+    font-size: 13px;
+  }
+
+  .index-banner .banner-title {
+    font-size: 20px;
+    max-width: 240px;
+  }
+
+  .banner-buttons li:last-child {
+    margin-top: 5px;
+  }
+
+  .banner-buttons a {
+    padding: 3px 5px;
+    font-size: 13px;
+  }
+
+  .order-steps {
+    display: block;
+  }
+
+  .order-steps li {
+    margin: 0 auto 20px;
+    height: 196px;
+    max-width: 198px;
+    width: auto;
+  }
+
+  .order-steps li:last-child {
+    margin-bottom: 0;
+  }
+
+  .f-logo-section {
+    display: block;
+    text-align: center;
+  }
+
+  .f-logo,
+  .social-persence,
+  .payment-method,
+  .company-registration {
+    width: 100%;
+    margin-bottom: 20px;
+    text-align: left;
+    padding-right: 0;
+  }
+}
+
+@media only screen and (max-width:479px) {
+  .header-main .f-container {
+    position: relative;
+  }
+
+  .logo {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #7f7263;
+    padding-bottom: 10px;
+  }
+
+  .logo img {
+    max-width: 200px;
+    margin: 0 auto;
+  }
+
+  .search-box {
+    border-top: 2px solid #7f7263;
+    padding-top: 10px;
+  }
+
+  .nav-toggle {
+    position: absolute;
+    top: 12px;
+    left: 15px;
+    z-index: 1;
+    cursor: pointer;
+  }
+
+  .header-links {
+    margin-left: 0;
+  }
+
+  .my-cart {
+    margin-left: auto;
+  }
+
+  .sweater-style-name {
+    min-height: inherit;
+    padding: 10px 15px 20px 15px;
+  }
+
+  .latest-product-list li,
+  .all-sweater-list li {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .latest-product .product-name,
+  .latest-product .price-box {
+    min-height: inherit;
+    display: block;
+    text-align: center;
+  }
+
+  .index-banner .banner-title {
+    font-size: 16px;
+    max-width: 170px;
+  }
+
+  .banner-buttons li:last-child {
+    margin-top: 5px;
+  }
+
+  .f-shipping {
+    font-size: 13px;
+  }
+
+  .custom-sweater-list li {
+    max-width: 160px;
+  }
+
+  .h-top-btn {
+    display: block;
+  }
+
+  .h-top-btn a {
+    max-width: 150px;
+  }
+
+  .h-top-btn li:not(:first-child) {
+    margin-left: 0;
+    margin-top: 5px;
+  }
+
+  .women-sweater {
+    margin-bottom: 15px;
+  }
+
+  .women-sweater,
+  .men-sweater {
+    width: 100%;
+  }
+
+  .custom-sweater-btn {
+    display: block;
+  }
+
+  .custom-sweater-btn li a {
+    max-width: 210px;
+    margin: 0 auto;
+  }
+
+  .custom-sweater-btn li:not(:last-child) {
+    margin-bottom: 10px;
+  }
+
+  .four-steps h4 {
+    font-size: 20px;
+  }
+
+  .order-steps li {
+    height: 126px;
+    max-width: 128px;
+  }
+
+  .collection-content h3 {
+    font-size: 22px;
+  }
+
+  .about-bespoke h3,
+  .about-bespoke h3 span {
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+
+  .about-content p {
+    font-size: 17px;
+    margin-bottom: 15px;
+  }
+
+  .about-detail a {
+    font-size: 17px;
+  }
+
+  .copyright {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .made-in::before {
+    margin-right: 5px;
+  }
+
+  .f-logo a {
+    display: inline-block;
+    max-width: 250px;
+  }
+
+  .social-persence,
+  .payment-method {
+    justify-content: center;
+  }
+
+  .f-links-box:not(:last-child),
+  .f-links-box:last-child,
+  .company-registration,
+  .f-logo {
+    width: 100%;
+    text-align: center;
+  }
+}
