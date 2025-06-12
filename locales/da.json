@@ -167,5 +167,8 @@
     "MINUTES": "Minutter",
     "SECONDS": "Sekunder",
     "SHOP_NOW": "Køb nu"
-  }
+  },
+  "APPLY_VOUCHER": "Apply Voucher",
+  "COUPON_CODE": "Rabatkode",
+  "APPLY_LABEL": "Anvend"
 }

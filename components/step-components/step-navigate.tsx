@@ -1,12 +1,13 @@
 'use client';
 
 import { FIXED_STEPS_COUNT, STEPPERPATHS, URL_SLUG, USER_ROUTES } from '@/constants';
-import { formatPrice, getAWSImageUrl } from '@/utils/common.utils';
+import { formatPrice, getAWSImageUrl, handleApiCall } from '@/utils/common.utils';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
+import toast from "react-hot-toast";
 
 export default function StepNavigate({
   steps,
@@ -93,7 +94,6 @@ export default function StepNavigate({
     }
     router.push(`${USER_ROUTES.sweater}?${params.toString()}${edit ? `?${URL_SLUG.EDIT}=${edit}` : ''}`);
   }, [searchParams, edit, router]);
-
   return (
     <div className="gauge-navigate smallbx">
       <div className="d-flex flex-column gap-3" style={{ paddingTop: '20px' }}>
@@ -113,7 +113,6 @@ export default function StepNavigate({
             </div>
           </div>
         )}
-
         {searchParams.size !== 0 && (
           <div
             className="navigate-item"

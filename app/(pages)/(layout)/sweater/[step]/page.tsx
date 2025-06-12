@@ -88,6 +88,13 @@ const SweaterStep = async ({
 
       stepPageData.list = matchingItems;
     }
+    if (materialSlug === '67f64f49e061fcfe4d00b21d') {
+      const matchingItems = stepPageData?.list
+        ? stepPageData.list.filter((item: any) => item?.slug === '16gg')
+        : stepPageData.list;
+
+      stepPageData.list = matchingItems;
+    }
   }
 
   const genderConfig = genderBasedConfig[genderSlug];
