@@ -177,5 +177,8 @@
     "MINUTES": "Minutes",
     "SECONDS": "Seconds",
     "SHOP_NOW": "Shop Now"
-  }
+  },
+  "APPLY_VOUCHER": "Apply Voucher",
+  "COUPON_CODE": "Coupon Code",
+  "APPLY_LABEL": "Apply"
 }

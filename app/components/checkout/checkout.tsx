@@ -10,11 +10,14 @@ import Image from 'next/image';
 import Paymentimg2 from '@/public/images/payment-img-2.svg';
 import PriceDetails from './price-details';
 import { PAYMENT_OPTIONS } from '@/constants';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { DropDownOptionType, PaymentOption } from '@/types';
 import AddressManagement from './address-management';
 import { useTranslations } from 'next-intl';
 import PaymentButton from './payment-button';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { formatPrice, handleApiCall } from '@/utils/common.utils';
+import toast from 'react-hot-toast';
 
 export default function Checkout({
   cartData,
@@ -30,6 +33,11 @@ export default function Checkout({
   const t = useTranslations();
   const [selectedPayment, setSelectedPayment] = useState<PaymentOption>(PAYMENT_OPTIONS.STRIPE);
   const [selectAddress, setSelectAddress] = useState<any>(myAddresses?.[0] ?? null);
+  const router = useRouter();
+  const _router = useSearchParams();
+  const couponCode = _router?.get("couponCode");
+  const [couponText, setCouponText] = useState("");
+  const [disPrice, setDisPrice] = useState();
   const totalPrice = useMemo(() => {
     let total = 0;
     cartData.forEach((cart: any) => {
@@ -37,6 +45,52 @@ export default function Checkout({
     });
     return total;
   }, [cartData]);
+
+  useEffect(() => {
+    if (couponCode) {
+      applyCouponCode(couponCode, false);
+      return;
+    }
+    // fetchCartProducts();
+  }, [couponCode]);
+
+  const applyCouponCode = async (
+    couponCode: string,
+    message: boolean = true,
+  ) => {
+    const appyCoupon: any = await handleApiCall(`/cart/apply/coupon`, "POST", {
+      couponCode,
+    });
+
+    console.log("appyCoupon", appyCoupon);
+    if (appyCoupon.success == false) {
+      toast.error(t(appyCoupon?.message));
+      return;
+    }
+
+    // if (!appyCoupon?.status) {
+    //   toast.error(t(appyCoupon?.message));
+    //   return;
+    // }
+    setCouponText(couponCode);
+    if (message) {
+      toast.success(appyCoupon?.message);
+    }
+    if (appyCoupon?.data?.total) {
+      const originalTotal = parseFloat((totalPrice || "0").toString().replace(/[^\d.-]/g, ""));
+      const discount = parseFloat((totalPrice || "0").toString().replace(/[^\d.-]/g, ""));
+      // orderData.total = (originalTotal - discount).toFixed(2); // Keeps two decimal points
+      // alert(orderData.total)
+      // const updatData: any = await handleApiCall(`/cart/apply/coupon`, "POST", {
+      //   couponCode,
+      // });
+    }
+
+    setDisPrice(appyCoupon?.data?.total)
+    // setCartProducts(appyCoupon?.data);
+  };
+
+
   return (
     <>
       <div className="checkout-page">
@@ -124,12 +178,46 @@ export default function Checkout({
             <div className="checkout-right">
               <div className="checkout-right-inner">
                 <h5>{t('COMMON.PRICE_DETAILS_TEXT')}</h5>
-                <PriceDetails totalPrice={totalPrice} />
+                <div className="apply-coupon">
+                  <div className="info-head block">
+                    <h3>{t("APPLY_VOUCHER")}</h3>
+                  </div>
+                  <div className="card-number-line">
+                    <input
+                      className="card-number"
+                      type="text"
+                      placeholder={t("COUPON_CODE")}
+                      onChange={(e) => setCouponText(e?.target?.value)}
+                      value={couponText}
+                    />
+                  </div>
+                  <button
+                    className="complete-btn"
+                    type="button"
+                    disabled={!couponText}
+                    onClick={() =>
+                      router?.replace(`/checkout?couponCode=${couponText}`)
+                    }
+                  >
+                    {t("APPLY_LABEL")}
+                  </button>
+                </div>
+                {disPrice && <ul>
+                  <li className="grand-total">
+                    <div className="text-1">Original Price</div>
+                    <div className="text-2">{formatPrice(totalPrice)}</div>
+                  </li>
+                  <li className="grand-total">
+                    <div className="text-1">Discount</div>
+                    <div className="text-2">{formatPrice(Number(disPrice) || 0)}</div>
+                  </li>
+                </ul>}
+                <PriceDetails totalPrice={totalPrice - (Number(disPrice) || 0)} />
               </div>
               <PaymentButton
                 cartData={cartData}
                 address={selectAddress}
-                totalPrice={totalPrice}
+                totalPrice={totalPrice - (Number(disPrice) || 0)}
                 paymentOption={selectedPayment}
               />
             </div>
