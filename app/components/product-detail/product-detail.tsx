@@ -29,6 +29,7 @@ import MeasurementsForm from '../measurements/measurementsForm';
 import Link from 'next/link';
 import MeasurementAddToCartButton from '../measurements/add-to-cart-button';
 import { usePathname, useSearchParams } from 'next/navigation';
+import { get } from 'http';
 
 const allSizes = [
   { slug: 'xs', name: 'XS' },
@@ -77,6 +78,12 @@ export default function ProdutDetail({
 
   const [measurementData, setMeasurementData] = useState<Measurement[]>(measurementsData);
   const [allMeasurementData, setAllMeasurementData] = useState<MeasurementDataItem[]>([]);
+  const [getMeasurementData, setMeasurementAllData] = useState<any[]>([]);
+  const [fit, setFit] = useState("");
+  const [getAvailableSizes, setAvailableSizes] = useState<any[]>(availableSizes || []); // Initialize with the passed available sizes
+  const [fittingsSlug, setFittingsSlug] = useState<string>(''); // default can be 'slim-fitting' or 'regular-fitting'
+
+
 
 
   const [isWishlisted, setIsWishlisted] = useState(!!details?.isWishlisted);
@@ -88,6 +95,7 @@ export default function ProdutDetail({
   console.log(slug);
   console.log(genders);
   console.log(pathname);
+  // let fittingsSlug = "";
   const styleStep = details?.stepDetails?.find((step: any) => step.slug === 'style');
   const [comment, setComment] = useState('');
 
@@ -153,6 +161,7 @@ export default function ProdutDetail({
 
   // Auto-call on page load if you have an initial size slug
   useEffect(() => {
+    // setAvailableSizes(availableSizes);
     if (slug) {
       fetchPriceBySize(slug);
     }
@@ -173,15 +182,16 @@ export default function ProdutDetail({
 
           const fetchedData = response?.data?.data?.measurementData || null;
           console.log("Fetched Measurement Data:", fetchedData);
-          setAllMeasurementData(JSON.parse(fetchedData));
-          setMeasurementData(JSON.parse(fetchedData).find((e: any) => e.size == 'L').measurements)
+          // setAllMeasurementData(JSON.parse(fetchedData));
+          setMeasurementAllData(JSON.parse(fetchedData));
+          // setMeasurementData(JSON.parse(fetchedData).find((e: any) => e.size == 'L').measurements)
 
           // setMeasurementData(JSON.parse(fetchedData));
           // isFetched.current = true;
         }
       } catch (error) {
         console.error("Failed to fetch measurement data:", error);
-        toast.error("Failed to load measurement data.");
+        // toast.error("Failed to load measurement data.");
       }
     };
 
@@ -255,14 +265,29 @@ export default function ProdutDetail({
   const fittingStep = details?.steps?.find((step: any) => step.key === 'fitting');
   const fittingCard = details?.stepCards?.find((card: any) => card._id === fittingStep?.value);
   const fittingSlug = fittingCard?.slug; // e.g., 'regular-fitting' or 'slim-fitting'
+  // fittingsSlug = fittingCard?.slug || '';
+  useEffect(() => {
+    if (fittingSlug) {
+      setFittingsSlug(fittingSlug);
+    }
+  }, [fittingSlug]);
 
+  useEffect(() => {
+    if (fittingSlug === 'slim-fitting') {
+      setFit('Slim');
+      setAvailableSizes(allSizes.filter(size => ['xs', 's', 'm', 'l', 'xl'].includes(size.slug)));
+    } else if (fittingSlug === 'regular-fitting') {
+      setFit('Regular');
+      setAvailableSizes(allSizes.filter(size => ['m', 'l', 'xl', '2xl', '3xl', '4xl', '5xl'].includes(size.slug)));
+    }
+  }, [fittingSlug]);
   // Decide size list
   // let availableSizes = [];
-  if (fittingSlug === 'regular-fitting') {
-    availableSizes = allSizes.filter(size => ['m', 'l', 'xl', '2xl', '3xl', '4xl', '5xl'].includes(size.slug));
-  } else if (fittingSlug === 'slim-fitting') {
-    availableSizes = allSizes.filter(size => ['xs', 's', 'm', 'l', 'xl'].includes(size.slug));
-  }
+  // if (fittingSlug === 'regular-fitting') {
+
+  // } else if (fittingSlug === 'slim-fitting') {
+
+  // }
 
   // useEffect(() => {
   //   const updatePriceAndSize = async () => {
@@ -289,6 +314,59 @@ export default function ProdutDetail({
   //   };
   //   updatePriceAndSize();
   // }, []);
+
+
+  // Handle fit change (Slim/Regular)
+  useEffect(() => {
+    if (getMeasurementData.length > 0) {
+      const fitData = getMeasurementData.find((item: any) => item.fit === fit);
+      // console.log("fitData", fit, fitData.sizes);
+      setMeasurementData(fitData?.sizes?.find((e: any) => e.size == 'L').measurements)
+      setAllMeasurementData(fitData?.sizes || []);
+
+      // const sizeL = fitData?.sizes.find((s) => s.size === "L");
+      // setMeasurementData(sizeL?.measurements || []);
+    }
+  }, [fit, getMeasurementData]);
+  // 2. Apply fit change logic only once when both data and slug are available
+  useEffect(() => {
+    if (getMeasurementData.length > 0 && fittingsSlug) {
+      const label = fittingsSlug === 'slim-fitting' ? 'Slim' : 'Regular';
+      handleFitChange(label, fittingsSlug);
+    }
+  }, [getMeasurementData, fittingsSlug]);
+
+  // 3. Fit change logic encapsulated
+  const handleFitChange = (label: string, slug: string) => {
+    setFit(label);
+    setFittingsSlug(slug);
+
+    const fitData = getMeasurementData.find((item: any) => item.fit === label);
+    if (!fitData) return;
+
+    const newSizes =
+      label === 'Slim'
+        ? allSizes.filter((size: any) => ['xs', 's', 'm', 'l', 'xl'].includes(size.slug))
+        : allSizes.filter((size: any) => ['m', 'l', 'xl', '2xl', '3xl', '4xl', '5xl'].includes(size.slug));
+
+    setAvailableSizes(newSizes);
+    setAllMeasurementData(fitData.sizes || []);
+
+    const defaultSize = label === 'Slim' ? 's' : 'l';
+    setSizeSlug(defaultSize);
+    fetchPriceBySize(defaultSize);
+
+    const defaultMeasurements = fitData.sizes.find(
+      (s: any) => s.size.toLowerCase() === defaultSize
+    )?.measurements || [];
+
+    console.log("defaultMeasurements", defaultMeasurements);
+    setMeasurementData(defaultMeasurements);
+  };
+
+
+
+
 
 
   return (
@@ -366,6 +444,38 @@ export default function ProdutDetail({
                         <Col xs={12} lg={6} xl={6} />
                       </Row>
                     </div>
+
+
+                    <div className="space-y-4">
+                      <div className="flex items-center gap-4">
+                        {[
+                          { label: 'Slim Fit', value: 'slim-fitting' },
+                          { label: 'Regular Fit', value: 'regular-fitting' }
+                        ].map((fit) => (
+                          <label
+                            key={fit.value}
+                            className={`cursor-pointer px-4 py-2 rounded-full border transition-all duration-200
+          ${fittingsSlug === fit.value ? 'bg-black text-white border-black' : 'bg-white text-black border-gray-300'}
+        `}
+                          >
+                            <input
+                              type="radio"
+                              name="fit"
+                              value={fit.value}
+                              checked={fittingsSlug === fit.value}
+                              onChange={() => handleFitChange(fit.label.includes('Slim') ? 'Slim' : 'Regular', fit.value)}
+                              className="hidden"
+                            />
+                            {fit.label}
+                          </label>
+                        ))}
+                      </div>
+                    </div>
+
+
+
+
+
                     <div className="pr-size d-flex flex-wrap">
                       <MeasurementsForm measurements={measurementData} />
                     </div>
@@ -384,7 +494,7 @@ export default function ProdutDetail({
                     <strong className='price-color'>{formatPrice(price)}</strong>
                     <div className="size-item">
                       <InputGroup className="size-radiobuttons d-flex flex-wrap gap-2">
-                        {availableSizes?.map((size) => (
+                        {getAvailableSizes?.map((size) => (
                           <Form.Check
                             inline
                             key={size.slug}

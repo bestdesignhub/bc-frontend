@@ -133,7 +133,7 @@ const LastStepPage = async ({
   // Fetch main step data
   const stepData = await getStepFullViewDetails({ productTypeId, steps: resolvedSearchParams });
   const fittingName = stepData?.fitting?.stepCard?.title;
-  console.log("stepData====>>>>>>>>>><<<<<<<<<<", steps);
+  console.log("stepData====>>>>>>>>>><<<<<<<<<<", steps, stepData);
 
   const SIZE_ORDER = ['XS', 'S', 'M', 'L', 'XL', '2XL', '3XL', '4XL', '5XL'];
   // Now filter the available sizes based on the step type and slug
@@ -172,21 +172,40 @@ const LastStepPage = async ({
 
   stepData.yarn.price = Number(selectedPrice);
 
+  let measurementsData = [];
 
   if (selectedSize) {
-    const selectedMeasurement = measurementFinalData.find((e: any) => e.size === selectedSize.toLocaleUpperCase())?.measurements;
+    console.log("measurementFinalData", measurementFinalData);
+
+    // Get the fit group (Slim or Regular)
+    let fitGroup;
+    if (stepData.fitting?.stepCard.slug === 'slim-fitting') {
+      fitGroup = measurementFinalData?.find((item: any) => item.fit === 'Slim');
+    } else if (stepData.fitting?.stepCard.slug === 'regular-fitting') {
+      fitGroup = measurementFinalData?.find((item: any) => item.fit === 'Regular');
+    }
+
+    console.log("fitGroup", fitGroup);
+
+    // Ensure fitGroup.measurements is an array of size objects
+    const selectedMeasurement = fitGroup?.sizes?.find(
+      (e: any) => e.size === selectedSize.toUpperCase()
+    )?.measurements;
+
     if (selectedMeasurement) {
       measurementsData = selectedMeasurement;
       console.log(`Measurements for size ${selectedSize}:`, measurementsData);
     } else {
       console.log(`No measurements found for size ${selectedSize}, defaulting to 'L'`);
-
     }
   } else {
-    console.log("else", selectedSize);
-
-    measurementsData = measurementFinalData.find((e: any) => e.size === 'L')?.measurements || measurementsData;
+    console.log("No selected size, using default 'L'", "hi", measurementFinalData);
+    const defaultGroup = measurementFinalData.find((item: any) => item.fit === 'Regular');
+    measurementsData = defaultGroup?.measurements?.find(
+      (e: any) => e.size === 'L'
+    )?.measurements || [];
   }
+  console.log("measurementsData", measurementsData);
 
 
 
