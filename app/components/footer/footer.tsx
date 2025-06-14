@@ -159,5 +159,5 @@ export default async function Footer({ }: { settings?: ISettings }) {
         </span>
       </small>
     </>
-  );
+  )
 }
