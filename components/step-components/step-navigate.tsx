@@ -1,13 +1,13 @@
 'use client';
 
 import { FIXED_STEPS_COUNT, STEPPERPATHS, URL_SLUG, USER_ROUTES } from '@/constants';
-import { formatPrice, getAWSImageUrl, handleApiCall } from '@/utils/common.utils';
+import { formatPrice, getAWSImageUrl } from '@/utils/common.utils';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
-import toast from "react-hot-toast";
+// import toast from "react-hot-toast";
 
 export default function StepNavigate({
   steps,

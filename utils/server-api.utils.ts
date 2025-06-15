@@ -120,7 +120,7 @@ export const getYarnCardList = async (searchParams: { [key: string]: string }) =
 
   const res: any = await handleApiCall(YARN_CARD_LIST_URL, 'POST', {
     page: parseInt(page.toString()),
-    perPage: 10,
+    perPage: 100,
     search,
     sortBy,
     sortOrder,
