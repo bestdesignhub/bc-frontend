@@ -18,6 +18,8 @@ import EmptyCartMessage from './empty-cart-message';
 export default function CartContent({ initialCartData }: { initialCartData: any[] }) {
   const t = useTranslations();
   const [cartData, setCartData] = useState(initialCartData);
+  console.log('initialCartData', initialCartData);
+
   useEffect(() => {
     setCartData(initialCartData);
   }, [initialCartData]);

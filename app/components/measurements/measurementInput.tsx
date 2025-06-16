@@ -147,7 +147,7 @@ const MeasurementInput: React.FC<MeasurementInputProps> = ({
 
         const parsed = parseInput(raw);
 
-        // ✅ Only call onChange if within range
+        // Only call onChange if within range
         if (parsed !== null && parsed >= min && parsed <= max) {
             onChange(parsed);
             setInput(raw);
@@ -184,7 +184,6 @@ const MeasurementInput: React.FC<MeasurementInputProps> = ({
                 type="number"
                 value={value}
                 onChange={handleChange}
-            // readOnly
             />
             {/* <span className="tolerance">+/- {tolerance}</span> */}
             <span style={{ fontSize: "0.85rem", color: "#555" }}>

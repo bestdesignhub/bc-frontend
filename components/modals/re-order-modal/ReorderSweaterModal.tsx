@@ -134,7 +134,7 @@ export default function ReorderSweaterModal({
     const handleAddToCart = (yarnId: any) => {
         const genderId = product.product.genderId._id || product.product.genderId;
         const productTypeId = product.product.productTypeId?._id;
-        const productId = product._id;
+        const productId = product.product.productId;
         const size = product.size || 'l';
         const measurementData = product.measurements || null;
         const createdBy = product.createdBy || 'shop';
