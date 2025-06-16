@@ -1078,6 +1078,29 @@ body {
   color: #423b33;
 }
 
+.yarn-popup {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.yarn-popup-content {
+  padding: 20px;
+  width: 50%;
+  height: 50%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.material-box {
+  display: flex;
+  gap: 20px;
+}
+
 /* Footer Css Start */
 .footer {
   background-color: #7f7263;

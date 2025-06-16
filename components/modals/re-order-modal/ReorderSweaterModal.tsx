@@ -205,8 +205,8 @@ export default function ReorderSweaterModal({
     if (!isOpen) return null;
 
     return (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center p-4">
-            <div className="bg-white max-w-6xl w-full rounded-lg shadow-lg p-6 overflow-y-auto max-h-[90vh]">
+        <div className="yarn-popup fixed inset-0 bg-black z-50 flex justify-center items-center">
+            <div className="yarn-popup-content bg-white max-w-6xl w-full rounded-lg shadow-lg p-6 overflow-y-auto max-h-[90vh]">
                 <h2 className="text-xl font-medium mb-4">
                     Please change color and yarn for re-order sweater
                 </h2>
@@ -244,7 +244,7 @@ export default function ReorderSweaterModal({
                 {/* Material/Yarn Grid */}
                 <div className="mb-6">
                     <label className="block font-semibold mb-2">Material</label>
-                    <div className="grid grid-cols-4 gap-4 max-h-[400px] overflow-y-auto">
+                    <div className="material-box grid grid-cols-4 gap-4 max-h-[400px] overflow-y-auto">
                         {filterYarnList.map((yarn, index) => (
                             <div
                                 key={yarn._id || yarn.slug || yarn.title?.en || index}
