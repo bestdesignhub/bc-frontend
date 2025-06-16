@@ -3,8 +3,8 @@
 import React, { useState } from 'react';
 import { formatPrice, getAWSImageUrl } from '@/utils/common.utils';
 import ReorderSweaterModal from '@/components/modals/re-order-modal/ReorderSweaterModal';
-import { COLOUR_DROPDOWN_URL } from '@/constants/apis';
-import { getDropdownList } from '@/utils/server-api.utils';
+// import { COLOUR_DROPDOWN_URL } from '@/constants/apis';
+// import { getDropdownList } from '@/utils/server-api.utils';
 
 const OrderHistoryClient = ({
     orders,

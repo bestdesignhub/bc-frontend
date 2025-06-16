@@ -9,7 +9,7 @@ import { dispatch } from '@/lib/redux/store';
 import { setLoading } from '@/lib/redux/slices/loaderSlice';
 import userAxiosInstance from '@/config/userAxiosInstance';
 import { setUserSettingIncreaseCartCount } from '@/lib/redux/slices/userSettingSlice';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { MESSAGES, USER_ROUTES } from '@/constants';
 import toast from 'react-hot-toast';
 
@@ -41,7 +41,6 @@ const genderBasedConfig: Record<string, {
 export default function ReorderSweaterModal({
     isOpen,
     onClose,
-    onGoToCart,
     product,
 }: ReorderSweaterModalProps) {
     const [selectedYarn, setSelectedYarn] = useState<string | null>(null);
@@ -57,10 +56,11 @@ export default function ReorderSweaterModal({
     const router = useRouter();
     useEffect(() => {
         let isMounted = true;
-        const getStepCardId = (slug: string) =>
-            product.steps.find(
-                (step: any) => step.stepType.slug === slug
-            )?.stepCard?._id;
+
+        // const getStepCardId = (slug: string) =>
+        //     product.steps.find(
+        //         (step: any) => step.stepType.slug === slug
+        //     )?.stepCard?._id;
 
         const styleId = defaultConfig.styleId;
         const gaugeId = defaultConfig.gaugeId;
