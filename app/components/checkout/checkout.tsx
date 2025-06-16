@@ -77,8 +77,8 @@ export default function Checkout({
       toast.success(appyCoupon?.message);
     }
     if (appyCoupon?.data?.total) {
-      const originalTotal = parseFloat((totalPrice || "0").toString().replace(/[^\d.-]/g, ""));
-      const discount = parseFloat((totalPrice || "0").toString().replace(/[^\d.-]/g, ""));
+      // const originalTotal = parseFloat((totalPrice || "0").toString().replace(/[^\d.-]/g, ""));
+      // const discount = parseFloat((totalPrice || "0").toString().replace(/[^\d.-]/g, ""));
       // orderData.total = (originalTotal - discount).toFixed(2); // Keeps two decimal points
       // alert(orderData.total)
       // const updatData: any = await handleApiCall(`/cart/apply/coupon`, "POST", {

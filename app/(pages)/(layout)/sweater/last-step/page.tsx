@@ -36,17 +36,17 @@ import MeasurementAddToCartButton from '@/app/components/measurements/add-to-car
 import { cookies } from 'next/headers';
 // import { title } from 'process';
 // import { Form, InputGroup } from 'react-bootstrap';
-let measurementsData = [
-  // const measurementsData = [
-  { label: "BODY LENGTH - HSP", value: 65, tolerance: 5 },
-  { label: "HEM WIDTH", value: 36, tolerance: 3 },
-  { label: "CHEST WIDTH", value: 46, tolerance: 2 },
-  { label: "ARMHOLE STRAIGHT", value: 22, tolerance: 2 },
-  { label: "SHOULDER WIDTH", value: 37, tolerance: 2 },
-  { label: "SLEEVE LENGTH - HSP", value: 64, tolerance: 2 },
-  { label: "NECK WIDTH", value: 15.5, tolerance: 2 },
-  { label: "SLEEVE WIDTH", value: 17, tolerance: 2 },
-];
+// let measurementsData = [
+//   // const measurementsData = [
+//   { label: "BODY LENGTH - HSP", value: 65, tolerance: 5 },
+//   { label: "HEM WIDTH", value: 36, tolerance: 3 },
+//   { label: "CHEST WIDTH", value: 46, tolerance: 2 },
+//   { label: "ARMHOLE STRAIGHT", value: 22, tolerance: 2 },
+//   { label: "SHOULDER WIDTH", value: 37, tolerance: 2 },
+//   { label: "SLEEVE LENGTH - HSP", value: 64, tolerance: 2 },
+//   { label: "NECK WIDTH", value: 15.5, tolerance: 2 },
+//   { label: "SLEEVE WIDTH", value: 17, tolerance: 2 },
+// ];
 
 const LastStepPage = async ({
   searchParams,
@@ -179,11 +179,17 @@ const LastStepPage = async ({
 
     // Get the fit group (Slim or Regular)
     let fitGroup;
-    if (stepData.fitting?.stepCard.slug === 'slim-fitting') {
-      fitGroup = measurementFinalData?.find((item: any) => item.fit === 'Slim');
-    } else if (stepData.fitting?.stepCard.slug === 'regular-fitting') {
-      fitGroup = measurementFinalData?.find((item: any) => item.fit === 'Regular');
+    if (measurementFinalData.length > 0) {
+      if (stepData.fitting?.stepCard.slug === 'slim-fitting') {
+        fitGroup = measurementFinalData?.find((item: any) => item.fit === 'Slim');
+      } else if (stepData.fitting?.stepCard.slug === 'regular-fitting') {
+        console.log("Regular fitting selected", measurementFinalData);
+
+        fitGroup = measurementFinalData?.find((item: any) => item.fit === 'Regular');
+      } // Default to 'L' if no data
+
     }
+
 
     console.log("fitGroup", fitGroup);
 

@@ -9,13 +9,14 @@ import toast from 'react-hot-toast';
 
 const OrderData = ({ cartData }: { cartData: any[] }) => {
   const t = useTranslations();
-  const router = useRouter();
+  // const router = useRouter();
   const _router = useSearchParams();
   const couponCode = _router?.get("couponCode");
   const [couponText, setCouponText] = useState("");
   // const [dataSet, setDataSet] = useState(false);
   const [disPrice, setDisPrice] = useState();
 
+  console.log(couponText, "couponText");
 
   const orderData = useMemo(() => {
     let total = 0;

@@ -29,7 +29,7 @@ import MeasurementsForm from '../measurements/measurementsForm';
 import Link from 'next/link';
 import MeasurementAddToCartButton from '../measurements/add-to-cart-button';
 import { usePathname, useSearchParams } from 'next/navigation';
-import { get } from 'http';
+// import { get } from 'http';
 
 const allSizes = [
   { slug: 'xs', name: 'XS' },

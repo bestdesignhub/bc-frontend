@@ -123,8 +123,8 @@ const MeasurementsForm: React.FC<MeasurementsFormProps> = ({ measurements }) => 
 
     const handleChange = (index: number, newValue: number) => {
         console.log(`Updating measurement at index ${index} to new value: ${measurements[index].value} = ${newValue}`);
-        let max = measurements[index].value + measurements[index].tolerance;
-        let min = measurements[index].value - measurements[index].tolerance;
+        const max = measurements[index].value + measurements[index].tolerance;
+        const min = measurements[index].value - measurements[index].tolerance;
         if (newValue > max || newValue < min) {
             console.warn(`New value ${newValue} is out of bounds for measurement ${measurements[index].label}. Allowed range: ${min} - ${max}`);
             return; // Prevent updating if out of bounds

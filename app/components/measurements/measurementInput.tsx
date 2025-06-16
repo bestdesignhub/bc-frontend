@@ -126,6 +126,7 @@ const MeasurementInput: React.FC<MeasurementInputProps> = ({
 
     const min = baseValue - tolerance;
     const max = baseValue + tolerance;
+    console.log(input, "input");
 
     useEffect(() => {
         setInput(value.toString());
