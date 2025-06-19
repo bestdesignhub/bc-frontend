@@ -49,6 +49,7 @@ export const GENERAL_USER_SETTINGS_URL = '/general/user-settings';
 export const MY_ADDRESS_LIST_URL = '/my-address/list';
 export const MY_ADDRESS_CREATE_URL = '/my-address/create';
 export const MY_ADDRESS_UPDATE_URL = '/my-address/update';
+export const DOCUMENT_LIST_URL = '/documents/list';
 
 export const WISHLIST_CREATE_URL = '/wishlist/create';
 export const WISHLIST_DELETE_URL = '/wishlist';
