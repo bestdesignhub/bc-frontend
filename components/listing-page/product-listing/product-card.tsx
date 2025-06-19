@@ -112,14 +112,8 @@ const ProductCard: FC<{ product: any; genderSlug: string, price: string }> = ({ 
               <ins>{formatPrice(Number(price))}</ins>
             </div>
           </div>
-          <button
+          <button className='yarn-button'
             onClick={handleShow}
-            style={{
-              background: 'var(--bsp-black)',
-              width: '100%',
-              padding: '10px 0',
-              color: 'white',
-            }}
           >
             {t('COMMON.SELECT')}
           </button>

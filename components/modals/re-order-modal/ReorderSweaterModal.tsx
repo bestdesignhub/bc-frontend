@@ -16,7 +16,7 @@ import toast from 'react-hot-toast';
 type ReorderSweaterModalProps = {
     isOpen: boolean;
     onClose: () => void;
-    onGoToCart: () => void;
+    // onGoToCart: () => void;
     product: any;
 };
 
@@ -50,13 +50,12 @@ export default function ReorderSweaterModal({
     const [filterYarnList, setFilterYarnList] = useState<any[]>([]);
     const [price, setPrice] = useState<number | null>(null);
 
-    console.log('Product:', product);
+    // console.log('Product:', product, onGoToCart);
     const genderId = product.product.genderId._id || product.product.genderId;
     const defaultConfig = genderBasedConfig[genderId] || {};
     const router = useRouter();
     useEffect(() => {
         let isMounted = true;
-
         // const getStepCardId = (slug: string) =>
         //     product.steps.find(
         //         (step: any) => step.stepType.slug === slug
@@ -207,9 +206,9 @@ export default function ReorderSweaterModal({
     return (
         <div className="yarn-popup fixed inset-0 bg-black z-50 flex justify-center items-center">
             <div className="yarn-popup-content bg-white max-w-6xl w-full rounded-lg shadow-lg p-6 overflow-y-auto max-h-[90vh]">
-                <h2 className="text-xl font-medium mb-4">
+                <h3 className="text-xl font-medium mb-4">
                     Please change color and yarn for re-order sweater
-                </h2>
+                </h3>
 
                 {/* Product Preview */}
                 {product?.steps?.[2]?.stepCard?.realImage && (

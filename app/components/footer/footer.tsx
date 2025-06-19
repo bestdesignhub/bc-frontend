@@ -9,8 +9,8 @@ export default async function Footer({ }: { settings?: ISettings }) {
         <div className="f-container">
           <div className="f-logo-section">
             <div className="f-logo">
-              <Link href="#" className="BESPOKE CASHMERE">
-                <img src="images/footer-logo.webp" alt="BESPOKE CASHMERE" />
+              <Link href="#" className="footer-logo">
+                <img src="https://app.bespokecashmere.eu/images/footer-logo.webp" alt="BESPOKE CASHMERE" />
               </Link>
             </div>
             <div className="company-registration">
@@ -22,29 +22,29 @@ export default async function Footer({ }: { settings?: ISettings }) {
               <ul className="social-icon">
                 <li>
                   <Link href="#" title="instagram">
-                    <img src="images/insta.webp" alt="instagram" />
+                    <img src="https://app.bespokecashmere.eu/images/insta.webp" alt="instagram" />
                   </Link>
                 </li>
                 <li>
                   <Link href="#" title="linkedin">
-                    <img src="images/linkedin.webp" alt="linkedin" />
+                    <img src="https://app.bespokecashmere.eu/images/linkedin.webp" alt="linkedin" />
                   </Link>
                 </li>
                 <li>
                   <Link href="#" title="whatsapp">
-                    <img src="images/whatsapp.webp" alt="whatsapp" />
+                    <img src="https://app.bespokecashmere.eu/images/whatsapp.webp" alt="whatsapp" />
                   </Link>
                 </li>
                 <li>
                   <Link href="#" title="facebook">
-                    <img src="images/facebook.webp" alt="facebook" />
+                    <img src="https://app.bespokecashmere.eu/images/facebook.webp" alt="facebook" />
                   </Link>
                 </li>
               </ul>
             </div>
             <div className="payment-method">
               <span className="payment-title">Payment Method:</span>
-              <img src="images/stripe.webp" alt="stripe" />
+              <img src="https://app.bespokecashmere.eu/images/stripe.webp" alt="stripe" />
             </div>
           </div>
           <div className="f-links-box">

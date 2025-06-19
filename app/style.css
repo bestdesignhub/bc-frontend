@@ -196,7 +196,6 @@ body {
   padding-right: 15px;
 }
 
-.page-wrapper {}
 
 /* header top Start */
 .header-top {
@@ -217,6 +216,7 @@ body {
 }
 
 .h-top-btn {
+  padding: 0;
   display: flex;
   align-items: center;
   margin-left: auto;
@@ -1104,7 +1104,7 @@ body {
 /* Footer Css Start */
 .footer {
   background-color: #7f7263;
-  padding: 80px 0;
+  padding: 50px 0 30px;
 }
 
 .footer .f-container {
@@ -1118,7 +1118,7 @@ body {
 }
 
 .f-logo {
-  margin-bottom: 25px;
+  margin-bottom: 15px;
 }
 
 .f-links-box {
@@ -1136,7 +1136,7 @@ body {
 }
 
 .f-links-box .f-link li {
-  margin-top: 30px;
+  margin-top: 17px;
 }
 
 .f-links-box .f-link li a,
@@ -1151,17 +1151,25 @@ body {
 }
 
 .company-registration {
-  margin-bottom: 25px;
+  margin-bottom: 15px;
 }
 
 .company-registration p {
-  font-size: 18px;
+  font-size: 15px;
 }
 
 .social-persence,
 .payment-method {
-  font-size: 19px;
-  margin-bottom: 25px;
+  font-size: 15px;
+  margin-bottom: 15px;
+}
+
+ul.social-icon {
+  padding-left: 5px;
+}
+
+.social-icon {
+  margin-top: 15px;
 }
 
 .social-persence,
@@ -1403,6 +1411,30 @@ body {
   color: #7f7263;
   margin: 5px 0;
   display: inline-block;
+}
+
+button.yarn-button {
+  background: #7f7263;
+  width: 100%;
+  padding: 10px 0;
+  color: white;
+  display: block;
+}
+
+button.yarn-button:hover {
+  background: #af986d;
+}
+
+.footer-logo {
+  width: 200px;
+  display: inline-block;
+}
+
+
+
+.footer-logo img {
+  width: 100%;
+  max-width: 100%;
 }
 
 /* Responsive Css Start */
@@ -1820,11 +1852,30 @@ body {
 
 @media only screen and (max-width: 992px) {
   .logo {
-    margin-right: 0;
+    margin: 0 10px;
   }
 
-  .logo img {
+
+  .Sweater-block-main .Sweater-right .right-price-product {
+    margin-top: 0 !important;
+  }
+
+  .Sweater-right-middle {
+    margin-top: 0 !important;
+  }
+
+  .Sweater-block-main .container {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* .logo img {
     max-width: 150px;
+  } */
+
+  .nav-row {
+    width: 100%;
+    max-width: 100%;
   }
 
   .nav-toggle {
@@ -1898,7 +1949,7 @@ body {
     overflow: auto;
     /* position: fixed; */
     top: 0;
-    width: calc(100% - 54px);
+    width: 100%;
   }
 
   .nav-row .f-container,
@@ -1974,7 +2025,7 @@ body {
   .search-box {
     order: inherit;
     width: 100%;
-    margin-top: 10px;
+    margin: 10px 0;
   }
 
   .search-box .search-input {
@@ -2040,7 +2091,6 @@ body {
 
   .h-top-btn a {
     padding: 2px 5px;
-    max-width: 200px;
     margin: 0 auto;
     font-size: 13px;
   }
@@ -2209,7 +2259,7 @@ body {
   .payment-method,
   .company-registration {
     width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     text-align: left;
     padding-right: 0;
   }
@@ -2224,17 +2274,15 @@ body {
     width: 100%;
     text-align: center;
     margin-bottom: 10px;
-    border-bottom: 2px solid #7f7263;
     padding-bottom: 10px;
   }
 
-  .logo img {
+  /* .logo img {
     max-width: 200px;
     margin: 0 auto;
-  }
+  } */
 
   .search-box {
-    border-top: 2px solid #7f7263;
     padding-top: 10px;
   }
 
@@ -2293,9 +2341,9 @@ body {
     display: block;
   }
 
-  .h-top-btn a {
+  /* .h-top-btn a {
     max-width: 150px;
-  }
+  } */
 
   .h-top-btn li:not(:first-child) {
     margin-left: 0;

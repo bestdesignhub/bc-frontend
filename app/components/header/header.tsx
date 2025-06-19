@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from 'react';
 //import '@/app/styles/header.css';
 import Cookies from 'js-cookie';
 import userAxiosInstance from '@/config/userAxiosInstance';
-import { GENERAL_USER_SETTINGS_URL } from '@/constants/apis';
+import { DOCUMENT_LIST_URL, GENERAL_USER_SETTINGS_URL } from '@/constants/apis';
 import { dispatch } from '@/lib/redux/store';
 import { setAllUserSettingsValues } from '@/lib/redux/slices/userSettingSlice';
 import Logo from './logo';
@@ -13,11 +13,14 @@ import Link from 'next/link';
 // import { USER_ROUTES } from '@/constants';
 import CartWishlist from './cart-wishlist';
 import { useRouter } from 'next/navigation'; // Import router for navigation
+// import { log } from 'console';
+import { getAWSImageUrl } from '@/utils/common.utils';
 
 export default function Header() {
   const token = useMemo(() => Cookies.get('userToken'), []);
   const [searchQuery, setSearchQuery] = useState('');
   const router = useRouter();
+  const [documentList, setDocumentList] = useState([]);
 
   useEffect(() => {
     const fetchUserSettings = async () => {
@@ -40,6 +43,24 @@ export default function Header() {
       fetchUserSettings();
     }
   }, [token]);
+  useEffect(() => {
+    const fetchDocumentList = async () => {
+      try {
+        const response = await userAxiosInstance.get(DOCUMENT_LIST_URL);
+        console.log('response', response.data);
+
+        if (response?.data?.success) {
+
+          setDocumentList(response?.data?.data?.data || []);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchDocumentList();
+  }, []);
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -183,14 +204,22 @@ export default function Header() {
               </Link>
             </li>
             <li>
-              <Link href="#" title="Download manual book">
-                Download manual book
-              </Link>
+              {documentList
+                .filter((doc: any) => doc.slug === 'manual-book')
+                .map((doc: any) => (
+                  <Link key={doc.slug} href={getAWSImageUrl(doc.filePath)} target="_blank" rel="noreferrer" title="Download manual book">
+                    Download manual book
+                  </Link>
+                ))}
             </li>
             <li>
-              <Link href="#" title="Download color book">
-                Download color book
-              </Link>
+              {documentList
+                .filter((doc: any) => doc.slug === 'color-book')
+                .map((doc: any) => (
+                  <Link key={doc.slug} href={getAWSImageUrl(doc.filePath)} target="_blank" rel="noreferrer" title="Download color book">
+                    Download color book
+                  </Link>
+                ))}
             </li>
           </ul>
         </div>

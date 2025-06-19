@@ -146,7 +146,7 @@
 }
 
 .sidebar .form-check-input[type='checkbox'] {
-  border-radius: 5px;
+  border-radius: 0;
   width: 24px;
   height: 24px;
   border: 1px solid #cccccc;
@@ -304,14 +304,17 @@
 }
 
 .womanproductbox .info h6 {
-  padding: 15px 15px;
-  font-size: 20px;
+  padding: 15px 10px;
+  font-size: 18px;
   font-family: "Gilda Display", serif;
   font-weight: 400;
   color: #7f7263;
+  line-height: 30px;
   display: block;
   border-bottom: 1px solid #d9d6d1;
   min-height: 72px;
+  height: 72px;
+  overflow: hidden;
   display: flex;
   align-items: center;
 }
