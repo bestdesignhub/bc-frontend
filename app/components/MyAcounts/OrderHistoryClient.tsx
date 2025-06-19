@@ -36,12 +36,12 @@ const OrderHistoryClient = ({
         setSelectedProduct(null);
     };
 
-    const handleGoToCart = () => {
-        console.log('Going to cart with:', selectedProduct);
-        closeReorderModal();
-        // Optional: navigate to cart
-        // router.push('/cart');
-    };
+    // const handleGoToCart = () => {
+    //     console.log('Going to cart with:', selectedProduct);
+    //     closeReorderModal();
+    //     // Optional: navigate to cart
+    //     // router.push('/cart');
+    // };
 
     return (
         <div className="my-account-block-main">
@@ -149,7 +149,7 @@ const OrderHistoryClient = ({
                 <ReorderSweaterModal
                     isOpen={showModal}
                     onClose={closeReorderModal}
-                    onGoToCart={handleGoToCart}
+                    // onGoToCart={handleGoToCart}
                     product={selectedProduct} // ✅ Pass selected product
                 />
             )}
