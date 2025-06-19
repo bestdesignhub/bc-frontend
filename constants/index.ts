@@ -31,6 +31,7 @@ const USER_ROUTES = {
   men: '/men',
   shop: '/shop',
   ourStory: '/our-story',
+  aboutUs: '/aboutus',
   cart: '/cart',
   checkout: '/checkout',
   myAccount: '/my-account',

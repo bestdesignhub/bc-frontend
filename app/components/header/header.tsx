@@ -122,9 +122,7 @@ export default function Header() {
               </a>
             </li>
             <li>
-              <a className="order-Track" href="#" title="Order Tracking">
-                Order Tracking
-              </a>
+              <Link className="order-Track" href={token ? '/my-account/order-history' : '/login'}>Order Tracking</Link>
             </li>
             <li>
               {/* <a className="my-account" href="#" title="My Account">
@@ -185,14 +183,14 @@ export default function Header() {
                   Our Story
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link href="/gift" title="Gift">
                   Gift
                 </Link>
-              </li>
+              </li> */}
               <li>
-                <Link href="/discovery" title="Discovery">
-                  Discovery
+                <Link href="/aboutus" title="About Us">
+                  About Us
                 </Link>
               </li>
             </ul>

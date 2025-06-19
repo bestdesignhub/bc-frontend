@@ -27,15 +27,9 @@ const MenuData: Menu[] = [
   },
   {
     id: 5,
-    title: 'Gift',
+    title: 'About Us',
     newTab: false,
-    href: '/gift',
-  },
-  {
-    id: 6,
-    title: 'Discovery',
-    newTab: false,
-    href: '/discovery',
+    href: '/aboutus',
   },
 ];
 
