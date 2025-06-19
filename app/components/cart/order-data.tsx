@@ -2,7 +2,7 @@
 
 import { formatPrice, generateProductName, handleApiCall } from '@/utils/common.utils';
 import { useTranslations } from 'next-intl';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 import React, { useEffect, useMemo, useState } from 'react';
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 import toast from 'react-hot-toast';
@@ -67,8 +67,8 @@ const OrderData = ({ cartData }: { cartData: any[] }) => {
       toast.success(appyCoupon?.message);
     }
     if (appyCoupon?.data?.total) {
-      const originalTotal = parseFloat((orderData.total || "0").toString().replace(/[^\d.-]/g, ""));
-      const discount = parseFloat((appyCoupon.data.total || "0").toString().replace(/[^\d.-]/g, ""));
+      // const originalTotal = parseFloat((orderData.total || "0").toString().replace(/[^\d.-]/g, ""));
+      // const discount = parseFloat((appyCoupon.data.total || "0").toString().replace(/[^\d.-]/g, ""));
       // orderData.total = (originalTotal - discount).toFixed(2); // Keeps two decimal points
       // alert(orderData.total)
       // const updatData: any = await handleApiCall(`/cart/apply/coupon`, "POST", {

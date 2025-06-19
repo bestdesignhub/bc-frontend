@@ -13,7 +13,7 @@ import Link from 'next/link';
 // import { USER_ROUTES } from '@/constants';
 import CartWishlist from './cart-wishlist';
 import { useRouter } from 'next/navigation'; // Import router for navigation
-import { log } from 'console';
+// import { log } from 'console';
 import { getAWSImageUrl } from '@/utils/common.utils';
 
 export default function Header() {
