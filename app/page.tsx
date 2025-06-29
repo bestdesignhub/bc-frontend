@@ -42,6 +42,8 @@ export default async function Home() {
   // const flashSale = flashSaleResult.status === 'fulfilled' ? flashSaleResult.value : null;
   const homeModelData = homeModelResult.status === 'fulfilled' ? homeModelResult.value : null;
   const testimonialData = testimonialResult.status === 'fulfilled' ? testimonialResult.value : [];
+  console.log("homeProductList", homeProductList);
+
   return (
     <div className={`page-wrapper`}>
       <Header />

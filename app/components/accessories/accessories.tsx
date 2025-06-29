@@ -48,6 +48,7 @@ export interface IProduct {
   price: number;
   image: string;
   genderId: string;
+  popularProduct: string;
 }
 
 interface IAccessoriesProps {
@@ -72,6 +73,7 @@ export default function Accessories({ homeProductList }: IAccessoriesProps) {
                   title={accessories?.title}
                   image={accessories?.image}
                   price={accessories?.price}
+                  popularProduct={accessories?.popularProduct}
                 />
               </Fragment>
             ))}
