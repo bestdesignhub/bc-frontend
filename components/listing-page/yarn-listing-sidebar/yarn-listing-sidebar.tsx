@@ -24,7 +24,7 @@ const YarnListingSidebar: FC<Props> = ({ colours, genders, materials, price }) =
   const router = useRouter();
   const searchParams = useSearchParams();
   const dispatch = useDispatch();
-  console.log(price);
+  console.log("price", price);
 
 
 

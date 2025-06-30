@@ -43,30 +43,47 @@ const SweaterPage = async ({
   const resolvedSearchParams = await searchParams;
   const t = await getTranslations();
   const genderSlug = resolvedSearchParams[URL_SLUG.GENDER];
+  const genderId = resolvedSearchParams[URL_SLUG.GENDER];
   const materialId = resolvedSearchParams["material"];
+  const gaugeId = resolvedSearchParams['gauge'];
+  const patternId = resolvedSearchParams['pattern'];
+  const styleId = resolvedSearchParams['style'];
+  const colourId = resolvedSearchParams['colour'];
   let priceData: Record<string, any> = {};
+  let formattedPrice = '00000';
   const genderConfig = genderBasedConfig[genderSlug];
+  const effectiveStyleId = styleId || genderConfig?.styleId;
+  const effectiveGaugeId = gaugeId || genderConfig?.gaugeId;
+  const effectivePatternId = patternId || genderConfig?.patternId;
   console.log(genderConfig, genderSlug);
 
+
   let requestBody: any = {};
-  if (genderConfig) {
+  if (genderId && materialId && effectiveStyleId && effectiveGaugeId && effectivePatternId) {
     requestBody = {
-      styleId: genderConfig.styleId,
-      gaugeId: genderConfig.gaugeId,
-      patternId: genderConfig.patternId,
+      styleId: effectiveStyleId,
+      gaugeId: effectiveGaugeId,
+      patternId: effectivePatternId,
       materialId,
-      genderId: genderSlug,
-      size: 'l',
+      genderId: genderId,
+      size: 'fl',
     };
 
-    priceData = await fetchPriceList(requestBody);
-    console.log(priceData, "priceData");
+    try {
+      priceData = await fetchPriceList(requestBody);
+      const rawPrice = priceData?.sizeFL ? Number(priceData.sizeFL) : 0;
+      formattedPrice = rawPrice.toLocaleString('en-US', { minimumIntegerDigits: 5, useGrouping: false });
+      console.log("formattedPrice", formattedPrice);
+
+    } catch (err) {
+      console.error('Error fetching price:', err);
+    }
   }
 
-  const rawPrice = priceData && Object.keys(priceData).length > 0 ? Number(priceData.sizeL || 0) : 0;
-  const formattedPrice = rawPrice.toLocaleString('en-US', { minimumIntegerDigits: 5, useGrouping: false });
+  // const rawPrice = priceData && Object.keys(priceData).length > 0 ? Number(priceData.sizeFL || 0) : 0;
+  // const formattedPrice = rawPrice.toLocaleString('en-US', { minimumIntegerDigits: 5, useGrouping: false });
 
-  const colourId = resolvedSearchParams['colour'];
+
 
   // console.log("requestBody", requestBody);
 
@@ -85,12 +102,18 @@ const SweaterPage = async ({
   const yarnList = yarnListResult.status === 'fulfilled' ? yarnListResult.value : {};
   // const priceList = await getPriceListByIds(requestBody?.styleId, requestBody?.gaugeId, requestBody?.patternId, requestBody?.materialId, requestBody?.genderId)
   // const priceListData = priceList.success === 'true' ? priceList.data : [];
-  console.log("priceListData", yarnList);
+  // console.log("priceListData", yarnList);
 
   // Filter by genderId
   // const filteredYarnList = materials
   //   ? yarnList?.data?.filter((item: any) => item.materialId === materialId)
   //   : yarnList?.data;
+
+  // const filteredYarnList = yarnList?.data?.filter((item: any) => {
+  //   const matchMaterial = materialId ? item.materialId === materialId : true;
+  //   const matchColour = colourId ? item.colourId === colourId : true;
+  //   return matchMaterial && matchColour;
+  // });
 
   const filteredYarnList = yarnList?.data?.filter((item: any) => {
     const matchMaterial = materialId ? item.materialId === materialId : true;
