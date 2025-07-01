@@ -41,7 +41,6 @@ const SweaterStep = async ({
   const gaugeId = resolvedSearchParams['gauge'];
   const patternId = resolvedSearchParams['pattern'];
   const styleId = resolvedSearchParams['style'];
-  const colourId = resolvedSearchParams['colour'];
   const genderSlug = resolvedSearchParams[URL_SLUG.GENDER];
   const patternSlug = resolvedSearchParams["pattern"];
   const materialSlug = resolvedSearchParams["material"];

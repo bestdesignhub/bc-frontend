@@ -125,6 +125,21 @@ const AddressManagement = ({
               {t('COMMON.EDIT_TEXT')}
             </span>
           </div>
+          <div className="edit-link" onClick={() => handleEdit(address?._id)}>
+            <span
+              style={{
+                display: 'flex',
+                textTransform: 'uppercase',
+                fontSize: 'var(--bsp-body-text)',
+                fontWeight: 600,
+                color: 'var(--bsp-black)',
+                cursor: 'pointer',
+                userSelect: 'none',
+              }}
+            >
+              {t('COMMON.DELETE')}
+            </span>
+          </div>
         </div>
       ))}
       <div className="checkout-address-left">

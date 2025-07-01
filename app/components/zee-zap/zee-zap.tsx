@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { Col, Row } from 'react-bootstrap';
 import '@/app/styles/zee-zap.css';
 import { Section8 } from '@/types/components';
 import { getAWSImageUrl } from '@/utils/common.utils';
