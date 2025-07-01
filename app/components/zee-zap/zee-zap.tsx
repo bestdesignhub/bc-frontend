@@ -11,66 +11,57 @@ interface ILookGoodProps {
 
 export default function ZeeZap({ lookGoodData }: ILookGoodProps) {
   return (
-    <div className="zeezap-wrapper">
+    <section className="women-men-sweater">
       {lookGoodData?.card2 && (
-        <Row className="g-0">
-          <Col xs={12} lg={6} className='women'>
-            <div className="image">
-              <Link href="/men">
-              <Image
-                src={getAWSImageUrl(lookGoodData?.card2?.image)}
-                width={938}
-                height={456}
-                alt="hero"
-                className="img1"
-                loading="lazy"
-              />
-              </Link>
-            </div>
-            <div className="zeezap_content">
-              <h6>{lookGoodData?.card2?.title ?? ''}</h6>
-              <h3>{lookGoodData?.card2?.sub_title ?? ''}</h3>
-              <p>{lookGoodData?.card2?.description ?? ''}</p>
+        <>
+          <div className="women-sweater sweater-img-content">
+            <Link href="/women">
+              <Image src={getAWSImageUrl(lookGoodData?.card2?.image)} width={361} height={456} alt="hero" className="img1"
+                loading="lazy" />
+            </Link>
+            <div className="sweater-content">
+              <h3>{lookGoodData?.card2?.title ?? ''}  </h3>
+              <p>{lookGoodData?.card2?.description}</p>
               {lookGoodData?.card2?.button_text && (
-                <button className="small">
-                  <Link href={lookGoodData?.card2?.button_link ?? ''}>
+                <div className='shop-button'>
+                  <Link href={lookGoodData?.card2?.button_text ?? ''}>
                     {lookGoodData?.card2?.button_text}
                   </Link>
-                </button>
+                </div>
               )}
             </div>
-          </Col>
-          {lookGoodData?.card3 && ( 
-          <Col xs={12} lg={6} className='men'>
-            <div className="image">
-            <Link href="/women">
-              <Image
-                src={getAWSImageUrl(lookGoodData?.card3?.image)}
-                width={938}
-                height={456}
-                alt="hero"
-                className="img1"
-                loading="lazy"
-              />
+          </div>
+
+
+          {lookGoodData?.card3 && (
+            <div className="men-sweater sweater-img-content">
+              <Link href="/men">
+                <Image
+                  src={getAWSImageUrl(lookGoodData?.card3?.image)}
+                  width={361}
+                  height={456}
+                  alt="hero"
+                  className="img1"
+                  loading="lazy"
+                />
               </Link>
-            </div>            
-            <div className="zeezap_content">
-              <h6>{lookGoodData?.card3?.title ?? ''}</h6>
-              <h3>{lookGoodData?.card3?.sub_title ?? ''}</h3>
-              <p>{lookGoodData?.card3?.description}</p>
-              {lookGoodData?.card3?.button_text && (
-                <button className="small">
-                  <Link href={lookGoodData?.card2?.button_text ?? ''}>
-                    {lookGoodData?.card3?.button_text}
-                  </Link>
-                </button>
-              )}
+              <div className="sweater-content">
+                <h3>{lookGoodData?.card3?.title ?? ''}</h3>
+                {/* <h3>{lookGoodData?.card2?.sub_title ?? ''}</h3> */}
+                <p>{lookGoodData?.card3?.description ?? ''}</p>
+                {lookGoodData?.card3?.button_text && (
+                  <div className="shop-button">
+                    <Link href={lookGoodData?.card3?.button_link ?? ''}>
+                      {lookGoodData?.card3?.button_text}
+                    </Link>
+                  </div>
+                )}
+              </div>
             </div>
-          </Col> 
+          )}
+        </>
       )}
-        </Row>
-      )}
-      
-    </div>
+
+    </section>
   );
 }

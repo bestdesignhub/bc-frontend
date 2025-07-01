@@ -15,10 +15,12 @@ import CartWishlist from './cart-wishlist';
 import { useRouter } from 'next/navigation'; // Import router for navigation
 // import { log } from 'console';
 import { getAWSImageUrl } from '@/utils/common.utils';
+import MenuIcon from '@/components/svg-icons/menu-icon/menu-icon';
 
 export default function Header() {
   const token = useMemo(() => Cookies.get('userToken'), []);
   const [searchQuery, setSearchQuery] = useState('');
+  const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
   const [documentList, setDocumentList] = useState([]);
 
@@ -79,6 +81,10 @@ export default function Header() {
     }
   };
 
+  const handleToggle = () => {
+    setIsOpen(!isOpen); // toggle menu
+  };
+
   return (
     <>
       <div className="header-top">
@@ -98,11 +104,12 @@ export default function Header() {
           </ul>
         </div>
       </div>
-
       <header className="header-main">
         <div className="f-container">
+          <div className='menuIconBtn' onClick={handleToggle}>
+            <MenuIcon />
+          </div>
           <Logo />
-
           <div className="search-box">
             <form onSubmit={handleSearchSubmit} className="search-bar">
               <input
@@ -114,7 +121,6 @@ export default function Header() {
               />
             </form>
           </div>
-
           <ul className="header-links">
             <li>
               <a className="phone" href="tel:+4531327890" title="+45 3132 7890">
@@ -159,69 +165,71 @@ export default function Header() {
           </div> */}
         </div>
       </header>
-      <div className="nav-row">
-        <div className="f-container">
-          <nav className="navigation-menu">
-            <ul className="category-list">
-              <li>
-                <Link href="/women" title="Women">
-                  Women
-                </Link>
-              </li>
-              <li>
-                <Link href="/men" title="Men">
-                  Men
-                </Link>
-              </li>
-              <li>
-                <Link href="/shop" title="Shop">
-                  Shop
-                </Link>
-              </li>
-              <li>
-                <Link href="/our-story" title="Our Story">
-                  Our Story
-                </Link>
-              </li>
-              {/* <li>
+      {isOpen && (
+        <div className="nav-row">
+          <div className="f-container">
+            <nav className="navigation-menu">
+              <ul className="category-list">
+                <li>
+                  <Link href="/women" title="Women">
+                    Women
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/men" title="Men">
+                    Men
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/shop" title="Shop">
+                    Shop
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/our-story" title="Our Story">
+                    Our Story
+                  </Link>
+                </li>
+                {/* <li>
                 <Link href="/gift" title="Gift">
                   Gift
                 </Link>
               </li> */}
+                <li>
+                  <Link href="/aboutus" title="About Us">
+                    About Us
+                  </Link>
+                </li>
+              </ul>
+            </nav>
+            <ul className="usefull-links">
               <li>
-                <Link href="/aboutus" title="About Us">
-                  About Us
+                <Link className="wholeseller" href="#" title="Wholeseller">
+                  Wholeseller
                 </Link>
               </li>
+              <li>
+                {documentList
+                  .filter((doc: any) => doc.slug === 'manual-book')
+                  .map((doc: any) => (
+                    <Link key={doc.slug} href={getAWSImageUrl(doc.filePath)} target="_blank" rel="noreferrer" title="Download manual book">
+                      Download manual book
+                    </Link>
+                  ))}
+              </li>
+              <li>
+                {documentList
+                  .filter((doc: any) => doc.slug === 'color-book')
+                  .map((doc: any) => (
+                    <Link key={doc.slug} href={getAWSImageUrl(doc.filePath)} target="_blank" rel="noreferrer" title="Download color book">
+                      Download color book
+                    </Link>
+                  ))}
+              </li>
             </ul>
-          </nav>
-          <ul className="usefull-links">
-            <li>
-              <Link className="wholeseller" href="#" title="Wholeseller">
-                Wholeseller
-              </Link>
-            </li>
-            <li>
-              {documentList
-                .filter((doc: any) => doc.slug === 'manual-book')
-                .map((doc: any) => (
-                  <Link key={doc.slug} href={getAWSImageUrl(doc.filePath)} target="_blank" rel="noreferrer" title="Download manual book">
-                    Download manual book
-                  </Link>
-                ))}
-            </li>
-            <li>
-              {documentList
-                .filter((doc: any) => doc.slug === 'color-book')
-                .map((doc: any) => (
-                  <Link key={doc.slug} href={getAWSImageUrl(doc.filePath)} target="_blank" rel="noreferrer" title="Download color book">
-                    Download color book
-                  </Link>
-                ))}
-            </li>
-          </ul>
+          </div>
         </div>
-      </div>
+      )}
     </>
   );
 }

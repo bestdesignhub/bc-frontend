@@ -22,16 +22,17 @@ export default function AccessoriesItem({ href = '', image, title, price, popula
   const statusLabel = statusOptions.find(opt => opt.value === popularProduct)?.label;
   return (
     <div className="accessoriesbox">
+      <div className='productTag'>
+        {statusLabel}
+      </div>
       <Link href={href}>
         <div className="image">
           <Image src={getAWSImageUrl(image)} alt={title} width={575} height={476} loading="lazy" />
         </div>
         <div className="info">
           <h6>{title}</h6>
-          <span> <strong> {statusLabel}</strong></span>
           <div className="pr-price">
             <span>Start from <strong> €{price}</strong></span>
-
           </div>
           <div className="pr-color d-none">
             <div className="color-item">

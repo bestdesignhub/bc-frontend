@@ -250,6 +250,7 @@ body {
 .header-main {
   background-color: #f6f4e7;
   padding: 20px 0;
+  position: relative;
 }
 
 .header-main .f-container {
@@ -768,6 +769,11 @@ body {
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 90px;
+  background: #f5f2e8;
+}
+
+.women-sweater {
+  border-right: 8px solid #fff;
 }
 
 .women-sweater,
@@ -1004,7 +1010,7 @@ body {
   color: #7e7262;
   font-family: 'Gilda Display', serif;
   font-weight: 700;
-  margin-bottom: 60px !important;
+  margin-bottom: 60px;
   text-align: center;
   font-weight: 300;
 }
@@ -1502,6 +1508,80 @@ button.yarn-button:hover {
   max-width: 100%;
 }
 
+.popupfooterbtn .gotocartbtn,
+.popupfooterbtn .cancelbtn {
+  background: rgb(127, 114, 98);
+  color: #fff;
+  padding: 10px 20px;
+  margin: 0 10px 0 0;
+  font-size: 15px;
+}
+
+.sweater-img-content {
+  display: flex;
+}
+
+.women-sweater .sweater-content {
+  text-align: right;
+}
+
+.sweater-content {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  padding: 30px;
+  width: 61%;
+}
+
+.women-men-sweater .sweater-content h3 {
+  font-size: 50px;
+  color: #7f7263;
+  font-family: "Gilda Display", serif;
+  font-weight: 400;
+  margin-bottom: 20px !important;
+}
+
+.sweater-content p {
+  font-size: 20px;
+  font-weight: 300;
+  color: #7f7263;
+  margin-bottom: 30px;
+}
+
+.sweater-content .shop-button {
+  margin-top: 40px;
+}
+
+.sweater-content .shop-button a {
+  background-color: #7f7263;
+  font-size: 20px;
+  color: #e7e7e7;
+  padding: 11px 50px;
+  display: inline-block;
+  line-height: normal;
+  transition: 0.5s;
+  font-family: "Poppins", sans-serif;
+  font-weight: 100;
+}
+
+.productTag {
+  position: absolute;
+  z-index: 1;
+  background: #af986d;
+  color: #fff;
+  padding: 6px 15px;
+  text-transform: uppercase;
+  font-weight: 300;
+  letter-spacing: 1px;
+  font-size: 11px;
+  right: 15px;
+  top: 6px;
+}
+
+.mobileMenu {
+  display: none;
+}
+
 /* Responsive Css Start */
 @media only screen and (max-width:1740px) {
   .order-steps li {
@@ -1773,6 +1853,7 @@ button.yarn-button:hover {
   .all-sweater-list {
     justify-content: normal;
     margin-bottom: 0;
+    padding: 0;
   }
 
   .all-sweater-style.f-container {
@@ -1818,11 +1899,25 @@ button.yarn-button:hover {
   .custom-sweater-list li {
     margin: 0 5px;
     width: calc(100% / 3 - 5px);
+    max-width: 190px;
+  }
+
+  .women-sweater .sweater-content {
+    width: 100%;
+  }
+
+  .sweater-content {
+    width: 100%;
+  }
+
+  .women-men-sweater .sweater-content h3 {
+    font-size: 32px;
   }
 
   .custom-sweater-btn li a {
-    font-size: 14px;
-    padding: 6px 20px;
+    font-size: 16px;
+    padding: 16px 20px;
+    margin-top: 15px;
   }
 
   .custom-sweater-name {
@@ -1854,12 +1949,14 @@ button.yarn-button:hover {
   }
 
   .bespoke-list li .a-icon {
-    margin-bottom: 15px;
+    width: 67px;
+    margin: 25px auto;
+    height: 60px;
   }
 
   .about-content p {
     font-size: 20px;
-    line-height: normal;
+    line-height: 35px;
     margin-bottom: 20px;
   }
 
@@ -1917,9 +2014,12 @@ button.yarn-button:hover {
 
 @media only screen and (max-width: 992px) {
   .logo {
-    margin: 0 10px;
+    margin: 0 0 0 75px;
   }
 
+  .mobileMenu {
+    display: block;
+  }
 
   .Sweater-block-main .Sweater-right .right-price-product {
     margin-top: 0 !important;
@@ -2155,9 +2255,10 @@ button.yarn-button:hover {
   }
 
   .h-top-btn a {
-    padding: 2px 5px;
+    padding: 10px 5px;
     margin: 0 auto;
-    font-size: 13px;
+    font-size: 18px;
+    font-weight: 300;
   }
 
   .sweater-content h3 {
@@ -2184,6 +2285,7 @@ button.yarn-button:hover {
 
   .custom-sweater-list {
     display: block;
+    padding: 0;
   }
 
   .custom-sweater-list li {
@@ -2270,6 +2372,33 @@ button.yarn-button:hover {
     padding-top: 20px;
   }
 
+  .latest-products {
+    padding: 0;
+  }
+
+  .women-sweater {
+    border-right: 0;
+  }
+
+  .sweater-content {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .women-men-sweater .sweater-content h3 {
+    font-size: 30px;
+    margin-bottom: 0 !important;
+  }
+
+  .latest-products h2 {
+    font-size: 25px;
+    padding-bottom: 10px;
+  }
+
+  .women-landing-category {
+    display: block;
+    width: 100%;
+  }
 }
 
 @media only screen and (max-width:640px) {
@@ -2282,7 +2411,7 @@ button.yarn-button:hover {
   }
 
   .h-top-btn a {
-    font-size: 13px;
+    font-size: 18px;
   }
 
   .index-banner .banner-title {
@@ -2338,8 +2467,8 @@ button.yarn-button:hover {
   .logo {
     width: 100%;
     text-align: center;
-    margin-bottom: 10px;
-    padding-bottom: 10px;
+    margin-bottom: 0px;
+    padding: 10px 0 0 0;
   }
 
   /* .logo img {
@@ -2361,6 +2490,7 @@ button.yarn-button:hover {
 
   .header-links {
     margin-left: 0;
+    padding: 0;
   }
 
   .my-cart {
@@ -2426,10 +2556,11 @@ button.yarn-button:hover {
 
   .custom-sweater-btn {
     display: block;
+    padding: 0;
   }
 
   .custom-sweater-btn li a {
-    max-width: 210px;
+    max-width: 100%;
     margin: 0 auto;
   }
 
@@ -2458,6 +2589,7 @@ button.yarn-button:hover {
 
   .about-content p {
     font-size: 17px;
+    line-height: 30px;
     margin-bottom: 15px;
   }
 

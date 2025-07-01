@@ -501,6 +501,10 @@
     padding-top: 56.25%;
   }
 
+  .stepBackground .gauge-navigate.smallbx {
+    margin-right: 0;
+  }
+
   .page-banner.gauge .banner-content {
     max-width: 100%;
   }

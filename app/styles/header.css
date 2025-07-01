@@ -352,7 +352,65 @@
   padding: 0;
 }
 
+.menuIconBtn {
+  display: none;
+  position: absolute;
+  background: #fff;
+  border: 1px solid #eaeaea;
+  padding: 10px;
+}
+
 @media (min-width: 768px) and (max-width: 991px) {
+  .menuIconBtn {
+    display: block;
+    top: 12px;
+  }
+
+  .latest-products {
+    padding-top: 0px;
+  }
+
+  .create-custom {
+    display: block;
+  }
+
+  .custom-sweater {
+    width: 100%;
+  }
+
+  .custom-sweater h3 {
+    margin-bottom: 30px !important;
+  }
+
+  .latest-products {
+    padding: 0;
+  }
+
+  .your-style {
+    width: 100%;
+    margin-top: 50px;
+  }
+
+  .your-style img {
+    margin: 20px auto;
+  }
+
+  .custom-sweater-list li {
+    width: 200px;
+  }
+
+  .latest-products h2 {
+    font-size: 30px;
+  }
+
+  .women-men-sweater .sweater-content h3 {
+    font-size: 28px;
+  }
+
+  .sweater-content {
+    width: 100%;
+    padding: 10px;
+  }
 
   .menu-toggle,
   .closed {
@@ -446,6 +504,11 @@
 }
 
 @media (max-width: 767px) {
+
+  .menuIconBtn {
+    display: block;
+    top: 4px;
+  }
 
   .menu-toggle,
   .closed {
