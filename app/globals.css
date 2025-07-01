@@ -354,10 +354,8 @@ h2.style-title.bnr {
 .latest-products .categorybox {
   background-color: white;
   border: 1px solid #d9d6d1;
+  position: relative;
 }
-
-.accessoriesbox img,
-.latest-products .categorybox img {}
 
 .latest-products .categorybox .info {
   padding: 20px 0;

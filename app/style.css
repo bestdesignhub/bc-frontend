@@ -1005,7 +1005,66 @@ body {
   padding: 50px 0 0px 0;
 }
 
-.about-bespoke h3 {
+.reorderBtn {
+  background: #7f7263;
+  border-radius: 0;
+  color: #fff;
+  font-size: 15px;
+  padding: 8px 20px;
+}
+
+.reorderBtn:hover {
+  background: #af986d;
+}
+
+.productSection {
+  display: flex;
+  gap: 30px;
+  width: 100%;
+}
+
+.productSection .thumbnail {
+  width: 15%;
+}
+
+
+.productSection .productRightSection {
+  width: 85%;
+}
+
+.order-table .product-item .productSection .productRightSection p:first-child,
+.order-table .product-item .productSection .productRightSection p {
+  padding: 0 0 6px;
+}
+
+.orderDetailsHeader {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  margin: 20px 0 10px;
+}
+
+.orderDetailsHeader .green {
+  color: green;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.orderDetailsHeader p {
+  width: 25%;
+}
+
+.orderDetailsHeader p span {
+  display: block;
+}
+
+.orderDetailsHeader .orange {
+  color: orange;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.main-page .about-bespoke h3 {
   font-size: 35px;
   color: #7e7262;
   font-family: 'Gilda Display', serif;
@@ -1013,6 +1072,7 @@ body {
   margin-bottom: 60px;
   text-align: center;
   font-weight: 300;
+  margin-bottom: 20px !important;
 }
 
 .about-bespoke h3 span {
@@ -1569,13 +1629,16 @@ button.yarn-button:hover {
   z-index: 1;
   background: #af986d;
   color: #fff;
-  padding: 6px 15px;
   text-transform: uppercase;
   font-weight: 300;
   letter-spacing: 1px;
   font-size: 11px;
   right: 15px;
   top: 6px;
+}
+
+.productTag span {
+  padding: 10px;
 }
 
 .mobileMenu {

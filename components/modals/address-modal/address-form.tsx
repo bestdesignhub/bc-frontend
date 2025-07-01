@@ -83,17 +83,19 @@ export default function AddressForm({
     try {
       setDisableSubmit(true);
       dispatch(setLoading(true));
-      if (!countries.some((country) => country.value === data.phone_code)) {
-        methods.setError('phone_code', {
-          type: 'custom',
-          message: t('COMMON.PLEASE_SELECT_PHONE_CODE'),
-        });
-        return;
-      }
-      if (!countriesName.some((country) => country.value === data.country)) {
-        methods.setError('country', { type: 'custom', message: t('COMMON.PLEASE_SELECT_COUNTRY') });
-        return;
-      }
+
+      // if (!countries.some((country) => country.value === data.phone_code)) {
+      //   methods.setError('phone_code', {
+      //     type: 'custom',
+      //     message: t('COMMON.PLEASE_SELECT_PHONE_CODE'),
+      //   });
+      //   return;
+      // }
+      // if (!countriesName.some((country) => country.value === data.country)) {
+      //   methods.setError('country', { type: 'custom', message: t('COMMON.PLEASE_SELECT_COUNTRY') });
+      //   return;
+      // }
+
       const response = await userAxiosInstance({
         url: editData ? MY_ADDRESS_UPDATE_URL : MY_ADDRESS_CREATE_URL,
         data: {
@@ -176,7 +178,7 @@ export default function AddressForm({
               name="phone_code"
               label={t('COMMON.CODE')}
               options={countries}
-              required
+            // required
             />
           </Form.Group>
           <Form.Group className="form-control" controlId="newsletterForm.ControlInput">
@@ -185,7 +187,7 @@ export default function AddressForm({
               label={t('COMMON.MOBILE_NUMBER')}
               placeholder={t('COMMON.MOBILE_NUMBER')}
               type="text"
-              required={true}
+            // required={true}
             />
           </Form.Group>
           <Form.Group className="form-control" controlId="newsletterForm.ControlInput">

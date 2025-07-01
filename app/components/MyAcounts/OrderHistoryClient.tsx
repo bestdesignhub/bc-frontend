@@ -55,43 +55,56 @@ const OrderHistoryClient = ({
                                 <li key={order.orderId}>
                                     <div data-title={labels.products} className="text-2">
                                         <strong>Order Details:</strong>
-                                        <p>
-                                            <strong>{labels.orderDate}:</strong>{' '}
-                                            {order?.createdAt
-                                                ? new Date(order.createdAt).toLocaleString('en-US', {
-                                                    year: 'numeric',
-                                                    month: 'long',
-                                                    day: 'numeric',
-                                                    hour: 'numeric',
-                                                    minute: '2-digit',
-                                                    hour12: true,
-                                                })
-                                                : 'N/A'}
-                                        </p>
-                                        <p>
-                                            <strong>{labels.status}:</strong> {order?.paymentStatus}
-                                        </p>
 
+                                        <div className='orderDetailsHeader'>
+                                            <p>
+                                                <strong>{labels.orderDate}:</strong>{' '}
+                                                <span>{order?.createdAt
+                                                    ? new Date(order.createdAt).toLocaleString('en-US', {
+                                                        year: 'numeric',
+                                                        month: 'long',
+                                                        day: 'numeric',
+                                                        hour: 'numeric',
+                                                        minute: '2-digit',
+                                                        hour12: true,
+                                                    })
+                                                    : 'N/A'}
+                                                </span>
+                                            </p>
+                                            <p>
+                                                <strong>{labels.status}:</strong> <span className='green'>{order?.paymentStatus}</span>
+                                            </p>
+                                            <p>
+                                                <strong>Tracking Number:</strong> <span>#456 4566 4566</span>
+                                            </p>
+                                            <p>
+                                                <strong>Item Status:</strong> <span className='orange'>Shipped</span>
+                                            </p>
+                                        </div>
                                         {order.products.map((product: any) => (
                                             <div key={product._id} className="product-item p-2 mb-2">
-                                                <p className="font-bold">{product.name}</p>
-                                                <p>
-                                                    <strong>{labels.price}:</strong> {formatPrice(product?.price)}
-                                                </p>
-                                                <p>
-                                                    <strong>{labels.quantity}:</strong> {product.quantity}
-                                                </p>
-                                                <p>
-                                                    <strong>{labels.style}:</strong>{' '}
-                                                    {product?.steps[2]?.stepCard?.title?.en}
-                                                </p>
-                                                <div className="thumbnail">
-                                                    <img
-                                                        src={getAWSImageUrl(product?.steps[2]?.stepCard?.realImage)}
-                                                        alt="image"
-                                                        width={80}
-                                                        height={80}
-                                                    />
+                                                <div className='productSection'>
+                                                    <div className="thumbnail">
+                                                        <img
+                                                            src={getAWSImageUrl(product?.steps[2]?.stepCard?.realImage)}
+                                                            alt="image"
+                                                            width={100}
+                                                            height={120}
+                                                        />
+                                                    </div>
+                                                    <div className='productRightSection'>
+                                                        <p className="font-bold">{product.name}</p>
+                                                        <p className='priceLable'>
+                                                            <strong>{labels.price}:</strong> {formatPrice(product?.price)}
+                                                        </p>
+                                                        <p>
+                                                            <strong>{labels.quantity}:</strong> {product.quantity}
+                                                        </p>
+                                                        <p>
+                                                            <strong>{labels.style}:</strong>{' '}
+                                                            {product?.steps[2]?.stepCard?.title?.en}
+                                                        </p>
+                                                    </div>
                                                 </div>
                                                 <div className="mesurment-size">
                                                     <ul className="list-disc pl-5">
@@ -106,7 +119,7 @@ const OrderHistoryClient = ({
 
                                                 <div className="order-actions mt-3">
                                                     <button
-                                                        className="btn btn-success me-2"
+                                                        className="reorderBtn"
                                                         onClick={() => openReorderModal(product)}
                                                     >
                                                         Reorder
@@ -145,15 +158,17 @@ const OrderHistoryClient = ({
             </div>
 
             {/* Modal */}
-            {showModal && selectedProduct && (
-                <ReorderSweaterModal
-                    isOpen={showModal}
-                    onClose={closeReorderModal}
-                    // onGoToCart={handleGoToCart}
-                    product={selectedProduct} // ✅ Pass selected product
-                />
-            )}
-        </div>
+            {
+                showModal && selectedProduct && (
+                    <ReorderSweaterModal
+                        isOpen={showModal}
+                        onClose={closeReorderModal}
+                        // onGoToCart={handleGoToCart}
+                        product={selectedProduct} // ✅ Pass selected product
+                    />
+                )
+            }
+        </div >
     );
 };
 
