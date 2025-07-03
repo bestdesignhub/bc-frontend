@@ -74,11 +74,19 @@ const OrderHistoryClient = ({
                                             <p>
                                                 <strong>{labels.status}:</strong> <span className='green'>{order?.paymentStatus}</span>
                                             </p>
-                                            <p>
-                                                <strong>Tracking Number:</strong> <span>#456 4566 4566</span>
+                                            <p className="text-sm">
+                                                <strong>Tracking Number:</strong>{" "}
+                                                <span className={order?.trackId ? "text-gray-900" : "text-orange-500 italic"}>
+                                                    {order?.trackId ? `#${order.trackId}` : "Awaiting assignment"}
+                                                </span>
                                             </p>
+
+
                                             <p>
-                                                <strong>Item Status:</strong> <span className='orange'>Shipped</span>
+                                                <strong>Item Status:</strong>{" "}
+                                                <span className={order?.productStatus === "In-Process" ? "text-orange-500" : "text-gray-700"}>
+                                                    {order?.productStatus}
+                                                </span>
                                             </p>
                                         </div>
                                         {order.products.map((product: any) => (
