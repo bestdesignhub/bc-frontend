@@ -19,9 +19,17 @@ const CurrentStepBox: FC<{ currentStepData: any; stepNumber: any }> = ({
     const params = new URLSearchParams(searchParams.toString());
     params.delete('price');
     params.delete('size');
-    router.push(
-      `${USER_ROUTES.sweater}/${stepNumber}?${params.toString()}&${URL_SLUG.CHANGE}=true`
-    );
+    params.delete('style');
+    if (stepNumber == '4') {
+      router.push(
+        `${USER_ROUTES.sweater}?${params.toString()}&${URL_SLUG.CHANGE}=true`
+      );
+    } else {
+      router.push(
+        `${USER_ROUTES.sweater}/${stepNumber}?${params.toString()}&${URL_SLUG.CHANGE}=true`
+      );
+    }
+
   };
 
   return (

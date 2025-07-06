@@ -6,6 +6,7 @@ import { useSearchParams } from 'next/navigation';
 import '@/app/styles/Sweater-product.css';
 import Sweaterimg1 from '@/public/images/round-neck-sweater.jpg';
 import userAxiosInstanceWithoutToken from '@/config/userAxiosInstanceWithoutToken';
+import { getAWSImageUrl } from '@/utils/common.utils';
 
 const BUCKET_DOMAIN = process.env.NEXT_PUBLIC_BUCKET_DOMAIN;
 
@@ -25,6 +26,7 @@ export default function SweaterBox({ stepData }: SweaterBoxProps) {
   const [imageSrc, setImageSrc] = useState<string | StaticImageData>(Sweaterimg1);
   const [loading, setLoading] = useState(false);
   const [title, setTitle] = useState('');
+  console.log("===>>>stepData====", stepData?.steps);
 
   useEffect(() => {
     stepData?.steps?.map((e: any) => {
@@ -78,7 +80,8 @@ export default function SweaterBox({ stepData }: SweaterBoxProps) {
         ) : (
           <Image
             loading="lazy"
-            src={imageSrc}
+            // src={imageSrc}
+            src={getAWSImageUrl(stepData?.style?.stepCard?.realImage)}
             alt="Sweater Image"
             width={380}
             height={414}

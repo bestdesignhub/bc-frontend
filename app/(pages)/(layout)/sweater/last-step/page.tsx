@@ -135,6 +135,7 @@ const LastStepPage = async ({
   const fittingName = stepData?.fitting?.stepCard?.title;
   console.log("stepData====>>>>>>>>>><<<<<<<<<<", steps, stepData);
 
+
   const SIZE_ORDER = ['XS', 'S', 'M', 'L', 'XL', '2XL', '3XL', '4XL', '5XL'];
   // Now filter the available sizes based on the step type and slug
   const filteredAvailableSizes = availableSizes?.filter((size: any) =>
@@ -226,6 +227,7 @@ const LastStepPage = async ({
                 <div className="Sweater-left-inner">
                   {stepData?.productData?.images?.length ? (
                     <SweaterSlider images={stepData?.productData?.images} />
+                    // <SweaterSlider images={stepData.style.stepCard.realImage} />
                   ) : (
                     <SweaterBox stepData={stepData} />
                   )}

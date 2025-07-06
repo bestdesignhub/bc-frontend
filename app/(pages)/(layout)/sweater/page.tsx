@@ -3,10 +3,13 @@ import {
   ProductListing,
   ProductTopbar,
   StepBanner,
+  StepListing,
   StepNavigate,
   YarnListingSidebar,
 } from '@/components';
 import GenderModalWrapper from '@/components/modals/gender-modal/gender-modal-wrapper';
+import StyleSelector from '@/components/step-components/StyleSelector';
+import userAxiosInstance from '@/config/userAxiosInstance';
 // import userAxiosInstance from '@/config/userAxiosInstance';
 import { URL_SLUG } from '@/constants';
 import { COLOUR_DROPDOWN_URL, GENDER_DROPDOWN_URL, MATERIAL_DROPDOWN_URL } from '@/constants/apis';
@@ -92,9 +95,20 @@ const SweaterPage = async ({
     getDropdownList(GENDER_DROPDOWN_URL),
     getDropdownList(COLOUR_DROPDOWN_URL),
     getDropdownList(MATERIAL_DROPDOWN_URL),
-    getYarnCardList(resolvedSearchParams),
+    getYarnCardList(resolvedSearchParams)
 
   ]);
+  const payload: any = {
+    page: 1,
+    perPage: 1000,
+    sortBy: 'createdAt',
+    sortOrder: 'desc',
+    search: "",
+  };
+  const stepList = await userAxiosInstance.post('/step-card/user/list/67599682e94c6e1a0e46e63e', payload)
+  console.log("StepList ===>>>", stepList?.data?.data?.data);
+  const allSteps = stepList?.data?.data?.data || [];
+  const genderStyles = allSteps.filter((item: any) => item.gender._id === genderId);
 
   const colours = coloursResult.status === 'fulfilled' ? coloursResult.value : [];
   const genders = genderResult.status === 'fulfilled' ? genderResult.value : [];
@@ -165,26 +179,35 @@ const SweaterPage = async ({
             <div className="woman-product-wrappe bgsweater">
               <Row className="g-4 no-horizontal-padding">
                 <Col xs={12} lg={2}>
-                  <StepNavigate genders={genders} genderSlug={genderSlug} price={Number(formattedPrice)} />
+                  <StepNavigate genders={genders} genderSlug={genderSlug} styleData={genderStyles} price={Number(formattedPrice)} />
+                </Col>
+                <Col xs={12} lg={9}>
+                  {!styleId && (
+
+                    <StyleSelector styles={genderStyles} price={Number(formattedPrice)} />)}
+
                 </Col>
                 <Col xs={12} lg={10}>
                   <div className="sweater-bg-step">
-                    <YarnListingSidebar
-                      genders={genders}
-                      colours={colours}
-                      materials={materials}
-                      price={Number(formattedPrice)}
-                    />
+                    {styleId && (
+                      <YarnListingSidebar
+                        genders={genders}
+                        colours={colours}
+                        materials={materials}
+                        price={Number(formattedPrice)}
+                      />)}
+                    {/* <StyleSelector styles={genderStyles} price={Number(formattedPrice)} /> */}
                     {!genderSlug && <GenderModalWrapper genders={genders} material={materials[1]?.value} />}
-                    <ProductTopbar
+                    {styleId && <ProductTopbar
                       text={t('COMMON.YARN_TEXT')}
                       total={filteredYarnList?.length}
-                    />
-                    <ProductListing list={filteredYarnList} genderSlug={genderSlug} price={Number(formattedPrice)} />
-                    <CustomPagination
+                    />}
+                    {styleId && <ProductListing list={filteredYarnList} genderSlug={genderSlug} price={Number(formattedPrice)} />}
+                    {styleId && <CustomPagination
                       currentPage={yarnList?.currentPage}
                       totalPage={yarnList?.totalPage}
-                    />
+                    />}
+
                   </div>
                 </Col>
               </Row>

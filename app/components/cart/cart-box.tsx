@@ -136,7 +136,13 @@ export default function Cartbox({ cart, fetchCartData }: { cart: any; fetchCartD
                       <h6>{step?.stepCardTitle}</h6>
                       {cart.createdBy != 'shop' && (<div className="changes-link">
                         <Link
-                          href={`${USER_ROUTES.sweater}/${index + FIXED_STEPS_COUNT}?${urlQueryString}&${URL_SLUG.CHANGE}=true`}
+                          // href={`${USER_ROUTES.sweater}/${index + FIXED_STEPS_COUNT}?${urlQueryString}&${URL_SLUG.CHANGE}=true`}
+
+                          href={
+                            index + FIXED_STEPS_COUNT === 4
+                              ? `${USER_ROUTES.sweater}?${urlQueryString.replace(/(&|\?)style=[^&]*/, '')}&${URL_SLUG.CHANGE}=true`
+                              : `${USER_ROUTES.sweater}/${index + FIXED_STEPS_COUNT}?${urlQueryString}&${URL_SLUG.CHANGE}=true`
+                          }
                         >
                           <span>{t('COMMON.CHANGE')} </span>
                           <i>

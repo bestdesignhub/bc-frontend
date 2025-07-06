@@ -73,10 +73,13 @@ const PAYMENT_OPTIONS = {
 const FIXED_STEPS_COUNT = 2;
 
 const STEPPERPATHS = [
-  { label: 'Select a Yarn', step: '1' },
-  { label: 'Select a Guage', step: '2' },
-  { label: 'Select a Pattern', step: '3' },
-  { label: 'Select a Styles', step: '4' },
+  { label: 'Select a Styles', step: '1' },
+  // { label: 'Select a Yarn', step: '1' },
+  { label: 'Select a Yarn', step: '2' },
+  { label: 'Select a Guage', step: '3' },
+  { label: 'Select a Pattern', step: '4' },
+  // { label: 'Select a Styles', step: '4' },
+
   { label: 'Select Measurement', step: '5' },
 ];
 

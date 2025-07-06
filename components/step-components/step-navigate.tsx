@@ -15,6 +15,7 @@ export default function StepNavigate({
   edit,
   genders,
   genderSlug,
+  styleData,
   price
 }: {
   steps?: any[];
@@ -22,16 +23,17 @@ export default function StepNavigate({
   edit?: string;
   genders?: any[];
   genderSlug?: any;
+  styleData?: any;
   price: number;
 }) {
 
-  // console.log(genderSlug, '....genderSlug StepNavigate')
+  // console.log(genderSlug, stepPageData, '....genderSlug StepNavigate')
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const t = useTranslations();
   const router = useRouter();
   const searchParams = useSearchParams();
   const style = searchParams.get('style');
-  console.log("===========>", style);
+  console.log("===========>", style, styleData);
   const pathname = usePathname();
   const currentStep = Number(pathname.split('/').pop()); // e.g. 3
   const isChange = searchParams.get('change') === 'true';
@@ -39,7 +41,13 @@ export default function StepNavigate({
 
 
   const keys: string[] = [];
-
+  const selectedStyle = styleData?.find((item: any) => item._id === style);
+  if (selectedStyle) {
+    console.log("selectedStyle===", selectedStyle, stepPageData);
+    if (selectedStyle && stepPageData?.style) {
+      delete stepPageData.style;
+    }
+  }
   useEffect(() => {
     for (const [key] of searchParams.entries()) {
       keys.push(key);
@@ -94,6 +102,26 @@ export default function StepNavigate({
     }
     router.push(`${USER_ROUTES.sweater}?${params.toString()}${edit ? `?${URL_SLUG.EDIT}=${edit}` : ''}`);
   }, [searchParams, edit, router]);
+
+  const handleStyleCardClick = useCallback(() => {
+    const params = new URLSearchParams(searchParams.toString());
+
+    // ✅ Remove 'style' from the URL
+    params.delete('style');
+
+    if (params.has(URL_SLUG.CHANGE)) {
+      params.delete(URL_SLUG.EDIT);
+      router.push(
+        `${USER_ROUTES.sweater}?${params.toString()}${edit ? `&${URL_SLUG.EDIT}=${edit}` : ''}`
+      );
+      return;
+    }
+
+    router.push(
+      `${USER_ROUTES.sweater}?${params.toString()}${edit ? `&${URL_SLUG.EDIT}=${edit}` : ''}`
+    );
+  }, [searchParams, edit, router]);
+
   return (
     <div className="gauge-navigate smallbx">
       <div className="d-flex flex-column gap-3" style={{ paddingTop: '20px' }}>
@@ -113,6 +141,37 @@ export default function StepNavigate({
             </div>
           </div>
         )}
+        {selectedStyle && (
+          <div
+            className="navigate-item"
+            style={{ cursor: 'pointer' }}
+            onClick={() => handleStyleCardClick()} // Step index for style
+          >
+            <div className="navigatebox">
+              <div className="image">
+                <Image
+                  src={getAWSImageUrl(selectedStyle.realImage || selectedStyle.graphImage)}
+                  width={300}
+                  height={200}
+                  alt="style"
+                  loading="lazy"
+                />
+              </div>
+              <div className="info">
+                <div className="title">
+                  <h6>Style</h6>
+                  <p>
+                    <strong>{selectedStyle.title}</strong>
+                  </p>
+                </div>
+                <div className="price">
+                  <strong>{formatPrice(price)}</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
         {searchParams.size !== 0 && (
           <div
             className="navigate-item"
@@ -168,6 +227,7 @@ export default function StepNavigate({
 
 
             if (index + 2 === 6) return null; // Skip rendering if index + 2 equals 6
+            if (index + 2 === 4) return null; // Skip rendering if index + 2 equals 4
             const isDataExists = stepPageData.hasOwnProperty(step.slug);
 
             console.log("stepLabels", stepLabels[index]);
@@ -183,7 +243,7 @@ export default function StepNavigate({
 
                 onClick={() => {
                   if (isDataExists) {
-                    setActiveIndex(index); // 👈 set the clicked step as active
+                    setActiveIndex(index); //  set the clicked step as active
                     handlePrevStepClick(step.slug, `${index + FIXED_STEPS_COUNT}`);
                   }
                 }}
@@ -270,6 +330,7 @@ export default function StepNavigate({
             const words = step.label.trim().split(" ");
             const lastWord = words.pop();
             const firstPart = words.join(" ");
+            if (step.step === '1' && selectedStyle) return null;
             return (<div className={`navigate-item ${activeIndex === index ? 'active-step' : ''}`} key={index}>
               <div className="navigatebox">
                 <div className="info">

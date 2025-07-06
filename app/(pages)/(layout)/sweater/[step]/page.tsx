@@ -61,11 +61,26 @@ const SweaterStep = async ({
   //   redirect('/');
   // }
   // console.log('resolvedSearchParams priceData', priceData);
+  console.log("steps===>>>", steps);
 
   const stepData = steps[step - FIXED_STEPS_COUNT];
+  console.log("StepData ===>>>", stepData);
 
 
   const genders = genderResult;
+
+  const payload: any = {
+    page: 1,
+    perPage: 1000,
+    sortBy: 'createdAt',
+    sortOrder: 'desc',
+    search: "",
+  };
+
+  const stepList = await userAxiosInstance.post('/step-card/user/list/67599682e94c6e1a0e46e63e', payload)
+  // console.log("StepList ===>>>", stepList?.data?.data?.data);
+  const allSteps = stepList?.data?.data?.data || [];
+  const genderStyles = allSteps.filter((item: any) => item.gender._id === genderId);
 
 
   if (stepData?.slug === 'pattern' || stepData?.slug === 'style' || stepData?.slug === 'fitting') {
@@ -81,16 +96,36 @@ const SweaterStep = async ({
 
     stepPageData.list = matchingItems;
   }
+  // if (stepData?.slug === 'style') {
+  //   // const hasGenderField = stepPageData.list.some((item: any) => item?.pattern !== undefined);
+  //   const hasGenderField = Array.isArray(stepPageData?.list) &&
+  //     stepPageData.list.some((item: any) => item?.pattern !== undefined);
+
+
+  //   const matchingItems = hasGenderField ? stepPageData.list.filter((item: any) => item?.pattern === patternSlug) : stepPageData.list;
+  //   stepPageData.list = matchingItems;
+
+  // }
+
+  // if (styleId && Array.isArray(stepPageData?.list)) {
+  //   stepPageData.list = stepPageData.list.filter((item: any) => item?._id !== styleId);
+  // }
+
   if (stepData?.slug === 'style') {
-    // const hasGenderField = stepPageData.list.some((item: any) => item?.pattern !== undefined);
-    const hasGenderField = Array.isArray(stepPageData?.list) &&
-      stepPageData.list.some((item: any) => item?.pattern !== undefined);
-
-
-    const matchingItems = hasGenderField ? stepPageData.list.filter((item: any) => item?.pattern === patternSlug) : stepPageData.list;
-    stepPageData.list = matchingItems;
-
+    //  If style is already selected, skip listing entirely
+    if (styleId) {
+      stepPageData.list = []; //  hide "Select a Styles"
+    } else {
+      const hasGenderField = Array.isArray(stepPageData?.list) &&
+        stepPageData.list.some((item: any) => item?.pattern !== undefined);
+      const matchingItems = hasGenderField
+        ? stepPageData.list.filter((item: any) => item?.pattern === patternSlug)
+        : stepPageData.list;
+      stepPageData.list = matchingItems;
+    }
   }
+
+
 
   if (stepData?.slug === 'gauge') {
     if (materialSlug === '678077a88c6968b4bb6fc291') {
@@ -154,6 +189,7 @@ const SweaterStep = async ({
                 edit={resolvedSearchParams?.[URL_SLUG.EDIT]}
                 genders={genders}
                 genderSlug={genderSlug}
+                styleData={genderStyles}
                 price={Number(formattedPrice)}
               />
             </Col>
