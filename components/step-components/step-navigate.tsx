@@ -33,7 +33,7 @@ export default function StepNavigate({
   const router = useRouter();
   const searchParams = useSearchParams();
   const style = searchParams.get('style');
-  console.log("===========>", style, styleData);
+  console.log("===========>", style, price);
   const pathname = usePathname();
   const currentStep = Number(pathname.split('/').pop()); // e.g. 3
   const isChange = searchParams.get('change') === 'true';
@@ -106,7 +106,7 @@ export default function StepNavigate({
   const handleStyleCardClick = useCallback(() => {
     const params = new URLSearchParams(searchParams.toString());
 
-    // ✅ Remove 'style' from the URL
+    //  Remove 'style' from the URL
     params.delete('style');
 
     if (params.has(URL_SLUG.CHANGE)) {
@@ -199,8 +199,8 @@ export default function StepNavigate({
                       {t('COMMON.COLOUR')}: <strong>{stepPageData?.yarn?.colour}</strong>
                     </p>
                   </div>
-                  {activeIndex === null && <div className="price">
-                    {/* <strong>{formatPrice(stepPageData.yarn.price)}</strong> */}
+                  {activeIndex && <div className="price">
+                    {/* <strong>{formatPrice(stepPageData.yarn.price)}</strong>  === null */}
                     <strong>{formatPrice(price)}</strong>
                   </div>}
                   {isChange && stepLabels[0] && <div className="price">
@@ -218,7 +218,7 @@ export default function StepNavigate({
             // console.log(searchParams.get(step.slug));
             const keys1 = ['yarn', 'gender', 'material', 'gauge', 'pattern', 'style'];
             const existingKeys = keys1.filter((key) => searchParams.has(key));
-            console.log(existingKeys, "existingKeys");
+            console.log(existingKeys, "existingKeys", price);
 
             // Show price if this step's slug exists in searchParams
             // const shouldShowPrice = searchParams.has(step.slug);
@@ -285,11 +285,11 @@ export default function StepNavigate({
                             </Link>
                           </button>
                         </div>
-                        {/* <div className="price">
-                          <strong>{formatPrice(stepPageData?.yarn?.price)}</strong> 
-                          <strong>{formatPrice(price)}</strong> 
-                        </div> */}
-                        {(
+                        <div className="price">
+                          {/* <strong>{formatPrice(stepPageData?.yarn?.price)}</strong>  */}
+                          <strong>{formatPrice(price)}</strong>
+                        </div>
+                        {/* {(
                           (isChange && index === currentStep - FIXED_STEPS_COUNT - 1)) && (
                             <div className="price">
                               <strong>{formatPrice(price)}</strong>
@@ -299,7 +299,7 @@ export default function StepNavigate({
                           <div className="price">
                             <strong>{formatPrice(price)}</strong>
                           </div>
-                        )}
+                        )} */}
                       </div>
                     </>
                   ) : (
