@@ -209,72 +209,77 @@ export default function ReorderSweaterModal({
                 <h3 className="text-xl font-medium mb-4">
                     Please change color and yarn for re-order sweater
                 </h3>
-
                 {/* Product Preview */}
-                {product?.steps?.[2]?.stepCard?.realImage && (
-                    <div className="mb-4">
-                        <Image
-                            src={getAWSImageUrl(product.steps[2].stepCard.realImage)}
-                            alt="Sweater Preview"
-                            width={120}
-                            height={120}
-                            className="rounded-md"
-                        />
-                    </div>
-                )}
-
-                {/* Colour Selection */}
-                <div className="mb-6">
-                    <label className="block font-semibold mb-2">Colour</label>
-                    <div className="flex flex-wrap gap-4">
-                        {colours.map((color) => (
-                            <label key={color.value || color.label} className="flex items-center space-x-2">
-                                <input
-                                    type="checkbox"
-                                    checked={selectedColor === color.value}
-                                    onChange={() => toggleColor(color.value)}
-                                />
-                                <span>{color.label}</span>
-                            </label>
-                        ))}
-                    </div>
-                </div>
-
-                {/* Material/Yarn Grid */}
-                <div className="mb-6">
-                    <label className="block font-semibold mb-2">Material</label>
-                    <div className="material-box grid grid-cols-4 gap-4 max-h-[400px] overflow-y-auto">
-                        {filterYarnList.map((yarn, index) => (
-                            <div
-                                key={yarn._id || yarn.slug || yarn.title?.en || index}
-                                className="border p-2 rounded-md text-center"
-                            >
-                                <div className="h-32 bg-gray-200 mb-2 flex items-center justify-center">
-                                    {yarn.image ? (
-                                        <Image
-                                            src={getAWSImageUrl(yarn.image)}
-                                            alt="Yarn Image"
-                                            width={100}
-                                            height={100}
-                                            className="rounded"
+                <div className='reorderProduct'>
+                    {/* {product?.steps?.[2]?.stepCard?.realImage && (
+                        <div className="mb-4">
+                            <Image
+                                src={getAWSImageUrl(product.steps[2].stepCard.realImage)}
+                                alt="Sweater Preview"
+                                width={120}
+                                height={120}
+                                className="rounded-md"
+                            />
+                        </div>
+                    )} */}
+                    <div className='colorBlock'>
+                        <div className="mb-6">
+                            {/* <label className="block font-semibold mb-2">Colour</label> */}
+                            <div className="flex flex-wrap gap-4">
+                                {colours.map((color) => (
+                                    <label key={color.value || color.label} className="flex items-center space-x-2">
+                                        <input
+                                            type="checkbox"
+                                            checked={selectedColor === color.value}
+                                            onChange={() => toggleColor(color.value)}
                                         />
-                                    ) : (
-                                        <span className="text-gray-500 text-sm">Yarn Preview</span>
-                                    )}
-                                </div>
-                                <div className="font-medium text-sm">{yarn.name || yarn.slug}</div>
-                                <div className="text-sm text-gray-500">€ {price}</div>
-                                <button
-                                    className={`mt-2 w-full px-4 py-1 text-sm rounded border ${selectedYarn === yarn.slug
-                                        ? 'bg-black text-white'
-                                        : 'bg-white text-black'
-                                        }`}
-                                    onClick={() => selectYarn(yarn._id)}
-                                >
-                                    SELECT
-                                </button>
+                                        <span className='labelColor'>{color.label}</span>
+                                    </label>
+                                ))}
                             </div>
-                        ))}
+                        </div>
+                        {/* Material/Yarn Grid */}
+                        <div className="mb-6">
+                            {/* <label className="block font-semibold mb-2">Material</label> */}
+                            <div className="material-box grid grid-cols-4 gap-4 max-h-[400px] overflow-y-auto">
+                                {(!filterYarnList || filterYarnList.length === 0) ? (
+                                    <div className="col-span-4 text-center py-10 text-gray-500">
+                                        Loading yarn options...
+                                    </div>
+                                ) : (
+                                    filterYarnList.map((yarn, index) => (
+                                        <div
+                                            key={yarn._id || yarn.slug || yarn.title?.en || index}
+                                            className="border p-2 rounded-md text-center"
+                                        >
+                                            <div className="h-32 bg-gray-200 mb-2 flex items-center justify-center yarnImg">
+                                                {yarn.image ? (
+                                                    <Image
+                                                        src={getAWSImageUrl(yarn.image)}
+                                                        alt="Yarn Image"
+                                                        width={100}
+                                                        height={100}
+                                                    />
+                                                ) : (
+                                                    <span className="text-gray-500 text-sm">Yarn Preview</span>
+                                                )}
+                                            </div>
+                                            <div className="font-medium text-sm">{yarn.name || yarn.slug}</div>
+                                            <div className="text-sm text-gray-500">€ {price}</div>
+                                            <button
+                                                className={`mt-2 w-full px-4 py-1 text-sm rounded border ${selectedYarn === yarn.slug
+                                                    ? 'bg-black text-white'
+                                                    : 'bg-white text-black'
+                                                    }`}
+                                                onClick={() => selectYarn(yarn._id)}
+                                            >
+                                                SELECT
+                                            </button>
+                                        </div>
+                                    ))
+                                )}
+                            </div>
+                        </div>
                     </div>
                 </div>
 

@@ -5,7 +5,7 @@ import { formatPrice, getAWSImageUrl } from '@/utils/common.utils';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import Link from 'next/link';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
 // import toast from "react-hot-toast";
 
@@ -34,8 +34,8 @@ export default function StepNavigate({
   const searchParams = useSearchParams();
   const style = searchParams.get('style');
   console.log("===========>", style, price);
-  const pathname = usePathname();
-  const currentStep = Number(pathname.split('/').pop()); // e.g. 3
+  // const pathname = usePathname();
+  // const currentStep = Number(pathname.split('/').pop()); // e.g. 3
   const isChange = searchParams.get('change') === 'true';
   // const isLastStep = steps && currentStep === steps.length + FIXED_STEPS_COUNT;
 

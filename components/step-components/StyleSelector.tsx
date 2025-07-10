@@ -19,7 +19,7 @@ const StyleSelector: React.FC<StyleSelectorProps> = ({ styles, price }) => {
     const handleStyleSelect = (styleId: string) => {
         const params = new URLSearchParams(searchParams.toString());
 
-        const edit = searchParams?.get(URL_SLUG.EDIT);
+        // const edit = searchParams?.get(URL_SLUG.EDIT);
         const change = searchParams?.get(URL_SLUG.CHANGE);
         if (change === 'true') {
             params.delete('style');

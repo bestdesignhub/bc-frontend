@@ -3,7 +3,6 @@ import {
   ProductListing,
   ProductTopbar,
   StepBanner,
-  StepListing,
   StepNavigate,
   YarnListingSidebar,
 } from '@/components';
@@ -181,13 +180,14 @@ const SweaterPage = async ({
                 <Col xs={12} lg={2}>
                   <StepNavigate genders={genders} genderSlug={genderSlug} styleData={genderStyles} price={Number(formattedPrice)} />
                 </Col>
-                <Col xs={12} lg={9}>
-                  {!styleId && (
-
-                    <StyleSelector styles={genderStyles} price={Number(formattedPrice)} />)}
-
-                </Col>
                 <Col xs={12} lg={10}>
+                  {!styleId && (
+                    <div className="gauge-wrapper">
+                      <div className="gauge-row">
+                        <StyleSelector styles={genderStyles} price={Number(formattedPrice)} />
+                      </div>
+                    </div>
+                  )}
                   <div className="sweater-bg-step">
                     {styleId && (
                       <YarnListingSidebar

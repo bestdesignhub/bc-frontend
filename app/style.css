@@ -1645,6 +1645,56 @@ button.yarn-button:hover {
   display: none;
 }
 
+.createSweaterBanner .flex {
+  display: flex;
+  align-items: center;
+}
+
+.createSweaterBanner .sweterContent {
+  width: calc(100% - 260px);
+  padding-right: 200px;
+}
+
+.slimFitRadio {
+  width: 50%;
+  margin-top: 20px;
+}
+
+.slimFitRadio input {
+  margin-right: 10px;
+}
+
+.colorBlock {
+  width: 100%;
+}
+
+.labelColor {
+  margin-left: 5px;
+}
+
+.colorBlock .material-box {
+  margin-top: 15px;
+}
+
+.yarnImg img {
+  margin: 0 auto;
+}
+
+.createSweaterBanner .sweterContent h1 {
+  color: #726a5f;
+  font-size: 55px;
+  font-family: 'Gilda Display', serif;
+  /* max-width: 640px; */
+  text-transform: uppercase;
+  padding-bottom: 20px;
+}
+
+.createSweaterBanner .sweterContent p {
+  font-size: 20px;
+  line-height: 28px;
+  margin-bottom: 20px;
+}
+
 /* Responsive Css Start */
 @media only screen and (max-width:1740px) {
   .order-steps li {
@@ -2078,6 +2128,10 @@ button.yarn-button:hover {
 @media only screen and (max-width: 992px) {
   .logo {
     margin: 0 0 0 75px;
+  }
+
+  .desktopMenu {
+    display: none;
   }
 
   .mobileMenu {

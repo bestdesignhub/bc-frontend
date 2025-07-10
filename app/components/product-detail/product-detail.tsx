@@ -454,7 +454,7 @@ export default function ProdutDetail({
                         ].map((fit) => (
                           <label
                             key={fit.value}
-                            className={`cursor-pointer px-4 py-2 rounded-full border transition-all duration-200
+                            className={`slimFitRadio cursor-pointer px-4 py-2 rounded-full border transition-all duration-200
           ${fittingsSlug === fit.value ? 'bg-black text-white border-black' : 'bg-white text-black border-gray-300'}
         `}
                           >

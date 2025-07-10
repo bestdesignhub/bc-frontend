@@ -22,6 +22,7 @@ const OrderHistoryClient = ({
     const [deleteModalOpen, setDeleteModalOpen] = React.useState(false);
     const [refreshKey, setRefreshKey] = React.useState(0);
     const [orderToDelete, setOrderToDelete] = React.useState<string | null>(null);
+    console.log(refreshKey);
     // console.log('Orders:', orders);
 
 
