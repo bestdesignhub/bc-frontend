@@ -905,7 +905,7 @@
   }
 
   .gauge-row .gaugebox .info h4 {
-    font-size: var(--bsp-body-24);
+    font-size: var(--bsp-body-18);
   }
 
   .gauge-row .gaugebox .info p {
