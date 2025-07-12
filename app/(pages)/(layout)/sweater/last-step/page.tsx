@@ -236,6 +236,13 @@ const LastStepPage = async ({
               <div className='Sweater-top-data'><h3>{stepData?.productData?.title?.en}</h3></div>
               <div className="Sweater-right">
                 {/* Yarn Info */}
+                <div className="navigate-item" key={4}>
+                  <h6 className='step-title-custom'>{stepData?.style?.stepType?.name}</h6>
+                  <CurrentStepBox
+                    currentStepData={stepData?.style}
+                    stepNumber={`${2 + FIXED_STEPS_COUNT}`}
+                  />
+                </div>
                 <div className='right-price-product'>
                   <div className="Sweater-right-middle">
                     <div className='yarn-section'>
@@ -343,7 +350,13 @@ const LastStepPage = async ({
                       <div className="d-flex flex-wrap">
                         {stepData?.steps?.map((stepObj: any, index: number) => {
                           const currentStepData = stepData?.[stepObj?.slug] || {};
+                          console.log("currentStepData", currentStepData);
+                          console.log("stepObj", stepObj);
+                          console.log("index", index);
+                          console.log("stepData", stepData);
+
                           if (stepObj?.name === 'Price Module') return null;
+                          if (stepObj?.name === 'Style') return null;
                           return (
                             <div className="navigate-item" key={index}>
                               <h6 className='step-title-custom'>{stepObj?.name}</h6>

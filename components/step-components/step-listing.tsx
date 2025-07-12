@@ -82,7 +82,7 @@ const StepListing: FC<{ stepList: any[]; steps: any[]; step: string; nextStepSlu
             />
           ))} */}
           {stepList.length === 0 ? (
-            null // 👈 don't render anything if empty
+            null //  don't render anything if empty
           ) : (
             stepList.map((gauge, index: number) => (
               <StepCard
