@@ -234,10 +234,23 @@
   align-items: flex-start;
   padding: 5px;
   justify-content: space-between;
-  border: 1px solid #c7c4bd;
+  /* border: 1px solid #c7c4bd; */
   margin-top: 20px;
-  max-width: 66%;
-  width: 66%;
+  max-width: 100%;
+  width: 100%;
+}
+
+.styleBoxSummary {
+  width: 40%;
+  display: flex;
+  border: 1px solid #c7c4bd;
+}
+
+.yarnBox {
+  width: 59%;
+  display: flex;
+  border: 1px solid #c7c4bd;
+  padding: 6px;
 }
 
 .yarn-section .change-link-2 {
@@ -465,9 +478,9 @@
 }
 
 .Sweater-right-bottom .gauge-navigate .navigate-item:first-child {
-  position: absolute;
+  /* position: absolute;
   top: 20px;
-  right: 0;
+  right: 0; */
   width: 212px;
 }
 

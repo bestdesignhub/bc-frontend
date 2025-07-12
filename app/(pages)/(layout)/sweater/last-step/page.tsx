@@ -236,65 +236,66 @@ const LastStepPage = async ({
               <div className='Sweater-top-data'><h3>{stepData?.productData?.title?.en}</h3></div>
               <div className="Sweater-right">
                 {/* Yarn Info */}
-                <div className="navigate-item" key={4}>
-                  <h6 className='step-title-custom'>{stepData?.style?.stepType?.name}</h6>
-                  <CurrentStepBox
-                    currentStepData={stepData?.style}
-                    stepNumber={`${2 + FIXED_STEPS_COUNT}`}
-                  />
-                </div>
-                <div className='right-price-product'>
+                <div className='right-price-product fsfs'>
                   <div className="Sweater-right-middle">
-                    <div className='yarn-section'>
-                      <div className="img">
-                        <Image
-                          src={getAWSImageUrl(stepData?.yarn?.image)}
-                          alt="yarn img"
-                          width={170}
-                          height={170}
-                          loading="lazy"
-                        />
-                        <ChangeYarnButton searchParams={resolvedSearchParams} />
-                      </div>
+                    <div className="navigate-item styleBoxSummary" key={4}>
+                      {/* <h6 className='step-title-custom'>{stepData?.style?.stepType?.name}</h6> */}
+                      <CurrentStepBox
+                        currentStepData={stepData?.style}
+                        stepNumber={`${2 + FIXED_STEPS_COUNT}`}
+                      />
                     </div>
-                    <div className="products-box-sub">
-                      <div className="products-box-sub-inner">
-                        <h5>Yarn Details</h5>
-                        {/* <h5>{stepData?.yarn?.name}</h5> */}
-                        <div className="name">
-                          {t('COMMON.NAME')}: {' '}
-                          <span>
-                            {stepData?.yarn?.name} - {stepData?.yarn?.yarnId}
-                          </span>
-                        </div>
-                        <div className="name">
-                          {t('COMMON.GENDER')}: {' '}
-                          <span>
-                            {/* {stepData?.yarn?.gender} */}
-                            {stepData?.genderData?.name?.en}
-                          </span>
-                        </div>
-                        <div className="name">
-                          {t('COMMON.MATERIAL')}: {' '}
-                          <span>
-                            {stepData?.yarn?.material}
-                          </span>
-                        </div>
-                        <div className="name">
-                          {t('COMMON.COLOUR')}: {' '}
-                          <span>
-                            {stepData?.yarn?.colour}
-                          </span>
-                        </div>
-                        <div className="name">
-                          {t('COMMON.SEASONALITY')}: {' '}
-                          <span>
-                            {stepData?.yarn?.seasonality}
-                          </span>
+                    <div className='yarnBox'>
+                      <div className='yarn-section'>
+                        <div className="img">
+                          <Image
+                            src={getAWSImageUrl(stepData?.yarn?.image)}
+                            alt="yarn img"
+                            width={170}
+                            height={170}
+                            loading="lazy"
+                          />
+                          <ChangeYarnButton searchParams={resolvedSearchParams} />
                         </div>
                       </div>
+                      <div className="products-box-sub">
+                        <div className="products-box-sub-inner">
+                          <h5>Yarn Details</h5>
+                          {/* <h5>{stepData?.yarn?.name}</h5> */}
+                          <div className="name">
+                            {t('COMMON.NAME')}: {' '}
+                            <span>
+                              {stepData?.yarn?.name} - {stepData?.yarn?.yarnId}
+                            </span>
+                          </div>
+                          <div className="name">
+                            {t('COMMON.GENDER')}: {' '}
+                            <span>
+                              {/* {stepData?.yarn?.gender} */}
+                              {stepData?.genderData?.name?.en}
+                            </span>
+                          </div>
+                          <div className="name">
+                            {t('COMMON.MATERIAL')}: {' '}
+                            <span>
+                              {stepData?.yarn?.material}
+                            </span>
+                          </div>
+                          <div className="name">
+                            {t('COMMON.COLOUR')}: {' '}
+                            <span>
+                              {stepData?.yarn?.colour}
+                            </span>
+                          </div>
+                          <div className="name">
+                            {t('COMMON.SEASONALITY')}: {' '}
+                            <span>
+                              {stepData?.yarn?.seasonality}
+                            </span>
+                          </div>
+                        </div>
 
-                      {/* <div className="Sweater-right-bottom">
+                        {/* <div className="Sweater-right-bottom">
                       <div className="fabric-listing">
                         <ul>
                           <li>
@@ -339,6 +340,7 @@ const LastStepPage = async ({
                         </ul>
                       </div>
                     </div> */}
+                      </div>
                     </div>
                   </div>
 
