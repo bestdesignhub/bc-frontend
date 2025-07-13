@@ -29,7 +29,7 @@ const MenuData: Menu[] = [
     id: 5,
     title: 'About Us',
     newTab: false,
-    href: '/aboutus',
+    href: '/about-us',
   },
 ];
 

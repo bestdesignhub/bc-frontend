@@ -81,7 +81,7 @@ export default async function Footer({ }: { settings?: ISettings }) {
             <h4>Explore</h4>
             <ul className="f-link">
               <li>
-                <Link href="#" title="About Us">
+                <Link href="about-us" title="About Us">
                   About Us
                 </Link>
               </li>
