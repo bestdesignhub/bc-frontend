@@ -51,17 +51,17 @@ export default async function Footer({ }: { settings?: ISettings }) {
             <h4>Menu</h4>
             <ul className="f-link">
               <li>
-                <Link href="#" title="Women">
+                <Link href="women" title="Women">
                   Women
                 </Link>
               </li>
               <li>
-                <Link href="#" title="Men">
+                <Link href="men" title="Men">
                   Men
                 </Link>
               </li>
               <li>
-                <Link href="#" title="Shop">
+                <Link href="shop" title="Shop">
                   Shop
                 </Link>
               </li>
@@ -91,12 +91,12 @@ export default async function Footer({ }: { settings?: ISettings }) {
                 </Link>
               </li>
               <li>
-                <Link href="#" title="Contact Us">
+                <Link href="contact-us" title="Contact Us">
                   Contact Us
                 </Link>
               </li>
               <li>
-                <Link href="#" title="New In">
+                <Link href="new-in" title="New In">
                   New In
                 </Link>
               </li>
@@ -111,22 +111,22 @@ export default async function Footer({ }: { settings?: ISettings }) {
             <h4>Support</h4>
             <ul className="f-link">
               <li>
-                <Link href="#" title="Payment Conditions">
+                <Link href="payment-conditions" title="Payment Conditions">
                   Payment Conditions
                 </Link>
               </li>
               <li>
-                <Link href="#" title="Returns Policy">
+                <Link href="returns-policy" title="Returns Policy">
                   Returns Policy
                 </Link>
               </li>
               <li>
-                <Link href="#" title="Privacy Policy">
+                <Link href="privacy-policy" title="Privacy Policy">
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link href="#" title="Terms of use">
+                <Link href="terms-of-use" title="Terms of use">
                   Terms of use
                 </Link>
               </li>
