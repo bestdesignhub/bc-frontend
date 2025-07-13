@@ -9,18 +9,18 @@ export default function AboutUs() {
                 <title>About Us | Bespoke Cashmere</title>
                 <meta name="description" content="Learn about our company's story, mission, and values." />
             </Head>
-
             <main style={styles.container}>
                 <h1 style={styles.heading}>About Us</h1>
 
                 <section style={styles.section}>
                     <p style={styles.text}>
-                        Welcome to <strong>Bespoke Cashmere</strong>. We are a team of passionate individuals
-                        committed to making a difference. Since our founding in <strong>2025</strong>,
-                        we’ve been focused on delivering high-quality products and services that
-                        empower our customers and make their lives better.
+                        We are a leading e-commerce company specializing in custom sweaters for residential and
+                        commercial applications. With our cutting-edge technology, we have revolutionized the
+                        one-size-fits-all apparel industry, paving the way as pioneers in customized and
+                        personalized sweaters. We provide an extensive range of custom-made and standard-size
+                        sweaters, meticulously tailored to your specifications in terms of size, material,
+                        color, and even shape!
                     </p>
-
                     <p style={styles.text}>
                         Our journey started with a simple idea: to build solutions that are not only effective
                         but also meaningful. Over the years, we’ve grown into a diverse team that thrives on

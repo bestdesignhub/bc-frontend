@@ -278,7 +278,7 @@ const HomeComponent = ({ homepageData, homeProductList }: IHomePageProps) => {
             using our simple online personalizing tool.
           </p>
           <div className="about-detail">
-            <Link href="/aboutus" title="Click More Details">
+            <Link href="/about-us" title="Click More Details">
               Click More Details
             </Link>
           </div>

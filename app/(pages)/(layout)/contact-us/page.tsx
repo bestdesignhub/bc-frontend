@@ -21,8 +21,7 @@ export default function ContactUs() {
     return (
         <main style={styles.container}>
             <h1 style={styles.heading}>Contact Us</h1>
-            <p style={styles.text}>Have questions or feedback? We'd love to hear from you!</p>
-
+            <p style={styles.text}>Have questions or feedback? We would love to hear from you!</p>
             {submitted ? (
                 <p style={{ color: 'green', fontSize: '1.1rem' }}>Thank you! We’ll be in touch soon.</p>
             ) : (

@@ -6,13 +6,12 @@ export default function AboutUs() {
     return (
         <>
             <Head>
-                <title>About Us | Bespoke Cashmere</title>
+                <title>New In | Bespoke Cashmere</title>
                 <meta name="description" content="Learn about our company's story, mission, and values." />
             </Head>
 
             <main style={styles.container}>
-                <h1 style={styles.heading}>About Us</h1>
-
+                <h1 style={styles.heading}>New In</h1>
                 <section style={styles.section}>
                     <p style={styles.text}>
                         Welcome to <strong>Bespoke Cashmere</strong>. We are a team of passionate individuals

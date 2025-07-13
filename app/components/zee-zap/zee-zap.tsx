@@ -24,14 +24,12 @@ export default function ZeeZap({ lookGoodData }: ILookGoodProps) {
               {lookGoodData?.card2?.button_text && (
                 <div className='shop-button'>
                   <Link href={lookGoodData?.card2?.button_text ?? ''}>
-                    {lookGoodData?.card2?.button_text}
+                    Shop Now
                   </Link>
                 </div>
               )}
             </div>
           </div>
-
-
           {lookGoodData?.card3 && (
             <div className="men-sweater sweater-img-content">
               <Link href="/men">
@@ -51,7 +49,7 @@ export default function ZeeZap({ lookGoodData }: ILookGoodProps) {
                 {lookGoodData?.card3?.button_text && (
                   <div className="shop-button">
                     <Link href={lookGoodData?.card3?.button_link ?? ''}>
-                      {lookGoodData?.card3?.button_text}
+                      Shop Now
                     </Link>
                   </div>
                 )}
