@@ -177,10 +177,10 @@ const SweaterPage = async ({
           <div className="sweater-inner-container">
             <div className="woman-product-wrappe bgsweater">
               <Row className="g-4 no-horizontal-padding">
-                <Col xs={12} lg={2}>
+                <Col xs={12} lg={3}>
                   <StepNavigate genders={genders} genderSlug={genderSlug} styleData={genderStyles} price={Number(formattedPrice)} />
                 </Col>
-                <Col xs={12} lg={10}>
+                <Col xs={12} lg={9}>
                   {!styleId && (
                     <div className="gauge-wrapper">
                       <div className="gauge-row">

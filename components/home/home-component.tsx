@@ -146,7 +146,7 @@ const HomeComponent = ({ homepageData, homeProductList }: IHomePageProps) => {
             </li>
           </ul>
           <div className="view-all-style">
-            <Link href="#" title="View All Styles">
+            <Link href="/sweater?gender=6798793f705aedfe39db13b1&material=678077a88c6968b4bb6fc291" title="View All Styles">
               View All Styles
             </Link>
           </div>
@@ -214,7 +214,7 @@ const HomeComponent = ({ homepageData, homeProductList }: IHomePageProps) => {
               perfect solutions for all your knitting and crafting needs, ensuring quality,
               durability, and a luxurious finish for every project.
             </p>
-            <Link className="download-book" href="#" title="Download Book">
+            <Link target='_blank' className="download-book" href="http://bespoke-cashemeres.s3.eu-west-1.amazonaws.com/documents/real-image/1750489344254_certi.pdf" title="Download Book">
               Download Book
             </Link>
           </div>
@@ -222,7 +222,6 @@ const HomeComponent = ({ homepageData, homeProductList }: IHomePageProps) => {
             <img src="/images/collection-img.webp" alt="Explore our Yarn Collection" />
           </div>
         </section>
-
         <section className="about-bespoke">
           <div className="f-container">
             <h3>
@@ -279,7 +278,7 @@ const HomeComponent = ({ homepageData, homeProductList }: IHomePageProps) => {
             using our simple online personalizing tool.
           </p>
           <div className="about-detail">
-            <Link href="#" title="Click More Details">
+            <Link href="/aboutus" title="Click More Details">
               Click More Details
             </Link>
           </div>

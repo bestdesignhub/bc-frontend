@@ -51,27 +51,27 @@ export default async function Footer({ }: { settings?: ISettings }) {
             <h4>Menu</h4>
             <ul className="f-link">
               <li>
-                <Link href="#" title="Women">
+                <Link href="/women" title="Women">
                   Women
                 </Link>
               </li>
               <li>
-                <Link href="#" title="Men">
+                <Link href="/men" title="Men">
                   Men
                 </Link>
               </li>
               <li>
-                <Link href="#" title="Shop">
+                <Link href="/shop" title="Shop">
                   Shop
                 </Link>
               </li>
               <li>
-                <Link href="#" title="Our Yarn Details">
+                <Link href="/sweater?gender=6798793f705aedfe39db13b1&material=678077a88c6968b4bb6fc291&style=6873797b112e603103c98e6c" title="Our Yarn Details">
                   Our Yarn Details
                 </Link>
               </li>
               <li>
-                <Link href="#" title="Our Styles">
+                <Link href="/sweater?gender=6798793f705aedfe39db13b1&material=678077a88c6968b4bb6fc291" title="Our Styles">
                   Our Styles
                 </Link>
               </li>
@@ -85,11 +85,11 @@ export default async function Footer({ }: { settings?: ISettings }) {
                   About Us
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link href="#" title="Mind Behind Idea">
                   Mind Behind Idea
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <Link href="#" title="Contact Us">
                   Contact Us
@@ -101,7 +101,7 @@ export default async function Footer({ }: { settings?: ISettings }) {
                 </Link>
               </li>
               <li>
-                <Link href="#" title="Our Story">
+                <Link href="/our-story" title="Our Story">
                   Our Story
                 </Link>
               </li>
