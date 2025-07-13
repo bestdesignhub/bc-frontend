@@ -27,7 +27,7 @@ const GenderModal = (props: {
   } = props;
   const searchParams = useSearchParams();
   const queryString = urlQueryString || new URLSearchParams(searchParams).toString();
-  const domain = process.env.NEXT_PUBLIC_FRONT_DOMAIN_URL || '';
+  // const domain = process.env.NEXT_PUBLIC_FRONT_DOMAIN_URL || '';
 
   return (
     <Modal show={show} onHide={handleClose} animation={false} centered className='customize-gender-model'>
