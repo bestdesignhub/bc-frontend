@@ -20,6 +20,9 @@ export default function SweaterBox({ stepData }: SweaterBoxProps) {
   const slug = searchParams.get('gauge');
   const pattern = searchParams.get('pattern');
   const style = searchParams.get('style');
+  const yarn = searchParams.get('yarn');
+  const gauge = searchParams.get('gauge');
+  const gender = searchParams.get('gender');
   const fitting = searchParams.get('fitting');
   const color = stepData?.yarn?.colourId;
 
@@ -68,6 +71,37 @@ export default function SweaterBox({ stepData }: SweaterBoxProps) {
     fetchImage();
   }, [slug, pattern, style, fitting]);
 
+  useEffect(() => {
+    if (!yarn || !pattern || !slug || !fitting) return;
+
+    const fetchStyleInfo = async () => {
+      setLoading(true);
+      try {
+        const response = await userAxiosInstanceWithoutToken.post('/styles/simple-filter', {
+          gender,      // or however you're passing gender
+          pattern,
+          yarn,
+          gauge, // assuming `fitting` is gauge here?
+          language: 'en',
+        });
+
+        if (response.data.success && response.data.data.length > 0) {
+          const styleData = response.data.data[0]; // assuming one match
+          const imageUrl = `${BUCKET_DOMAIN}${styleData.realImage}`;
+          setImageSrc(imageUrl);
+          setTitle(styleData.title); // update the title if needed
+        }
+      } catch (error) {
+        console.error('Error fetching style:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchStyleInfo();
+  }, [slug, pattern, style, fitting]);
+
+
   return (
     <div className="defult-block">
       <div className="Sweater-top-data">
@@ -81,7 +115,8 @@ export default function SweaterBox({ stepData }: SweaterBoxProps) {
           <Image
             loading="lazy"
             // src={imageSrc}
-            src={getAWSImageUrl(stepData?.style?.stepCard?.realImage)}
+            // src={getAWSImageUrl(stepData?.style?.stepCard?.realImage)}
+            src={imageSrc}
             alt="Sweater Image"
             width={380}
             height={414}
