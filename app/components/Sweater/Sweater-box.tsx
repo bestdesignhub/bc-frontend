@@ -6,7 +6,7 @@ import { useSearchParams } from 'next/navigation';
 import '@/app/styles/Sweater-product.css';
 import Sweaterimg1 from '@/public/images/round-neck-sweater.jpg';
 import userAxiosInstanceWithoutToken from '@/config/userAxiosInstanceWithoutToken';
-import { getAWSImageUrl } from '@/utils/common.utils';
+// import { getAWSImageUrl } from '@/utils/common.utils';
 
 const BUCKET_DOMAIN = process.env.NEXT_PUBLIC_BUCKET_DOMAIN;
 
