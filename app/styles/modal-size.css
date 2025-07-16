@@ -220,9 +220,13 @@
   /* border: 5px solid #af986d;
   padding: 8px; */
   box-sizing: border-box;
-  background: url(../images/men-women-img.png) center top no-repeat #cabaa5;
-  height: 400px;
+  /* background: url(../images/men-women-img.png) center top no-repeat #cabaa5; */
+  height: auto;
 }
+
+/* .customize-gender-model {
+  background: none !important;
+} */
 
 .genderLable {
   color: #fff;
@@ -281,7 +285,14 @@
 } */
 
 .customize-gender-model.modal {
-  background: #7f7263 !important;
+  /* background: #7f7263 !important; */
+  background: url(../images/modals-men-women.jpeg) center top no-repeat;
+  background-size: cover;
+}
+
+.customize-gender-model .modal-content {
+  background: none;
+  border: 0;
 }
 
 @media (min-width: 1601px) and (max-width: 1750px) {}

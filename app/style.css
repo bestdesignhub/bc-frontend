@@ -1415,7 +1415,7 @@ ul.social-icon {
   border-radius: 0 !important;
 }
 
-.modal-content .modal-footer button {
+.modal .modal-content .modal-footer button {
   border-radius: 0 !important;
   background: #000;
   border: 0 !important;

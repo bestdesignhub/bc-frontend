@@ -30,7 +30,8 @@ const GenderModal = (props: {
   // const domain = process.env.NEXT_PUBLIC_FRONT_DOMAIN_URL || '';
 
   return (
-    <Modal show={show} onHide={handleClose} animation={false} centered className='customize-gender-model'>
+    <Modal className='customize-gender-model'
+      dialogClassName='gender-dialog-custom' show={show} onHide={handleClose} animation={false} centered>
       <div className='model-gender-upper-block'>
         <div className="modal-block-main model-gender-inner-block">
           <div className="modal-block-top">
