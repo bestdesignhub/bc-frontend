@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Image, { StaticImageData } from 'next/image';
 import { useSearchParams } from 'next/navigation';
 import '@/app/styles/Sweater-product.css';
-import Sweaterimg1 from '@/public/images/round-neck-sweater.jpg';
+// import Sweaterimg1 from '@/public/images/round-neck-sweater.jpg';
 import userAxiosInstanceWithoutToken from '@/config/userAxiosInstanceWithoutToken';
 import { getAWSImageUrl } from '@/utils/common.utils';
 // import { getAWSImageUrl } from '@/utils/common.utils';
