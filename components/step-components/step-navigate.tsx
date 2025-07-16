@@ -225,6 +225,7 @@ export default function StepNavigate({
             const existingKeys = keys1.filter((key) => searchParams.has(key));
             console.log(existingKeys, "existingKeys", price);
 
+
             // Show price if this step's slug exists in searchParams
             // const shouldShowPrice = searchParams.has(step.slug);
 
@@ -240,7 +241,8 @@ export default function StepNavigate({
             //   : [];
 
 
-            console.log("stepLabels", stepLabels[index], stepPageData);
+            console.log("stepLabels and slug mangilal", stepLabels[index], stepPageData);
+            // { stepPageData?.[step?.slug]?.slug.toUpperCase() }
 
             return (
               <div
@@ -275,9 +277,8 @@ export default function StepNavigate({
                         <div className="title">
                           <h6>{stepLabels[index] || index + 2}</h6>
                           <div className="title">
-
                             <p>
-                              <strong>{stepPageData?.[step?.slug]?.slug.toUpperCase()}</strong>
+                              <strong>{stepPageData?.[step?.slug]?.name.toUpperCase()}</strong>
                             </p>
                           </div>
                           <button>

@@ -11,7 +11,7 @@ export default async function StepBanner({ step }: { stepData?: any; step: strin
         <div className='flex'>
           <div className='sweterContent'>
             <h1>Creation Custom Sweater</h1>
-            <p>Customize your perfect sweater by selecting your preferred yarn, material and style. From fit to finish, we craft each piece uniquely for you.</p>
+            <p>customise your perfect sweater by selecting your preferred yarn, material and style. From fit to finish, we craft each piece uniquely for you.</p>
           </div>
           <div className="image">
             <Image

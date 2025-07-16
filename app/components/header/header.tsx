@@ -97,7 +97,7 @@ export default function Header() {
               </Link>
             </li>
             <li>
-              <Link href="/shop" title="Customise a Sweater">
+              <Link href="/shop" title="customize a Sweater">
                 Customise a Sweater
               </Link>
             </li>

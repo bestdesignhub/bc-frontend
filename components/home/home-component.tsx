@@ -81,7 +81,7 @@ const HomeComponent = ({ homepageData, homeProductList }: IHomePageProps) => {
                 </Link>
               </li>
               <li>
-                <Link href="/shop" title="Customise a Sweater">
+                <Link href="/shop" title="customise a Sweater">
                   Customise a Sweater
                 </Link>
               </li>
@@ -256,9 +256,9 @@ const HomeComponent = ({ homepageData, homeProductList }: IHomePageProps) => {
               </li>
               <li>
                 <span className="a-icon">
-                  <img src="/images/customize-solutions.webp" alt="Customize Solutions" />
+                  <img src="/images/customize-solutions.webp" alt="customise Solutions" />
                 </span>
-                <span className="service-name">Customize Solutions</span>
+                <span className="service-name">customise Solutions</span>
               </li>
             </ul>
           </div>
