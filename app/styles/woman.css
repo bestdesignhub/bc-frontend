@@ -63,19 +63,21 @@
 }
 
 .women-landing-category .banner-caption {
-  width: 70%;
+  width: calc(100% - 352px);
   display: flex;
-  padding-right: 25%;
+  padding-right: 70px;
   align-items: center;
   text-transform: uppercase;
 }
 
 .women-landing-category .image {
-  width: 30%;
+  width: 352px;
+  max-width: 352px;
 }
 
 .women-landing-category .banner-content h1 {
   color: #7f7262;
+  font-size: 40px;
 }
 
 .women-landing-category .banner-content p {
