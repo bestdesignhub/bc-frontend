@@ -80,3 +80,6 @@ export const MEASUREMENT_PROFILE_GET_URL = '/measurement-profile';
 export const USER_MEASUREMENT_ADD_URL = '/measurement-profile/add';
 export const USER_MEASUREMENT_SLUG_URL = '/user-measurement/slug';
 export const USER_MEASUREMENT_UPDATE_URL = '/measurement-profile/update';
+
+
+export const CMS_PAGE_BY_SLUG_URL = '/cms-pages/slug';
