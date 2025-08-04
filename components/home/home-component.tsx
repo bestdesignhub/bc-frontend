@@ -6,6 +6,8 @@ import { IProduct } from '@/app/components/accessories/accessories';
 import { ZeeZap } from '@/app/components/zee-zap';
 import { IHomeApiRes } from '@/types/components';
 import Link from 'next/link';
+import SweaterStylesCMSPage from '../SweaterStyle/SweaterStylesCMSPage';
+import CmsPageBySlug from '../SweaterStyle/CmsPageBySlug';
 
 interface IHomePageProps {
   homepageData: IHomeApiRes;
@@ -102,7 +104,7 @@ const HomeComponent = ({ homepageData, homeProductList }: IHomePageProps) => {
           </div> */}
 
         <section className="all-sweater-style f-container">
-          <h3>Our All Sweater Styles</h3>
+          {/* <h3>Our All Sweater Styles</h3>
           <ul className="all-sweater-list">
             <li>
               <Link className="sweater-style-img" href="#" title="Crew Neck Pullover">
@@ -144,7 +146,11 @@ const HomeComponent = ({ homepageData, homeProductList }: IHomePageProps) => {
                 V Neck Button Cardigan
               </Link>
             </li>
-          </ul>
+          </ul> */}
+          <main>
+            {/* other homepage stuff */}
+            <SweaterStylesCMSPage />
+          </main>
           <div className="view-all-style">
             <Link href="/sweater?gender=6798793f705aedfe39db13b1&material=678077a88c6968b4bb6fc291" title="View All Styles">
               View All Styles
@@ -152,7 +158,7 @@ const HomeComponent = ({ homepageData, homeProductList }: IHomePageProps) => {
           </div>
         </section>
         <section className="ordering-steps">
-          <div className="ordering-steps-img">
+          {/* <div className="ordering-steps-img">
             <img src="/images/ordering-steps.webp" alt="4 easy ordering steps" />
           </div>
           <div className="four-steps">
@@ -203,7 +209,8 @@ const HomeComponent = ({ homepageData, homeProductList }: IHomePageProps) => {
               Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci
               velit...
             </p>
-          </div>
+          </div> */}
+          <CmsPageBySlug slug="ordering-steps" />
         </section>
 
         <section className="explore-collection f-container">
@@ -221,6 +228,7 @@ const HomeComponent = ({ homepageData, homeProductList }: IHomePageProps) => {
           <div className="collection-img">
             <img src="/images/collection-img.webp" alt="Explore our Yarn Collection" />
           </div>
+          {/* <CmsPageBySlug slug="explore-our-yarn-collection" /> */}
         </section>
         <section className="about-bespoke">
           <div className="f-container">

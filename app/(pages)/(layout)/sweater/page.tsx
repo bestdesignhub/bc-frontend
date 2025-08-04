@@ -73,6 +73,8 @@ const SweaterPage = async ({
 
     try {
       priceData = await fetchPriceList(requestBody);
+      console.log('priceData', priceData);
+
       const rawPrice = priceData?.sizeFL ? Number(priceData.sizeFL) : 0;
       formattedPrice = rawPrice.toLocaleString('en-US', { minimumIntegerDigits: 5, useGrouping: false });
       console.log("formattedPrice", formattedPrice);
@@ -104,7 +106,9 @@ const SweaterPage = async ({
     sortOrder: 'desc',
     search: "",
   };
-  const stepList = await userAxiosInstance.post('/step-card/user/list/67599682e94c6e1a0e46e63e', payload)
+  const stepList = await userAxiosInstance.post('/step-card/user/list/67599682e94c6e1a0e46e63e', payload, {
+    timeout: 10000,
+  })
   console.log("StepList ===>>>", stepList?.data?.data?.data);
   const allSteps = stepList?.data?.data?.data || [];
   const genderStyles = allSteps.filter((item: any) => item.gender._id === genderId);
