@@ -1695,6 +1695,40 @@ button.yarn-button:hover {
   margin-bottom: 20px;
 }
 
+.questionPart {
+  position: relative;
+}
+
+.questionPart button {
+  width: 100%;
+  background: none;
+  border-bottom: 1px solid #eaeaea;
+  padding-bottom: 10px;
+}
+
+.questionPart button span.iconButton {
+  position: absolute;
+  right: 7px;
+  top: 7px;
+  font-size: 27px;
+  border: 0;
+}
+
+.questionPart button span {
+  border: 0;
+  margin: 0;
+}
+
+.detail-content .info p.descriptionContent {
+  padding: 10px 0;
+}
+
+.customProductGallery {
+  position: relative;
+  width: 500px;
+  max-width: 500px;
+}
+
 /* Responsive Css Start */
 @media only screen and (max-width:1740px) {
   .order-steps li {

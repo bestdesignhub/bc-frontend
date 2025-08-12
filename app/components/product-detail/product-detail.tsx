@@ -2,7 +2,7 @@
 
 import { Row, Col, InputGroup, Form } from 'react-bootstrap';
 import { formatPrice } from '@/utils/common.utils';
-import { ChangeEvent, useCallback, useEffect, useMemo, useState } from 'react';
+import { ChangeEvent, Fragment, useCallback, useEffect, useMemo, useState } from 'react';
 import userAxiosInstance from '@/config/userAxiosInstance';
 import {
   PRODUCT_PRICE_BY_SIZE,
@@ -53,6 +53,7 @@ const measurementsData = [
   { label: "Neck Width", value: 15.5, tolerance: 2 },
   { label: "Sleeve Width", value: 17, tolerance: 2 },
 ];
+
 export default function ProdutDetail({
   details,
   availableSizes = [],
@@ -82,9 +83,6 @@ export default function ProdutDetail({
   const [fit, setFit] = useState("");
   const [getAvailableSizes, setAvailableSizes] = useState<any[]>(availableSizes || []); // Initialize with the passed available sizes
   const [fittingsSlug, setFittingsSlug] = useState<string>(''); // default can be 'slim-fitting' or 'regular-fitting'
-
-
-
 
   const [isWishlisted, setIsWishlisted] = useState(!!details?.isWishlisted);
   console.log('details', details.stepDetails);
@@ -365,9 +363,34 @@ export default function ProdutDetail({
   };
 
 
-
-
-
+  const AccordionItem = ({ index, title, description }: any) => {
+    const [isOpen, setIsOpen] = useState(false);
+    const toggleAccordion = () => setIsOpen(!isOpen);
+    return (
+      <div key={index} className="border-b border-gray-300 py-2 questionPart">
+        <button
+          onClick={toggleAccordion}
+          className="flex justify-between w-full text-left font-semibold text-lg">
+          <span>{title}</span>
+          <span className='iconButton'>{isOpen ? "-" : "+"}</span>
+        </button>
+        {isOpen && (
+          <p className="mt-2 text-gray-600 descriptionContent">{description}</p>
+        )}
+      </div>
+    );
+  };
+  const AccordionMenu = ({ data }: any) => {
+    return (
+      details?.contents?.map((content: any, index: number) => (
+        <AccordionItem
+          key={index}
+          index={index}
+          title={content?.title}
+          description={content?.description}
+        />
+      )))
+  }
 
   return (
     <>
@@ -393,16 +416,7 @@ export default function ProdutDetail({
                         </div>
                       )}
                     </div>
-                    {/* <div className="info">
-                      {details?.contents?.map((content: any, index: number) => {
-                        return (
-                          <Fragment key={index}>
-                            <h6>{content?.title}</h6>
-                            <p>{content?.description}</p>
-                          </Fragment>
-                        );
-                      })}
-                    </div> */}
+
                     <div className='statics-sweater'>
                       <Row>
                         <Col xs={12} lg={6} xl={6}>
@@ -471,11 +485,6 @@ export default function ProdutDetail({
                         ))}
                       </div>
                     </div>
-
-
-
-
-
                     <div className="pr-size d-flex flex-wrap">
                       <MeasurementsForm measurements={measurementData} />
                     </div>
@@ -486,6 +495,19 @@ export default function ProdutDetail({
                         onChange={handleChange}
                         placeholder="Enter Special Details"
                       />
+                    </div>
+                    <div className="info">
+
+                      <AccordionMenu />
+
+                      {/* {details?.contents?.map((content: any, index: number) => {
+                        return (
+                          <Fragment key={index}>
+                            <h6>{content?.title}</h6>
+                            <p>{content?.description}</p>
+                          </Fragment>
+                        );
+                      })} */}
                     </div>
                   </div>
                 </Col>
