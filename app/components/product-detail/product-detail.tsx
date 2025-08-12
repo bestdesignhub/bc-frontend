@@ -2,7 +2,7 @@
 
 import { Row, Col, InputGroup, Form } from 'react-bootstrap';
 import { formatPrice } from '@/utils/common.utils';
-import { ChangeEvent, Fragment, useCallback, useEffect, useMemo, useState } from 'react';
+import { ChangeEvent, useCallback, useEffect, useMemo, useState } from 'react';
 import userAxiosInstance from '@/config/userAxiosInstance';
 import {
   PRODUCT_PRICE_BY_SIZE,
@@ -380,7 +380,7 @@ export default function ProdutDetail({
       </div>
     );
   };
-  const AccordionMenu = ({ data }: any) => {
+  const AccordionMenu = () => {
     return (
       details?.contents?.map((content: any, index: number) => (
         <AccordionItem
