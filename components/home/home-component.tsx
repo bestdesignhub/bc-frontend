@@ -8,6 +8,9 @@ import { IHomeApiRes } from '@/types/components';
 import Link from 'next/link';
 import SweaterStylesCMSPage from '../SweaterStyle/SweaterStylesCMSPage';
 import CmsPageBySlug from '../SweaterStyle/CmsPageBySlug';
+import CustomSweaterSection from './custom-sweater-section';
+import AllSweaterStyles from './all-sweater-styles';
+import OrderingStepsSection from './ordering-steps-section';
 
 interface IHomePageProps {
   homepageData: IHomeApiRes;
@@ -41,7 +44,7 @@ const HomeComponent = ({ homepageData, homeProductList }: IHomePageProps) => {
 
         <Accessories accessoriesData={accessoriesData} homeProductList={homeProductList} />
 
-        <section className="create-custom f-container">
+        {/* <section className="create-custom f-container">
           <aside className="custom-sweater">
             <h3>Create Custom Sweater</h3>
             <ul className="custom-sweater-list">
@@ -94,7 +97,8 @@ const HomeComponent = ({ homepageData, homeProductList }: IHomePageProps) => {
             <h4>We create Custom Solutions</h4>
             <img src="/images/your-style.webp" alt="Your Style & Colors" />
           </div>
-        </section>
+        </section> */}
+        <CustomSweaterSection />
         <ZeeZap lookGoodData={lookGoodData} />
         {/* <div className="women-sweater">
             <img src="/images/ww.webp" />
@@ -149,7 +153,8 @@ const HomeComponent = ({ homepageData, homeProductList }: IHomePageProps) => {
           </ul> */}
           <main>
             {/* other homepage stuff */}
-            <SweaterStylesCMSPage />
+            {/* <SweaterStylesCMSPage /> */}
+            <AllSweaterStyles />
           </main>
           <div className="view-all-style">
             <Link href="/sweater?gender=6798793f705aedfe39db13b1&material=678077a88c6968b4bb6fc291" title="View All Styles">
@@ -210,7 +215,8 @@ const HomeComponent = ({ homepageData, homeProductList }: IHomePageProps) => {
               velit...
             </p>
           </div> */}
-          <CmsPageBySlug slug="ordering-steps" />
+          {/* <CmsPageBySlug slug="ordering-steps" /> */}
+          <OrderingStepsSection />
         </section>
 
         <section className="explore-collection f-container">
