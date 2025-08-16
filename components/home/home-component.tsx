@@ -9,6 +9,8 @@ import { IProduct } from '@/app/components/accessories/accessories';
 import { ZeeZap } from '@/app/components/zee-zap';
 import { IHomeApiRes } from '@/types/components';
 import Link from 'next/link';
+import SweaterStylesCMSPage from '../SweaterStyle/SweaterStylesCMSPage';
+import CmsPageBySlug from '../SweaterStyle/CmsPageBySlug';
 import CustomSweaterSection from './custom-sweater-section';
 import AllSweaterStyles from './all-sweater-styles';
 import OrderingStepsSection from './ordering-steps-section';
@@ -25,9 +27,6 @@ interface IHomePageProps {
 }
 
 const HomeComponent = ({ homepageData, homeProductList }: IHomePageProps) => {
-  console.log("HomeComponent rendered", homepageData);
-
-
   const heroData = homepageData?.section1;
   const perfectFitData = homepageData?.section2;
   const categoryData = homepageData?.section3;

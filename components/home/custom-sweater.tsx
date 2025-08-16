@@ -20,7 +20,6 @@ export default function CustomSweater({ sweaterData }: ICustomSweaterProps) {
         <section className="create-custom f-container">
             <aside className="custom-sweater">
                 <h3>Create Custom Sweater</h3>
-
                 <ul className="custom-sweater-list">
                     {sweaterSteps.map((step: any) => (
                         <li key={step._id || step.uuid || Math.random().toString(36).substr(2, 9)}> {/* Use _id or generate unique key */}
@@ -29,8 +28,8 @@ export default function CustomSweater({ sweaterData }: ICustomSweaterProps) {
                                     <Image
                                         src={getAWSImageUrl(step.image)}
                                         alt={step.title.en}
-                                        width={80}
-                                        height={80}
+                                        width={232}
+                                        height={232}
                                         loading="lazy"
                                     />
                                 </Link>
@@ -63,8 +62,8 @@ export default function CustomSweater({ sweaterData }: ICustomSweaterProps) {
                     <Image
                         src={getAWSImageUrl(styleCard.image)}
                         alt={styleCard.title.en}
-                        width={300}
-                        height={200}
+                        width={387}
+                        height={340}
                         loading="lazy"
                     />
                 </div>
