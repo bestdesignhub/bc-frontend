@@ -3,13 +3,23 @@ export interface Section1 {
   title: string;
 }
 
-export interface Section2 {
-  bg_image: string;
-  left_image: string;
-  title: string;
-  description: string;
+// export interface Section2 {
+//   bg_image: string;
+//   left_image: string;
+//   title: string;
+//   description: string;
+// }
+
+interface ISection2Card {
+  uuid: string;
+  title: ILocalizedText;
+  image: string;
+  description: ILocalizedText;
 }
 
+interface Section2 {
+  cards: ISection2Card[];
+}
 export interface Section4Card {
   uuid: string;
   bg_image: string;

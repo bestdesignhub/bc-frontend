@@ -54,7 +54,7 @@ export default function CmsPageBySlug({ slug, language = 'en' }: CmsPageBySlugPr
 
     return (
         <section className="cms-page-container f-container">
-            <h1>{cmsData?.title || 'CMS Page'}</h1>
+            {/* <h1>{cmsData?.title || 'CMS Page'}</h1> */}
             <div
                 className="cms-page-content"
                 dangerouslySetInnerHTML={{ __html: cmsData?.content }}
