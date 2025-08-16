@@ -89,7 +89,7 @@ a {
 
 @media (min-width: 1200px) {
   .container {
-    max-width: 1170px;
+    max-width: 100%;
   }
 }
 
@@ -279,6 +279,11 @@ ul.slick-dots li button:before {
   border-color: #000000;
 }
 
+.page-item:last-child .page-link,
+.page-item:first-child .page-link {
+  border-radius: 0 !important;
+}
+
 .pagination .page-link {
   color: #000000;
 }
@@ -349,10 +354,8 @@ h2.style-title.bnr {
 .latest-products .categorybox {
   background-color: white;
   border: 1px solid #d9d6d1;
+  position: relative;
 }
-
-.accessoriesbox img,
-.latest-products .categorybox img {}
 
 .latest-products .categorybox .info {
   padding: 20px 0;
@@ -428,6 +431,14 @@ h2.style-title.bnr {
     --bsp-heading1: 32px;
     --bsp-heading2: 32px;
     --bsp-heading3: 38px;
+  }
+}
+
+
+@media (min-width: 1200px) and (max-width: 1401px) {
+  .Sweater-block-main .container {
+    width: 100%;
+    max-width: 100%;
   }
 }
 

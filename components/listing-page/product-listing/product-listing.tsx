@@ -5,7 +5,7 @@ import { useView } from '@/hooks';
 import ProductCard from './product-card';
 
 type ProductListingProps = {
-  list: any[];
+  list?: any[];
   genderSlug: string;
   price?: any;
 };
@@ -27,7 +27,7 @@ type ProductListingProps = {
 //   },
 // };
 
-const ProductListing: FC<ProductListingProps> = ({ list, genderSlug, price }) => {
+const ProductListing: FC<ProductListingProps> = ({ list = [], genderSlug, price }) => {
   const { view } = useView();
   // const [priceData, setPriceData] = useState<any>();
 

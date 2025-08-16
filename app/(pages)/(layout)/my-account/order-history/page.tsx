@@ -9,6 +9,8 @@ export default async function MyAcountspage({
 }) {
   const resolvedSearchParams = await searchParams;
   const orders = await getUserOrders(resolvedSearchParams);
+  console.log("orders", orders);
+
   orders?.data?.forEach((order: any) => {
     order.products.forEach((product: any) => {
       if (typeof product.measurements === 'string') {
@@ -20,6 +22,7 @@ export default async function MyAcountspage({
       }
     });
   });
+  console.log("orderData===>>>", orders?.data[0]);
 
   return (
     <>

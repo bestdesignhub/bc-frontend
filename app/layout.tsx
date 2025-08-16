@@ -10,6 +10,11 @@ import { FullPageLoading } from '@/components';
 import { PageSwitchComponent } from '@/components/page-switch-component';
 
 export const dynamic = 'force-dynamic';
+// export const metadata = {
+//   title: "Bespoke Cashmere",
+//   description: "Your Description",
+// };
+
 
 export async function generateMetadata(): Promise<Metadata> {
   const domain = process.env.NEXT_PUBLIC_FRONT_DOMAIN_URL || '';
@@ -43,6 +48,20 @@ export default async function RootLayout({
   const messages = await getMessages();
   return (
     <html lang={locale}>
+      <head><script async src="https://www.googletagmanager.com/gtag/js?id=G-7L3C4PC9MB"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-7L3C4PC9MB', {
+                page_path: window.location.pathname,
+              });
+            `,
+          }}
+        />
+      </head>
       <body>
         <NextIntlClientProvider messages={messages}>
           <Toaster position="top-right" />

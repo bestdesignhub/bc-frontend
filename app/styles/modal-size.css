@@ -217,24 +217,45 @@
 } */
 
 .model-gender-upper-block .model-gender-inner-block {
-  background-color: #fff;
-  border: 5px solid #af986d;
-  padding: 8px;
+  /* border: 5px solid #af986d;
+  padding: 8px; */
   box-sizing: border-box;
+  /* background: url(../images/men-women-img.png) center top no-repeat #cabaa5; */
+  height: auto;
 }
+
+/* .customize-gender-model {
+  background: none !important;
+} */
 
 .genderLable {
   color: #fff;
-  font-size: 32px;
+  font-size: 22px;
   text-transform: uppercase;
-  position: absolute;
+  /* position: absolute;
   transform: translate(-50%, -50%);
   left: 50%;
-  top: 50%;
+  top: 50%; */
   font-weight: 500;
   letter-spacing: 2px;
+  padding: 10px 0;
 }
 
+.model-gender-inner-block .title {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+  background: #af986d;
+}
+
+.model-gender-inner-block .title:hover {
+  background: #f6f4e7;
+}
+
+.model-gender-inner-block .title:hover .genderLable {
+  color: #000;
+}
 
 /* .customize-gender-model .modal-content {
   background-color: transparent;
@@ -264,7 +285,14 @@
 } */
 
 .customize-gender-model.modal {
-  background: #7f7263 !important;
+  /* background: #7f7263 !important; */
+  background: url(../images/modals-men-women.jpeg) center top no-repeat;
+  background-size: cover;
+}
+
+.customize-gender-model .modal-content {
+  background: none;
+  border: 0;
 }
 
 @media (min-width: 1601px) and (max-width: 1750px) {}

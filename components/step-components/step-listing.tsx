@@ -24,11 +24,24 @@ const StepListing: FC<{ stepList: any[]; steps: any[]; step: string; nextStepSlu
     setCurrentParams(searchParams.toString());
   }, [searchParams]);
 
+  useEffect(() => {
+    const styleSelected = searchParams.get('style');
+    const isStyleStep = nextStepSlug === 'style';
+    const stepNum = parseInt(step);
+
+    if (isStyleStep && styleSelected && stepList.length === 0) {
+      // Auto-jump to the next step (Gauge)
+      router.push(`${USER_ROUTES.sweater}/${stepNum + 1}?${searchParams.toString()}`);
+    }
+  }, [searchParams, stepList, nextStepSlug, router, step]);
+
+
 
   const handleSelection = (id: any) => {
     dispatch(setIsPageSwitchLoading(true));
     const params = new URLSearchParams(searchParams?.toString() || '');
     // const params = new URLSearchParams(currentParams?.toString() || '');
+    // console.log(params.get('style'), params.get('pattern'), "<<<<<=====");
 
     if (searchParams.has(URL_SLUG.CHANGE)) {
       params.delete(URL_SLUG.CHANGE);
@@ -38,6 +51,11 @@ const StepListing: FC<{ stepList: any[]; steps: any[]; step: string; nextStepSlu
       return;
     }
     const parseStep = parseInt(step);
+    // 👇 Skip step 4 if pattern is already selected
+    // if () {
+    //   router.push(`${USER_ROUTES.sweater}/5?${params.toString()}`);
+    //   return;
+    // }
     if (steps.length + 1 > parseStep && parseStep != 5) {
       params.set(nextStepSlug, id);
       router.push(`${USER_ROUTES.sweater}/${parseStep + 1}?${params.toString()}`);
@@ -54,7 +72,7 @@ const StepListing: FC<{ stepList: any[]; steps: any[]; step: string; nextStepSlu
     <div className="gauge-wrapper">
       <div className="gauge-row">
         <Row>
-          {stepList.map((gauge, index: number) => (
+          {/* {stepList.map((gauge, index: number) => (
             <StepCard
               key={index}
               onChange={handleSelection}
@@ -62,7 +80,21 @@ const StepListing: FC<{ stepList: any[]; steps: any[]; step: string; nextStepSlu
               nextSlugId={nextSlugId}
               price={price}
             />
-          ))}
+          ))} */}
+          {stepList.length === 0 ? (
+            null //  don't render anything if empty
+          ) : (
+            stepList.map((gauge, index: number) => (
+              <StepCard
+                key={index}
+                onChange={handleSelection}
+                stepData={gauge}
+                nextSlugId={nextSlugId}
+                price={price}
+              />
+            ))
+          )}
+
         </Row>
       </div>
     </div>

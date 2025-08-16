@@ -11,9 +11,10 @@ const StepCard: FC<{
   stepData: any;
   nextSlugId: string | null;
   price: number;
-}> = ({ onChange, stepData, nextSlugId }) => {
+}> = ({ onChange, stepData, nextSlugId, price }) => {
   const t = useTranslations();
   const [isHovered, setIsHovered] = useState(false);
+  console.log('stepData', stepData);
 
   return (
     <Col xs={12} md={6} lg={4} key={stepData?._id}>
@@ -49,6 +50,11 @@ const StepCard: FC<{
         <div className="info">
           <h4>{stepData.title}</h4>
           <p>{stepData.description}</p>
+          {stepData?.type === 'Style' && (
+            <span className="price">
+              € {stepData.price || price}
+            </span>
+          )}
         </div>
         <button>{t('COMMON.SELECT')}</button>
       </div>

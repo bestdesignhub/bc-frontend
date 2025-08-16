@@ -47,6 +47,8 @@ export interface IProduct {
   title: string;
   price: number;
   image: string;
+  genderId: string;
+  popularProduct: string;
 }
 
 interface IAccessoriesProps {
@@ -55,6 +57,8 @@ interface IAccessoriesProps {
   homeProductList?: IProduct[];
 }
 export default function Accessories({ homeProductList }: IAccessoriesProps) {
+
+
   return (
     <div className="accessories-wrapper">
       <div className="latest-products">
@@ -65,10 +69,11 @@ export default function Accessories({ homeProductList }: IAccessoriesProps) {
               <Fragment key={index}>
                 <AccessoriesItem
                   key={accessories._id}
-                  href={`${USER_ROUTES.men}/${accessories._id}`}
+                  href={`${USER_ROUTES.shop}/${accessories._id}?gender=${accessories.genderId}`}
                   title={accessories?.title}
                   image={accessories?.image}
                   price={accessories?.price}
+                  popularProduct={accessories?.popularProduct}
                 />
               </Fragment>
             ))}

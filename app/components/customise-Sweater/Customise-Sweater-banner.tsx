@@ -17,7 +17,7 @@ export default function GaugeBanner() {
         <div className="banner-caption min-height">
           <div className="container">
             <div className="banner-content">
-              <h1>Customise Sweater</h1>
+              <h1>customise Sweater</h1>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eleifend lacus
                 quam, eleifend lacinia nibh ornare eget.

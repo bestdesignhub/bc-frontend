@@ -49,6 +49,7 @@ export const GENERAL_USER_SETTINGS_URL = '/general/user-settings';
 export const MY_ADDRESS_LIST_URL = '/my-address/list';
 export const MY_ADDRESS_CREATE_URL = '/my-address/create';
 export const MY_ADDRESS_UPDATE_URL = '/my-address/update';
+export const DOCUMENT_LIST_URL = '/documents/list';
 
 export const WISHLIST_CREATE_URL = '/wishlist/create';
 export const WISHLIST_DELETE_URL = '/wishlist';
@@ -79,3 +80,6 @@ export const MEASUREMENT_PROFILE_GET_URL = '/measurement-profile';
 export const USER_MEASUREMENT_ADD_URL = '/measurement-profile/add';
 export const USER_MEASUREMENT_SLUG_URL = '/user-measurement/slug';
 export const USER_MEASUREMENT_UPDATE_URL = '/measurement-profile/update';
+
+
+export const CMS_PAGE_BY_SLUG_URL = '/cms-pages/slug';

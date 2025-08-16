@@ -27,10 +27,11 @@ const GenderModal = (props: {
   } = props;
   const searchParams = useSearchParams();
   const queryString = urlQueryString || new URLSearchParams(searchParams).toString();
-  const domain = process.env.NEXT_PUBLIC_FRONT_DOMAIN_URL || '';
+  // const domain = process.env.NEXT_PUBLIC_FRONT_DOMAIN_URL || '';
 
   return (
-    <Modal show={show} onHide={handleClose} animation={false} centered className='customize-gender-model'>
+    <Modal className='customize-gender-model'
+      dialogClassName='gender-dialog-custom' show={show} onHide={handleClose} animation={false} centered>
       <div className='model-gender-upper-block'>
         <div className="modal-block-main model-gender-inner-block">
           <div className="modal-block-top">
@@ -41,15 +42,15 @@ const GenderModal = (props: {
           <div className="d-flex" style={{ justifyContent: 'center', userSelect: 'none' }}>
             <div className="d-flex gap-3">
               {genders.map((gender) => {
-                const backgroundImage = `url(${domain}/images/${gender.label === 'Men' ? 'men-img.jpg' : 'women-img.jpg'})`;
+                // const backgroundImage = `url(${domain}/images/${gender.label === 'Men' ? 'men-img.jpg' : 'women-img.jpg'})`;
                 if (handleSelect) {
                   return (
                     <div
                       key={gender.value}
                       style={{
                         width: '225px',
-                        height: '300px',
-                        backgroundImage: backgroundImage,
+                        height: '400px',
+                        // backgroundImage: backgroundImage,
                         backgroundSize: 'cover',
                         backgroundPosition: 'center',
                         position: 'relative',

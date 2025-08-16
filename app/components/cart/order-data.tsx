@@ -1,12 +1,22 @@
 'use client';
 
-import { formatPrice, generateProductName } from '@/utils/common.utils';
+import { formatPrice, generateProductName, handleApiCall } from '@/utils/common.utils';
 import { useTranslations } from 'next-intl';
-import React, { useMemo } from 'react';
+import { useSearchParams } from 'next/navigation';
+import React, { useEffect, useMemo, useState } from 'react';
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
+import toast from 'react-hot-toast';
 
 const OrderData = ({ cartData }: { cartData: any[] }) => {
   const t = useTranslations();
+  // const router = useRouter();
+  const _router = useSearchParams();
+  const couponCode = _router?.get("couponCode");
+  const [couponText, setCouponText] = useState("");
+  // const [dataSet, setDataSet] = useState(false);
+  const [disPrice, setDisPrice] = useState();
+
+  console.log(couponText, "couponText");
 
   const orderData = useMemo(() => {
     let total = 0;
@@ -26,6 +36,50 @@ const OrderData = ({ cartData }: { cartData: any[] }) => {
     };
   }, [cartData]);
 
+  useEffect(() => {
+    if (couponCode) {
+      applyCouponCode(couponCode, false);
+      return;
+    }
+    // fetchCartProducts();
+  }, [couponCode]);
+
+  const applyCouponCode = async (
+    couponCode: string,
+    message: boolean = true,
+  ) => {
+    const appyCoupon: any = await handleApiCall(`/cart/apply/coupon`, "POST", {
+      couponCode,
+    });
+
+    console.log("appyCoupon", appyCoupon);
+    if (appyCoupon.success == false) {
+      toast.error(t(appyCoupon?.message));
+      return;
+    }
+
+    // if (!appyCoupon?.status) {
+    //   toast.error(t(appyCoupon?.message));
+    //   return;
+    // }
+    setCouponText(couponCode);
+    if (message) {
+      toast.success(appyCoupon?.message);
+    }
+    if (appyCoupon?.data?.total) {
+      // const originalTotal = parseFloat((orderData.total || "0").toString().replace(/[^\d.-]/g, ""));
+      // const discount = parseFloat((appyCoupon.data.total || "0").toString().replace(/[^\d.-]/g, ""));
+      // orderData.total = (originalTotal - discount).toFixed(2); // Keeps two decimal points
+      // alert(orderData.total)
+      // const updatData: any = await handleApiCall(`/cart/apply/coupon`, "POST", {
+      //   couponCode,
+      // });
+    }
+
+    setDisPrice(appyCoupon?.data?.total)
+    // setCartProducts(appyCoupon?.data);
+  };
+
   const tooltip = (
     <Tooltip id="tooltip">
       {orderData.orderItems?.map((cart, index: number) => <p key={index}>{cart.name}</p>)}
@@ -33,6 +87,30 @@ const OrderData = ({ cartData }: { cartData: any[] }) => {
   );
   return (
     <ul>
+      {/* <div className="apply-coupon">
+        <div className="info-head block">
+          <h3>{t("APPLY_VOUCHER")}</h3>
+        </div>
+        <div className="card-number-line">
+          <input
+            className="card-number"
+            type="text"
+            placeholder={t("COUPON_CODE")}
+            onChange={(e) => setCouponText(e?.target?.value)}
+            value={couponText}
+          />
+        </div>
+        <button
+          className="complete-btn"
+          type="button"
+          disabled={!couponText}
+          onClick={() =>
+            router?.replace(`/cart?couponCode=${couponText}`)
+          }
+        >
+          {t("APPLY_LABEL")}
+        </button>
+      </div> */}
       {orderData.orderItems?.map((cart, index: number) => (
         <li key={index}>
           <div className="text-1">
@@ -83,14 +161,44 @@ const OrderData = ({ cartData }: { cartData: any[] }) => {
           </div>
         </li>
       ))}
-      <li>
+      {disPrice && disPrice ? (
+        <>
+          {/* <li>
+            <div className="text-1">Original Price</div>
+            <div className="text-2">
+              <div className="price">
+                <span className="new-price">{formatPrice(Number(parseFloat((orderData?.total || "0").replace(/[^\d.-]/g, "")) || 0) + (disPrice))}</span>
+              </div>
+            </div>
+          </li> */}
+          <li>
+            <div className="text-1">Discount</div>
+            <div className="text-2">
+              <div className="price">
+                <span className="new-price">- {formatPrice(disPrice)}</span>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div className="text-1">{t('COMMON.TOTAL_TEXT')}</div>
+            <div className="text-2">
+              <div className="price">
+                <span className="new-price">{formatPrice(Number(parseFloat((orderData?.total || "0").replace(/[^\d.-]/g, "")) || 0) - (disPrice))}</span>
+              </div>
+            </div>
+          </li>
+        </>
+      ) : <li>
         <div className="text-1">{t('COMMON.TOTAL_TEXT')}</div>
         <div className="text-2">
           <div className="price">
             <span className="new-price">{orderData.total}</span>
           </div>
         </div>
-      </li>
+      </li>}
+
+
+
     </ul>
   );
 };

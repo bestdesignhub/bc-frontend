@@ -122,7 +122,7 @@
 }
 
 .gauge-row .gaugebox .info {
-  padding: 20px 30px 30px;
+  padding: 20px 10px;
 }
 
 .gauge-row .gaugebox .info h4 {
@@ -130,12 +130,18 @@
   font-family: var(--bsp-font-poppins);
   color: var(--bsp-black);
   text-transform: uppercase;
+  height: 60px;
+  line-height: 26px;
+  overflow: hidden;
+  border-bottom: 1px solid #eaeaea;
 }
 
 .gauge-row .gaugebox .info p {
   font-size: 18px;
   color: var(--bsp-gray2);
-  padding: 20px 0 0;
+  padding: 10px 0 0;
+  height: 60px;
+  overflow: hidden;
 }
 
 .gauge-row .gaugebox button {
@@ -148,6 +154,10 @@
   width: 100%;
 }
 
+.gauge-row .gaugebox button:hover {
+  background: #af986d;
+}
+
 .gauge-row .gaugebox.selected button {
   background: var(--bsp-gray3);
   color: var(--bsp-black);
@@ -155,7 +165,7 @@
 
 .gauge-navigate {
   justify-content: center;
-  padding: 30px 0;
+  padding: 10px 0;
   overflow: hidden;
 }
 
@@ -165,13 +175,6 @@
 
 .stepBackground .gauge-navigate.smallbx {
   margin-right: -24px;
-}
-
-
-.gauge-navigate.smallbx .navigatebox {
-  /* border-radius: 10px; */
-  /* border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px; */
 }
 
 .gauge-navigate .navigate-item {
@@ -229,7 +232,7 @@
   font-size: var(--bsp-body-14);
   font-family: var(--bsp-font-poppins);
   padding: 0;
-  white-space: nowrap;
+  /* white-space: nowrap; */
 }
 
 .navigatebox .info p {
@@ -324,6 +327,34 @@
 
 .step-breadcrumb ul li:last-child:after {
   display: none;
+}
+
+.apply-coupon {
+  margin-top: 18px;
+}
+
+.apply-coupon .info-head.block h3 {
+  font-size: 20px;
+}
+
+.apply-coupon .card-number-line input {
+  border: 1px solid #eaeaea;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.apply-coupon .complete-btn {
+  width: 100%;
+  background: #af986d;
+  color: #fff;
+  padding: 10px;
+  display: block;
+}
+
+.apply-coupon .complete-btn:disabled {
+  opacity: 0.5;
 }
 
 @media (min-width: 1200px) and (max-width: 1399px) {
@@ -493,6 +524,10 @@
 @media (max-width: 767px) {
   .page-banner.gauge .image::before {
     padding-top: 56.25%;
+  }
+
+  .stepBackground .gauge-navigate.smallbx {
+    margin-right: 0;
   }
 
   .page-banner.gauge .banner-content {

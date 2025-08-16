@@ -428,9 +428,9 @@
 }
 
 @media (min-width: 1601px) and (max-width: 1750px) {
-  .Sweater-block-main {
+  /* .Sweater-block-main {
     max-width: 1550px;
-  }
+  } */
 
   .Sweater-top-data h3 {
     font-size: 26px;
@@ -440,11 +440,11 @@
     font-size: 16px;
   }
 
-  .Sweater-right .Sweater-block-top,
+  /* .Sweater-right .Sweater-block-top,
   .Sweater-right-middle,
   .Sweater-right-bottom {
     padding-left: 40px;
-  }
+  } */
 
   .Sweater-block-top-right .price {
     font-size: 20px;
@@ -456,9 +456,9 @@
 }
 
 @media (min-width: 1501px) and (max-width: 1600px) {
-  .Sweater-block-main {
+  /* .Sweater-block-main {
     max-width: 1400px;
-  }
+  } */
 
   .Sweater-top-data h3 {
     font-size: 26px;
@@ -468,11 +468,11 @@
     font-size: 16px;
   }
 
-  .Sweater-right .Sweater-block-top,
+  /* .Sweater-right .Sweater-block-top,
   .Sweater-right-middle,
   .Sweater-right-bottom {
     padding-left: 40px;
-  }
+  } */
 
   .Sweater-block-top-right .price {
     font-size: 16px;
@@ -498,9 +498,9 @@
 }
 
 @media (min-width: 1400px) and (max-width: 1500px) {
-  .Sweater-block-main {
+  /* .Sweater-block-main {
     max-width: 1300px;
-  }
+  } */
 
   .Sweater-top-data h3 {
     font-size: 26px;
@@ -510,11 +510,11 @@
     font-size: 16px;
   }
 
-  .Sweater-right .Sweater-block-top,
+  /* .Sweater-right .Sweater-block-top,
   .Sweater-right-middle,
   .Sweater-right-bottom {
     padding-left: 40px;
-  }
+  } */
 
   .Sweater-block-top-right .price {
     font-size: 16px;
@@ -556,9 +556,9 @@
 }
 
 @media (min-width: 1300px) and (max-width: 1401px) {
-  .Sweater-block-main {
+  /* .Sweater-block-main {
     max-width: 1200px;
-  }
+  } */
 
   .Sweater-top-data h3 {
     font-size: 26px;
@@ -568,11 +568,11 @@
     font-size: 16px;
   }
 
-  .Sweater-right .Sweater-block-top,
+  /* .Sweater-right .Sweater-block-top,
   .Sweater-right-middle,
   .Sweater-right-bottom {
     padding-left: 40px;
-  }
+  } */
 
   .Sweater-block-top-right .price {
     font-size: 16px;
@@ -622,9 +622,9 @@
 }
 
 @media (min-width: 1200px) and (max-width: 1301px) {
-  .Sweater-block-main {
+  /* .Sweater-block-main {
     max-width: 1140px;
-  }
+  } */
 
   .Sweater-top-data h3 {
     font-size: 26px;
@@ -634,11 +634,11 @@
     font-size: 16px;
   }
 
-  .Sweater-right .Sweater-block-top,
+  /* .Sweater-right .Sweater-block-top,
   .Sweater-right-middle,
   .Sweater-right-bottom {
     padding-left: 40px;
-  }
+  } */
 
   .Sweater-block-top-right .price {
     font-size: 16px;
@@ -671,7 +671,8 @@
   }
 
   .Sweater-left-inner .Sweater-img img {
-    max-width: 300px;
+    max-width: 100%;
+    width: 100%;
   }
 
   .thumbnail-slider .slick-slide {
@@ -823,7 +824,8 @@
   }
 
   .Sweater-left-inner .Sweater-img img {
-    max-width: 300px;
+    max-width: 100%;
+    width: 100%;
   }
 
   .fabric-listing ul li .icon-text {
@@ -903,7 +905,7 @@
   }
 
   .gauge-row .gaugebox .info h4 {
-    font-size: var(--bsp-body-24);
+    font-size: var(--bsp-body-18);
   }
 
   .gauge-row .gaugebox .info p {
@@ -986,7 +988,8 @@
   }
 
   .Sweater-left-inner .Sweater-img img {
-    max-width: 300px;
+    max-width: 100%;
+    width: 100%;
   }
 
   .fabric-listing ul li .icon-text {
@@ -1126,7 +1129,8 @@
   }
 
   .Sweater-left-inner .Sweater-img img {
-    max-width: 300px;
+    max-width: 100%;
+    width: 100%;
   }
 
   .fabric-listing ul li .icon-text {

@@ -196,7 +196,8 @@ const CreateProduct = (props: any) => {
             materialId: stepData?.yarn?.materialId, // Required, 24-character hex string
             patternId: pattern, // Required, 24-character hex string
             gaugeId: gauge, // Required, 24-character hex string
-            styleId: style // Required, 24-character hex string
+            styleId: style,// Required, 24-character hex string
+            createdBy: "user"
         };
 
         stepData?.steps?.map((e: any, index: number) => {
@@ -297,10 +298,9 @@ const CreateProduct = (props: any) => {
 
         // </form>
         <div className="size-buttons">
-
             <button
                 key={1}
-                className={'active'}
+                className="save-button"
                 onClick={(e) => handleSubmit(e)}
             >
                 Save

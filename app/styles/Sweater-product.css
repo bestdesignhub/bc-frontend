@@ -65,8 +65,9 @@
 }
 
 .Sweater-block-main .Sweater-left {
-  width: 30%;
+  width: 382px;
   position: relative;
+  max-width: 382px;
 }
 
 .Sweater-block-main .Sweater-right {
@@ -77,8 +78,8 @@
 }
 
 .Sweater-block-main .Sweater-right .right-price-product {
-  width: 75%;
-  margin-top: 90px;
+  width: 80%;
+  margin-top: 40px;
   position: relative;
 }
 
@@ -87,7 +88,7 @@
   display: block;
   position: relative;
   z-index: 1;
-  padding: 0 0 150px;
+  padding: 0;
 }
 
 /* .Sweater-block-main .Sweater-left::after {
@@ -110,6 +111,7 @@
   margin-top: 25px;
   background: #fff;
   gap: 10px;
+  margin-bottom: 40px;
 }
 
 .Sweater-block-main .Sweater-left>* {
@@ -129,16 +131,16 @@
   margin: 0 auto;
   padding: 0;
   position: absolute;
-  left: 410px;
+  left: 402px;
   text-align: left;
-  height: 82px;
+  height: 55px;
   overflow: hidden;
   font-family: 'Poppins', sans-serif;
 }
 
 .Sweater-top-data h3 {
-  font-size: 30px;
-  padding: 0 0 10px;
+  font-size: 22px;
+  padding: 10px 0 10px;
   font-weight: 400;
   font-family: 'Poppins', sans-serif;
 }
@@ -157,20 +159,20 @@
 }
 
 .Sweater-left-inner .Sweater-img img {
-  max-width: 380px;
+  max-width: 100%;
   width: auto;
   height: auto;
 }
 
 .Sweater-right .Sweater-block-top {
   min-height: 546px;
-  padding: 20px;
+  padding: 10px;
   margin: 0;
   font-size: 25px;
   background: #f9fafb;
   text-align: center;
   position: relative;
-  width: 25%;
+  width: 20%;
   font-family: 'Poppins', sans-serif;
 }
 
@@ -192,8 +194,7 @@
 .Sweater-block-top-right button a {
   font-size: var(--bsp-body-14);
   line-height: 1.4;
-  max-width: 256px;
-  padding: 10px 30px;
+  padding: 5px;
 }
 
 .Sweater-block-top-right .i-icon {
@@ -220,6 +221,7 @@
   gap: 13px;
   text-align: center;
   padding: 0;
+  margin-bottom: 16px;
 }
 
 .Sweater-block-top-right .price span.old-price {
@@ -232,10 +234,23 @@
   align-items: flex-start;
   padding: 5px;
   justify-content: space-between;
-  border: 1px solid #c7c4bd;
+  /* border: 1px solid #c7c4bd; */
   margin-top: 20px;
-  max-width: 66%;
-  width: 66%;
+  max-width: 100%;
+  width: 100%;
+}
+
+.styleBoxSummary {
+  width: 40%;
+  display: flex;
+  border: 1px solid #c7c4bd;
+}
+
+.yarnBox {
+  width: 59%;
+  display: flex;
+  border: 1px solid #c7c4bd;
+  padding: 6px;
 }
 
 .yarn-section .change-link-2 {
@@ -463,9 +478,9 @@
 }
 
 .Sweater-right-bottom .gauge-navigate .navigate-item:first-child {
-  position: absolute;
+  /* position: absolute;
   top: 20px;
-  right: 0;
+  right: 0; */
   width: 212px;
 }
 
@@ -582,6 +597,7 @@
   border: 1px solid #c7c4bd;
   padding: 10px;
   margin-top: 10px;
+  position: relative;
 }
 
 .navigatebox .info button a {
@@ -612,9 +628,9 @@
 
 
 @media (min-width: 1601px) and (max-width: 1750px) {
-  .Sweater-block-main {
+  /* .Sweater-block-main {
     max-width: 1550px;
-  }
+  } */
 
   .Sweater-top-data h3 {
     font-size: 26px;
@@ -624,11 +640,11 @@
     font-size: 16px;
   }
 
-  .Sweater-right .Sweater-block-top,
+  /* .Sweater-right .Sweater-block-top,
   .Sweater-right-middle,
   .Sweater-right-bottom {
     padding-left: 40px;
-  }
+  } */
 
   .Sweater-block-top-right .price {
     font-size: 20px;
@@ -640,9 +656,9 @@
 }
 
 @media (min-width: 1501px) and (max-width: 1600px) {
-  .Sweater-block-main {
+  /* .Sweater-block-main {
     max-width: 1400px;
-  }
+  } */
 
   .Sweater-top-data h3 {
     font-size: 26px;
@@ -652,11 +668,11 @@
     font-size: 16px;
   }
 
-  .Sweater-right .Sweater-block-top,
+  /* .Sweater-right .Sweater-block-top,
   .Sweater-right-middle,
   .Sweater-right-bottom {
     padding-left: 40px;
-  }
+  } */
 
   .Sweater-block-top-right .price {
     font-size: 16px;
@@ -676,29 +692,42 @@
     max-width: 240px;
   }
 
-  .products-box-sub-inner h5 {
+  /* .products-box-sub-inner h5 {
     font-size: 20px;
-  }
+  } */
 }
 
 @media (min-width: 1400px) and (max-width: 1500px) {
-  .Sweater-block-main {
+  /* .Sweater-block-main {
     max-width: 1300px;
-  }
+  } */
 
   .Sweater-top-data h3 {
     font-size: 26px;
+  }
+
+  /* .Sweater-left-inner .Sweater-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #c7c4bd;
+  } */
+
+  .Sweater-left-inner .Sweater-img img {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
   }
 
   .Sweater-top-data p {
     font-size: 16px;
   }
 
-  .Sweater-right .Sweater-block-top,
+  /* .Sweater-right .Sweater-block-top,
   .Sweater-right-middle,
   .Sweater-right-bottom {
     padding-left: 40px;
-  }
+  } */
 
   .Sweater-block-top-right .price {
     font-size: 16px;
@@ -718,120 +747,163 @@
     max-width: 240px;
   }
 
-  .products-box-sub-inner h5 {
+  /* .products-box-sub-inner h5 {
     font-size: 20px;
-  }
+  } */
 
-  .Sweater-block-main .Sweater-left {
+  /* .Sweater-block-main .Sweater-left {
     width: 40%;
-  }
+  } */
 
-  .Sweater-block-main .Sweater-right {
+  /* .Sweater-block-main .Sweater-right {
     width: 60%;
-  }
+  } */
 }
 
-@media (min-width: 1300px) and (max-width: 1401px) {
-  .Sweater-block-main {
+@media (min-width: 1200px) and (max-width: 1401px) {
+  /* .Sweater-block-main {
     max-width: 1200px;
-  }
+  } */
 
   .Sweater-top-data h3 {
     font-size: 26px;
-  }
-
-  .Sweater-top-data p {
-    font-size: 16px;
-  }
-
-  .Sweater-right .Sweater-block-top,
-  .Sweater-right-middle,
-  .Sweater-right-bottom {
-    padding-left: 40px;
-  }
-
-  .Sweater-block-top-right .price {
-    font-size: 16px;
-    padding: 0 20px 0 0;
-  }
-
-  .fabric-listing ul li {
-    width: 48%;
-  }
-
-  .Sweater-right .Sweater-block-top .short-text p {
-    font-size: 14px;
-  }
-
-  .Sweater-block-top-right button a {
-    padding: 8px 20px;
-    max-width: 240px;
-  }
-
-  .products-box-sub-inner h5 {
-    font-size: 20px;
-  }
-
-  .Sweater-block-main .Sweater-left {
-    width: 40%;
-  }
-
-  .Sweater-block-main .Sweater-right {
-    width: 60%;
-  }
-}
-
-@media (min-width: 1200px) and (max-width: 1301px) {
-  .Sweater-block-main {
-    max-width: 1140px;
-  }
-
-  .Sweater-top-data h3 {
-    font-size: 26px;
-  }
-
-  .Sweater-top-data p {
-    font-size: 16px;
-  }
-
-  .Sweater-right .Sweater-block-top,
-  .Sweater-right-middle,
-  .Sweater-right-bottom {
-    padding-left: 40px;
-  }
-
-  .Sweater-block-top-right .price {
-    font-size: 16px;
-    padding: 0 20px 0 0;
-  }
-
-  .fabric-listing ul li {
-    width: 48%;
-  }
-
-  .Sweater-right .Sweater-block-top .short-text p {
-    font-size: 14px;
-  }
-
-  .Sweater-block-top-right button a {
-    padding: 8px 20px;
-    max-width: 240px;
-  }
-
-  .products-box-sub-inner h5 {
-    font-size: 20px;
-  }
-
-  .Sweater-block-main .Sweater-left {
-    width: 40%;
-  }
-
-  .Sweater-block-main .Sweater-right {
-    width: 60%;
   }
 
   .Sweater-left-inner .Sweater-img img {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .Sweater-top-data {
+    left: 330px;
+  }
+
+  .Sweater-top-data p {
+    font-size: 16px;
+  }
+
+  /* .Sweater-right .Sweater-block-top,
+  .Sweater-right-middle,
+  .Sweater-right-bottom {
+    padding-left: 40px;
+  } */
+
+  .Sweater-block-top-right .price {
+    font-size: 16px;
+    padding: 0 20px 0 0;
+  }
+
+  .fabric-listing ul li {
+    width: 48%;
+  }
+
+  .Sweater-right .Sweater-block-top .short-text p {
+    font-size: 14px;
+  }
+
+  .Sweater-block-top-right button a {
+    padding: 8px 20px;
+    max-width: 240px;
+  }
+
+  /* .products-box-sub-inner h5 {
+    font-size: 20px;
+  } */
+
+  .Sweater-block-main .Sweater-left {
+    width: 320px;
+    max-width: 320px
+  }
+
+  .Sweater-block-main .Sweater-right {
+    width: calc(100% - 320px);
+  }
+}
+
+@media (min-width: 993px) and (max-width: 1199px) {
+  .Sweater-block-main .Sweater-left {
+    width: 300px;
     max-width: 300px;
+  }
+
+  .Sweater-top-data {
+    left: 0;
+  }
+
+  .Sweater-top-data {
+    left: 306px;
+  }
+
+  .Sweater-right-bottom.sweater-type .gauge-navigate .navigate-item h6.step-title-custom {
+    display: none;
+  }
+
+  .yarn-section .info {
+    padding: 0;
+  }
+
+  .Sweater-right-bottom.sweater-type .gauge-navigate .navigate-item .navigatebox .info button {
+    width: auto;
+  }
+}
+
+
+@media (min-width: 1200px) and (max-width: 1301px) {
+  /* .Sweater-block-main {
+    max-width: 1140px;
+  } */
+
+  .Sweater-top-data {
+    left: 330px;
+  }
+
+  .Sweater-top-data h3 {
+    font-size: 26px;
+  }
+
+  .Sweater-top-data p {
+    font-size: 16px;
+  }
+
+  /* .Sweater-right .Sweater-block-top,
+  .Sweater-right-middle,
+  .Sweater-right-bottom {
+    padding-left: 40px;
+  } */
+
+  .Sweater-block-top-right .price {
+    font-size: 16px;
+    padding: 0 20px 0 0;
+  }
+
+  .fabric-listing ul li {
+    width: 48%;
+  }
+
+  .Sweater-right .Sweater-block-top .short-text p {
+    font-size: 14px;
+  }
+
+  .Sweater-block-top-right button a {
+    padding: 8px 20px;
+    max-width: 240px;
+  }
+
+  /* .products-box-sub-inner h5 {
+    font-size: 20px;
+  } */
+
+  /* .Sweater-block-main .Sweater-left {
+    width: 40%;
+  } */
+
+  /* .Sweater-block-main .Sweater-right {
+    width: 60%;
+  } */
+
+  .Sweater-left-inner .Sweater-img img {
+    max-width: 100%;
+    width: 100%;
   }
 }
 
@@ -885,7 +957,27 @@
 
   .Sweater-block-main {
     max-width: 100%;
-    padding: 0 20px;
+    padding: 0;
+  }
+
+  .Sweater-block-main .container {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .Sweater-right-middle {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .Sweater-right-bottom .gauge-navigate .navigate-item:first-child {
+    position: relative;
+    top: 0;
+    left: 0;
+  }
+
+  .gauge-navigate {
+    padding: 0;
   }
 
   .Sweater-top-data h3 {
@@ -896,16 +988,15 @@
     font-size: 16px;
   }
 
-  .Sweater-right .Sweater-block-top,
+  /* .Sweater-right .Sweater-block-top,
   .Sweater-right-middle,
   .Sweater-right-bottom {
     padding-left: 20px;
-  }
+  } */
 
   .Sweater-block-top-right .price {
     font-size: 16px;
     padding: 0 10px 0 0;
-    display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 0;
@@ -925,21 +1016,21 @@
     font-size: 12px;
   }
 
-  .products-box-sub-inner h5 {
+  /* .products-box-sub-inner h5 {
     font-size: 20px;
-  }
+  } */
 
-  .Sweater-block-main .Sweater-left {
+  /* .Sweater-block-main .Sweater-left {
     width: 40%;
-  }
+  } */
 
   .Sweater-block-main .Sweater-right {
-    width: 60%;
+    width: calc(100% - 300px);
   }
 
-  .Sweater-left-inner .Sweater-img img {
+  /* .Sweater-left-inner .Sweater-img img {
     max-width: 300px;
-  }
+  } */
 
   .fabric-listing ul li .icon-text {
     font-size: 12px;
@@ -1041,9 +1132,9 @@
     font-size: 12px;
   }
 
-  .products-box-sub-inner h5 {
+  /* .products-box-sub-inner h5 {
     font-size: 20px;
-  }
+  } */
 
   .Sweater-block-main {
     flex-direction: column;
@@ -1059,8 +1150,10 @@
   }
 
   .Sweater-left-inner .Sweater-img img {
-    max-width: 300px;
+    max-width: 100%;
+    width: 100%;
   }
+
 
   .fabric-listing ul li .icon-text {
     font-size: 12px;
@@ -1073,6 +1166,34 @@
 
   .fabric-listing ul {
     row-gap: 10px;
+  }
+}
+
+
+@media (max-width: 992px) {
+  .final-step-sweaterbg {
+    display: block;
+  }
+
+  .Sweater-block-main .Sweater-left {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .Sweater-block-main .Sweater-right {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .Sweater-top-data {
+    position: relative;
+    left: 0;
+    padding: 0;
+    width: 100%;
+  }
+
+  .Sweater-top-data h3 {
+    font-size: 20px;
   }
 }
 
@@ -1148,9 +1269,9 @@
     margin: 0 0 0 10px;
   }
 
-  .products-box-sub-inner h5 {
+  /* .products-box-sub-inner h5 {
     font-size: 18px;
-  }
+  } */
 
   .Sweater-block-main {
     flex-direction: column;
@@ -1166,7 +1287,8 @@
   }
 
   .Sweater-left-inner .Sweater-img img {
-    max-width: 300px;
+    max-width: 100%;
+    width: 100%;
   }
 
   .fabric-listing ul li .icon-text {

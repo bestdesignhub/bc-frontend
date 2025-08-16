@@ -1,91 +1,49 @@
 import { useState } from 'react';
-import { Modal } from 'react-bootstrap';
 import Image from 'next/image';
 import { getAWSImageUrl } from '@/utils/common.utils';
 
 const ProductImageGallery = ({ details }: { details?: { images?: string[] } }) => {
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
-  const [show, setShow] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-  const handleOpen = (image: string) => {
-    setSelectedImage(image);
-    setShow(true);
-  };
-
-  const handleClose = () => {
-    setShow(false);
-    setSelectedImage(null);
-  };
+  const images = details?.images || [];
 
   const handleNext = () => {
-    if (!selectedImage || !details?.images) return;
-    const currentIndex = details.images.indexOf(selectedImage);
-    const nextIndex = (currentIndex + 1) % details.images.length;
-    setSelectedImage(details.images[nextIndex]);
+    if (images.length === 0) return;
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
   };
 
   const handlePrev = () => {
-    if (!selectedImage || !details?.images) return;
-    const currentIndex = details.images.indexOf(selectedImage);
-    const prevIndex = (currentIndex - 1 + details.images.length) % details.images.length;
-    setSelectedImage(details.images[prevIndex]);
+    if (images.length === 0) return;
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
   };
 
   return (
     <>
-      <div className="product-image-row d-flex flex-wrap">
-        {details?.images?.map((image: string) => (
-          <div
-            className="image-item"
-            key={image}
-            onClick={() => handleOpen(image)}
-            style={{ cursor: 'pointer' }}
-          >
-            <div className="image">
-              <Image
-                loading="lazy"
-                src={getAWSImageUrl(image)}
-                width={370}
-                height={520}
-                alt="product"
-              />
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Fullscreen Image Modal */}
-      <Modal show={show} onHide={handleClose} fullscreen>
-        <Modal.Body className="d-flex align-items-center justify-content-center position-relative">
-          <button
-            className="btn btn-light position-absolute top-50 start-0 translate-middle-y"
-            onClick={handlePrev}
-          >
-            ◀
-          </button>
-
-          {selectedImage && (
+      <div className="productGalleryWrapper position-relative text-center">
+        <button
+          className="btn btn-light position-absolute top-50 start-0 translate-middle-y z-10"
+          onClick={handlePrev}
+        >
+          ◀
+        </button>
+        <div className="image-item">
+          {images.length > 0 && (
             <Image
               loading="lazy"
-              src={getAWSImageUrl(selectedImage)}
+              src={getAWSImageUrl(images[currentIndex])}
               width={800}
-              height={1000}
+              height={550}
               alt="product"
             />
           )}
-
-          <button
-            className="btn btn-light position-absolute top-50 end-0 translate-middle-y"
-            onClick={handleNext}
-          >
-            ▶
-          </button>
-
-          <button className="btn btn-light position-absolute top-0 end-0 m-3" onClick={handleClose}>
-            ✖
-          </button>
-        </Modal.Body>
-      </Modal>
+        </div>
+        <button
+          className="btn btn-light position-absolute top-50 end-0 translate-middle-y z-10"
+          onClick={handleNext}
+        >
+          ▶
+        </button>
+      </div>
     </>
   );
 };

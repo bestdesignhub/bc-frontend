@@ -9,8 +9,8 @@ export default async function Footer({ }: { settings?: ISettings }) {
         <div className="f-container">
           <div className="f-logo-section">
             <div className="f-logo">
-              <Link href="#" className="BESPOKE CASHMERE">
-                <img src="images/footer-logo.webp" alt="BESPOKE CASHMERE" />
+              <Link href="#" className="footer-logo">
+                <img src="https://app.bespokecashmere.eu/images/footer-logo.webp" alt="BESPOKE CASHMERE" />
               </Link>
             </div>
             <div className="company-registration">
@@ -22,56 +22,56 @@ export default async function Footer({ }: { settings?: ISettings }) {
               <ul className="social-icon">
                 <li>
                   <Link href="#" title="instagram">
-                    <img src="images/insta.webp" alt="instagram" />
+                    <img src="https://app.bespokecashmere.eu/images/insta.webp" alt="instagram" />
                   </Link>
                 </li>
                 <li>
                   <Link href="#" title="linkedin">
-                    <img src="images/linkedin.webp" alt="linkedin" />
+                    <img src="https://app.bespokecashmere.eu/images/linkedin.webp" alt="linkedin" />
                   </Link>
                 </li>
                 <li>
                   <Link href="#" title="whatsapp">
-                    <img src="images/whatsapp.webp" alt="whatsapp" />
+                    <img src="https://app.bespokecashmere.eu/images/whatsapp.webp" alt="whatsapp" />
                   </Link>
                 </li>
                 <li>
                   <Link href="#" title="facebook">
-                    <img src="images/facebook.webp" alt="facebook" />
+                    <img src="https://app.bespokecashmere.eu/images/facebook.webp" alt="facebook" />
                   </Link>
                 </li>
               </ul>
             </div>
             <div className="payment-method">
               <span className="payment-title">Payment Method:</span>
-              <img src="images/stripe.webp" alt="stripe" />
+              <img src="https://app.bespokecashmere.eu/images/stripe.webp" alt="stripe" />
             </div>
           </div>
           <div className="f-links-box">
             <h4>Menu</h4>
             <ul className="f-link">
               <li>
-                <Link href="#" title="Women">
+                <Link href="/women" title="Women">
                   Women
                 </Link>
               </li>
               <li>
-                <Link href="#" title="Men">
+                <Link href="/men" title="Men">
                   Men
                 </Link>
               </li>
               <li>
-                <Link href="#" title="Shop">
+                <Link href="/shop" title="Shop">
                   Shop
                 </Link>
               </li>
               <li>
-                <Link href="#" title="Our Yarn Details">
+                <Link href="/sweater?gender=6798793f705aedfe39db13b1&material=678077a88c6968b4bb6fc291&style=6873797b112e603103c98e6c" title="Our Yarn Details">
                   Our Yarn Details
                 </Link>
               </li>
               <li>
-                <Link href="#" title="Our Styles">
+                <Link href="/sweater?gender=6798793f705aedfe39db13b1&material=678077a88c6968b4bb6fc291" title="Our Styles">
                   Our Styles
                 </Link>
               </li>
@@ -81,27 +81,27 @@ export default async function Footer({ }: { settings?: ISettings }) {
             <h4>Explore</h4>
             <ul className="f-link">
               <li>
-                <Link href="#" title="About Us">
+                <Link href="about-us" title="About Us">
                   About Us
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link href="#" title="Mind Behind Idea">
                   Mind Behind Idea
                 </Link>
-              </li>
+              </li> */}
               <li>
-                <Link href="#" title="Contact Us">
+                <Link href="contact-us" title="Contact Us">
                   Contact Us
                 </Link>
               </li>
               <li>
-                <Link href="#" title="New In">
+                <Link href="new-in" title="New In">
                   New In
                 </Link>
               </li>
               <li>
-                <Link href="#" title="Our Story">
+                <Link href="/our-story" title="Our Story">
                   Our Story
                 </Link>
               </li>
@@ -111,22 +111,22 @@ export default async function Footer({ }: { settings?: ISettings }) {
             <h4>Support</h4>
             <ul className="f-link">
               <li>
-                <Link href="#" title="Payment Conditions">
+                <Link href="payment-conditions" title="Payment Conditions">
                   Payment Conditions
                 </Link>
               </li>
               <li>
-                <Link href="#" title="Returns Policy">
+                <Link href="returns-policy" title="Returns Policy">
                   Returns Policy
                 </Link>
               </li>
               <li>
-                <Link href="#" title="Privacy Policy">
+                <Link href="privacy-policy" title="Privacy Policy">
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link href="#" title="Terms of use">
+                <Link href="terms-of-use" title="Terms of use">
                   Terms of use
                 </Link>
               </li>
@@ -159,5 +159,5 @@ export default async function Footer({ }: { settings?: ISettings }) {
         </span>
       </small>
     </>
-  );
+  )
 }

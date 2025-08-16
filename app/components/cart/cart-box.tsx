@@ -17,7 +17,8 @@ import { useTranslations } from 'next-intl';
 
 export default function Cartbox({ cart, fetchCartData }: { cart: any; fetchCartData: () => void }) {
   const t = useTranslations();
-  console.log('cart', cart);
+  console.log('cart', cart.cretedBy == 'shop');
+  console.log('cart', cart.steps);
 
   const name = useMemo(() => generateProductName(cart), [cart]);
   const urlQueryString = useMemo(() => {
@@ -133,9 +134,15 @@ export default function Cartbox({ cart, fetchCartData }: { cart: any; fetchCartD
                     </div>
                     <div className="box-sub">
                       <h6>{step?.stepCardTitle}</h6>
-                      <div className="changes-link">
+                      {cart.createdBy != 'shop' && (<div className="changes-link">
                         <Link
-                          href={`${USER_ROUTES.sweater}/${index + FIXED_STEPS_COUNT}?${urlQueryString}&${URL_SLUG.CHANGE}=true`}
+                          // href={`${USER_ROUTES.sweater}/${index + FIXED_STEPS_COUNT}?${urlQueryString}&${URL_SLUG.CHANGE}=true`}
+
+                          href={
+                            index + FIXED_STEPS_COUNT === 4
+                              ? `${USER_ROUTES.sweater}?${urlQueryString.replace(/(&|\?)style=[^&]*/, '')}&${URL_SLUG.CHANGE}=true`
+                              : `${USER_ROUTES.sweater}/${index + FIXED_STEPS_COUNT}?${urlQueryString}&${URL_SLUG.CHANGE}=true`
+                          }
                         >
                           <span>{t('COMMON.CHANGE')} </span>
                           <i>
@@ -156,22 +163,24 @@ export default function Cartbox({ cart, fetchCartData }: { cart: any; fetchCartD
                             </svg>
                           </i>
                         </Link>
-                      </div>
+                      </div>)}
                     </div>
                   </div>
                 );
               })}
               <div className="view-all-link">
-                <Link href={`${USER_ROUTES.sweater}${USER_ROUTES.lastStep}?${urlQueryString}`}>
+                {cart.createdBy != 'shop' && (<Link href={`${USER_ROUTES.sweater}${USER_ROUTES.lastStep}?${urlQueryString}`}>
                   {t('COMMON.VIEW_ALL_DETAILS')}
-                </Link>
+                </Link>)}
               </div>
             </div>
           </div>
           <div className="cart-edit-links">
-            <Link href={`${USER_ROUTES.sweater}${USER_ROUTES.lastStep}?${urlQueryString}`}>
-              {t('COMMON.EDIT')}
-            </Link>
+            {cart.createdBy != 'shop' && (
+              <Link href={`${USER_ROUTES.sweater}${USER_ROUTES.lastStep}?${urlQueryString}`}>
+                {t('COMMON.EDIT')}
+              </Link>
+            )}
             <Link href="#" onClick={handleDelete}>
               {t('COMMON.DELETE')}
             </Link>

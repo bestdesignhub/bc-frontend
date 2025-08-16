@@ -14,10 +14,10 @@ const COOKIES = {
 } as const;
 
 const MESSAGES = {
-  SUCCESS: 'COMMON.SUCCESS',
-  SOMETHING_WENT_WRONG: 'COMMON.SOMETHING_WENT_WRONG_PLEASE_TRY_AGAIN',
-  LOADING: 'COMMON.LOADING',
-  INVALID_SLUG: 'COMMON.INVALID_SLUG',
+  SUCCESS: 'SUCCESS',
+  SOMETHING_WENT_WRONG: 'SOMETHING WENT WRONG PLEASE TRY AGAIN',
+  LOADING: 'LOADING',
+  INVALID_SLUG: 'INVALID SLUG',
 } as const;
 
 const USER_ROUTES = {
@@ -31,6 +31,7 @@ const USER_ROUTES = {
   men: '/men',
   shop: '/shop',
   ourStory: '/our-story',
+  aboutUs: '/about-us',
   cart: '/cart',
   checkout: '/checkout',
   myAccount: '/my-account',
@@ -72,10 +73,13 @@ const PAYMENT_OPTIONS = {
 const FIXED_STEPS_COUNT = 2;
 
 const STEPPERPATHS = [
-  { label: 'Select a Yarn', step: '1' },
-  { label: 'Select a Guage', step: '2' },
-  { label: 'Select a Pattern', step: '3' },
-  { label: 'Select a Styles', step: '4' },
+  { label: 'Select a Styles', step: '1' },
+  // { label: 'Select a Yarn', step: '1' },
+  { label: 'Select a Yarn', step: '2' },
+  { label: 'Select a Guage', step: '3' },
+  { label: 'Select a Pattern', step: '4' },
+  // { label: 'Select a Styles', step: '4' },
+
   { label: 'Select Measurement', step: '5' },
 ];
 

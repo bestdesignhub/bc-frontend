@@ -7,6 +7,7 @@ import ImageWithText from './ImageWithText';
 export default function Ourstorypage({ storyData }: IStoryDetailProps) {
   return (
     <div className="story-page">
+      About Us
       <div className="story-banner-outer">
         <div className="story-banner-img">
           <Image

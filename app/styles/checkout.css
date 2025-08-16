@@ -30,7 +30,7 @@
   min-height: 70px;
   display: flex;
   align-items: center;
-  padding: 0 40px;
+  padding: 0 20px;
 }
 
 .checkout-block-inner .checkout-black-head h6 {
@@ -38,7 +38,7 @@
   gap: 12px;
   align-items: center;
   text-transform: uppercase;
-  font-size: var(--bsp-body-24);
+  font-size: var(--bsp-body-20);
   color: var(--bsp-white);
   font-family: var(--bsp-font-poppins);
   font-weight: 500;
@@ -479,13 +479,13 @@
   width: 100%;
   background: var(--bsp-white);
   border: var(--bsp-gray7) solid 1px;
-  padding: 20px 20px 50px;
+  padding: 20px;
 }
 
 .checkout-right-inner h5 {
   padding: 0 0 20px;
   border-bottom: var(--bsp-gray7) solid 1px;
-  font-size: var(--bsp-body-24);
+  font-size: var(--bsp-body-20);
   font-family: var(--bsp-font-poppins);
   font-weight: 500;
   text-transform: uppercase;

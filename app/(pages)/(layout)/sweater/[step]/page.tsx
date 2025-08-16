@@ -36,8 +36,22 @@ const SweaterStep = async ({
   const productTypeData = await getDropdownList(PRODUCT_TYPE_DROPDOWN_URL);
   const productTypeId = productTypeData?.[0]?.value;
   const step = resolvedParams.step;
-
+  const genderId = resolvedSearchParams[URL_SLUG.GENDER];
+  const materialId = resolvedSearchParams["material"];
+  const gaugeId = resolvedSearchParams['gauge'];
+  const patternId = resolvedSearchParams['pattern'];
+  const styleId = resolvedSearchParams['style'];
+  const genderSlug = resolvedSearchParams[URL_SLUG.GENDER];
+  const patternSlug = resolvedSearchParams["pattern"];
+  const materialSlug = resolvedSearchParams["material"];
   let priceData: Record<string, any> = {};
+  let formattedPrice = '00000';
+  const genderConfig = genderBasedConfig[genderSlug];
+  const effectiveStyleId = styleId || genderConfig?.styleId;
+  const effectiveGaugeId = gaugeId || genderConfig?.gaugeId;
+  const effectivePatternId = patternId || genderConfig?.patternId;
+
+  // let priceData: Record<string, any> = {};
   const [genderResult, steps, stepPageData] = await Promise.all([
     getDropdownList(GENDER_DROPDOWN_URL),
     getStepTypesList(productTypeId),
@@ -47,14 +61,27 @@ const SweaterStep = async ({
   //   redirect('/');
   // }
   // console.log('resolvedSearchParams priceData', priceData);
+  console.log("steps===>>>", steps);
 
   const stepData = steps[step - FIXED_STEPS_COUNT];
+  console.log("StepData ===>>>", stepData);
 
 
   const genders = genderResult;
-  const genderSlug = resolvedSearchParams[URL_SLUG.GENDER];
-  const patternSlug = resolvedSearchParams["pattern"];
-  const materialSlug = resolvedSearchParams["material"];
+
+  const payload: any = {
+    page: 1,
+    perPage: 1000,
+    sortBy: 'createdAt',
+    sortOrder: 'desc',
+    search: "",
+  };
+
+  const stepList = await userAxiosInstance.post('/step-card/user/list/67599682e94c6e1a0e46e63e', payload)
+  // console.log("StepList ===>>>", stepList?.data?.data?.data);
+  const allSteps = stepList?.data?.data?.data || [];
+  const genderStyles = allSteps.filter((item: any) => item.gender._id === genderId);
+
 
   if (stepData?.slug === 'pattern' || stepData?.slug === 'style' || stepData?.slug === 'fitting') {
     // const hasGenderField = stepPageData.list.some((item: any) => item.gender !== undefined);
@@ -69,16 +96,36 @@ const SweaterStep = async ({
 
     stepPageData.list = matchingItems;
   }
+  // if (stepData?.slug === 'style') {
+  //   // const hasGenderField = stepPageData.list.some((item: any) => item?.pattern !== undefined);
+  //   const hasGenderField = Array.isArray(stepPageData?.list) &&
+  //     stepPageData.list.some((item: any) => item?.pattern !== undefined);
+
+
+  //   const matchingItems = hasGenderField ? stepPageData.list.filter((item: any) => item?.pattern === patternSlug) : stepPageData.list;
+  //   stepPageData.list = matchingItems;
+
+  // }
+
+  // if (styleId && Array.isArray(stepPageData?.list)) {
+  //   stepPageData.list = stepPageData.list.filter((item: any) => item?._id !== styleId);
+  // }
+
   if (stepData?.slug === 'style') {
-    // const hasGenderField = stepPageData.list.some((item: any) => item?.pattern !== undefined);
-    const hasGenderField = Array.isArray(stepPageData?.list) &&
-      stepPageData.list.some((item: any) => item?.pattern !== undefined);
-
-
-    const matchingItems = hasGenderField ? stepPageData.list.filter((item: any) => item?.pattern === patternSlug) : stepPageData.list;
-    stepPageData.list = matchingItems;
-
+    //  If style is already selected, skip listing entirely
+    if (styleId) {
+      stepPageData.list = []; //  hide "Select a Styles"
+    } else {
+      const hasGenderField = Array.isArray(stepPageData?.list) &&
+        stepPageData.list.some((item: any) => item?.pattern !== undefined);
+      const matchingItems = hasGenderField
+        ? stepPageData.list.filter((item: any) => item?.pattern === patternSlug)
+        : stepPageData.list;
+      stepPageData.list = matchingItems;
+    }
   }
+
+
 
   if (stepData?.slug === 'gauge') {
     if (materialSlug === '678077a88c6968b4bb6fc291') {
@@ -88,19 +135,26 @@ const SweaterStep = async ({
 
       stepPageData.list = matchingItems;
     }
+    if (materialSlug === '67f64f49e061fcfe4d00b21d') {
+      const matchingItems = stepPageData?.list
+        ? stepPageData.list.filter((item: any) => item?.slug === '16gg')
+        : stepPageData.list;
+
+      stepPageData.list = matchingItems;
+    }
   }
 
-  const genderConfig = genderBasedConfig[genderSlug];
-  const materialId = resolvedSearchParams["material"];
+  // const genderConfig = genderBasedConfig[genderSlug];
+  // const materialId = resolvedSearchParams["material"];
 
-  if (genderConfig && materialId) {
+  if (genderId && materialId && effectiveStyleId && effectiveGaugeId && effectivePatternId) {
     const requestBody = {
-      styleId: genderConfig.styleId,
-      gaugeId: genderConfig.gaugeId,
-      patternId: genderConfig.patternId,
+      styleId: effectiveStyleId,
+      gaugeId: effectiveGaugeId,
+      patternId: effectivePatternId,
       materialId,
-      genderId: genderSlug,
-      size: 'l',
+      genderId: genderId,
+      size: 'fl',
     };
 
     // console.log('requestBody', requestBody);
@@ -110,6 +164,9 @@ const SweaterStep = async ({
       // console.log('response', response.data?.data);
       // setPriceData(response.data?.data?.SIZEL);
       priceData = response.data.data || {};
+      const rawPrice = priceData?.sizeFL ? Number(priceData.sizeFL) : 0;
+      formattedPrice = rawPrice.toLocaleString('en-US', { minimumIntegerDigits: 5, useGrouping: false });
+      console.log("formattedPrice", formattedPrice);
     } catch (error) {
       console.error('Error fetching price list:', error);
     }
@@ -132,7 +189,8 @@ const SweaterStep = async ({
                 edit={resolvedSearchParams?.[URL_SLUG.EDIT]}
                 genders={genders}
                 genderSlug={genderSlug}
-                price={Number(priceData?.sizeL)}
+                styleData={genderStyles}
+                price={Number(formattedPrice)}
               />
             </Col>
             <Col xs={12} lg={9}>
@@ -141,7 +199,7 @@ const SweaterStep = async ({
                 steps={steps}
                 step={step}
                 nextStepSlug={stepData?.slug}
-                price={Number(priceData?.sizeL)}
+                price={Number(formattedPrice)}
               />
             </Col>
           </Row>

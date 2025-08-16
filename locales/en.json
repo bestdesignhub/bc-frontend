@@ -77,7 +77,7 @@
     "SELECTED_MEASUREMENT_PROFILE": "Selected Measurement Profile",
     "PRODUCT_TEXT": "Product",
     "ADD_TO_CART": "Add to cart",
-    "CUSTOMISE_A_SWEATER": "Customise a sweater",
+    "CUSTOMISE_A_SWEATER": "customise a sweater",
     "ALREADY_A_CUSTOMER": "Already a customer",
     "DONT_HAVE_AN_ACCOUNT": "Don’t have an account",
     "REGISTER": "Register",
@@ -85,7 +85,7 @@
     "I_CONFIRM_MEASUREMENT": "Do you agree to continue with this measurement?",
     "SIZE_TEXT": "Size",
     "SHOPPING_CART": "Shopping Cart",
-    "SAVE_AND_GO_TO_CART": "Save and Go to Cart",
+    "SAVE_AND_GO_TO_CART": "Go to Cart",
     "ADDRESS_TEXT": "Address",
     "COMPANY": "Company",
     "ADDRESS_LINE_ONE": "Address Line 1",
@@ -177,5 +177,8 @@
     "MINUTES": "Minutes",
     "SECONDS": "Seconds",
     "SHOP_NOW": "Shop Now"
-  }
+  },
+  "APPLY_VOUCHER": "Apply Voucher",
+  "COUPON_CODE": "Coupon Code",
+  "APPLY_LABEL": "Apply"
 }

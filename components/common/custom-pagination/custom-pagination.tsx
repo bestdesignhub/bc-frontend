@@ -14,6 +14,8 @@ const CustomPagination: React.FC<PaginationProps> = ({ currentPage, totalPage })
   const router = useRouter();
   const searchParams = useSearchParams();
 
+  console.log(currentPage, totalPage);
+
   const handlePageChange = (page: number) => {
     if (page < 1 || page > totalPage) return;
     dispatch(setIsPageSwitchLoading(true));

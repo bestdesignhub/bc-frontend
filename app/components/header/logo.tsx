@@ -5,7 +5,7 @@ export default function Logo() {
   return (
     <>
       <Link className="logo" href="/" title="Bespoke Cashmere">
-        <img src="images/logo.png" alt="Bespoke Cashmere" />
+        <img src="https://app.bespokecashmere.eu/images/logo.png" alt="Bespoke Cashmere" />
       </Link>
     </>
   );

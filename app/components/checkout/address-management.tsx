@@ -33,6 +33,7 @@ const AddressManagement = ({
     open: false,
     data: null,
   });
+
   useLayoutEffect(() => {
     setAddresses(myAddresses);
   }, [myAddresses]);
@@ -52,10 +53,21 @@ const AddressManagement = ({
       dispatch(setLoading(false));
     }
   }, [selectedAddress, onSelect]);
+
   const handleEdit = (_id: string) => {
     const addressData = addresses.find((address) => address._id === _id);
     setShowModal({ open: true, data: addressData });
   };
+
+  const handleDelete = (_id: string) => {
+    const confirmDelete = window.confirm("Are you sure you want to delete this address?");
+    if (!confirmDelete) return;
+
+    const updatedAddresses = addresses.filter((address) => address._id !== _id);
+    setAddresses(updatedAddresses);
+  };
+
+
   const handleAdd = () => {
     setShowModal({ open: true, data: null });
   };
@@ -123,6 +135,21 @@ const AddressManagement = ({
               }}
             >
               {t('COMMON.EDIT_TEXT')}
+            </span>
+          </div>
+          <div className="edit-link" onClick={() => handleDelete(address?._id)}>
+            <span
+              style={{
+                display: 'flex',
+                textTransform: 'uppercase',
+                fontSize: 'var(--bsp-body-text)',
+                fontWeight: 600,
+                color: 'var(--bsp-black)',
+                cursor: 'pointer',
+                userSelect: 'none',
+              }}
+            >
+              {t('COMMON.DELETE')}
             </span>
           </div>
         </div>

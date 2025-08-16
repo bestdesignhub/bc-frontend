@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from 'react';
 //import '@/app/styles/header.css';
 import Cookies from 'js-cookie';
 import userAxiosInstance from '@/config/userAxiosInstance';
-import { GENERAL_USER_SETTINGS_URL } from '@/constants/apis';
+import { DOCUMENT_LIST_URL, GENERAL_USER_SETTINGS_URL } from '@/constants/apis';
 import { dispatch } from '@/lib/redux/store';
 import { setAllUserSettingsValues } from '@/lib/redux/slices/userSettingSlice';
 import Logo from './logo';
@@ -13,11 +13,16 @@ import Link from 'next/link';
 // import { USER_ROUTES } from '@/constants';
 import CartWishlist from './cart-wishlist';
 import { useRouter } from 'next/navigation'; // Import router for navigation
+// import { log } from 'console';
+import { getAWSImageUrl } from '@/utils/common.utils';
+import MenuIcon from '@/components/svg-icons/menu-icon/menu-icon';
 
 export default function Header() {
   const token = useMemo(() => Cookies.get('userToken'), []);
   const [searchQuery, setSearchQuery] = useState('');
+  const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
+  const [documentList, setDocumentList] = useState([]);
 
   useEffect(() => {
     const fetchUserSettings = async () => {
@@ -40,6 +45,24 @@ export default function Header() {
       fetchUserSettings();
     }
   }, [token]);
+  useEffect(() => {
+    const fetchDocumentList = async () => {
+      try {
+        const response = await userAxiosInstance.get(DOCUMENT_LIST_URL);
+        console.log('response', response.data);
+
+        if (response?.data?.success) {
+
+          setDocumentList(response?.data?.data?.data || []);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchDocumentList();
+  }, []);
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -58,11 +81,15 @@ export default function Header() {
     }
   };
 
+  const handleToggle = () => {
+    setIsOpen(!isOpen); // toggle menu
+  };
+
   return (
     <>
       <div className="header-top">
         <div className="f-container">
-          <span className="f-shipping">Free Shipping on all orders over $500</span>
+          <span className="f-shipping">Free Shipping on all orders over €500</span>
           <ul className="h-top-btn">
             <li>
               <Link href="/sweater" title="Create My SWEATER">
@@ -70,18 +97,19 @@ export default function Header() {
               </Link>
             </li>
             <li>
-              <Link href="/shop" title="Customise a Sweater">
+              <Link href="/shop" title="customize a Sweater">
                 Customise a Sweater
               </Link>
             </li>
           </ul>
         </div>
       </div>
-
       <header className="header-main">
         <div className="f-container">
+          <div className='menuIconBtn' onClick={handleToggle}>
+            <MenuIcon />
+          </div>
           <Logo />
-
           <div className="search-box">
             <form onSubmit={handleSearchSubmit} className="search-bar">
               <input
@@ -93,7 +121,6 @@ export default function Header() {
               />
             </form>
           </div>
-
           <ul className="header-links">
             <li>
               <a className="phone" href="tel:+4531327890" title="+45 3132 7890">
@@ -101,9 +128,7 @@ export default function Header() {
               </a>
             </li>
             <li>
-              <a className="order-Track" href="#" title="Order Tracking">
-                Order Tracking
-              </a>
+              <Link className="order-Track" href={token ? '/my-account/order-history' : '/login'}>Order Tracking</Link>
             </li>
             <li>
               {/* <a className="my-account" href="#" title="My Account">
@@ -140,7 +165,8 @@ export default function Header() {
           </div> */}
         </div>
       </header>
-      <div className="nav-row">
+
+      <div className="nav-row desktopMenu">
         <div className="f-container">
           <nav className="navigation-menu">
             <ul className="category-list">
@@ -164,14 +190,14 @@ export default function Header() {
                   Our Story
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link href="/gift" title="Gift">
                   Gift
                 </Link>
-              </li>
+              </li> */}
               <li>
-                <Link href="/discovery" title="Discovery">
-                  Discovery
+                <Link href="/about-us" title="About Us">
+                  About Us
                 </Link>
               </li>
             </ul>
@@ -183,18 +209,91 @@ export default function Header() {
               </Link>
             </li>
             <li>
-              <Link href="#" title="Download manual book">
-                Download manual book
-              </Link>
+              {documentList
+                .filter((doc: any) => doc.slug === 'manual-book')
+                .map((doc: any) => (
+                  <Link key={doc.slug} href={getAWSImageUrl(doc.filePath)} target="_blank" rel="noreferrer" title="Download manual book">
+                    Download manual book
+                  </Link>
+                ))}
             </li>
             <li>
-              <Link href="#" title="Download color book">
-                Download color book
-              </Link>
+              {documentList
+                .filter((doc: any) => doc.slug === 'color-book')
+                .map((doc: any) => (
+                  <Link key={doc.slug} href={getAWSImageUrl(doc.filePath)} target="_blank" rel="noreferrer" title="Download color book">
+                    Download color book
+                  </Link>
+                ))}
             </li>
           </ul>
         </div>
       </div>
+      {isOpen && (
+        <div className="nav-row">
+          <div className="f-container">
+            <nav className="navigation-menu">
+              <ul className="category-list">
+                <li>
+                  <Link href="/women" title="Women">
+                    Women
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/men" title="Men">
+                    Men
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/shop" title="Shop">
+                    Shop
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/our-story" title="Our Story">
+                    Our Story
+                  </Link>
+                </li>
+                {/* <li>
+                <Link href="/gift" title="Gift">
+                  Gift
+                </Link>
+              </li> */}
+                <li>
+                  <Link href="/about-us" title="About Us">
+                    About Us
+                  </Link>
+                </li>
+              </ul>
+            </nav>
+            <ul className="usefull-links">
+              <li>
+                <Link className="wholeseller" href="#" title="Wholeseller">
+                  Wholeseller
+                </Link>
+              </li>
+              <li>
+                {documentList
+                  .filter((doc: any) => doc.slug === 'manual-book')
+                  .map((doc: any) => (
+                    <Link key={doc.slug} href={getAWSImageUrl(doc.filePath)} target="_blank" rel="noreferrer" title="Download manual book">
+                      Download manual book
+                    </Link>
+                  ))}
+              </li>
+              <li>
+                {documentList
+                  .filter((doc: any) => doc.slug === 'color-book')
+                  .map((doc: any) => (
+                    <Link key={doc.slug} href={getAWSImageUrl(doc.filePath)} target="_blank" rel="noreferrer" title="Download color book">
+                      Download color book
+                    </Link>
+                  ))}
+              </li>
+            </ul>
+          </div>
+        </div>
+      )}
     </>
   );
 }

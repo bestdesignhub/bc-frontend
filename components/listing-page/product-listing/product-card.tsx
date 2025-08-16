@@ -38,6 +38,8 @@ const ProductCard: FC<{ product: any; genderSlug: string, price: string }> = ({ 
             const change = searchParams?.get(URL_SLUG.CHANGE);
             if (change === 'true') {
               const params = new URLSearchParams(searchParams.toString());
+              // console.log("===>>>>", params);
+
               params.delete(URL_SLUG.YARN);
               params.delete(URL_SLUG.CHANGE);
               for (const key of Array.from(params.keys())) {
@@ -56,9 +58,11 @@ const ProductCard: FC<{ product: any; genderSlug: string, price: string }> = ({ 
 
               return;
             } else {
+              const params = new URLSearchParams(searchParams.toString());
+              console.log("===>>>>", params.get('style'));
               router.push(
                 `${USER_ROUTES.sweater}/2?${URL_SLUG.YARN}=${result?.data?._id}${edit ? `&${URL_SLUG.EDIT}=${edit}` : ''
-                }&gender=${genderSlug}&material=${material}`
+                }&gender=${genderSlug}&material=${material}&style=${params.get('style')}`
               );
             }
           }
@@ -112,14 +116,8 @@ const ProductCard: FC<{ product: any; genderSlug: string, price: string }> = ({ 
               <ins>{formatPrice(Number(price))}</ins>
             </div>
           </div>
-          <button
+          <button className='yarn-button'
             onClick={handleShow}
-            style={{
-              background: 'var(--bsp-black)',
-              width: '100%',
-              padding: '10px 0',
-              color: 'white',
-            }}
           >
             {t('COMMON.SELECT')}
           </button>

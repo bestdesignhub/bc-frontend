@@ -6,10 +6,27 @@ type AccessoriesItemProps = {
   title: string;
   image: string;
   price: number;
+  popularProduct: string;
 };
-export default function AccessoriesItem({ href = '', image, title, price }: AccessoriesItemProps) {
+
+const statusOptions = [
+  { id: 1, label: "New Arrival", value: "new_arrival" },
+  { id: 2, label: "Most Popular", value: "most_popular" },
+  { id: 3, label: "Popular", value: "popular" },
+  { id: 4, label: "Normal", value: "normal" },
+];
+
+
+export default function AccessoriesItem({ href = '', image, title, price, popularProduct }: AccessoriesItemProps) {
+  console.log("href===>>>", href);
+  const statusLabel = statusOptions.find(opt => opt.value === popularProduct)?.label;
   return (
     <div className="accessoriesbox">
+      {statusLabel && (
+        <div className='productTag'>
+          <span>{statusLabel}</span>
+        </div>
+      )}
       <Link href={href}>
         <div className="image">
           <Image src={getAWSImageUrl(image)} alt={title} width={575} height={476} loading="lazy" />
@@ -17,7 +34,7 @@ export default function AccessoriesItem({ href = '', image, title, price }: Acce
         <div className="info">
           <h6>{title}</h6>
           <div className="pr-price">
-            <span>Start from <strong>${price}</strong></span>
+            <span>Start from <strong> €{price}</strong></span>
           </div>
           <div className="pr-color d-none">
             <div className="color-item">

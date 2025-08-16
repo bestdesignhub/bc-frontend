@@ -85,7 +85,7 @@
     "I_CONFIRM_MEASUREMENT": "Er du enig i at fortsætte med denne måling?",
     "SIZE_TEXT": "Størrelse",
     "SHOPPING_CART": "Indkøbskurv",
-    "SAVE_AND_GO_TO_CART": "Gem og gå til kurv",
+    "SAVE_AND_GO_TO_CART": "Gå til indkøbsvogn",
     "ADDRESS_TEXT": "Adresse",
     "COMPANY": "Virksomhed",
     "ADDRESS_LINE_ONE": "Adresse linje 1",
@@ -167,5 +167,8 @@
     "MINUTES": "Minutter",
     "SECONDS": "Sekunder",
     "SHOP_NOW": "Køb nu"
-  }
+  },
+  "APPLY_VOUCHER": "Apply Voucher",
+  "COUPON_CODE": "Rabatkode",
+  "APPLY_LABEL": "Anvend"
 }
