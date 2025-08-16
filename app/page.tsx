@@ -39,7 +39,7 @@ export default async function Home() {
     homeProductListResult.status === 'fulfilled' ? (homeProductListResult.value as IProduct[]) : [];
   const settingData =
     settingDataResult.status === 'fulfilled' ? (settingDataResult.value as ISettings) : undefined;
-  // const flashSale = flashSaleResult.status === 'fulfilled' ? flashSaleResult.value : null;
+
   const homeModelData = homeModelResult.status === 'fulfilled' ? homeModelResult.value : null;
   const testimonialData = testimonialResult.status === 'fulfilled' ? testimonialResult.value : [];
   console.log("homeProductList", homepageData);

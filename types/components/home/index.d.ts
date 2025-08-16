@@ -18,6 +18,7 @@ interface ISection2Card {
 }
 
 interface Section2 {
+  left_image(left_image: any): string | import("next/dist/shared/lib/get-img-props").StaticImport;
   cards: ISection2Card[];
 }
 export interface Section4Card {
@@ -96,6 +97,9 @@ export interface sectionNString {
 }
 
 export interface IHomeApiRes {
+  value: any;
+  status: string;
+  flashSale: any;
   _id: string;
   section1: Section1;
   section2: Section2;

@@ -1,23 +1,20 @@
 import {
   Accessories,
-  Category,
   Hero,
-  LookGood,
-  PerfectFit
 } from '@/app/components';
 import { IProduct } from '@/app/components/accessories/accessories';
 import { ZeeZap } from '@/app/components/zee-zap';
 import { IHomeApiRes } from '@/types/components';
 import Link from 'next/link';
-import SweaterStylesCMSPage from '../SweaterStyle/SweaterStylesCMSPage';
+// import SweaterStylesCMSPage from '../SweaterStyle/SweaterStylesCMSPage';
 import CmsPageBySlug from '../SweaterStyle/CmsPageBySlug';
-import CustomSweaterSection from './custom-sweater-section';
+// import CustomSweaterSection from './custom-sweater-section';
 import AllSweaterStyles from './all-sweater-styles';
 import OrderingStepsSection from './ordering-steps-section';
 import CustomSweater from './custom-sweater';
 import ExploreCollection from './explore-collection';
 import AboutBespoke from './about-bespoke';
-import { Favourite } from '@/app/components/favourite';
+// import { Favourite } from '@/app/components/favourite';
 
 interface IHomePageProps {
   homepageData: IHomeApiRes;
@@ -31,7 +28,7 @@ const HomeComponent = ({ homepageData, homeProductList }: IHomePageProps) => {
   const perfectFitData = homepageData?.section2;
   const categoryData = homepageData?.section3;
   const accessoriesData = homepageData?.section5;
-  const favouriteData = homepageData?.section6;
+  // const favouriteData = homepageData?.section6;
   const lookGoodData = homepageData?.section8;
   return (
     <div>
