@@ -196,6 +196,11 @@ body {
   padding-right: 15px;
 }
 
+.full-container {
+  width: 100%;
+  max-width: 100%;
+}
+
 
 /* header top Start */
 .header-top {

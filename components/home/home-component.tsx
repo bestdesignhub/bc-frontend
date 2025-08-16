@@ -1,6 +1,9 @@
 import {
   Accessories,
-  Hero
+  Category,
+  Hero,
+  LookGood,
+  PerfectFit
 } from '@/app/components';
 import { IProduct } from '@/app/components/accessories/accessories';
 import { ZeeZap } from '@/app/components/zee-zap';
@@ -9,6 +12,10 @@ import Link from 'next/link';
 import CustomSweaterSection from './custom-sweater-section';
 import AllSweaterStyles from './all-sweater-styles';
 import OrderingStepsSection from './ordering-steps-section';
+import CustomSweater from './custom-sweater';
+import ExploreCollection from './explore-collection';
+import AboutBespoke from './about-bespoke';
+import { Favourite } from '@/app/components/favourite';
 
 interface IHomePageProps {
   homepageData: IHomeApiRes;
@@ -18,26 +25,29 @@ interface IHomePageProps {
 }
 
 const HomeComponent = ({ homepageData, homeProductList }: IHomePageProps) => {
+  console.log("HomeComponent rendered", homepageData);
+
+
   const heroData = homepageData?.section1;
-  // const perfectFitData = homepageData?.section2;
-  // const categoryData = homepageData?.section3;
+  const perfectFitData = homepageData?.section2;
+  const categoryData = homepageData?.section3;
   const accessoriesData = homepageData?.section5;
-  // const favouriteData = homepageData?.section6;
+  const favouriteData = homepageData?.section6;
   const lookGoodData = homepageData?.section8;
   return (
     <div>
       <main className="main-page">
         <Hero heroData={heroData} />
-        {/* <Accessories accessoriesData={accessoriesData} homeProductList={homeProductList} />
-          <PerfectFit perfectFitData={perfectFitData} />
+        {/* <Accessories accessoriesData={accessoriesData} homeProductList={homeProductList} /> */}
+        {/* <PerfectFit perfectFitData={perfectFitData} /> */}
 
-          <Category categoryData={categoryData} />
-          <ZeeZap lookGoodData={lookGoodData} />
-          <Favourite favouriteData={favouriteData} />
+        {/* <Category categoryData={categoryData} /> */}
+        {/* <ZeeZap lookGoodData={lookGoodData} /> */}
+        {/* <Favourite favouriteData={favouriteData} /> */}
 
-          <LookGood lookGoodData={lookGoodData} />
+        {/* <LookGood lookGoodData={lookGoodData} /> */}
 
-          <Instagram />
+        {/* <Instagram />
           <Service /> */}
 
         <Accessories accessoriesData={accessoriesData} homeProductList={homeProductList} />
@@ -96,7 +106,8 @@ const HomeComponent = ({ homepageData, homeProductList }: IHomePageProps) => {
             <img src="/images/your-style.webp" alt="Your Style & Colors" />
           </div>
         </section> */}
-        <CustomSweaterSection />
+        {/* <CustomSweaterSection /> */}
+        <CustomSweater sweaterData={perfectFitData?.cards} />
         <ZeeZap lookGoodData={lookGoodData} />
         {/* <div className="women-sweater">
             <img src="/images/ww.webp" />
@@ -217,7 +228,7 @@ const HomeComponent = ({ homepageData, homeProductList }: IHomePageProps) => {
           <OrderingStepsSection />
         </section>
 
-        <section className="explore-collection f-container">
+        {/* <section className="explore-collection f-container">
           <div className="collection-content">
             <h3>Explore our Yarn Collection</h3>
             <p>
@@ -232,9 +243,11 @@ const HomeComponent = ({ homepageData, homeProductList }: IHomePageProps) => {
           <div className="collection-img">
             <img src="/images/collection-img.webp" alt="Explore our Yarn Collection" />
           </div>
-          {/* <CmsPageBySlug slug="explore-our-yarn-collection" /> */}
-        </section>
-        <section className="about-bespoke">
+          
+        </section> */}
+        {/* <CmsPageBySlug slug="explore-our-yarn-collection" /> */}
+        <ExploreCollection collectionData={categoryData} />
+        {/* <section className="about-bespoke">
           <div className="f-container">
             <h3>
               <span>About</span> Bespoke Cashmere
@@ -274,8 +287,10 @@ const HomeComponent = ({ homepageData, homeProductList }: IHomePageProps) => {
               </li>
             </ul>
           </div>
-        </section>
-        <section className="f-container about-content">
+        </section> */}
+        <AboutBespoke aboutData={categoryData} />
+
+        {/* <section className="f-container about-content">
           <p>
             We are a leading e-commerce company specializing in custom sweaters for residential and
             commercial applications. With our cutting-edge technology, we have revolutionized the
@@ -294,7 +309,8 @@ const HomeComponent = ({ homepageData, homeProductList }: IHomePageProps) => {
               Click More Details
             </Link>
           </div>
-        </section>
+        </section> */}
+        <CmsPageBySlug slug="home-about-us" />
       </main>
     </div>
   );
