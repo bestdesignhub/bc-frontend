@@ -156,16 +156,14 @@ const HomeComponent = ({ homepageData, homeProductList }: IHomePageProps) => {
               </Link>
             </li>
           </ul> */}
-          <main>
-            {/* other homepage stuff */}
-            {/* <SweaterStylesCMSPage /> */}
-            <AllSweaterStyles />
-          </main>
-          <div className="view-all-style">
+          {/* other homepage stuff */}
+          {/* <SweaterStylesCMSPage /> */}
+          {/* <AllSweaterStyles /> */}
+          {/* <div className="view-all-style">
             <Link href="/sweater?gender=6798793f705aedfe39db13b1&material=678077a88c6968b4bb6fc291" title="View All Styles">
               View All Styles
             </Link>
-          </div>
+          </div> */}
         </section>
         <section className="ordering-steps">
           {/* <div className="ordering-steps-img">
