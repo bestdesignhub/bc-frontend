@@ -5,11 +5,11 @@ import {
 import { IProduct } from '@/app/components/accessories/accessories';
 import { ZeeZap } from '@/app/components/zee-zap';
 import { IHomeApiRes } from '@/types/components';
-import Link from 'next/link';
+// import Link from 'next/link';
 // import SweaterStylesCMSPage from '../SweaterStyle/SweaterStylesCMSPage';
 import CmsPageBySlug from '../SweaterStyle/CmsPageBySlug';
 // import CustomSweaterSection from './custom-sweater-section';
-import AllSweaterStyles from './all-sweater-styles';
+// import AllSweaterStyles from './all-sweater-styles';
 import OrderingStepsSection from './ordering-steps-section';
 import CustomSweater from './custom-sweater';
 import ExploreCollection from './explore-collection';
@@ -112,8 +112,8 @@ const HomeComponent = ({ homepageData, homeProductList }: IHomePageProps) => {
             <img src="/images/ww.webp" />
           </div> */}
 
-        <section className="all-sweater-style f-container">
-          {/* <h3>Our All Sweater Styles</h3>
+        {/* <section className="all-sweater-style f-container"> */}
+        {/* <h3>Our All Sweater Styles</h3>
           <ul className="all-sweater-list">
             <li>
               <Link className="sweater-style-img" href="#" title="Crew Neck Pullover">
@@ -156,15 +156,15 @@ const HomeComponent = ({ homepageData, homeProductList }: IHomePageProps) => {
               </Link>
             </li>
           </ul> */}
-          {/* other homepage stuff */}
-          {/* <SweaterStylesCMSPage /> */}
-          {/* <AllSweaterStyles /> */}
-          {/* <div className="view-all-style">
+        {/* other homepage stuff */}
+        {/* <SweaterStylesCMSPage /> */}
+        {/* <AllSweaterStyles /> */}
+        {/* <div className="view-all-style">
             <Link href="/sweater?gender=6798793f705aedfe39db13b1&material=678077a88c6968b4bb6fc291" title="View All Styles">
               View All Styles
             </Link>
           </div> */}
-        </section>
+        {/* </section> */}
         <section className="ordering-steps">
           {/* <div className="ordering-steps-img">
             <img src="/images/ordering-steps.webp" alt="4 easy ordering steps" />
