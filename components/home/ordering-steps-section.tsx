@@ -63,7 +63,7 @@ export default function OrderingStepsSection() {
     }, []);
 
     return (
-        <section className="ordering-steps f-container">
+        <section className="ordering-steps">
             {mainImage && (
                 <div className="ordering-steps-img">
                     <Image src={getAWSImageUrl(mainImage)} alt="4 easy ordering steps" width={600} height={400} />

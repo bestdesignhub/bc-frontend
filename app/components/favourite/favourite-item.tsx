@@ -18,17 +18,17 @@ export default function FavouriteItem({
 }: FavouriteItemProps) {
   return (
     <div className="favouritebox">
-    <Link href={href}>
-      <div className="image">
-        <Image
-          loading="lazy"
-          src={getAWSImageUrl(image)}
-          alt={title}
-          width={1520}
-          height={680}
-        />
-      </div>
-    </Link>
-  </div>
+      <Link href={href}>
+        <div className="image">
+          <Image
+            loading="lazy"
+            src={getAWSImageUrl(image)}
+            alt={title}
+            width={1520}
+            height={680}
+          />
+        </div>
+      </Link>
+    </div>
   );
 }
