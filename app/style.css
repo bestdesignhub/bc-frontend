@@ -703,7 +703,8 @@ body {
 
 .custom-sweater-name {
   color: #7e7262;
-  font-size: 26px;
+  font-size: 24px;
+  line-height: 28px;
   font-family: 'Gilda Display', serif;
   display: block;
   margin: 20px 0;
@@ -751,6 +752,11 @@ body {
   padding-top: 20px;
 }
 
+.styleImg {
+  margin: 0;
+  height: auto;
+}
+
 .your-style h3 {
   font-size: 31px;
   color: #7e7262;
@@ -767,7 +773,9 @@ body {
 }
 
 .your-style img {
-  margin-left: auto;
+  margin-left: 0;
+  width: 100%;
+  max-width: 100%;
 }
 
 .women-men-sweater {
@@ -873,6 +881,7 @@ body {
 
 .ordering-steps-img img {
   width: 100%;
+  height: auto;
 }
 
 .four-steps {

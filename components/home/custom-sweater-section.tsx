@@ -135,7 +135,7 @@ export default function CustomSweaterSection() {
                 <div className="your-style">
                     <h3>{styleBlock.title}</h3>
                     {styleBlock.subtitle && <h4>{styleBlock.subtitle}</h4>}
-                    <img src={getAWSImageUrl(styleBlock.imageUrl)} alt={styleBlock.title} />
+                    <img className="styleImg" src={getAWSImageUrl(styleBlock.imageUrl)} alt={styleBlock.title} />
                 </div>
             )}
         </section>

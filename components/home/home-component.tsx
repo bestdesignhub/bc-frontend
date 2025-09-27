@@ -13,7 +13,7 @@ import CmsPageBySlug from '../SweaterStyle/CmsPageBySlug';
 import OrderingStepsSection from './ordering-steps-section';
 import CustomSweater from './custom-sweater';
 import ExploreCollection from './explore-collection';
-import AboutBespoke from './about-bespoke';
+// import AboutBespoke from './about-bespoke';
 // import { Favourite } from '@/app/components/favourite';
 
 interface IHomePageProps {
@@ -165,8 +165,7 @@ const HomeComponent = ({ homepageData, homeProductList }: IHomePageProps) => {
             </Link>
           </div> */}
         {/* </section> */}
-        <section className="ordering-steps">
-          {/* <div className="ordering-steps-img">
+        {/* <div className="ordering-steps-img">
             <img src="/images/ordering-steps.webp" alt="4 easy ordering steps" />
           </div>
           <div className="four-steps">
@@ -218,10 +217,8 @@ const HomeComponent = ({ homepageData, homeProductList }: IHomePageProps) => {
               velit...
             </p>
           </div> */}
-          {/* <CmsPageBySlug slug="ordering-steps" /> */}
-          <OrderingStepsSection />
-        </section>
-
+        {/* <CmsPageBySlug slug="ordering-steps" /> */}
+        <OrderingStepsSection />
         {/* <section className="explore-collection f-container">
           <div className="collection-content">
             <h3>Explore our Yarn Collection</h3>
@@ -282,7 +279,7 @@ const HomeComponent = ({ homepageData, homeProductList }: IHomePageProps) => {
             </ul>
           </div>
         </section> */}
-        <AboutBespoke aboutData={categoryData} />
+        {/* <AboutBespoke aboutData={categoryData} /> */}
 
         {/* <section className="f-container about-content">
           <p>
