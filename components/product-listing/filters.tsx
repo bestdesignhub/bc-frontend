@@ -159,7 +159,7 @@ const ProductListFilters: FC<Props> = ({
         <Accordion.Item eventKey="4">
           <Accordion.Header>Price</Accordion.Header>
           <Accordion.Body>
-            <PriceRangeSlider max={priceRange?.maxPrice} min={priceRange?.minPrice} step={1} />
+            <PriceRangeSlider max={priceRange?.maxPrice} min={priceRange?.minPrice} />
           </Accordion.Body>
         </Accordion.Item>
       </Accordion>

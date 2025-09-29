@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { getAWSImageUrl } from '@/utils/common.utils';
+import LeftArrowIcon from '@/components/svg-icons/arrow-left/LeftArrowIcon';
 
 const ProductImageGallery = ({ details }: { details?: { images?: string[] } }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -20,29 +21,34 @@ const ProductImageGallery = ({ details }: { details?: { images?: string[] } }) =
   return (
     <>
       <div className="productGalleryWrapper position-relative text-center">
-        <button
-          className="btn btn-light position-absolute top-50 start-0 translate-middle-y z-10"
-          onClick={handlePrev}
-        >
-          ◀
-        </button>
+        {images.length > 1 && (
+          < button
+            className="btn btn-light position-absolute top-50 start-0 translate-middle-y z-10"
+            onClick={handlePrev}
+          >
+            <LeftArrowIcon />
+          </button>
+        )}
         <div className="image-item">
           {images.length > 0 && (
             <Image
               loading="lazy"
               src={getAWSImageUrl(images[currentIndex])}
-              width={800}
-              height={550}
+              width={416}
+              height={625}
               alt="product"
+              className="object-contain transition-opacity duration-500 ease-in-out opacity-100 animate-fade"
             />
           )}
         </div>
-        <button
-          className="btn btn-light position-absolute top-50 end-0 translate-middle-y z-10"
-          onClick={handleNext}
-        >
-          ▶
-        </button>
+        {images.length > 1 && (
+          <button
+            className="rightBtn btn btn-light position-absolute top-50 end-0 translate-middle-y z-10"
+            onClick={handleNext}
+          >
+            <LeftArrowIcon />
+          </button>
+        )}
       </div>
     </>
   );
