@@ -283,6 +283,7 @@
 
 .womanproductbox .image {
   position: relative;
+  overflow: hidden;
 }
 
 .womanproductbox .image::after {
