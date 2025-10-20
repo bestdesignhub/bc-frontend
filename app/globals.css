@@ -404,10 +404,19 @@ h2.style-title.bnr {
 
 .sweater-bg-step {
   background: #fff;
-  padding: 20px;
+  /* padding: 20px; */
   margin-top: -20px;
   z-index: 2;
   position: relative;
+}
+
+.sweater-bg-step .product-container,
+.sweater-bg-step .sidebar {
+  padding: 20px;
+}
+
+.sweater-bg-step .product-topbar {
+  margin: 20px;
 }
 
 .no-horizontal-padding.no-horizontal-padding>* {

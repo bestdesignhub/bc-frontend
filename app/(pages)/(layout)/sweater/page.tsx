@@ -112,7 +112,6 @@ const SweaterPage = async ({
   console.log("StepList ===>>>", stepList?.data?.data?.data);
   const allSteps = stepList?.data?.data?.data || [];
   const genderStyles = allSteps.filter((item: any) => item.gender._id === genderId);
-
   const colours = coloursResult.status === 'fulfilled' ? coloursResult.value : [];
   const genders = genderResult.status === 'fulfilled' ? genderResult.value : [];
   const materials = materialResult.status === 'fulfilled' ? materialResult.value : [];
@@ -192,6 +191,7 @@ const SweaterPage = async ({
                       </div>
                     </div>
                   )}
+
                   <div className="sweater-bg-step">
                     {styleId && (
                       <YarnListingSidebar
@@ -211,7 +211,6 @@ const SweaterPage = async ({
                       currentPage={yarnList?.currentPage}
                       totalPage={yarnList?.totalPage}
                     />}
-
                   </div>
                 </Col>
               </Row>

@@ -58,14 +58,17 @@
 }
 
 .women-landing-category {
-  display: flex;
-  width: 100%;
+  vertical-align: middle;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
 }
 
 .women-landing-category .banner-caption {
-  width: calc(100% - 352px);
+  width: 100%;
   display: flex;
-  padding-right: 70px;
+  /* padding-right: 70px; */
   align-items: center;
   text-transform: uppercase;
 }
@@ -289,7 +292,7 @@
 .womanproductbox .image::after {
   content: '';
   display: block;
-  padding-top: 115.6%;
+  padding-top: 350px;
 }
 
 .womanproductbox .image img {
@@ -299,6 +302,7 @@
   /* width: 100%;
   height: 100%; */
   object-fit: cover;
+  height: 350px;
 }
 
 .womanproductbox .info {
