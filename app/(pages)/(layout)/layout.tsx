@@ -7,7 +7,7 @@ export default async function PageLayout({
 }>) {
   return (
     <>
-      <Layout>{children}</Layout>;
+      <Layout>{children}</Layout>
     </>
   );
 }

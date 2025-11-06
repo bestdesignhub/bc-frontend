@@ -83,3 +83,4 @@ export const USER_MEASUREMENT_UPDATE_URL = '/measurement-profile/update';
 
 
 export const CMS_PAGE_BY_SLUG_URL = '/cms-pages/slug';
+export const CMS_PAGE_GET_URL = '/cms';

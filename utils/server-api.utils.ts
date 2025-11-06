@@ -32,6 +32,7 @@ import {
   USER_MEASUREMENT_SLUG_URL,
   WISHLIST_LIST_URL,
   YARN_CARD_LIST_URL,
+  CMS_PAGE_GET_URL,
 } from '@/constants/apis';
 import { handleApiCall } from './common.utils';
 import { getUserData, getUserToken } from '@/config/locale';
@@ -582,6 +583,7 @@ export const getPriceListByIds = async (
     return {};
   }
 };
+
 export const getMeasurementData = async (
   genderId: string,
   style: string,
@@ -608,10 +610,32 @@ export const getMeasurementData = async (
   }
 };
 
-
 export const fetchPriceList = async (payload: any) => {
   // console.log(`${CONFIG.apiUrl}/apis${PRODUCT_PRICE_BY_SIZE_}`);
 
   const res = await axios.post(`${CONFIG.apiUrl}${PRODUCT_PRICE_BY_SIZE_}`, payload);
   return res?.data?.data;
+};
+
+export const getCMSPage = async (slug: string) => {
+  const res: any = await handleApiCall(`${CMS_PAGE_GET_URL}/slug/${slug}`, 'GET', {}, {});
+
+  if (res.code === 200) {
+    return res?.data;
+  } else {
+    return null;
+  }
+};
+
+export const getCMSList = async () => {
+  const res: any = await handleApiCall(`${CMS_PAGE_GET_URL}/list`, 'GET', {
+      page: 1,
+      perPage: 100,
+    },{});
+
+  if (res.code === 200) {
+    return res?.data;
+  } else {
+    return null;
+  }
 };

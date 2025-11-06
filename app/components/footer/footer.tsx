@@ -1,8 +1,12 @@
 import '@/app/styles/footer.css';
 import { ISettings } from '@/types';
 import Link from 'next/link';
+import {
+  getCMSList
+} from '@/utils/server-api.utils';
 
 export default async function Footer({ }: { settings?: ISettings }) {
+  const cmsPages = await getCMSList().catch(() => null);
   return (
     <>
       <footer className="footer">
@@ -130,6 +134,16 @@ export default async function Footer({ }: { settings?: ISettings }) {
                   Terms of use
                 </Link>
               </li>
+            </ul>
+          </div>
+          <div className="f-links-box">
+            <h4>Others</h4>
+            <ul className="f-link">
+              {cmsPages.data.length > 0 && cmsPages.data.map((page: any, idx: number) => (
+                <li key={idx}>
+                  <Link href={`/${page.slug}`}>{page.title}</Link>
+                </li>
+              ))}
             </ul>
           </div>
           <div className="f-links-box">
