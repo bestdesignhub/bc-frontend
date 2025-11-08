@@ -19,14 +19,18 @@ type CmsPage = {
   sections?: Section[];
 };
 
-export default async function CmsPage({ params }: { params: { slug: string } }) {
-    const { slug } = await params;    
-    const page = await getCMSPage(slug);    
-    
-    if (!page || !page.slug) {
-      notFound();
-    }
-    return (
+type CmsPageProps = {
+  params: Promise<{ slug: string }>;
+};
+
+export default async function CmsPage({ params }: CmsPageProps) {
+  const { slug } = await params;
+  const page = await getCMSPage(slug);
+
+  if (!page || !page.slug) {
+    notFound();
+  }
+  return (
     <div className="max-w-7xl mx-auto pb-16">
       {/* Banner Section */}
       {page.bannerImage ? (
@@ -82,9 +86,8 @@ export default async function CmsPage({ params }: { params: { slug: string } }) 
             return (
               <div
                 key={idx}
-                className={`flex flex-col md:flex-row items-center gap-10 ${
-                  isReversed ? "md:flex-row-reverse" : ""
-                }`}
+                className={`flex flex-col md:flex-row items-center gap-10 ${isReversed ? "md:flex-row-reverse" : ""
+                  }`}
               >
                 {/* Section Image */}
                 {section.image && (
@@ -119,5 +122,5 @@ export default async function CmsPage({ params }: { params: { slug: string } }) 
         </div>
       )}
     </div>
-    );
+  );
 }
