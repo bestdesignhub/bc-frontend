@@ -31,7 +31,7 @@ export default async function CmsPage({ params }: CmsPageProps) {
     notFound();
   }
   return (
-    <div className="max-w-7xl mx-auto pb-16">
+    <div className="max-w-7xl mx-auto pb-16 cms-template">
       {/* Banner Section */}
       {page.bannerImage ? (
         <div className="relative w-full h-[50vh] md:h-[60vh] overflow-hidden mb-12">
@@ -79,7 +79,7 @@ export default async function CmsPage({ params }: CmsPageProps) {
 
       {/* Alternating Sections */}
       {page.sections?.length > 0 && (
-        <div className="space-y-20 px-4">
+        <div className="space-y-20 px-4 cmsPageBottom">
           {page.sections.map((section: Section, idx: number) => {
             const isReversed = idx % 2 === 1;
 
