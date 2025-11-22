@@ -1794,6 +1794,70 @@ button.yarn-button:hover {
   padding-bottom: 5px;
 }
 
+.main-banner-img img {
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+}
+
+h2.pageTitle {
+  position: absolute;
+  top: 50%;
+  transform: translate(0%, -50%);
+  left: 0;
+  padding-left: 50px;
+  color: #fff;
+  font-size: 58px;
+  line-height: 65px;
+}
+
+.cms-template .container {
+  width: 100%;
+  max-width: 100%;
+  padding: 0 40px;
+}
+
+.cms-intro {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+.main-section-content {
+  display: flex;
+  gap: 50px;
+}
+
+.flex-row-reverse {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.section-content {
+  gap: 80px;
+  display: flex;
+  margin-bottom: 120px;
+}
+
+.cms-section-image {
+  width: 38%;
+}
+
+.cms-section-text {
+  width: 62%;
+}
+
+.cms-section-text ul {
+  margin: 0;
+  padding: 0;
+}
+
+.cms-intro p {
+  font-size: 22px;
+  line-height: 35px;
+  color: #726A5F;
+  margin-bottom: 20px;
+}
+
 /* Responsive Css Start */
 @media only screen and (max-width:1740px) {
   .order-steps li {

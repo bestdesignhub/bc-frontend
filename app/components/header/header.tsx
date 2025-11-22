@@ -186,7 +186,7 @@ export default function Header() {
                 </Link>
               </li>
               <li>
-                <Link href="/our-story" title="Our Story">
+                <Link href="/our-story-page" title="Our Story">
                   Our Story
                 </Link>
               </li>
@@ -196,7 +196,7 @@ export default function Header() {
                 </Link>
               </li> */}
               <li>
-                <Link href="/about-us" title="About Us">
+                <Link href="/about-us-page" title="About Us">
                   About Us
                 </Link>
               </li>
@@ -250,7 +250,7 @@ export default function Header() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/our-story" title="Our Story">
+                  <Link href="/our-story-page" title="Our Story">
                     Our Story
                   </Link>
                 </li>
@@ -260,7 +260,7 @@ export default function Header() {
                 </Link>
               </li> */}
                 <li>
-                  <Link href="/about-us" title="About Us">
+                  <Link href="/about-us-page" title="About Us">
                     About Us
                   </Link>
                 </li>
