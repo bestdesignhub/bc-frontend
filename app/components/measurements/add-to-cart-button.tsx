@@ -13,7 +13,7 @@ const MeasurementAddToCartButton = ({
   productTypeId,
   defaultFittingSize,
   queryParams,
-  gender, price, size, createdBy, instructions
+  gender, price, size, createdBy, instructions, openOnLoad = false
 }: {
   steps: any[];
   productId: string;
@@ -25,11 +25,21 @@ const MeasurementAddToCartButton = ({
   price?: any;
   size?: any;
   createdBy?: any;
-  instructions?: any
+  instructions?: any;
+  openOnLoad?: boolean;
 }) => {
   const t = useTranslations();
   const [showModal, setShowModal] = useState(false);
   const router = useRouter();
+
+
+  // ⭐ Auto-open modal when component loads
+  React.useEffect(() => {
+    if (openOnLoad) {
+      setShowModal(true);
+    }
+  }, [openOnLoad]);
+
   const handleModalOpen = () => {
     if (queryParams) {
       if (typeof queryParams === 'string') {
