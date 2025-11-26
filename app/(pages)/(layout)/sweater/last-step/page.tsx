@@ -227,7 +227,6 @@ const LastStepPage = async ({
                 <div className="Sweater-left-inner">
                   {stepData?.productData?.images?.length ? (
                     <SweaterSlider images={stepData?.productData?.images} />
-                    // <SweaterSlider images={stepData.style.stepCard.realImage} />
                   ) : (
                     <SweaterBox stepData={stepData} />
                   )}
@@ -252,10 +251,9 @@ const LastStepPage = async ({
                             src={getAWSImageUrl(stepData?.yarn?.image)}
                             alt="yarn img"
                             width={170}
-                            height={170}
+                            height={142}
                             loading="lazy"
                           />
-                          <ChangeYarnButton searchParams={resolvedSearchParams} />
                         </div>
                       </div>
                       <div className="products-box-sub">
@@ -266,13 +264,6 @@ const LastStepPage = async ({
                             {t('COMMON.NAME')}: {' '}
                             <span>
                               {stepData?.yarn?.name} - {stepData?.yarn?.yarnId}
-                            </span>
-                          </div>
-                          <div className="name">
-                            {t('COMMON.GENDER')}: {' '}
-                            <span>
-                              {/* {stepData?.yarn?.gender} */}
-                              {stepData?.genderData?.name?.en}
                             </span>
                           </div>
                           <div className="name">
@@ -294,6 +285,7 @@ const LastStepPage = async ({
                             </span>
                           </div>
                         </div>
+                        <ChangeYarnButton searchParams={resolvedSearchParams} />
 
                         {/* <div className="Sweater-right-bottom">
                       <div className="fabric-listing">
@@ -352,10 +344,10 @@ const LastStepPage = async ({
                       <div className="d-flex flex-wrap">
                         {stepData?.steps?.map((stepObj: any, index: number) => {
                           const currentStepData = stepData?.[stepObj?.slug] || {};
-                          console.log("currentStepData", currentStepData);
-                          console.log("stepObj", stepObj);
-                          console.log("index", index);
-                          console.log("stepData", stepData);
+                          // console.log("currentStepData", currentStepData);
+                          // console.log("stepObj", stepObj);
+                          // console.log("index", index);
+                          // console.log("stepData", stepData);
 
                           if (stepObj?.name === 'Price Module') return null;
                           if (stepObj?.name === 'Style') return null;

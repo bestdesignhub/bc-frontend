@@ -19,28 +19,6 @@ const mainSliderSettings = {
   fade: true,
 };
 
-// const thumbnailSliderSettings = {
-//   dots: false,
-//   arrows: false,
-//   infinite: true,
-//   speed: 500,
-//   slidesToShow: 4,
-//   slidesToScroll: 1,
-//   focusOnSelect: true,
-//   centerPadding: '0px',
-//   responsive: [
-//     {
-//       breakpoint: 768,
-//       settings: { slidesToShow: 3 },
-//     },
-//     {
-//       breakpoint: 480,
-//       settings: { slidesToShow: 2 },
-//     },
-//   ],
-// };
-
-
 export default function SweaterSlider({ images = [] }: { images: string[] }) {
   const mainSlider = useRef<Slider | null>(null);
   const thumbnailSlider = useRef<Slider | null>(null);
@@ -75,24 +53,6 @@ export default function SweaterSlider({ images = [] }: { images: string[] }) {
           </div>
         ))}
       </Slider>
-
-      {/* <Slider
-        {...thumbnailSliderSettings}
-        asNavFor={nav1 ?? undefined}
-        ref={(slider: any) => (thumbnailSlider.current = slider)}
-        className="thumbnail-slider"
-      >
-        {images.map((img, i) => (
-          <div key={i} className="thumbnail">
-            <Image
-              src={getAWSImageUrl(img)}
-              alt={`Thumbnail ${i + 1}`}
-              width={80}
-              height={80}
-            />
-          </div>
-        ))}
-      </Slider> */}
     </div>
   );
 }

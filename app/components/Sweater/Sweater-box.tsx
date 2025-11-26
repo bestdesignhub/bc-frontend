@@ -30,7 +30,6 @@ export default function SweaterBox({ stepData }: SweaterBoxProps) {
   const [imageSrc, setImageSrc] = useState<string | StaticImageData>(); //Sweaterimg1
   const [loading, setLoading] = useState(false);
   const [title, setTitle] = useState('');
-  console.log("===>>>stepData====", stepData?.steps);
 
   useEffect(() => {
     stepData?.steps?.map((e: any) => {
@@ -89,11 +88,15 @@ export default function SweaterBox({ stepData }: SweaterBoxProps) {
           pattern,
           yarn,
           gauge, // assuming `fitting` is gauge here?
-          language: 'en',
-        });
+          language: 'en'
+        })
+        console.log("response mani", response)
+          ;
 
         if (response.data.success && response.data.data.length > 0) {
           const styleData = response.data.data[0]; // assuming one match
+          console.log("styledata", styleData);
+
           const imageUrl = `${BUCKET_DOMAIN}${styleData.realImage}`;
           setImageSrc(imageUrl);
           setTitle(styleData.title); // update the title if needed
@@ -121,9 +124,6 @@ export default function SweaterBox({ stepData }: SweaterBoxProps) {
         ) : (
           <Image
             loading="lazy"
-            // src={imageSrc}
-            // src={getAWSImageUrl(stepData?.style?.stepCard?.realImage)}
-            // src={imageSrc}
             src={
               imageSrc
                 ? imageSrc
@@ -131,7 +131,8 @@ export default function SweaterBox({ stepData }: SweaterBoxProps) {
             }
             alt="Sweater Image"
             width={380}
-            height={414}
+            height={0}
+            className="h-auto w-full object-contain"
             unoptimized={typeof imageSrc === 'string'}
           />
         )}

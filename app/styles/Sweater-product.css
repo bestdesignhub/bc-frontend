@@ -265,6 +265,17 @@
   padding: 0;
 }
 
+.change-link-2 a.changeYarnBtn {
+  background: #af986d;
+  padding: 10px;
+  color: #fff;
+  height: auto;
+  font-size: 10px;
+  border: 0;
+  width: 65%;
+  margin-top: 16px;
+}
+
 .yarn-section .change-link-2 a {
   border: 0;
   color: #fff;
@@ -277,7 +288,7 @@
 
 .yarn-section .img {
   width: 100px;
-  height: 100px;
+  height: auto;
   overflow: hidden;
   position: relative;
   margin-right: 10px;
@@ -477,11 +488,8 @@
   /* padding: 20px 20px; */
 }
 
-.Sweater-right-bottom .gauge-navigate .navigate-item:first-child {
-  /* position: absolute;
-  top: 20px;
-  right: 0; */
-  width: 212px;
+.Sweater-right-bottom .gauge-navigate .navigate-item:first-child img {
+  height: 100% !important;
 }
 
 .gauge-navigate .navigate-item h6 {
@@ -499,6 +507,11 @@
   font-size: 15px;
 }
 
+.Sweater-right-bottom .gauge-navigate .navigate-item h6.step-title-custom {
+  position: static;
+  display: none;
+}
+
 .navigatebox {
   display: flex;
   padding: 10px;
@@ -508,8 +521,15 @@
 }
 
 .yarn-section .info {
-  padding: 30px 0 0;
+  padding: 0;
   width: 47%;
+  position: relative;
+}
+
+.Sweater-right-bottom .yarn-section .info {
+  padding: 0;
+  width: 47%;
+  position: relative;
 }
 
 .navigatebox .image {
@@ -567,12 +587,15 @@
   border: 0;
   outline: none;
   box-shadow: none;
-  position: absolute;
-  left: 10px;
-  bottom: 10px;
+  position: relative;
   background: #af986d;
   padding: 10px;
-  width: 46%;
+  width: 100%;
+}
+
+.Sweater-right .navigatebox .info button {
+  position: absolute;
+  bottom: 0;
 }
 
 .gauge-navigate.smallbx .info button {

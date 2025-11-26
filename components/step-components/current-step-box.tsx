@@ -39,7 +39,8 @@ const CurrentStepBox: FC<{ currentStepData: any; stepNumber: any }> = ({
         <Image
           src={getAWSImageUrl(currentStepData?.stepCard?.realImage)}
           width={300}
-          height={200}
+          height={0}
+          className="h-auto w-full object-contain"
           alt={currentStepData?.stepCard?.title}
           loading="lazy"
         />

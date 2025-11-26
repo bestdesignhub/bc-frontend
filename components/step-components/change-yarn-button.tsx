@@ -17,7 +17,7 @@ const ChangeYarnButton = ({ searchParams }: { searchParams: { [key: string]: str
 
   return (
     <div className="change-link-2">
-      <Link href={`${USER_ROUTES.sweater}?${queryString}&${URL_SLUG.CHANGE}=true`}>
+      <Link className='changeYarnBtn' href={`${USER_ROUTES.sweater}?${queryString}&${URL_SLUG.CHANGE}=true`}>
         {t('COMMON.CHANGE_YARN')}{' '}
       </Link>
     </div>
