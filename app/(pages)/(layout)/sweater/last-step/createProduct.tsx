@@ -6,15 +6,10 @@ import { MESSAGES } from '@/constants';
 import { setLoading } from '@/lib/redux/slices/loaderSlice';
 import { dispatch } from '@/lib/redux/store';
 import Link from 'next/link';
-import { useRouter, useSearchParams } from "next/navigation";
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 
 const CreateProduct = (props: any) => {
-
-    const router = useRouter(); // ✅ Inside the component
-    const searchParams = useSearchParams(); // ✅ Inside the component
-
     const {
         stepData,
         // currentStepData,
@@ -29,9 +24,7 @@ const CreateProduct = (props: any) => {
         productTypeId,
         // fittingName,
         steps,
-        productId,
         fittingId,
-        availableSizes,
         // measurementProfiles,
         defaultFittingSize,
         price,

@@ -756,6 +756,10 @@
   border: 0;
 }
 
+.size-buttons .login-link-sub {
+  width: 100%;
+}
+
 .size-buttons button.save-button:hover {
   background: #7f7263;
 }
