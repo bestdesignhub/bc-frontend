@@ -481,7 +481,11 @@ const LastStepPage = async ({
                         productId: resolvedSearchParams["product"],
                         fittingId: resolvedSearchParams["fitting"],
                         availableSizes,
-                        measurementProfiles
+                        measurementProfiles,
+                        defaultFittingSize: availableSizes?.at(0)?._id,
+                        price: selectedPrice,
+                        size: selectedSize
+
                       }} /> : (<>
                         <span>{t('COMMON.ALREADY_A_CUSTOMER')}?</span>
                         <div className="login-link-sub">

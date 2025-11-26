@@ -1,9 +1,11 @@
 
 'use client'
+import MeasurementAddToCartButton from '@/app/components/measurements/add-to-cart-button';
 import userAxiosInstance from '@/config/userAxiosInstance';
 import { MESSAGES } from '@/constants';
 import { setLoading } from '@/lib/redux/slices/loaderSlice';
 import { dispatch } from '@/lib/redux/store';
+import Link from 'next/link';
 import { useRouter, useSearchParams } from "next/navigation";
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
@@ -26,16 +28,21 @@ const CreateProduct = (props: any) => {
         // measurementProfile,
         productTypeId,
         // fittingName,
-        // steps,
-        // productId,
-        // fittingId,
-        // availableSizes,
-        // measurementProfiles
+        steps,
+        productId,
+        fittingId,
+        availableSizes,
+        // measurementProfiles,
+        defaultFittingSize,
+        price,
+        size
     } = props?.data;
 
     // To print all the data
     // console.log("📝 Full Data Passed from Parent Component (LastStepPage):", props?.data);
     const [isSubmitting, setIsSubmitting] = useState(true);
+
+    const [newProductId, setNewProductId] = useState<string | null>(null);
 
     console.log(isSubmitting);
 
@@ -263,19 +270,21 @@ const CreateProduct = (props: any) => {
             });
 
             if (response.data.success) {
-                toast.success('SUCCESS');
+                // toast.success('SUCCESS');
+                console.log(response.data.data);
 
                 // ✅ Get the new productId from the response
                 const newProductId = response.data.data._id;
+                setNewProductId(newProductId);
 
-                if (newProductId) {
-                    // ✅ Set search params to include the new product ID
-                    const currentParams = new URLSearchParams(searchParams.toString());
-                    currentParams.set('product', newProductId);
+                // if (newProductId) {
+                //     // ✅ Set search params to include the new product ID
+                //     const currentParams = new URLSearchParams(searchParams.toString());
+                //     currentParams.set('product', newProductId);
 
-                    // ✅ Update the URL with the new search params
-                    router.push(`?${currentParams.toString()}`);
-                }
+                //     // ✅ Update the URL with the new search params
+                //     router.push(`?${currentParams.toString()}`);
+                // }
 
             }
         } catch (error) {
@@ -297,14 +306,50 @@ const CreateProduct = (props: any) => {
         //     </button>
 
         // </form>
+        // <div className="size-buttons">
+        //     <button
+        //         key={1}
+        //         className="save-button"
+        //         onClick={(e) => handleSubmit(e)}
+        //     >
+        //         Save
+        //     </button>
+
+        // </div>
+
         <div className="size-buttons">
-            <button
-                key={1}
-                className="save-button"
-                onClick={(e) => handleSubmit(e)}
-            >
-                Save
-            </button>
+            {/* Save Button */}
+            {!newProductId && (
+                // <button
+                //     className="save-button"
+                //     onClick={handleSubmit}
+
+                // >
+                //     {'Add TO Cart'}
+                // </button>
+
+                <div className="login-link-sub" onClick={handleSubmit}>
+                    <Link className="cartbtn" href="#">{'Add TO Cart'}</Link>
+                </div>
+
+            )}
+
+
+
+            {/*  Render Add-To-Cart Component After Success */}
+            {newProductId && (
+                <MeasurementAddToCartButton
+                    steps={steps}
+                    productId={newProductId}
+                    fittingId={fittingId}
+                    productTypeId={productTypeId}
+                    defaultFittingSize={defaultFittingSize}
+                    price={price}
+                    size={size}
+                    openOnLoad={true}
+                />
+            )}
+
 
         </div>
     );
