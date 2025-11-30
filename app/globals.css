@@ -353,7 +353,7 @@ h2.style-title.bnr {
 .accessoriesbox,
 .latest-products .categorybox {
   background-color: white;
-  border: 1px solid #d9d6d1;
+  /* border: 1px solid #d9d6d1; */
   position: relative;
 }
 

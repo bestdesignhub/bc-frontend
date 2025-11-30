@@ -6,9 +6,9 @@
   padding: 0 0 40px;
 }
 
-.accessories-wrapper .slick-slider {
+/* .accessories-wrapper .slick-slider {
   margin: 0 -30px;
-}
+} */
 
 .accessoriesbox {
   padding: 0;
@@ -39,16 +39,16 @@
 }
 
 .accessoriesbox .info h6 {
-  padding: 15px 10px;
+  padding: 15px 0;
   font-size: 16px;
   font-family: "Gilda Display", serif;
   font-weight: 400;
   color: #7f7263;
   display: block;
-  border-bottom: 1px solid #d9d6d1;
-  min-height: 72px;
+  /* border-bottom: 1px solid #d9d6d1; */
+  /* min-height: 72px; */
   display: flex;
-  height: 72px;
+  /* height: 72px; */
   overflow: hidden;
   line-height: 26px;
 }
@@ -80,7 +80,7 @@
 }
 
 .accessoriesbox .info .pr-price {
-  padding: 13px 15px;
+  padding: 13px 0;
   font-size: 18px;
   font-family: "Lato", sans-serif;
   font-weight: 300;

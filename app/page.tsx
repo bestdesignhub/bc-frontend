@@ -42,7 +42,6 @@ export default async function Home() {
 
   const homeModelData = homeModelResult.status === 'fulfilled' ? homeModelResult.value : null;
   const testimonialData = testimonialResult.status === 'fulfilled' ? testimonialResult.value : [];
-  console.log("homeProductList", homepageData);
 
   return (
     <div className={`page-wrapper`}>
@@ -53,7 +52,6 @@ export default async function Home() {
         homeProductList={homeProductList}
         testimonialData={testimonialData}
       />
-      {/* <KeepConnect settings={settingData} /> */}
       <Footer settings={settingData} />
       {homeModelData && homeModelData?.status && <ModalHome modelData={homeModelData} />}
     </div>

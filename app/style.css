@@ -549,27 +549,27 @@ body {
 
 .index-banner .banner-content {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  bottom: 10%;
+  transform: translateY(10%);
   left: 0;
   right: 0;
 }
 
 .index-banner .banner-title {
-  color: #726a5f;
+  color: #fff;
   font-size: 60px;
+  text-align: center;
   font-family: 'Gilda Display', serif;
-  max-width: 640px;
   text-transform: uppercase;
   margin-bottom: 30px;
 }
 
 .banner-buttons {
-  display: flex;
-  flex-wrap: wrap;
   align-items: center;
   padding-left: 0;
-  margin-top: 15px;
+  margin: 0 auto;
+  width: 510px;
+  display: flex;
 }
 
 .banner-buttons li:last-child {
@@ -577,11 +577,11 @@ body {
 }
 
 .banner-buttons a {
-  border: 1px solid #726a5f;
+  border-bottom: 1px solid #fff;
   font-size: 20px;
   font-family: 'Poppins', sans-serif;
   font-weight: 500;
-  color: #726a5f;
+  color: #fff;
   padding: 6px 15px;
   display: block;
   transition: 0.5s;
@@ -589,8 +589,19 @@ body {
 }
 
 .banner-buttons a:hover {
-  background-color: #726a5f;
   color: #fff;
+}
+
+/* .icon-bg {
+  background: url(./images/icon-bg.webp) center top no-repeat;
+  height: 500px;
+} */
+
+.icon-container {
+  width: 1300px;
+  max-width: 1300px;
+  padding: 75px 0;
+  margin: 0 auto;
 }
 
 .latest-product h2 {
@@ -656,15 +667,9 @@ body {
   font-weight: bold;
 }
 
-.create-custom {
-  display: flex;
-  flex-wrap: wrap;
-  margin-bottom: 112px;
-}
-
 .custom-sweater {
   background-color: #f5f2e8;
-  width: calc(68% - 26px);
+  width: 100%;
   padding: 30px 30px 0;
 }
 
@@ -702,7 +707,7 @@ body {
 }
 
 .custom-sweater-name {
-  color: #7e7262;
+  color: #fff;
   font-size: 24px;
   line-height: 28px;
   font-family: 'Gilda Display', serif;
@@ -728,28 +733,45 @@ body {
 }
 
 .custom-sweater-btn li a {
-  background-color: #7e7262;
+  /* background-color: #7e7262; */
   color: #fff;
-  font-size: 16px;
+  font-size: 22px;
   display: block;
-  padding: 11px 45px;
+  padding: 11px 0;
   font-family: 'Poppins', sans-serif;
   font-weight: 500;
   transition: 0.5s;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  text-decoration: underline !important;
+  margin-right: 50px;
 }
 
 .custom-sweater-btn li a:hover {
-  background-color: #5f564a;
+  color: #5f564a;
 }
 
 .your-style {
   margin-left: auto;
   background-color: #f5f2e8;
-  width: calc(30% + 26px);
+  /* width: calc(30% + 26px); */
   text-align: center;
-  padding-top: 20px;
+  padding-top: 0;
+  position: relative;
+}
+
+.your-style .custom-sweater-btn {
+  margin: 0;
+  display: inline-flex;
+}
+
+.style-description {
+  position: absolute;
+  right: 40px;
+  width: 700px;
+  top: 50%;
+  transform: translate(0, -50%);
+  text-align: left;
 }
 
 .styleImg {
@@ -758,8 +780,9 @@ body {
 }
 
 .your-style h3 {
-  font-size: 31px;
-  color: #7e7262;
+  font-size: 60px;
+  line-height: 75px;
+  color: #fff;
   font-family: 'Gilda Display', serif;
   font-weight: 400;
 }
@@ -781,7 +804,7 @@ body {
 .women-men-sweater {
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: 90px;
+  margin-bottom: 10px;
   background: #f5f2e8;
 }
 
@@ -872,11 +895,11 @@ body {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  margin-bottom: 90px;
+  margin-bottom: 10px;
 }
 
 .ordering-steps-img {
-  width: 50%;
+  width: 100%;
 }
 
 .ordering-steps-img img {
@@ -885,8 +908,10 @@ body {
 }
 
 .four-steps {
+  background: url(./images/icon-bg.webp) center top no-repeat;
+  min-height: 640px;
   background-color: #f7f7f7;
-  width: 50%;
+  width: 100%;
   text-align: center;
   padding: 40px 0;
   display: flex;
@@ -896,7 +921,7 @@ body {
 
 .four-steps h4 {
   font-size: 30px;
-  color: #17180d;
+  color: #fff;
   font-family: 'Gilda Display', serif;
   text-transform: uppercase;
   margin-bottom: 30px;
@@ -904,7 +929,7 @@ body {
 
 .four-steps p {
   font-size: 20px;
-  color: #4d4a44;
+  color: #fff;
   font-family: 'Gilda Display', serif;
   margin-bottom: 20px;
 }
@@ -912,20 +937,22 @@ body {
 .order-steps {
   display: flex;
   flex-wrap: wrap;
-  margin: 30px 0;
+  margin: 30px auto;
   justify-content: space-around;
+  width: 70%;
+  max-width: 70%;
 }
 
 .order-steps li {
   width: 25%;
-  background-color: #fff;
-  border-radius: 100%;
+  /* background-color: #fff;
+  border-radius: 100%; */
   height: 196px;
   max-width: 198px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  box-shadow: 0 0 10px #ececec;
+  /* box-shadow: 0 0 10px #ececec; */
   position: relative;
 }
 
@@ -954,8 +981,8 @@ body {
 }
 
 .step-text {
-  color: #43433f;
-  font-size: 16px;
+  color: #fff;
+  font-size: 22px;
   font-weight: 400;
   width: 100%;
   margin-bottom: auto;
@@ -1638,6 +1665,7 @@ button.yarn-button:hover {
 
 .sweater-img-content {
   display: flex;
+  position: relative;
 }
 
 .women-sweater .sweater-content {
@@ -1647,14 +1675,15 @@ button.yarn-button:hover {
 .sweater-content {
   display: flex;
   flex-direction: column;
-  align-self: center;
   padding: 30px;
-  width: 61%;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
 }
 
 .women-men-sweater .sweater-content h3 {
   font-size: 50px;
-  color: #7f7263;
+  color: #fff;
   font-family: "Gilda Display", serif;
   font-weight: 400;
   margin-bottom: 20px !important;
@@ -1663,7 +1692,7 @@ button.yarn-button:hover {
 .sweater-content p {
   font-size: 20px;
   font-weight: 300;
-  color: #7f7263;
+  color: #fff;
   margin-bottom: 30px;
 }
 
@@ -1672,9 +1701,8 @@ button.yarn-button:hover {
 }
 
 .sweater-content .shop-button a {
-  background-color: #7f7263;
   font-size: 20px;
-  color: #e7e7e7;
+  color: #fff;
   padding: 11px 50px;
   display: inline-block;
   line-height: normal;
@@ -1904,9 +1932,9 @@ h2.pageTitle {
     font-size: 18px;
   }
 
-  .sweater-img-content img {
+  /* .sweater-img-content img {
     max-width: 300px;
-  }
+  } */
 
   .sweater-content h3 {
     font-size: 40px;

@@ -15,7 +15,6 @@ interface StepItem {
 }
 
 export default function OrderingStepsSection() {
-    const [mainImage, setMainImage] = useState<string>('');
     const [steps, setSteps] = useState<StepItem[]>([]);
 
     useEffect(() => {
@@ -34,15 +33,9 @@ export default function OrderingStepsSection() {
                     const allItems = response.data?.data?.data;
 
                     // Separate main image & steps
-                    const main = allItems.find((item: any) => item.title.toLowerCase() === 'main image');
                     const stepsList = allItems.filter(
                         (item: any) => item.title.toLowerCase() !== 'main image'
                     );
-                    console.log('main', main);
-                    console.log('stepsList', stepsList);
-
-
-                    if (main) setMainImage(main.filePath);
                     setSteps(
                         stepsList.map((item: any) => ({
                             _id: item._id,
@@ -64,12 +57,6 @@ export default function OrderingStepsSection() {
 
     return (
         <section className="ordering-steps">
-            {mainImage && (
-                <div className="ordering-steps-img">
-                    <Image src={getAWSImageUrl(mainImage)} alt="4 easy ordering steps" width={600} height={400} />
-                </div>
-            )}
-
             <div className="four-steps">
                 <h4>4 easy ordering steps</h4>
                 <p>

@@ -10,38 +10,67 @@ interface ICustomSweaterProps {
 export default function CustomSweater({ sweaterData }: ICustomSweaterProps) {
     if (!sweaterData?.length) return null;
 
-    // Limit sweaterSteps to the first three cards
-    const sweaterSteps = sweaterData.slice(0, 3); // Takes only the first 3 items
 
     // Optionally pick a specific card as styleCard (e.g., the fourth card or adjust as needed)
     const styleCard = sweaterData[3]; // Using the fourth card as styleCard, adjust index if needed
 
     return (
-        <section className="create-custom f-container">
-            <aside className="custom-sweater">
-                <h3>Create Custom Sweater</h3>
-                <ul className="custom-sweater-list">
-                    {sweaterSteps.map((step: any) => (
-                        <li key={step._id || step.uuid || Math.random().toString(36).substr(2, 9)}> {/* Use _id or generate unique key */}
-                            <div className="custom-sweater-img">
-                                <Link href="#" title={step.title.en}>
-                                    <Image
-                                        src={getAWSImageUrl(step.image)}
-                                        alt={step.title.en}
-                                        width={232}
-                                        height={232}
-                                        loading="lazy"
-                                    />
+        <section className="create-custom">
+            <div className='full-container'>
+                {styleCard && (
+                    <div className="your-style">
+                        <div className='style-description'>
+                            <h3>{styleCard.title.en}</h3>
+                            {/* <h3>{styleCard.description.en || 'Custom Solutions'}</h3> */}
+                            <ul className="custom-sweater-btn">
+                                <li>
+                                    <Link href="/sweater" title="Create My SWEATER">
+                                        Create My SWEATER
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link href="/shop" title="customise a Sweater">
+                                        Customise a Sweater
+                                    </Link>
+                                </li>
+                            </ul>
+                        </div>
+                        <Image
+                            src={getAWSImageUrl(styleCard.image)}
+                            alt={styleCard.title.en}
+                            width={1920}
+                            height={870}
+                            loading="lazy"
+                        />
+                    </div>
+                )}
+            </div>
+            <aside className="full-container icon-bg">
+                {/* <div className='icon-container'>
+                    <h3>Create Custom Sweater</h3>
+                    <ul className="custom-sweater-list">
+                        {sweaterSteps.map((step: any) => (
+                            <li key={step._id || step.uuid || Math.random().toString(36).substr(2, 9)}>
+                                <div className="custom-sweater-img">
+                                    <Link href="#" title={step.title.en}>
+                                        <Image
+                                            src={getAWSImageUrl(step.image)}
+                                            alt={step.title.en}
+                                            width={232}
+                                            height={232}
+                                            loading="lazy"
+                                        />
+                                    </Link>
+                                </div>
+                                <Link className="custom-sweater-name" href="#" title={step.title.en}>
+                                    {step.title.en}
                                 </Link>
-                            </div>
-                            <Link className="custom-sweater-name" href="#" title={step.title.en}>
-                                {step.title.en}
-                            </Link>
-                        </li>
-                    ))}
-                </ul>
+                            </li>
+                        ))}
+                    </ul>
+                </div> */}
 
-                <ul className="custom-sweater-btn">
+                {/* <ul className="custom-sweater-btn">
                     <li>
                         <Link href="/sweater" title="Create My SWEATER">
                             Create My SWEATER
@@ -52,22 +81,10 @@ export default function CustomSweater({ sweaterData }: ICustomSweaterProps) {
                             Customise a Sweater
                         </Link>
                     </li>
-                </ul>
+                </ul> */}
             </aside>
 
-            {styleCard && (
-                <div className="your-style">
-                    <h3>{styleCard.title.en}</h3>
-                    <h4>{styleCard.description.en || 'Custom Solutions'}</h4>
-                    <Image
-                        src={getAWSImageUrl(styleCard.image)}
-                        alt={styleCard.title.en}
-                        width={387}
-                        height={340}
-                        loading="lazy"
-                    />
-                </div>
-            )}
+
         </section>
     );
 }

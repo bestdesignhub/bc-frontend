@@ -62,8 +62,8 @@ export default function Accessories({ homeProductList }: IAccessoriesProps) {
   return (
     <div className="accessories-wrapper">
       <div className="latest-products">
-        <div className="container">
-          <h2>Our Latest Products</h2>
+        <div>
+          <h2>Our Best Selling Products</h2>
           <Slider {...settings}>
             {homeProductList?.map((accessories, index) => (
               <Fragment key={index}>
