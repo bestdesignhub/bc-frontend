@@ -69,16 +69,6 @@ export default async function Footer({ }: { settings?: ISettings }) {
                   Shop
                 </Link>
               </li>
-              <li>
-                <Link href="/sweater?gender=6798793f705aedfe39db13b1&material=678077a88c6968b4bb6fc291&style=6873797b112e603103c98e6c" title="Our Yarn Details">
-                  Our Yarn Details
-                </Link>
-              </li>
-              <li>
-                <Link href="/sweater?gender=6798793f705aedfe39db13b1&material=678077a88c6968b4bb6fc291" title="Our Styles">
-                  Our Styles
-                </Link>
-              </li>
             </ul>
           </div>
           <div className="f-links-box">
