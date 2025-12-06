@@ -196,7 +196,7 @@ export default function Header() {
                 </Link>
               </li> */}
               <li>
-                <Link href="/about-us-page" title="About Us">
+                <Link href="/about-us-page-" title="About Us">
                   About Us
                 </Link>
               </li>
@@ -204,7 +204,7 @@ export default function Header() {
           </nav>
           <ul className="usefull-links">
             <li>
-              <Link className="wholeseller" href="#" title="Wholeseller">
+              <Link className="wholeseller" href="/our-wholeseller" title="Wholeseller">
                 Wholeseller
               </Link>
             </li>
@@ -260,7 +260,7 @@ export default function Header() {
                 </Link>
               </li> */}
                 <li>
-                  <Link href="/about-us-page" title="About Us">
+                  <Link href="/about-us-page-" title="About Us">
                     About Us
                   </Link>
                 </li>
@@ -268,7 +268,7 @@ export default function Header() {
             </nav>
             <ul className="usefull-links">
               <li>
-                <Link className="wholeseller" href="#" title="Wholeseller">
+                <Link className="wholeseller" href="/our-wholeseller" title="Wholeseller">
                   Wholeseller
                 </Link>
               </li>
