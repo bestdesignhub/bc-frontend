@@ -52,7 +52,6 @@ export default async function Footer({ }: { settings?: ISettings }) {
             </div>
           </div>
           <div className="f-links-box">
-            <h4>Menu</h4>
             <ul className="f-link">
               <li>
                 <Link href="/women" title="Women">
@@ -71,7 +70,7 @@ export default async function Footer({ }: { settings?: ISettings }) {
               </li>
             </ul>
           </div>
-          <div className="f-links-box">
+          {/* <div className="f-links-box">
             <h4>Explore</h4>
             <ul className="f-link">
               <li>
@@ -79,11 +78,6 @@ export default async function Footer({ }: { settings?: ISettings }) {
                   About Us
                 </Link>
               </li>
-              {/* <li>
-                <Link href="#" title="Mind Behind Idea">
-                  Mind Behind Idea
-                </Link>
-              </li> */}
               <li>
                 <Link href="contact-us" title="Contact Us">
                   Contact Us
@@ -100,8 +94,8 @@ export default async function Footer({ }: { settings?: ISettings }) {
                 </Link>
               </li>
             </ul>
-          </div>
-          <div className="f-links-box">
+          </div> */}
+          {/* <div className="f-links-box">
             <h4>Support</h4>
             <ul className="f-link">
               <li>
@@ -125,10 +119,9 @@ export default async function Footer({ }: { settings?: ISettings }) {
                 </Link>
               </li>
             </ul>
-          </div>
-          <div className="f-links-box">
-            <h4>Others</h4>
-            <ul className="f-link">
+          </div> */}
+          <div className="f-links-box cms-page">
+            <ul className="cms-page-link f-link">
               {cmsPages.data.length > 0 && cmsPages.data.map((page: any, idx: number) => (
                 <li key={idx}>
                   <Link href={`/${page.slug}`}>{page.title}</Link>

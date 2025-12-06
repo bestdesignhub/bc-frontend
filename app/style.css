@@ -1351,7 +1351,12 @@ body {
 }
 
 .f-links-box .f-link li {
-  margin-top: 17px;
+  line-height: 19px;
+  margin-bottom: 20px;
+}
+
+.cms-page-link.f-link li:last-child {
+  display: none;
 }
 
 .f-links-box .f-link li a,
@@ -2933,4 +2938,9 @@ h2.pageTitle {
     width: 100%;
     text-align: center;
   }
+}
+
+.cms-page-link {
+  column-count: 3;
+  column-gap: 40px;
 }

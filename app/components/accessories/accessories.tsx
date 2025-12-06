@@ -2,7 +2,6 @@
 import '@/app/styles/accessories.css';
 import { USER_ROUTES } from '@/constants';
 import { Section5 } from '@/types/components';
-import Link from 'next/link';
 import { Fragment } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick-theme.css';
@@ -78,9 +77,9 @@ export default function Accessories({ homeProductList }: IAccessoriesProps) {
               </Fragment>
             ))}
           </Slider>
-          <Link className="viewbtn" href={`${USER_ROUTES.shop}`}>
+          {/* <Link className="viewbtn" href={`${USER_ROUTES.shop}`}>
             View All
-          </Link>
+          </Link> */}
         </div>
       </div>
     </div>
