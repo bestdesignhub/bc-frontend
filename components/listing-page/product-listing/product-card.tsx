@@ -91,8 +91,8 @@ const ProductCard: FC<{ product: any; genderSlug: string, price: string }> = ({ 
         lg={view === 'grid' ? 3 : 4}
         xl={view === 'grid' ? 3 : 4}
       >
-        <div
-          className={'womanproductbox'}
+        <div onClick={handleShow}
+          className={'womanproductbox yarn-list-box'}
           style={
             yarnId === product?._id
               ? {
@@ -123,9 +123,6 @@ const ProductCard: FC<{ product: any; genderSlug: string, price: string }> = ({ 
           </button>
         </div>
       </Col>
-      {/* {showModal && (
-        <SizeModal yarnDetails={yarnDetails} show={showModal} handleClose={handleClose} />
-      )} */}
     </>
   );
 };

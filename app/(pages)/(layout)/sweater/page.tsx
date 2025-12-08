@@ -1,5 +1,5 @@
 import {
-  CustomPagination,
+  // CustomPagination,
   ProductListing,
   ProductTopbar,
   StepBanner,
@@ -207,10 +207,10 @@ const SweaterPage = async ({
                       total={filteredYarnList?.length}
                     />}
                     {styleId && <ProductListing list={filteredYarnList} genderSlug={genderSlug} price={Number(formattedPrice)} />}
-                    {styleId && <CustomPagination
+                    {/* {styleId && <CustomPagination
                       currentPage={yarnList?.currentPage}
                       totalPage={yarnList?.totalPage}
-                    />}
+                    />} */}
                   </div>
                 </Col>
               </Row>
