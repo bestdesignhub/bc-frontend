@@ -249,10 +249,6 @@ export default function StepNavigate({
                 className="navigate-item"
                 key={index}
                 style={isDataExists ? { cursor: 'pointer' } : {}}
-                // onClick={() =>
-                //   isDataExists && handlePrevStepClick(step.slug, `${index + FIXED_STEPS_COUNT}`)
-                // }
-
                 onClick={() => {
                   if (isDataExists) {
                     setActiveIndex(index); //  set the clicked step as active
@@ -302,16 +298,6 @@ export default function StepNavigate({
                             </Link>
                           </button>
                         </div>
-                        {/* <div className="price"> */}
-                        {/* <strong>{formatPrice(stepPageData?.yarn?.price)}</strong>  */}
-                        {/* <strong>{formatPrice(price)}</strong> */}
-                        {/* </div> */}
-                        {/* {(
-                          (isChange && index === currentStep - FIXED_STEPS_COUNT - 1)) && (
-                            <div className="price">
-                              <strong>{formatPrice(price)}</strong>
-                            </div>
-                          )} */}
                         {((currentStep === 3 && index === 0) || (currentStep === 5 && index === 1)) && (
                           <div className="price">
                             <strong>{formatPrice(price)}</strong>
@@ -326,22 +312,6 @@ export default function StepNavigate({
               </div>
             );
           })}
-        {/* {genderSlug && genders && genders.length > 0 && (
-          <div className="navigate-item">
-            <div className="navigatebox">
-              <div className="info">
-                <div className="title">
-                  <h6>Gender</h6>
-                  <p>
-                    <strong>
-                      {genders.find((g) => g.value === genderSlug)?.label || 'Unknown'}
-                    </strong>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        )} */}
         {!steps &&
           STEPPERPATHS.map((step, index) => {
             const words = step.label.trim().split(" ");
