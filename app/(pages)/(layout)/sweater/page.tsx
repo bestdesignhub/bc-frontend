@@ -9,7 +9,6 @@ import {
 import GenderModalWrapper from '@/components/modals/gender-modal/gender-modal-wrapper';
 import StyleSelector from '@/components/step-components/StyleSelector';
 import userAxiosInstance from '@/config/userAxiosInstance';
-// import userAxiosInstance from '@/config/userAxiosInstance';
 import { URL_SLUG } from '@/constants';
 import { COLOUR_DROPDOWN_URL, GENDER_DROPDOWN_URL, MATERIAL_DROPDOWN_URL } from '@/constants/apis';
 import { ViewProvider } from '@/context';
@@ -57,9 +56,6 @@ const SweaterPage = async ({
   const effectiveStyleId = styleId || genderConfig?.styleId;
   const effectiveGaugeId = gaugeId || genderConfig?.gaugeId;
   const effectivePatternId = patternId || genderConfig?.patternId;
-  console.log(genderConfig, genderSlug);
-
-
   let requestBody: any = {};
   if (genderId && materialId && effectiveStyleId && effectiveGaugeId && effectivePatternId) {
     requestBody = {
@@ -73,24 +69,13 @@ const SweaterPage = async ({
 
     try {
       priceData = await fetchPriceList(requestBody);
-      console.log('priceData', priceData);
-
       const rawPrice = priceData?.sizeFL ? Number(priceData.sizeFL) : 0;
       formattedPrice = rawPrice.toLocaleString('en-US', { minimumIntegerDigits: 5, useGrouping: false });
-      console.log("formattedPrice", formattedPrice);
 
     } catch (err) {
       console.error('Error fetching price:', err);
     }
   }
-
-  // const rawPrice = priceData && Object.keys(priceData).length > 0 ? Number(priceData.sizeFL || 0) : 0;
-  // const formattedPrice = rawPrice.toLocaleString('en-US', { minimumIntegerDigits: 5, useGrouping: false });
-
-
-
-  // console.log("requestBody", requestBody);
-
 
   const [genderResult, coloursResult, materialResult, yarnListResult] = await Promise.allSettled([
     getDropdownList(GENDER_DROPDOWN_URL),
@@ -109,70 +94,19 @@ const SweaterPage = async ({
   const stepList = await userAxiosInstance.post('/step-card/user/list/67599682e94c6e1a0e46e63e', payload, {
     timeout: 10000,
   })
-  console.log("StepList ===>>>", stepList?.data?.data?.data);
   const allSteps = stepList?.data?.data?.data || [];
   const genderStyles = allSteps.filter((item: any) => item.gender._id === genderId);
   const colours = coloursResult.status === 'fulfilled' ? coloursResult.value : [];
   const genders = genderResult.status === 'fulfilled' ? genderResult.value : [];
   const materials = materialResult.status === 'fulfilled' ? materialResult.value : [];
   const yarnList = yarnListResult.status === 'fulfilled' ? yarnListResult.value : {};
-  // const priceList = await getPriceListByIds(requestBody?.styleId, requestBody?.gaugeId, requestBody?.patternId, requestBody?.materialId, requestBody?.genderId)
-  // const priceListData = priceList.success === 'true' ? priceList.data : [];
-  // console.log("priceListData", yarnList);
-
-  // Filter by genderId
-  // const filteredYarnList = materials
-  //   ? yarnList?.data?.filter((item: any) => item.materialId === materialId)
-  //   : yarnList?.data;
-
-  // const filteredYarnList = yarnList?.data?.filter((item: any) => {
-  //   const matchMaterial = materialId ? item.materialId === materialId : true;
-  //   const matchColour = colourId ? item.colourId === colourId : true;
-  //   return matchMaterial && matchColour;
-  // });
-
   const filteredYarnList = yarnList?.data?.filter((item: any) => {
     const matchMaterial = materialId ? item.materialId === materialId : true;
     const matchColour = colourId ? item.colourId === colourId : true;
     return matchMaterial && matchColour;
   });
 
-
-
-  // useEffect(() => {
-  //   const fetchPrice = async () => {
-
-
-  // if (genderConfig && materialId) {
-  //   const requestBody = {
-  //     styleId: genderConfig.styleId,
-  //     gaugeId: genderConfig.gaugeId,
-  //     patternId: genderConfig.patternId,
-  //     materialId,
-  //     genderId: genderSlug,
-  //     size: 'l',
-  //   };
-
-  //   try {
-  //     const response = await userAxiosInstance.post(PRODUCT_PRICE_BY_SIZE_, requestBody);
-  //     console.log('response', response.data?.data?.SIZEL);
-  //     // setPriceData(response.data?.data?.SIZEL);
-  //     priceData = response.data.data || {};
-  //   } catch (error) {
-  //     console.error('Error fetching price list:', error);
-  //   }
-  // }
-
-  // console.log('priceData', priceData.sizeL);
-
-
-  //   fetchPrice();
-  // }, [genderSlug, materialId]);
-
-
-
   return (
-    // <div tabIndex={0}>
     <ViewProvider>
       <div className="sweater-inner-step">
         <StepBanner step="1" stepData={{ label: t('COMMON.YARN_TEXT') }} />
@@ -200,17 +134,12 @@ const SweaterPage = async ({
                         materials={materials}
                         price={Number(formattedPrice)}
                       />)}
-                    {/* <StyleSelector styles={genderStyles} price={Number(formattedPrice)} /> */}
                     {!genderSlug && <GenderModalWrapper genders={genders} material={materials[1]?.value} />}
                     {styleId && <ProductTopbar
                       text={t('COMMON.YARN_TEXT')}
                       total={filteredYarnList?.length}
                     />}
                     {styleId && <ProductListing list={filteredYarnList} genderSlug={genderSlug} price={Number(formattedPrice)} />}
-                    {/* {styleId && <CustomPagination
-                      currentPage={yarnList?.currentPage}
-                      totalPage={yarnList?.totalPage}
-                    />} */}
                   </div>
                 </Col>
               </Row>

@@ -4,10 +4,8 @@ import { useState, useEffect } from 'react';
 import Image, { StaticImageData } from 'next/image';
 import { useSearchParams } from 'next/navigation';
 import '@/app/styles/Sweater-product.css';
-// import Sweaterimg1 from '@/public/images/round-neck-sweater.jpg';
 import userAxiosInstanceWithoutToken from '@/config/userAxiosInstanceWithoutToken';
 import { getAWSImageUrl } from '@/utils/common.utils';
-// import { getAWSImageUrl } from '@/utils/common.utils';
 
 const BUCKET_DOMAIN = process.env.NEXT_PUBLIC_BUCKET_DOMAIN;
 
@@ -90,9 +88,6 @@ export default function SweaterBox({ stepData }: SweaterBoxProps) {
           gauge, // assuming `fitting` is gauge here?
           language: 'en'
         })
-        console.log("response mani", response)
-          ;
-
         if (response.data.success && response.data.data.length > 0) {
           const styleData = response.data.data[0]; // assuming one match
           console.log("styledata", styleData);

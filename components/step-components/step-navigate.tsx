@@ -33,7 +33,6 @@ export default function StepNavigate({
   const router = useRouter();
   const searchParams = useSearchParams();
   const style = searchParams.get('style');
-  console.log("===========>", style, price);
   const pathname = usePathname();
   const currentStep = Number(pathname.split('/').pop()); // e.g. 3
   // const isChange = searchParams.get('change') === 'true';
@@ -43,7 +42,6 @@ export default function StepNavigate({
   const keys: string[] = [];
   const selectedStyle = styleData?.find((item: any) => item._id === style);
   if (selectedStyle) {
-    console.log("selectedStyle===", selectedStyle, stepPageData);
     if (selectedStyle && stepPageData?.style) {
       delete stepPageData.style;
     }
@@ -59,8 +57,6 @@ export default function StepNavigate({
         }
       });
     }
-
-    console.log('All keys:', keys); // ['yarn', 'gender', 'material', 'gauge', 'pattern', 'style']
   }, [steps, searchParams, activeIndex]);
   const stepLabels = ['Gauge', 'Pattern', 'Styles', 'Measurement'];
 
@@ -88,8 +84,6 @@ export default function StepNavigate({
           params.delete(step.slug);
         }
       });
-      console.log("activeIndex : ", activeIndex);
-
       router.push(`${USER_ROUTES.sweater}/${stepNumber}?${params.toString()}`);
     },
     [steps, searchParams, router]
