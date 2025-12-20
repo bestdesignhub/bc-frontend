@@ -15,8 +15,16 @@ export default function ZeeZap({ lookGoodData }: ILookGoodProps) {
         <>
           <div className="women-sweater sweater-img-content">
             <Link href="/women">
-              <Image src={getAWSImageUrl(lookGoodData?.card2?.image)} width={950} height={1344} alt="hero" className="img1"
-                loading="lazy" />
+              <div className='twoimg'>
+                <Image
+                  src={getAWSImageUrl(lookGoodData?.card2?.image)}
+                  alt={lookGoodData?.card2?.title.en}
+                  fill
+                  sizes="100vw"
+                  className="auto-image"
+                  loading="lazy"
+                />
+              </div>
             </Link>
             <div className="sweater-content">
               <h3>{lookGoodData?.card2?.title ?? ''}  </h3>
@@ -33,14 +41,16 @@ export default function ZeeZap({ lookGoodData }: ILookGoodProps) {
           {lookGoodData?.card3 && (
             <div className="men-sweater sweater-img-content">
               <Link href="/men">
-                <Image
-                  src={getAWSImageUrl(lookGoodData?.card3?.image)}
-                  width={950}
-                  height={1344}
-                  alt="hero"
-                  className="img1"
-                  loading="lazy"
-                />
+                <div className='twoimg'>
+                  <Image
+                    src={getAWSImageUrl(lookGoodData?.card3?.image)}
+                    alt={lookGoodData?.card3?.title.en}
+                    fill
+                    sizes="100vw"
+                    className="auto-image"
+                    loading="lazy"
+                  />
+                </div>
               </Link>
               <div className="sweater-content">
                 <h3>{lookGoodData?.card3?.title ?? ''}</h3>

@@ -752,12 +752,37 @@ body {
   color: #5f564a;
 }
 
-.your-style {
+/* .your-style {
   margin-left: auto;
   background-color: #f5f2e8;
-  /* width: calc(30% + 26px); */
+  width: calc(30% + 26px);
   text-align: center;
   padding-top: 0;
+  position: relative;
+} */
+
+.image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1920 / 870;
+  /* keeps image ratio */
+  overflow: hidden;
+}
+
+.auto-image {
+  object-fit: cover;
+}
+
+.twoimg {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 594 / 1344;
+  /* keeps image ratio */
+  overflow: hidden;
+  height: 1344px;
+}
+
+.your-style {
   position: relative;
 }
 
@@ -773,6 +798,7 @@ body {
   top: 50%;
   transform: translate(0, -50%);
   text-align: left;
+  z-index: 1;
 }
 
 .styleImg {
@@ -1903,10 +1929,6 @@ h2.pageTitle {
   .order-steps .step-number {
     font-size: 40px;
   }
-
-  .step-icon img {
-    max-width: 60px;
-  }
 }
 
 @media only screen and (max-width:1600px) {
@@ -1993,8 +2015,13 @@ h2.pageTitle {
     font-size: 18px;
   }
 
-  .create-custom {
+  /* .create-custom {
     margin-bottom: 60px;
+  } */
+
+  .order-steps {
+    width: 100%;
+    max-width: 100%;
   }
 
   .women-men-sweater {

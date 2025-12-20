@@ -35,13 +35,16 @@ export default function CustomSweater({ sweaterData }: ICustomSweaterProps) {
                                 </li>
                             </ul>
                         </div>
-                        <Image
-                            src={getAWSImageUrl(styleCard.image)}
-                            alt={styleCard.title.en}
-                            width={1920}
-                            height={870}
-                            loading="lazy"
-                        />
+                        <div className="image-wrapper">
+                            <Image
+                                src={getAWSImageUrl(styleCard.image)}
+                                alt={styleCard.title.en}
+                                fill
+                                sizes="100vw"
+                                className="auto-image"
+                                loading="lazy"
+                            />
+                        </div>
                     </div>
                 )}
             </div>
