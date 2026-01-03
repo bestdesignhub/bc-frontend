@@ -145,27 +145,6 @@ const LastStepPage = async ({
   )?.sort((a: any, b: any) => {
     return SIZE_ORDER.indexOf(a.name.toUpperCase()) - SIZE_ORDER.indexOf(b.name.toUpperCase());
   });;
-  // Output the filtered sizes
-  // console.log("filteredAvailableSizes", filteredAvailableSizes);
-
-  // function handlePriceChange(price: number): void {
-  //   // throw new Error('Function not implemented.')
-
-  // }
-
-
-
-
-  // if (
-  //   priceFromQuery !== undefined &&
-  //   priceFromQuery !== null &&
-  //   priceFromQuery !== "" &&
-  //   stepData &&
-  //   stepData.yarn
-  // ) {
-
-  //   stepData.yarn.price = Number(priceFromQuery);
-  // }
 
   const selectedSize = (await cookieStore).get('selectedSize')?.value ?? 'm';
   const selectedPrice = parseFloat((await cookieStore).get('selectedPrice')?.value ?? '0');
@@ -213,7 +192,6 @@ const LastStepPage = async ({
     )?.measurements || [];
   }
   console.log("measurementsData", measurementsData);
-
 
 
   return (
@@ -286,52 +264,6 @@ const LastStepPage = async ({
                           </div>
                         </div>
                         <ChangeYarnButton searchParams={resolvedSearchParams} />
-
-                        {/* <div className="Sweater-right-bottom">
-                      <div className="fabric-listing">
-                        <ul>
-                          <li>
-                            <span>{t('COMMON.')}:</span>{' '}
-                            <div className="bg-text">{stepData?.yarn?.gender}</div>
-                          </li>
-                          <li>
-                            <span>{t('COMMON.MATERIAL')}:</span>{' '}
-                            <div className="bg-text">{stepData?.yarn?.material}</div>
-                          </li>
-                          <li>
-                            <span>{t('COMMON.COLOUR')}:</span>{' '}
-                            <div className="bg-text">{stepData?.yarn?.colour}</div>
-                          </li>
-                          <li>
-                            <span>{t('COMMON.SEASONALITY')}:</span>{' '}
-                            <div className="bg-text">{stepData?.yarn?.seasonality}</div>
-                          </li>
-                          <li>
-                            <span>{t('COMMON.PERCEIVED_WEIGHT')}:</span>{' '}
-                            <div className="bg-text">{stepData?.yarn?.perceivedWeight}</div>
-                          </li>
-                          {stepData?.yarn?.yarns?.map((yarn: any, index: number) => (
-                            <li key={index}>
-                              <div className="icon-text">
-                                {yarn.image && (
-                                  <i>
-                                    <Image
-                                      src={getAWSImageUrl(yarn?.image)}
-                                      alt=""
-                                      width={24}
-                                      height={24}
-                                      loading="lazy"
-                                    />
-                                  </i>
-                                )}
-                                <span>{yarn.name}</span>
-                              </div>
-                              <div className="bg-text">{yarn.value}</div>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div> */}
                       </div>
                     </div>
                   </div>
@@ -342,25 +274,77 @@ const LastStepPage = async ({
                   <div className="Sweater-right-bottom sweater-type">
                     <div className="gauge-navigate">
                       <div className="d-flex flex-wrap">
-                        {stepData?.steps?.map((stepObj: any, index: number) => {
-                          const currentStepData = stepData?.[stepObj?.slug] || {};
-                          // console.log("currentStepData", currentStepData);
-                          // console.log("stepObj", stepObj);
-                          // console.log("index", index);
-                          // console.log("stepData", stepData);
+                        <div className='gaugeboxSteps'>
 
-                          if (stepObj?.name === 'Price Module') return null;
-                          if (stepObj?.name === 'Style') return null;
-                          return (
-                            <div className="navigate-item" key={index}>
-                              <h6 className='step-title-custom'>{stepObj?.name}</h6>
-                              <CurrentStepBox
-                                currentStepData={currentStepData}
-                                stepNumber={`${index + FIXED_STEPS_COUNT}`}
-                              />
+
+                          {stepData?.yarn?.material !== "100% Extra Fine Merino Wool" ? (
+                            <>
+                              {stepData?.steps?.map((stepObj: any, index: number) => {
+                                console.log("STEPDATA", stepData.steps[0])
+                                const currentStepData = stepData?.[stepObj?.slug] || {};
+
+                                if (stepObj?.name === 'Price Module') return null;
+                                if (stepObj?.name === 'Style') return null;
+                                return (
+                                  <div className="navigate-item" key={index}>
+                                    <h6 className='step-title-custom'>{stepObj?.name}</h6>
+                                    <CurrentStepBox
+                                      currentStepData={currentStepData}
+                                      stepNumber={`${index + FIXED_STEPS_COUNT}`}
+                                    />
+                                  </div>
+                                );
+                              })}
+                            </>
+                          ) :
+                            <div className="navigate-item" style={{ height: "142px" }}>
+                              <h6 className='' style={{ padding: "20px" }}>Not Available</h6>
                             </div>
-                          );
-                        })}
+                          }
+
+                        </div>
+
+                        <div className='gaugeboxSteps'>
+                          {stepData?.steps?.map((stepObj: any, index: number) => {
+                            console.log("STEPDATA", stepData.steps[0])
+                            const currentStepData = stepData?.[stepObj?.slug] || {};
+
+                            if (stepObj?.name === 'Price Module') return null;
+                            if (stepObj?.name === 'Style') return null;
+                            return (
+                              <div className="navigate-item" key={index}>
+                                <h6 className='step-title-custom'>{stepObj?.name}</h6>
+                                <CurrentStepBox
+                                  currentStepData={currentStepData}
+                                  stepNumber={`${index + FIXED_STEPS_COUNT}`}
+                                />
+                              </div>
+                            );
+                          })}
+                        </div>
+                        <div className='gaugeboxSteps'>
+                          {stepData?.steps?.map((stepObj: any, index: number) => {
+                            console.log("STEPDATA", stepData.steps[0])
+                            const currentStepData = stepData?.[stepObj?.slug] || {};
+
+                            if (stepObj?.name === 'Price Module') return null;
+                            if (stepObj?.name === 'Style') return null;
+                            return (
+                              <div className="navigate-item" key={index}>
+                                <h6 className='step-title-custom'>{stepObj?.name}</h6>
+                                <CurrentStepBox
+                                  currentStepData={currentStepData}
+                                  stepNumber={`${index + FIXED_STEPS_COUNT}`}
+                                />
+                              </div>
+                            );
+                          })}
+                        </div>
+
+
+
+
+
                       </div>
                       <div className='availableSizesBox'>
                         <div>
