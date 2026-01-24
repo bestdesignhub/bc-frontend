@@ -75,9 +75,9 @@ const FIXED_STEPS_COUNT = 2;
 const STEPPERPATHS = [
   { label: 'Select a Style', step: '1' },
   { label: 'Select a Yarn', step: '2' },
-  { label: 'Select a Guage', step: '3' },
+  { label: 'Select a Gauge', step: '3' },
   { label: 'Select a Pattern', step: '4' },
-  { label: 'Select Measurement', step: '5' },
+  { label: 'Select a Fit', step: '5' },
 ];
 
 export {
