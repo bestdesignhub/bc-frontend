@@ -18,8 +18,7 @@ const StyleSelector: React.FC<StyleSelectorProps> = ({ styles, price }) => {
     // ----------------------------
     // 🔥 Keywords to match
     // ----------------------------
-    const KEYWORDS = ["v neck", "crew neck", "mock neck"];
-
+    const KEYWORDS = ["Crew Neck Pullover", "V Neck Pullover", "Mock Neck Pullover", "Turtle Neck Pullover", "Polo Neck Button Cardigan", "V Neck Button Cardigan", "Mock Neck Zip Cardigan", "V Neck Sleeveless Vest", "Zipped Side Pocket Hoodie"];
     // ----------------------------
     // 🔥 Step 1: Make lowercase lists
     // ----------------------------
