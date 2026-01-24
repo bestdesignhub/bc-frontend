@@ -40,7 +40,7 @@ const GenderModal = (props: {
             </div>
           </div>
           <div className="d-flex" style={{ justifyContent: 'center', userSelect: 'none' }}>
-            <div className="d-flex gap-3" style={{ flexDirection: "row-reverse" }}>
+            <div className="d-flex gap-3">
               {genders.map((gender) => {
                 // const backgroundImage = `url(${domain}/images/${gender.label === 'Men' ? 'men-img.jpg' : 'women-img.jpg'})`;
                 if (handleSelect) {
